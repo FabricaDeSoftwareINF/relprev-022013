@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>br.ufg.inf.es.fs</groupId>
+	<artifactId>relprev</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<name>RelPrev</name>
+	<description>Sistema de Coleta e Análise de Dados de Prevenção de Acidentes Aeronáuticos</description>
+
+	<!-- Link para as ferramentas da Fábrica -->
+	<url>http://projetos.fabrica.inf.ufg.br</url>
+
+	<properties>
+		<url.sonar>${project.url}/sonar</url.sonar>
+		<url.redmine></url.redmine>
+		<url.hudson>${project.url}/hudson</url.hudson>
+		<url.testlink>${project.url}/testlink</url.testlink>
+		<url.artifactory>${project.url}/artifactory</url.artifactory>
+	</properties>
+
+	<!-- Módulos do sistema -->
+	<modules>
+		<module>relprev-client</module>
+		<module>relprev-webservice</module>
+		<module>relprev-front-end</module>
+	</modules>
+
+	<!-- Necessário para compatibilizar com as ferramentas da Fábrica -->
+	<prerequisites>
+		<maven>3.1.0</maven>
+	</prerequisites>
+
+</project>
