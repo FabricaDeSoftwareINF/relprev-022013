@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+	<head> 
+		<title>Relatório de Prevenção</title>
+		<link rel="stylesheet" href="content/css/relatorio.css">
+		<link rel="stylesheet" href="content/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="pagina">
+			<div class="cabecalho">
+				<label id="labelTitulo">RELATÓRIO DE PREVENÇÃO - RELPREV</label>
+			</div>
+			<div class="regulamento">
+				<label id="labelRegulamento">
+					De acordo com as regulamentações brasileiras, este relato (ou parte dele) somente será usado para a 
+					prevenção de acidentes aeronáuticos, a fim de aumentar a segurança operacional. 
+					Este relato não precisa ser identificado, se o for, o relator será informado sobre as medidas adotadas.
+				</label>
+			</div>
+			<div id="labelDadosGerais" class="dadosGerais col-md-12">DADOS GERAIS DA OCORRÊNCIA</div>
+			<div class="local col-md-12">
+				<label id="labelLocalOcorrencia" for="LocalOcorrencia" class="col-md-12">LOCAL</label>
+				<input id="LocalOcorrencia" type="text" class="col-md-12">
+			</div>
+			<div class="dataHoraOcorrencia col-md-12">
+				<div class="col-md-6">
+					<label id="labelDataOcorrencia" for="DataOcorrencia" class="col-md-12">DATA</label>
+					<input id="DataOcorrencia" type="text" class="col-md-5" />
+				</div>
+				<div class="col-md-6">
+					<label id="labelHoraOcorrencia" for="HoraOcorrencia" class="col-md-12">HORA</label>
+					<input id="HoraOcorrencia" type="text" class="col-md-5" />
+				</div> 
+			</div>
+			<div class="divPessoalEnvolvido col-md-12">
+				<label id="labelPessoalEnvolvido col-md-12" for="PessoalEnvolvido">PESSOAL ENVOLVIDO E/OU ARENOVAVE</label>
+				<textarea id="PessoalEnvolvido" rows="4" cols="50" class="col-md-12"></textarea> 
+			</div>
+			<div class="divSituacao col-md-12">
+				<label id="labelSituacao col-md-12" for="Situacao">SITUAÇÃO</label>
+				<textarea id="Situacao" rows="4" cols="50" class="col-md-12"></textarea> 
+			</div>	
+			<div class="relator col-md-12">
+				<label id="labelRelator" for="Relator" class="col-md-12">RELATOR</label>
+				<input id="Relator" type="text" class="col-md-12">
+			</div>
+			<div class="contato col-md-12">
+				<label id="labelContato" for="LocalOcorrencia" class="col-md-12">EMAIL/TELEFONE PARA CONTATO</label>
+				<input id="Contato" type="text" class="col-md-12">
+			</div>
+		</div>
+	</body>
+</html>
