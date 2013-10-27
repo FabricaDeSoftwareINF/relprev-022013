@@ -1,5 +1,4 @@
-#encaminhamento,
-#resposta {
+.aba {
 	margin: auto;
 	max-width: 960px;
 	max-height: 410px;
@@ -13,28 +12,24 @@ textarea {
 	margin-top: 1em;
 }
 
-#encaminhamento,
-#resposta,
+.aba,
 textarea {
 	height: 100%;
 	width: 100%;
 }
 
-#tituloEncaminhamento,
-#tituloResposta {
+.tituloAba {
 	padding-top: 2em;
 }
 
-#camposEncaminhamento,
-#camposResposta {
+.camposAba {
 	padding-top: 1.5em
 }
 
-#encaminhamento label,
-#resposta label {
+.aba label {
 	padding-left: 0;	
 }
 
-#encaminhamento input {
+.camposAba input {
 	max-width: 175px;
 }
