@@ -13,6 +13,7 @@ textarea {
 }
 
 #encaminhamento,
+#resposta,
 textarea {
 	height: 100%;
 	width: 100%;
