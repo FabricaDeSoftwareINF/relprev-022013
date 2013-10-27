@@ -12,7 +12,7 @@
 	<artifactId>relprev-webservice</artifactId>
 	<version>${project.parent.version}</version>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>RelPrev WebService</name>
 	<description>Módulo responsável pelo processamento de dados e persistência do sistema.</description>
 

@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>RelPrev Client</name>
 	<description>Módulo responsável por abstrair a comunicação feita com o webservice.</description>
 
