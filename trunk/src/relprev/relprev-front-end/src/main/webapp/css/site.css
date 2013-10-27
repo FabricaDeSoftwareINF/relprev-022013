@@ -1,3 +1,22 @@
 .textoCentralizado {
 	text-align: center;
 }
+
+.labelPadrao {
+	font-size: 14px;
+	font-family: Arial;
+	font-weight: bold;
+	color: black;
+}
+
+.fundoAbas {
+	background-color: #F7F7F7;
+}
+
+input,
+textarea {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #AFA89D;
+}
