@@ -1,0 +1,38 @@
+#encaminhamento,
+#resposta {
+	margin: auto;
+	max-width: 960px;
+	max-height: 410px;
+}
+
+textarea {
+	max-height: 220px;	
+	max-width: 905px;
+	resize: none;
+	margin-top: 1em;
+}
+
+#encaminhamento,
+textarea {
+	height: 100%;
+	width: 100%;
+}
+
+#tituloEncaminhamento,
+#tituloResposta {
+	padding-top: 2em;
+}
+
+#camposEncaminhamento,
+#camposResposta {
+	padding-top: 1.5em
+}
+
+#encaminhamento label,
+#resposta label {
+	padding-left: 0;	
+}
+
+#encaminhamento input {
+	max-width: 175px;
+}
