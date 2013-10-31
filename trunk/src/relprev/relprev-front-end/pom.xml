@@ -19,5 +19,13 @@
 	<packaging>war</packaging>
 	<name>RelPrev Front-End</name>
 	<description>Módulo responsável por prover uma interface gráfica para o usuário..</description>
+	
+	<dependencies>
+		<dependency>
+			<groupId>br.com.caelum</groupId>
+			<artifactId>vraptor</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+	</dependencies>
 
 </project>
