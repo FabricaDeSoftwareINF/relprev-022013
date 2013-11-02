@@ -15,9 +15,4 @@ public class CustomPathResolver extends DefaultPathResolver {
     protected String getPrefix() {
         return "/WEB-INF/paginas/";
     }
-	
-	@Override
-    protected String getExtension() {
-        return "html";
-    }
 }
