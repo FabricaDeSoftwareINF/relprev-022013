@@ -1,0 +1,34 @@
+.login {
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	float: none;
+	background-color: silver;
+	border: 3px solid #666;
+	max-width: 36em;
+	max-height: 22.5em;
+	width: 100%;
+	height: 100%;
+}
+
+.login div label {
+	font-size: 16pt;
+	font-weight: normal;	
+}
+
+.login input {
+	height: 36px;
+}
+
+.login, .senha {
+	padding-top: 0.5em;
+}
+
+.botaoEntrar {
+	padding-top: 1.5em;
+	padding-bottom: 2em;
+}

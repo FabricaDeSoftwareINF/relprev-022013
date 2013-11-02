@@ -1,0 +1,35 @@
+.aba {
+	margin: auto;
+	max-width: 960px;
+	max-height: 410px;
+}
+
+textarea {
+	float: left;
+	max-height: 220px;	
+	max-width: 905px;
+	resize: none;
+	margin-top: 1em;
+}
+
+.aba,
+textarea {
+	height: 100%;
+	width: 100%;
+}
+
+.tituloAba {
+	padding-top: 2em;
+}
+
+.camposAba {
+	padding-top: 1.5em
+}
+
+.aba label {
+	padding-left: 0;	
+}
+
+.camposAba input {
+	max-width: 175px;
+}
