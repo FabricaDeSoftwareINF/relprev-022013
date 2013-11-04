@@ -1,13 +1,14 @@
-package test.java.br.ufg.inf.es.relprev.client.dominio.tests;
+package br.ufg.inf.es.relprev.client.dominio.tests;
 
 import junit.framework.TestCase;
-import test.java.br.ufg.inf.es.relprev.client.dominio.Relator;
-import test.java.br.ufg.inf.es.relprev.client.dominio.Relprev;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import br.ufg.inf.es.relprev.client.dominio.Relator;
+import br.ufg.inf.es.relprev.client.dominio.Relprev;
 
 /**
  * User: halisson

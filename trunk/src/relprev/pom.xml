@@ -24,7 +24,6 @@
 	<modules>
 		<module>relprev-client</module>
 		<module>relprev-webservice</module>
-		<module>relprev-front-end</module>
 	</modules>
 
 	<!-- Necessário para compatibilizar com as ferramentas da Fábrica -->
