@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- mensagens padrão -->
+	<entry key="validation.Email.message">Endereço de e-mail Inválido</entry>
+	<entry key="validation.Telefone.message">Número de telefone Inválido</entry>
+
+	<!-- entidade EloSipaer -->
+	<entry key="validation.EloSipaer.organizacao.NotNull.message">Organização não deve ser Nula</entry>
+	<entry key="validation.EloSipaer.organizacao.Size.message">Organização deve ter no mínimo um caracter e no Máximo 100</entry>
+	<entry key="validation.EloSipaer.siglaOrganizacao.NotNull.message">Sigla da Organização não deve ser Nula</entry>
+	<entry key="validation.EloSipaer.siglaOrganizacao.Size.message">Sigla da Organização deve ter no mínimo um caracter e no Máximo 10</entry>
+
+	<!-- entidade Relator -->
+	<entry key="validation.Relator.email.Email.message">Endereço de e-mail informado para o Relator não é Válido</entry>
+	<entry key="validation.Relator.telefone.Telefone.message">Número de telefone informado para o Relator não é Válido</entry>
+
+	<!-- entidade RelPrev -->
+	<entry key="validation.RelPrev.envolvidos.NotNull.message">Os envolvidos no Relatório de Prevenção (RelPrev) não podem ser Nulos</entry>
+	<entry key="validation.RelPrev.envolvidos.Size.message">O conteúdo do campo dos envolvidos no Relatório de Prevenção (RelPrev) não pode ser Vazio</entry>
+	<entry key="validation.RelPrev.local.NotNull.message">O local no Relatório de Prevenção (RelPrev) não pode ser Nulo</entry>
+	<entry key="validation.RelPrev.local.Size.message">O conteúdo do campo de local no Relatório de Prevenção (RelPrev) não pode ser Vazio</entry>
+	<entry key="validation.RelPrev.descricaoSituacaoPerigosa.Size.message">O conteúdo do campo de descrição da situação perigosa no Relatório de Prevenção (RelPrev) não pode ser Vazio</entry>
+	<entry key="validation.RelPrev.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser Informada</entry>
+	<entry key="validation.RelPrev.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data Futura</entry>
+	<entry key=""></entry>
+
+	<!-- entidade Situacao -->
+	<entry key="validation.Situacao.descricao.NotNull.message">Descrição da Situação não deve ser Nula</entry>
+</properties>
