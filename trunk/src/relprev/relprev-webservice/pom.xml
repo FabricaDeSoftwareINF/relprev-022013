@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>br.ufg.inf.es.fs</groupId>
 		<artifactId>relprev</artifactId>
@@ -17,105 +16,161 @@
 	<description>Módulo responsável pelo processamento de dados e persistência do sistema.</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<hibernate.version>4.2.0.Final</hibernate.version>
-		<postgres.connector.version>5.1.21</postgres.connector.version>
-		<spring.version>3.2.2.RELEASE</spring.version>
+		<log4j.level>DEBUG</log4j.level>
+
+		<!-- hibernate properties -->
+		<hibernate.show.sql>true</hibernate.show.sql>
+		<hibernate.format.sql>true</hibernate.format.sql>
+		<hibernate.use_sql_comments>true</hibernate.use_sql_comments>
+		<hibernate.generate_statistics>true</hibernate.generate_statistics>
+
+		<c3p0.version>0.9.2.1</c3p0.version>
+		<hibernate.version>4.2.7.Final</hibernate.version>
+		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.data.jpa.version>1.4.2.RELEASE</spring.data.jpa.version>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${jdbc.groupId}</groupId>
+					<artifactId>${jdbc.artifactId}</artifactId>
+					<version>${jdbc.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<log4j.level>WARN</log4j.level>
+
+				<!-- hibernate properties -->
+				<hibernate.show.sql>false</hibernate.show.sql>
+				<hibernate.format.sql>false</hibernate.format.sql>
+				<hibernate.use_sql_comments>false</hibernate.use_sql_comments>
+				<hibernate.generate_statistics>false</hibernate.generate_statistics>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>${jdbc.groupId}</groupId>
+					<artifactId>${jdbc.artifactId}</artifactId>
+					<version>${jdbc.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>postgresql</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>org.postgresql</jdbc.groupId>
+				<jdbc.artifactId>postgresql</jdbc.artifactId>
+				<jdbc.version>9.2-1003-jdbc4</jdbc.version>
+				<jdbc.driver>org.postgresql.Driver</jdbc.driver>
+				<jdbc.url>jdbc:postgresql://localhost:5432/relprev</jdbc.url>
+				<jdbc.user>postgres</jdbc.user>
+				<jdbc.password>postgres</jdbc.password>
+				<hibernate.dialect>org.hibernate.dialect.PostgreSQL82Dialect</hibernate.dialect>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<activation>
+				<activeByDefault>prod</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>mysql</jdbc.groupId>
+				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
+				<jdbc.version>5.1.6</jdbc.version>
+				<hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
+		<!-- dependências para persistência -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${c3p0.version}</version>
 		</dependency>
+
+		<!-- beans validation -->
 		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.12.1.GA</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+
+		<!-- spring data -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.data.jpa.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- spring web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
+		<!-- json -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>2.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
+
+		<!-- test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.1-901.jdbc4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>relprev</finalName>
+		<finalName>services</finalName>
 		<plugins>
+			<!-- http://maven.apache.org/plugins/maven-war-plugin/ -->
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

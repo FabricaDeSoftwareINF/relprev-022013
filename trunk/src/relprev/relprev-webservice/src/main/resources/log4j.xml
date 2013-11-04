@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[${artifactId}] %d{HH:mm:ss-SSS} [%t] %p %C{1}(%L): %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="asyncConsoleAppender" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="consoleAppender" />
+	</appender>
+
+	<logger name="br.ufg.inf">
+		<level value="debug" />
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="warn" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="debug" />
+	</logger>
+
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="asyncConsoleAppender" />
+	</root>
+
+</log4j:configuration>
