@@ -22,7 +22,7 @@ import br.ufg.inf.repository.support.GenericRepository;
  */
 @Transactional(readOnly = true)
 public class GenericRepositoryImpl<E extends AbstractEntity, PK extends Serializable> extends
-		SimpleJpaRepository<E, PK> implements GenericRepository<E, PK> {
+SimpleJpaRepository<E, PK> implements GenericRepository<E, PK> {
 
 	private final EntityManager entityManager;
 	private final JpaEntityInformation<E, ?> entityInformation;
@@ -70,7 +70,7 @@ public class GenericRepositoryImpl<E extends AbstractEntity, PK extends Serializ
 	}
 
 	@Override
-	public <OE> OE findOne(final Class<OE> entityClass, final PK id) {
+	public E findOne(final Class<E> entityClass, final PK id) {
 		return this.getEntityManager().find(entityClass, id);
 	}
 

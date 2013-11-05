@@ -28,7 +28,7 @@ import br.ufg.inf.service.support.ResponseEntity;
 import br.ufg.inf.service.support.WebServicesURL;
 
 /**
- * Servições comuns a todos os EndPoints REST, contendo também métodos utilitários de construção de
+ * Serviços comuns a todos os EndPoints REST, contendo também métodos utilitários de construção de
  * mensagens de resposta
  * 
  * @created 02/11/2013
@@ -49,6 +49,10 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	@Autowired
 	private LogRepository logRepository;
 
+	/**
+	 * 
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_LIST, method = {GET, POST})
 	public final ResponseEntity<E> list() {
@@ -65,6 +69,32 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 		return _return;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = WebServicesURL.URL_FIND, method = {GET, POST})
+	public final ResponseEntity<E> find(@PathVariable("id") final Long id) {
+		ResponseEntity<E> _return;
+		this.getLogger().debug("consultando objeto de id " + id);
+		try {
+			final E entity = this.getRepository().findOne(id);
+			_return = this.buildResponseEntity(entity, ReponseMessages.FIND_MESSAGE);
+			this.getLogger().debug("objeto consultado com sucesso: " + entity.toString());
+		} catch (final Exception e) {
+			_return = this.buildResponseEntity(e);
+			this.getLogger().error("problema ao consultar objeto: " + e.getMessage(), e);
+		}
+		return _return;
+	}
+
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_CREATE, method = POST)
 	public final ResponseEntity<E> create(final E entity) {
@@ -81,6 +111,11 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 		return _return;
 	}
 
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_UPDATE, method = PUT)
 	public final ResponseEntity<E> update(final E entity) {
@@ -98,6 +133,11 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 		return _return;
 	}
 
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_DELETE, method = DELETE)
 	public final ResponseEntity<E> delete(final E entity) {
@@ -105,28 +145,12 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 		this.getLogger().debug("excluindo objeto " + entity.toString());
 		try {
 			this.beforeDelete(entity);
-			this.getRepository().save(entity);
+			this.getRepository().delete(entity);
 			_return = this.buildResponseEntity(entity, ReponseMessages.DELETE_MESSAGE);
 			this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
 		} catch (final Exception e) {
 			_return = this.buildResponseEntity(e);
 			this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + e.getMessage(), e);
-		}
-		return _return;
-	}
-
-	@ResponseBody
-	@RequestMapping(value = WebServicesURL.URL_FIND, method = {GET, POST})
-	public final ResponseEntity<E> find(@PathVariable("id") final Long id) {
-		ResponseEntity<E> _return;
-		this.getLogger().debug("consultando objeto de id " + id);
-		try {
-			final E entity = this.getRepository().findOne(id);
-			_return = this.buildResponseEntity(entity, ReponseMessages.FIND_MESSAGE);
-			this.getLogger().debug("objeto consultado com sucesso: " + entity.toString());
-		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
-			this.getLogger().error("problema ao consultar objeto: " + e.getMessage(), e);
 		}
 		return _return;
 	}

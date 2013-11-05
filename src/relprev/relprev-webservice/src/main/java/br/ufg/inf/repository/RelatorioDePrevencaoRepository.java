@@ -15,15 +15,6 @@ import br.ufg.inf.repository.support.GenericRepository;
 public interface RelatorioDePrevencaoRepository extends GenericRepository<RelPrev, Long> {
 
 	/**
-	 * Recupera um {@link RelPrev} com o ID informado como parâmetro
-	 * 
-	 * @param id
-	 *            id do {@link RelPrev} a ser consultado
-	 * @return {@link RelPrev}
-	 */
-	RelPrev findById(final Long id);
-
-	/**
 	 * Recupera uma lista de {@link RelPrev} de acordo com o local
 	 * 
 	 * @param local
