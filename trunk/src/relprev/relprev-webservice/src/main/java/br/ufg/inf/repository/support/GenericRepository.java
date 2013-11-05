@@ -36,8 +36,8 @@ public interface GenericRepository<E extends AbstractEntity, PK extends Serializ
 	 *            {@link Class}
 	 * @param id
 	 *            id do objeto
-	 * @return {@code OE} entity
+	 * @return {@code E} entity
 	 */
-	<OE> OE findOne(final Class<OE> entityClass, final PK id);
+	E findOne(final Class<E> entityClass, final PK id);
 
 }
