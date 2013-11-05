@@ -173,11 +173,6 @@
 			<name>Spring Release Repository</name>
 			<url>http://repo.spring.io/release/</url>
 		</repository>
-		<repository>
-			<id>spring.framework</id>
-			<name>Spring Release Repository</name>
-			<url>http://repo.spring.io/release/</url>
-		</repository>
 	</repositories>
 
 	<!-- Necessário para compatibilizar com as ferramentas da Fábrica -->
