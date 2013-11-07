@@ -56,17 +56,17 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_LIST, method = {GET, POST})
 	public final ResponseEntity<E> list() {
-		ResponseEntity<E> _return;
+		ResponseEntity<E> retorno;
 		this.getLogger().debug("listando objetos");
 		try {
 			final List<E> dataList = this.getRepository().findAll();
-			_return = this.buildResponseEntity(dataList, ReponseMessages.LIST_MESSAGE);
+			retorno = this.buildResponseEntity(dataList, ReponseMessages.LIST_MESSAGE);
 			this.getLogger().debug(dataList.size() + " objetos listados");
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("erro ao listar objetos " + e.getMessage(), e);
 		}
-		return _return;
+		return retorno;
 	}
 
 	/**
@@ -77,17 +77,17 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_FIND, method = {GET, POST})
 	public final ResponseEntity<E> find(@PathVariable("id") final Long id) {
-		ResponseEntity<E> _return;
+		ResponseEntity<E> retorno;
 		this.getLogger().debug("consultando objeto de id " + id);
 		try {
 			final E entity = this.getRepository().findOne(id);
-			_return = this.buildResponseEntity(entity, ReponseMessages.FIND_MESSAGE);
+			retorno = this.buildResponseEntity(entity, ReponseMessages.FIND_MESSAGE);
 			this.getLogger().debug("objeto consultado com sucesso: " + entity.toString());
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("problema ao consultar objeto: " + e.getMessage(), e);
 		}
-		return _return;
+		return retorno;
 	}
 
 	/**
@@ -98,17 +98,17 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_CREATE, method = POST)
 	public final ResponseEntity<E> create(final E entity) {
-		ResponseEntity<E> _return;
+		ResponseEntity<E> retorno;
 		this.getLogger().debug("criando objeto " + entity.toString());
 		try {
 			this.getRepository().save(entity);
 			this.getLogger().debug("objeto " + entity.toString() + " criado com sucesso");
-			_return = this.buildResponseEntity(entity, ReponseMessages.CREATE_MESSAGE);
+			retorno = this.buildResponseEntity(entity, ReponseMessages.CREATE_MESSAGE);
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("problema ao criar objeto " + entity.toString() + ": " + e.getMessage(), e);
 		}
-		return _return;
+		return retorno;
 	}
 
 	/**
@@ -119,18 +119,18 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_UPDATE, method = PUT)
 	public final ResponseEntity<E> update(final E entity) {
-		ResponseEntity<E> _return;
+		ResponseEntity<E> retorno;
 		this.getLogger().debug("atualizando objeto " + entity.toString());
 		try {
 			this.beforeUpdate(entity);
 			this.getRepository().save(entity);
-			_return = this.buildResponseEntity(entity, ReponseMessages.UPDATE_MESSAGE);
+			retorno = this.buildResponseEntity(entity, ReponseMessages.UPDATE_MESSAGE);
 			this.getLogger().debug("objeto " + entity.toString() + " atualizado com sucesso");
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("problema ao atualizar objeto " + entity.toString() + ": " + e.getMessage(), e);
 		}
-		return _return;
+		return retorno;
 	}
 
 	/**
@@ -141,18 +141,18 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_DELETE, method = DELETE)
 	public final ResponseEntity<E> delete(final E entity) {
-		ResponseEntity<E> _return;
+		ResponseEntity<E> retorno;
 		this.getLogger().debug("excluindo objeto " + entity.toString());
 		try {
 			this.beforeDelete(entity);
 			this.getRepository().delete(entity);
-			_return = this.buildResponseEntity(entity, ReponseMessages.DELETE_MESSAGE);
+			retorno = this.buildResponseEntity(entity, ReponseMessages.DELETE_MESSAGE);
 			this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + e.getMessage(), e);
 		}
-		return _return;
+		return retorno;
 	}
 
 	/**
@@ -249,14 +249,12 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
 	}
 
 	protected ResponseEntity<E> buildResponseEntity(final List<E> data, final Long count, final String message) {
-		final ResponseEntity<E> response = this.buildResponseEntity(Boolean.TRUE, data, count, message, "OK");
-		return response;
+		return this.buildResponseEntity(Boolean.TRUE, data, count, message, "OK");
 	}
 
 	protected ResponseEntity<E> buildResponseEntity(final Exception exception) {
-		final ResponseEntity<E> response = this.buildResponseEntity(Boolean.FALSE, null, 0L, exception.getMessage(),
+		return this.buildResponseEntity(Boolean.FALSE, null, 0L, exception.getMessage(),
 				"NOTOK");
-		return response;
 	}
 
 	private ResponseEntity<E> buildResponseEntity(final Boolean success, final List<E> data, final Long count,

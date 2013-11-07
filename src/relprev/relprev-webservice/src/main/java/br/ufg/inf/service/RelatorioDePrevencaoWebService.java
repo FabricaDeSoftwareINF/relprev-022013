@@ -36,34 +36,34 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelPrev, R
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_LOCAL + "/{local}")
 	public ResponseEntity<RelPrev> findRelPrevByLocal(@PathVariable("local") final String local) {
-		ResponseEntity<RelPrev> _return;
+		ResponseEntity<RelPrev> retorno;
 		this.getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
 		try {
 			final List<RelPrev> dataList = this.getRepository().findByLocalIgnoreCase(local);
-			_return = this.buildResponseEntity(dataList, ReponseMessages.RELPREV_LIST);
+			retorno = this.buildResponseEntity(dataList, ReponseMessages.RELPREV_LIST);
 			this.getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
 		}
-		return _return;
+		return retorno;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_DESCRICAO + "/{descricao}")
 	public ResponseEntity<RelPrev> findRelPrevByDescricao(@PathVariable("descricao") final String descricao) {
-		ResponseEntity<RelPrev> _return;
+		ResponseEntity<RelPrev> retorno;
 		this.getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
 		try {
 			final List<RelPrev> dataList = this.getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(
 					descricao);
-			_return = this.buildResponseEntity(dataList, ReponseMessages.RELPREV_LIST);
+			retorno = this.buildResponseEntity(dataList, ReponseMessages.RELPREV_LIST);
 			this.getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
 		} catch (final Exception e) {
-			_return = this.buildResponseEntity(e);
+			retorno = this.buildResponseEntity(e);
 			this.getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
 		}
-		return _return;
+		return retorno;
 	}
 
 }
