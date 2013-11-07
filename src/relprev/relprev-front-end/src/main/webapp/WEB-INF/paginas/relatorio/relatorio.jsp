@@ -34,8 +34,9 @@
                 <script src="http://code.jquery.com/jquery.js"></script>
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="../js/bootstrap.min.js"></script>
+                <script src="../js/bootstrap.file-input.js"></script>
 
-                <form action="<c:url value='/relatorio/salvar'/>" method="post">
+                <form action="<c:url value='/relatorio/salvar'/>" method="post" enctype="multipart/form-data">
 					<% String relprev = "relprev"; %>
 					
                     <div class="row">
@@ -96,10 +97,10 @@
 
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="enviarArquivo" class="labelMaiuscula">
+                            <label for="enviarArquivo" class="labelMaiuscula" style="display:block">
                             	<fmt:message key="enviar.arquivo" />
-                            </label>
-                            <input type="file" id="enviarArquivo">
+                            </label>                            
+                            	<input type="file" class="btn-info" title="Selecionar.." name="files[]" multiple id="enviarArquivo">
                         </div>
                     </div>
                     <div class="row">
@@ -130,5 +131,11 @@
                 </form>
             </div>
         </div>
+        
+        <script type="text/javascript">
+        	$(function(){
+        		$('input[type=file]').bootstrapFileInput();
+        	});
+        </script>
     </body>
 </html>
