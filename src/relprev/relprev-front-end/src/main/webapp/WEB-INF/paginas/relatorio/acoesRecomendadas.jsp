@@ -1,24 +1,22 @@
-<!-- Excluir após virar partial -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/site.css" rel="stylesheet">
-<link href="../css/abas.css" rel="stylesheet">
-<!-- Excluir após virar partial -->
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div id="acoesRecomendadas" class="aba fundoAbas labelPadrao">
 	<div id="tituloAcoesRecomendadas" class="tituloAba col-md-12 textoCentralizado">
-		<label>AÇÕES CORRETIVAS RECOMENDADAS PELO ELO-SIPAER</label>
+		<label><fmt:message key="acoes.corretivas" /></label>
 	</div>
 	<div id="camposAcoesRecomendadas" class="camposAba col-xs-12 col-md-12">
 		<div class="col-xs-4 col-md-4">
-			<label class="col-xs-12 col-md-12 labelPadrao">DO</label>
+			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="do" /></label>
 			<input id="acaoDo" type="text" class="col-xs-12 col-md-12"/>
 		</div>		
 		<div class="col-xs-4 col-md-4">
-			<label class="col-xs-12 col-md-12 labelPadrao">PARA</label>
+			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="para" /></label>
 			<input id="acaoAo" type="text" class="col-xs-12 col-md-12"/>
 		</div>
 		<div class="col-xs-4 col-md-4">
-			<label class="col-xs-12 col-md-12 labelPadrao">DATA</label>
+			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="dataMaiuscula" /></label>
 			<input id="acaoData" type="text" class="col-xs-12 col-md-12"/>
 		</div>
 		<div class=" col-md-12">
