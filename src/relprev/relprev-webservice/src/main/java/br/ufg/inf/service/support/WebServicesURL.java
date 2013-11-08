@@ -20,4 +20,7 @@ public interface WebServicesURL {
 	String URL_RELPREV_FIND_LOCAL = "/local";
 	String URL_RELPREV_FIND_DESCRICAO = "/descricao";
 
+	// relator service
+	String URL_RELATOR = "/relator";
+
 }
