@@ -19,7 +19,9 @@ public class RelatorioController {
 	}
 
 	public void relatorio() {}
-
+	
+	public void template() {}
+	
 	public void salvar(final Relprev relprev, final List<UploadedFile> files) {
 		relprev.save();
 		this.gerarLog(relprev,files);
