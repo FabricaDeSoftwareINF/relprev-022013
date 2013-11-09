@@ -14,25 +14,25 @@ import br.ufg.inf.repository.RelatorioDePrevencaoRepository;
  * @author Bruno César Ribeiro e Silva - <a
  *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
-@ContextConfiguration(locations = { "" })
+@ContextConfiguration(locations = {""})
 public class RelatorioDePrevencaoWebServiceTest extends GenericWebServiceTest<RelPrev, RelatorioDePrevencaoRepository> {
 
-	@Autowired
-	private RelatorioDePrevencaoRepository repository;
+    @Autowired
+    private RelatorioDePrevencaoRepository repository;
 
-	@Override
-	RelatorioDePrevencaoRepository getRepository() {
-		return this.repository;
-	}
+    @Override
+    RelatorioDePrevencaoRepository getRepository() {
+        return this.repository;
+    }
 
-	@Test
-	public void testFindRelPrevByLocal() {
+    @Test
+    public void testFindRelPrevByLocal() {
 
-	}
+    }
 
-	@Test
-	public void testFindRelPrevByDescricao() {
+    @Test
+    public void testFindRelPrevByDescricao() {
 
-	}
+    }
 
 }

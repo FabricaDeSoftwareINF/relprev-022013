@@ -5,6 +5,7 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -25,10 +26,10 @@ import javax.validation.constraints.Pattern;
 @Pattern(regexp = "([1-9]{2})?([0-9]{8,9})")
 public @interface Telefone {
 
-	String message() default "{validation.Telefone.message}";
+    String message() default "{validation.Telefone.message}";
 
-	Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 
 }

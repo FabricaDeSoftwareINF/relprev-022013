@@ -16,8 +16,6 @@
 	<description>Módulo responsável pelo processamento de dados e persistência do sistema.</description>
 
 	<properties>
-		<log4j.level>DEBUG</log4j.level>
-
 		<!-- hibernate properties -->
 		<hibernate.show.sql>true</hibernate.show.sql>
 		<hibernate.format.sql>true</hibernate.format.sql>
@@ -42,18 +40,14 @@
 		<profile>
 			<id>dev</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>!prod</activeByDefault>
 			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>${jdbc.groupId}</groupId>
-					<artifactId>${jdbc.artifactId}</artifactId>
-					<version>${jdbc.version}</version>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>prod</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<log4j.level>WARN</log4j.level>
 
@@ -63,40 +57,37 @@
 				<hibernate.use_sql_comments>false</hibernate.use_sql_comments>
 				<hibernate.generate_statistics>false</hibernate.generate_statistics>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>${jdbc.groupId}</groupId>
-					<artifactId>${jdbc.artifactId}</artifactId>
-					<version>${jdbc.version}</version>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>postgresql</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
+				<log4j.level>DEBUG</log4j.level>
+
 				<jdbc.groupId>org.postgresql</jdbc.groupId>
 				<jdbc.artifactId>postgresql</jdbc.artifactId>
 				<jdbc.version>9.2-1003-jdbc4</jdbc.version>
-				<jdbc.driver>org.postgresql.Driver</jdbc.driver>
-				<jdbc.url>jdbc:postgresql://localhost:5432/relprev</jdbc.url>
 				<jdbc.user>postgres</jdbc.user>
 				<jdbc.password>postgres</jdbc.password>
+				<jdbc.driver>org.postgresql.Driver</jdbc.driver>
+				<jdbc.url>jdbc:postgresql://localhost:5432/relprev</jdbc.url>
+
 				<hibernate.dialect>org.hibernate.dialect.PostgreSQL82Dialect</hibernate.dialect>
 			</properties>
 		</profile>
 		<profile>
-			<id>mysql</id>
+			<id>mariadb</id>
 			<activation>
-				<activeByDefault>prod</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<jdbc.groupId>mysql</jdbc.groupId>
-				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-				<jdbc.version>5.1.6</jdbc.version>
+				<jdbc.groupId>org.jumpmind.symmetric.jdbc</jdbc.groupId>
+				<jdbc.artifactId>mariadb-java-client</jdbc.artifactId>
+				<jdbc.version>1.1.1</jdbc.version>
+				<jdbc.user>relprev</jdbc.user>
+				<jdbc.password>relprev</jdbc.password>
+				<jdbc.driver>org.mariadb.jdbc.Driver</jdbc.driver>
+				<jdbc.url>jdbc:mariadb://200.137.197.238/relprev</jdbc.url>
+
 				<hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
 			</properties>
 		</profile>
@@ -113,6 +104,11 @@
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>${c3p0.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${jdbc.groupId}</groupId>
+			<artifactId>${jdbc.artifactId}</artifactId>
+			<version>${jdbc.version}</version>
 		</dependency>
 
 		<!-- beans validation -->

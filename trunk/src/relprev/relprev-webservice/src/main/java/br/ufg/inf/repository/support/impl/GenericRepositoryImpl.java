@@ -22,65 +22,61 @@ import br.ufg.inf.repository.support.GenericRepository;
  */
 @Transactional(readOnly = true)
 public class GenericRepositoryImpl<E extends AbstractEntity, PK extends Serializable> extends
-SimpleJpaRepository<E, PK> implements GenericRepository<E, PK> {
+        SimpleJpaRepository<E, PK> implements GenericRepository<E, PK> {
 
-	private final EntityManager entityManager;
-	private final JpaEntityInformation<E, ?> entityInformation;
+    private final EntityManager entityManager;
+    private final JpaEntityInformation<E, ?> entityInformation;
 
-	public GenericRepositoryImpl(final JpaEntityInformation<E, ?> entityInformation, final EntityManager entityManager) {
-		super(entityInformation, entityManager);
-		this.entityManager = entityManager;
-		this.entityInformation = entityInformation;
-	}
+    public GenericRepositoryImpl(final JpaEntityInformation<E, ?> entityInformation, final EntityManager entityManager) {
+        super(entityInformation, entityManager);
+        this.entityManager = entityManager;
+        this.entityInformation = entityInformation;
+    }
 
-	@Override
-	@Transactional
-	public <S extends E> S save(final S entity) {
-		if (this.getEntityInformation().isNew(entity)) {
-			if (entity instanceof Hiddenable) {
-				((Hiddenable) entity).setIsHidden(Boolean.FALSE);
-			}
-			this.getEntityManager().persist(entity);
-			return entity;
-		} else {
-			return this.getEntityManager().merge(entity);
-		}
-	}
+    @Override
+    @Transactional
+    public <S extends E> S save(final S entity) {
+        if (entity instanceof Hiddenable) {
+            ((Hiddenable) entity).setIsHidden(Boolean.FALSE);
+        }
+        this.getEntityManager().persist(entity);
+        return entity;
+    }
 
-	@Override
-	@Transactional
-	public void delete(final E entity) {
-		if (entity instanceof Hiddenable) {
-			((Hiddenable) entity).setIsHidden(Boolean.TRUE);
-			this.getEntityManager().merge(entity);
-		} else {
-			super.delete(entity);
-		}
-	}
+    @Override
+    @Transactional
+    public void delete(final E entity) {
+        if (entity instanceof Hiddenable) {
+            ((Hiddenable) entity).setIsHidden(Boolean.TRUE);
+            this.getEntityManager().merge(entity);
+        } else {
+            super.delete(entity);
+        }
+    }
 
-	@Override
-	public void deleteInBatch(final Iterable<E> entities) {
-		if (null == entities || !entities.iterator().hasNext()) {
-			return;
-		}
-		final Iterator<E> iterator = entities.iterator();
-		while (iterator.hasNext()) {
-			this.delete(iterator.next());
-		}
-	}
+    @Override
+    public void deleteInBatch(final Iterable<E> entities) {
+        if (null == entities || !entities.iterator().hasNext()) {
+            return;
+        }
+        final Iterator<E> iterator = entities.iterator();
+        while (iterator.hasNext()) {
+            this.delete(iterator.next());
+        }
+    }
 
-	@Override
-	public E findOne(final Class<E> entityClass, final PK id) {
-		return this.getEntityManager().find(entityClass, id);
-	}
+    @Override
+    public E findOne(final Class<E> entityClass, final PK id) {
+        return this.getEntityManager().find(entityClass, id);
+    }
 
-	@Override
-	public EntityManager getEntityManager() {
-		return this.entityManager;
-	}
+    @Override
+    public EntityManager getEntityManager() {
+        return this.entityManager;
+    }
 
-	protected JpaEntityInformation<E, ?> getEntityInformation() {
-		return this.entityInformation;
-	}
+    protected JpaEntityInformation<E, ?> getEntityInformation() {
+        return this.entityInformation;
+    }
 
 }

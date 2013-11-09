@@ -20,24 +20,24 @@ import br.ufg.inf.model.support.AbstractEntity;
  */
 @NoRepositoryBean
 public interface GenericRepository<E extends AbstractEntity, PK extends Serializable> extends JpaRepository<E, PK>,
-		JpaSpecificationExecutor<E> {
+        JpaSpecificationExecutor<E> {
 
-	/**
-	 * Recupera o {@link EntityManager}
-	 * 
-	 * @return {@link EntityManager}
-	 */
-	EntityManager getEntityManager();
+    /**
+     * Recupera o {@link EntityManager}
+     * 
+     * @return {@link EntityManager}
+     */
+    EntityManager getEntityManager();
 
-	/**
-	 * Consulta um objeto baseado no {@link Class} e ID do objeto
-	 * 
-	 * @param entityClass
-	 *            {@link Class}
-	 * @param id
-	 *            id do objeto
-	 * @return {@code E} entity
-	 */
-	E findOne(final Class<E> entityClass, final PK id);
+    /**
+     * Consulta um objeto baseado no {@link Class} e ID do objeto
+     * 
+     * @param entityClass
+     *            {@link Class}
+     * @param id
+     *            id do objeto
+     * @return {@code E} entity
+     */
+    E findOne(final Class<E> entityClass, final PK id);
 
 }

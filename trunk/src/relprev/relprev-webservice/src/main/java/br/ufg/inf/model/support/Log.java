@@ -16,55 +16,55 @@ import javax.persistence.Transient;
 @Table(name = "log_alteracao_dados")
 public class Log extends AbstractEntity {
 
-	private static final long serialVersionUID = 546132176769100844L;
+    private static final long serialVersionUID = 546132176769100844L;
 
-	@Transient
-	private TipoAlteracao tipoAlteracao;
+    @Transient
+    private TipoAlteracao tipoAlteracao;
 
-	@Column(name = "tabela_alterada", length = 30)
-	private String tabelaAlterada;
+    @Column(name = "tabela_alterada", length = 30)
+    private String tabelaAlterada;
 
-	@Column(name = "descricao_alteracao", length = 5000)
-	private String descricaoAlteracao;
+    @Column(name = "descricao_alteracao", length = 5000)
+    private String descricaoAlteracao;
 
-	public TipoAlteracao getTipoAlteracao() {
-		return this.tipoAlteracao;
-	}
+    public TipoAlteracao getTipoAlteracao() {
+        return this.tipoAlteracao;
+    }
 
-	public void setTipoAlteracao(final TipoAlteracao tipoAlteracao) {
-		this.tipoAlteracao = tipoAlteracao;
-	}
+    public void setTipoAlteracao(final TipoAlteracao tipoAlteracao) {
+        this.tipoAlteracao = tipoAlteracao;
+    }
 
-	@Column(name = "tipo_alteracao", length = 10)
-	public Integer getTipoAlteracaoInteiro() {
-		if (this.getTipoAlteracao() != null) {
-			return this.getTipoAlteracao().getTipo();
-		}
-		return null;
-	}
+    @Column(name = "tipo_alteracao", length = 10)
+    public Integer getTipoAlteracaoInteiro() {
+        if (this.getTipoAlteracao() != null) {
+            return this.getTipoAlteracao().getTipo();
+        }
+        return null;
+    }
 
-	public void setTipoAlteracaoInteiro(final Integer tipoAlteracaoInteiro) {
-		if (tipoAlteracaoInteiro != null && tipoAlteracaoInteiro > 0 && tipoAlteracaoInteiro < 4) {
-			this.setTipoAlteracao(TipoAlteracao.fromTipo(tipoAlteracaoInteiro));
-		} else {
-			this.setTipoAlteracao(null);
-		}
-	}
+    public void setTipoAlteracaoInteiro(final Integer tipoAlteracaoInteiro) {
+        if (tipoAlteracaoInteiro != null && tipoAlteracaoInteiro > 0 && tipoAlteracaoInteiro < 4) {
+            this.setTipoAlteracao(TipoAlteracao.fromTipo(tipoAlteracaoInteiro));
+        } else {
+            this.setTipoAlteracao(null);
+        }
+    }
 
-	public String getTabelaAlterada() {
-		return this.tabelaAlterada;
-	}
+    public String getTabelaAlterada() {
+        return this.tabelaAlterada;
+    }
 
-	public void setTabelaAlterada(final String tabelaAlterada) {
-		this.tabelaAlterada = tabelaAlterada;
-	}
+    public void setTabelaAlterada(final String tabelaAlterada) {
+        this.tabelaAlterada = tabelaAlterada;
+    }
 
-	public String getDescricaoAlteracao() {
-		return this.descricaoAlteracao;
-	}
+    public String getDescricaoAlteracao() {
+        return this.descricaoAlteracao;
+    }
 
-	public void setDescricaoAlteracao(final String descricaoAlteracao) {
-		this.descricaoAlteracao = descricaoAlteracao;
-	}
+    public void setDescricaoAlteracao(final String descricaoAlteracao) {
+        this.descricaoAlteracao = descricaoAlteracao;
+    }
 
 }

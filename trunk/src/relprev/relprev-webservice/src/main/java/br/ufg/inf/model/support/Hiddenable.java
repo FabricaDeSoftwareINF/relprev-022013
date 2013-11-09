@@ -9,19 +9,19 @@ package br.ufg.inf.model.support;
  */
 public interface Hiddenable {
 
-	/**
-	 * Verifica se um objeto está oculto
-	 * 
-	 * @return {@code true}, se o objeto está oculto, {@code false}, caso contrário
-	 */
-	Boolean getIsHidden();
+    /**
+     * Verifica se um objeto está oculto
+     * 
+     * @return {@code true}, se o objeto está oculto, {@code false}, caso contrário
+     */
+    Boolean getIsHidden();
 
-	/**
-	 * Oculta ou torna o objeto visível
-	 * 
-	 * @param hidden
-	 *            {@code true}, se o objeto deve ser ocultado, {@code false}, caso contrário
-	 */
-	void setIsHidden(final Boolean hidden);
+    /**
+     * Oculta ou torna o objeto visível
+     * 
+     * @param hidden
+     *            {@code true}, se o objeto deve ser ocultado, {@code false}, caso contrário
+     */
+    void setIsHidden(final Boolean hidden);
 
 }
