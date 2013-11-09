@@ -42,116 +42,116 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"versao", "new", "isHidden", "dataInsercaoAlteracao"})
 public class RelPrev extends AbstractEntity {
 
-	private static final long serialVersionUID = -2567465353998731784L;
+    private static final long serialVersionUID = -2567465353998731784L;
 
-	@JsonProperty
-	@Column(nullable = false, length = 5000)
-	@NotNull(message = "{validation.RelPrev.envolvidos.NotNull.message}")
-	@Size(min = 1, message = "{validation.RelPrev.envolvidos.Size.message}")
-	private String envolvidos;
+    @JsonProperty
+    @Column(nullable = false, length = 5000)
+    @NotNull(message = "{validation.RelPrev.envolvidos.NotNull.message}")
+    @Size(min = 1, message = "{validation.RelPrev.envolvidos.Size.message}")
+    private String envolvidos;
 
-	@JsonProperty
-	@Column(nullable = false, length = 5000)
-	@NotNull(message = "{validation.RelPrev.local.NotNull.message}")
-	@Size(min = 1, message = "{validation.RelPrev.local.Size.message}")
-	private String local;
+    @JsonProperty
+    @Column(nullable = false, length = 5000)
+    @NotNull(message = "{validation.RelPrev.local.NotNull.message}")
+    @Size(min = 1, message = "{validation.RelPrev.local.Size.message}")
+    private String local;
 
-	@JsonProperty(value = "descricao")
-	@Column(name = "descricao", length = 5000)
-	@Size(min = 1, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
-	private String descricaoSituacaoPerigosa;
+    @JsonProperty(value = "descricao")
+    @Column(name = "descricao", length = 5000)
+    @Size(min = 1, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
+    private String descricaoSituacaoPerigosa;
 
-	@JsonProperty(value = "data")
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false, name = "data")
-	@Past(message = "{validation.RelPrev.dataSituacaoPerigosa.Past.message}")
-	@NotNull(message = "{validation.RelPrev.dataSituacaoPerigosa.NotNull.message}")
-	private Date dataSituacaoPerigosa;
+    @JsonProperty(value = "data")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, name = "data")
+    @Past(message = "{validation.RelPrev.dataSituacaoPerigosa.Past.message}")
+    @NotNull(message = "{validation.RelPrev.dataSituacaoPerigosa.NotNull.message}")
+    private Date dataSituacaoPerigosa;
 
-	@JsonProperty
-	@JoinColumn(name = "elosipaer_id")
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	private EloSipaer eloSipaer;
+    @JsonProperty
+    @JoinColumn(name = "elosipaer_id")
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    private EloSipaer eloSipaer;
 
-	@JsonProperty
-	@JoinColumn(name = "relator_id")
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Relator relator;
+    @JsonProperty
+    @JoinColumn(name = "relator_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Relator relator;
 
-	@JsonProperty(value = "situacoes")
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "relatorio_prevencao_situacoes",
-		joinColumns = {@JoinColumn(name = "relprev_id")},
-		inverseJoinColumns = {@JoinColumn(name = "situacao_id")})
-	private Set<Situacao> situacoes;
+    @JsonProperty(value = "situacoes")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "relatorio_prevencao_situacoes",
+        joinColumns = {@JoinColumn(name = "relprev_id")},
+        inverseJoinColumns = {@JoinColumn(name = "situacao_id")})
+    private Set<Situacao> situacoes;
 
-	@JoinColumn(name = "relprev_id")
-	@JsonProperty(value = "anexos")
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private Set<Anexo> anexos;
+    @JoinColumn(name = "relprev_id")
+    @JsonProperty(value = "anexos")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Anexo> anexos;
 
-	public String getEnvolvidos() {
-		return this.envolvidos;
-	}
+    public String getEnvolvidos() {
+        return this.envolvidos;
+    }
 
-	public void setEnvolvidos(final String envolvidos) {
-		this.envolvidos = envolvidos;
-	}
+    public void setEnvolvidos(final String envolvidos) {
+        this.envolvidos = envolvidos;
+    }
 
-	public String getLocal() {
-		return this.local;
-	}
+    public String getLocal() {
+        return this.local;
+    }
 
-	public void setLocal(final String local) {
-		this.local = local;
-	}
+    public void setLocal(final String local) {
+        this.local = local;
+    }
 
-	public String getDescricaoSituacaoPerigosa() {
-		return this.descricaoSituacaoPerigosa;
-	}
+    public String getDescricaoSituacaoPerigosa() {
+        return this.descricaoSituacaoPerigosa;
+    }
 
-	public void setDescricaoSituacaoPerigosa(final String descricaoSituacaoPerigosa) {
-		this.descricaoSituacaoPerigosa = descricaoSituacaoPerigosa;
-	}
+    public void setDescricaoSituacaoPerigosa(final String descricaoSituacaoPerigosa) {
+        this.descricaoSituacaoPerigosa = descricaoSituacaoPerigosa;
+    }
 
-	public Date getDataSituacaoPerigosa() {
-		return this.dataSituacaoPerigosa;
-	}
+    public Date getDataSituacaoPerigosa() {
+        return this.dataSituacaoPerigosa;
+    }
 
-	public void setDataSituacaoPerigosa(final Date dataSituacaoPerigosa) {
-		this.dataSituacaoPerigosa = dataSituacaoPerigosa;
-	}
+    public void setDataSituacaoPerigosa(final Date dataSituacaoPerigosa) {
+        this.dataSituacaoPerigosa = dataSituacaoPerigosa;
+    }
 
-	public EloSipaer getEloSipaer() {
-		return this.eloSipaer;
-	}
+    public EloSipaer getEloSipaer() {
+        return this.eloSipaer;
+    }
 
-	public void setEloSipaer(final EloSipaer eloSipaer) {
-		this.eloSipaer = eloSipaer;
-	}
+    public void setEloSipaer(final EloSipaer eloSipaer) {
+        this.eloSipaer = eloSipaer;
+    }
 
-	public Relator getRelator() {
-		return this.relator;
-	}
+    public Relator getRelator() {
+        return this.relator;
+    }
 
-	public void setRelator(final Relator relator) {
-		this.relator = relator;
-	}
+    public void setRelator(final Relator relator) {
+        this.relator = relator;
+    }
 
-	public Set<Situacao> getSituacoes() {
-		return this.situacoes;
-	}
+    public Set<Situacao> getSituacoes() {
+        return this.situacoes;
+    }
 
-	public void setSituacoes(final Set<Situacao> situacoes) {
-		this.situacoes = situacoes;
-	}
+    public void setSituacoes(final Set<Situacao> situacoes) {
+        this.situacoes = situacoes;
+    }
 
-	public Set<Anexo> getAnexos() {
-		return this.anexos;
-	}
+    public Set<Anexo> getAnexos() {
+        return this.anexos;
+    }
 
-	public void setAnexos(final Set<Anexo> anexos) {
-		this.anexos = anexos;
-	}
+    public void setAnexos(final Set<Anexo> anexos) {
+        this.anexos = anexos;
+    }
 
 }

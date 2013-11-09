@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
@@ -22,33 +23,33 @@ import br.ufg.inf.repository.support.impl.GenericRepositoryImpl;
  *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 public class RepositoryFactoryBean<T extends JpaRepository<S, ID>, S, ID extends Serializable> extends
-		JpaRepositoryFactoryBean<T, S, ID> {
+        JpaRepositoryFactoryBean<T, S, ID> {
 
-	@Override
-	protected RepositoryFactorySupport createRepositoryFactory(final EntityManager entityManager) {
-		return new RepositoryFactory(entityManager);
-	}
+    @Override
+    protected RepositoryFactorySupport createRepositoryFactory(final EntityManager entityManager) {
+        return new RepositoryFactory(entityManager);
+    }
 
-	private static class RepositoryFactory extends JpaRepositoryFactory {
+    private static class RepositoryFactory extends JpaRepositoryFactory {
 
-		public RepositoryFactory(final EntityManager entityManager) {
-			super(entityManager);
-		}
+        public RepositoryFactory(final EntityManager entityManager) {
+            super(entityManager);
+        }
 
-		@Override
-		@SuppressWarnings({"unchecked", "rawtypes"})
-		protected <T, ID extends Serializable> JpaRepository<?, ?> getTargetRepository(
-				final RepositoryMetadata metadata, final EntityManager entityManager) {
-			final JpaEntityInformation<?, Serializable> entityInformation = this.getEntityInformation(metadata
-					.getDomainType());
-			return new GenericRepositoryImpl(entityInformation, entityManager);
-		}
+        @Override
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        protected <T, ID extends Serializable> JpaRepository<?, ?> getTargetRepository(
+                final RepositoryMetadata metadata, final EntityManager entityManager) {
+            final JpaEntityInformation<?, Serializable> entityInformation = this.getEntityInformation(metadata
+                    .getDomainType());
+            return new GenericRepositoryImpl(entityInformation, entityManager);
+        }
 
-		@Override
-		protected Class<?> getRepositoryBaseClass(final RepositoryMetadata metadata) {
-			return GenericRepositoryImpl.class;
-		}
+        @Override
+        protected Class<?> getRepositoryBaseClass(final RepositoryMetadata metadata) {
+            return GenericRepositoryImpl.class;
+        }
 
-	}
+    }
 
 }

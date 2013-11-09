@@ -14,31 +14,31 @@ import br.ufg.inf.repository.support.GenericRepository;
  */
 public abstract class GenericWebServiceTest<E extends AbstractEntity, R extends GenericRepository<E, Long>> {
 
-	abstract R getRepository();
+    abstract R getRepository();
 
-	@Test
-	public void testFind() {
+    @Test
+    public void testFind() {
 
-	}
+    }
 
-	@Test
-	public void testFindById() {
+    @Test
+    public void testFindById() {
 
-	}
+    }
 
-	@Test
-	public void testCreate() {
+    @Test
+    public void testCreate() {
 
-	}
+    }
 
-	@Test
-	public void testUpdate() {
+    @Test
+    public void testUpdate() {
 
-	}
+    }
 
-	@Test
-	public void testDelete() {
+    @Test
+    public void testDelete() {
 
-	}
+    }
 
 }

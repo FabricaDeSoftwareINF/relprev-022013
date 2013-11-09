@@ -13,32 +13,31 @@ import br.ufg.inf.model.support.AbstractEntity;
  */
 public abstract class GenericRepositoryTest<E extends AbstractEntity, R extends GenericRepository<E, Long>> {
 
-	abstract R getRepository();
+    abstract R getRepository();
 
-	@Test
-	public void testCreate() {
+    @Test
+    public void testCreate() {
 
-	}
+    }
 
-	@Test
-	public void testUpdate() {
+    @Test
+    public void testUpdate() {
 
-	}
+    }
 
-	@Test
-	public void testDelete() {
+    @Test
+    public void testDelete() {
 
-	}
+    }
 
-	@Test
-	public void testDeleteInBatch() {
+    @Test
+    public void testDeleteInBatch() {
 
-	}
+    }
 
-	@Test
-	public void testFindOne() {
+    @Test
+    public void testFindOne() {
 
-	}
-
+    }
 
 }

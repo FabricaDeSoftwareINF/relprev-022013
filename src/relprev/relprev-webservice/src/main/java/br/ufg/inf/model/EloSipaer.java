@@ -28,34 +28,34 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"versao", "new", "isHidden", "dataInsercaoAlteracao"})
 public class EloSipaer extends AbstractEntity {
 
-	private static final long serialVersionUID = 3850763253702817582L;
+    private static final long serialVersionUID = 3850763253702817582L;
 
-	@JsonProperty
-	@Column(nullable = false, length = 100)
-	@NotNull(message = "{validation.EloSipaer.organizacao.NotNull.message}")
-	@Size(min = 1, max = 100, message = "{validation.EloSipaer.organizacao.Size.message}")
-	private String organizacao;
+    @JsonProperty
+    @Column(nullable = false, length = 100)
+    @NotNull(message = "{validation.EloSipaer.organizacao.NotNull.message}")
+    @Size(min = 1, max = 100, message = "{validation.EloSipaer.organizacao.Size.message}")
+    private String organizacao;
 
-	@JsonProperty(value = "sigla")
-	@Column(name = "sigla_organizacao", nullable = false, length = 10)
-	@NotNull(message = "{validation.EloSipaer.siglaOrganizacao.NotNull.message}")
-	@Size(min = 1, max = 10, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
-	private String siglaOrganizacao;
+    @JsonProperty(value = "sigla")
+    @Column(name = "sigla_organizacao", nullable = false, length = 10)
+    @NotNull(message = "{validation.EloSipaer.siglaOrganizacao.NotNull.message}")
+    @Size(min = 1, max = 10, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
+    private String siglaOrganizacao;
 
-	public String getOrganizacao() {
-		return this.organizacao;
-	}
+    public String getOrganizacao() {
+        return this.organizacao;
+    }
 
-	public void setOrganizacao(final String organizacao) {
-		this.organizacao = organizacao;
-	}
+    public void setOrganizacao(final String organizacao) {
+        this.organizacao = organizacao;
+    }
 
-	public String getSiglaOrganizacao() {
-		return this.siglaOrganizacao;
-	}
+    public String getSiglaOrganizacao() {
+        return this.siglaOrganizacao;
+    }
 
-	public void setSiglaOrganizacao(final String siglaOrganizacao) {
-		this.siglaOrganizacao = siglaOrganizacao;
-	}
+    public void setSiglaOrganizacao(final String siglaOrganizacao) {
+        this.siglaOrganizacao = siglaOrganizacao;
+    }
 
 }

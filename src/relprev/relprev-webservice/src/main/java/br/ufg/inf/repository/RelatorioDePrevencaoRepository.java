@@ -14,22 +14,22 @@ import br.ufg.inf.repository.support.GenericRepository;
  */
 public interface RelatorioDePrevencaoRepository extends GenericRepository<RelPrev, Long> {
 
-	/**
-	 * Recupera uma lista de {@link RelPrev} de acordo com o local
-	 * 
-	 * @param local
-	 *            local de acontecimento que ocasionou o {@link RelPrev}
-	 * @return {@link RelPrev}
-	 */
-	List<RelPrev> findByLocalIgnoreCase(final String local);
+    /**
+     * Recupera uma lista de {@link RelPrev} de acordo com o local
+     * 
+     * @param local
+     *            local de acontecimento que ocasionou o {@link RelPrev}
+     * @return {@link RelPrev}
+     */
+    List<RelPrev> findByLocalIgnoreCase(final String local);
 
-	/**
-	 * Recupera uma lista de {@link RelPrev} de acordo com a descrição
-	 * 
-	 * @param descricaoSituacaoPerigosa
-	 *            descrição do {@link RelPrev}
-	 * @return {@link RelPrev}
-	 */
-	List<RelPrev> findByDescricaoSituacaoPerigosaContainsIgnoreCase(final String descricaoSituacaoPerigosa);
+    /**
+     * Recupera uma lista de {@link RelPrev} de acordo com a descrição
+     * 
+     * @param descricaoSituacaoPerigosa
+     *            descrição do {@link RelPrev}
+     * @return {@link RelPrev}
+     */
+    List<RelPrev> findByDescricaoSituacaoPerigosaContainsIgnoreCase(final String descricaoSituacaoPerigosa);
 
 }
