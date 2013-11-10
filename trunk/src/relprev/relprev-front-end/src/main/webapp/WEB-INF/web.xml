@@ -14,6 +14,7 @@
     	<url-pattern>/*</url-pattern>
     	<dispatcher>FORWARD</dispatcher>
     	<dispatcher>REQUEST</dispatcher>
+    	<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 	
 	<context-param>
@@ -22,5 +23,13 @@
 	    </param-name>
 	    <param-value>messages</param-value>
 	  </context-param>
+	  
+	  <session-config>
+		<session-timeout>10</session-timeout>
+	  </session-config>
+	  <error-page>  
+	    <error-code>404</error-code>  
+	    <location>/WEB-INF/paginas/login/login.jsp</location>  
+	  </error-page>  
 	
 </web-app>

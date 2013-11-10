@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/custom.css" rel="stylesheet">
         <link href="../css/relprev.css" rel="stylesheet">
     </head>
     <body>
@@ -33,8 +34,8 @@
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="../js/bootstrap.min.js"></script>
                 <script src="../js/bootstrap.file-input.js"></script>
-
-                <form action="<c:url value='/relatorio/salvar'/>" method="post" enctype="multipart/form-data">
+				<script type="text/javascript" src="../js/jquery.MultiFile.js"></script>
+                <form action="<c:url value='/relatorio'/>" method="post" enctype="multipart/form-data">
 					<% String relprev = "relprev"; %>
 					
                     <div class="row">
@@ -98,7 +99,7 @@
                             <label for="enviarArquivo" class="labelMaiuscula" style="display:block">
                             	<fmt:message key="enviar.arquivo" />
                             </label>                            
-                            	<input type="file" class="btn-info" title="Selecionar.." name="files[]" multiple id="enviarArquivo">
+                            	<input id="enviarArquivo" type="file" title="Selecionar.." multiple name="files[]" >
                         </div>
                     </div>
                     <div class="row">
@@ -131,9 +132,17 @@
         </div>
         
         <script type="text/javascript">
+        	
         	$(function(){
-        		$('input[type=file]').bootstrapFileInput();
+        		debugger;
+        		$("#enviarArquivo").MultiFile({
+        			STRING:{
+        				remove:'<span class="glyphicon glyphicon-remove"></span>',
+        				duplicate:'Arquivo já selecionado:\n$file!'
+        			}
+        		});
         	});
+        	//$('input[type=file]').pekeUpload(propriedades);
         </script>
     </body>
 </html>
