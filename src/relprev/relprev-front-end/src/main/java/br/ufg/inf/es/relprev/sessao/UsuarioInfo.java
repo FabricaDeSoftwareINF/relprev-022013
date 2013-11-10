@@ -1,4 +1,4 @@
-package br.com.ufg.inf.relprev.sessao;
+package br.ufg.inf.es.relprev.sessao;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;

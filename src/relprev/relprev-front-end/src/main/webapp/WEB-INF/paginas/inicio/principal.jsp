@@ -17,11 +17,7 @@
   	</head>
     <body>
     	<div class="container">
-        	<div id="topo">
-            	<div id="sessao">
-                	<span style="margin: 10px" value="${usuarioInfo.nome}"></span>
-                    <a href="#"><fmt:message key="menu.sair" /></a>
-                </div>
+        	<div id="topo">            	
                 <div id="selecao-ano">
                		<fmt:message key="menu.ano" />
                 	<select>

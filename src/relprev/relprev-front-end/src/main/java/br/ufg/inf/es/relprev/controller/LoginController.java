@@ -1,4 +1,4 @@
-package br.com.ufg.inf.relprev.controller;
+package br.ufg.inf.es.relprev.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,8 +11,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.caelum.vraptor.view.Results;
-import br.com.ufg.inf.relprev.annotation.NaoAutenticado;
-import br.com.ufg.inf.relprev.sessao.UsuarioInfo;
+import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
+import br.ufg.inf.es.relprev.sessao.UsuarioInfo;
 
 @Resource
 public class LoginController {

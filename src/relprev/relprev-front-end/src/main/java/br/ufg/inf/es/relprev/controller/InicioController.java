@@ -1,4 +1,4 @@
-package br.com.ufg.inf.relprev.controller;
+package br.ufg.inf.es.relprev.controller;
 
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;

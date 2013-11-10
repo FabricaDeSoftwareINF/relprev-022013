@@ -1,4 +1,4 @@
-package br.com.ufg.inf.relprev.annotation;
+package br.ufg.inf.es.relprev.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

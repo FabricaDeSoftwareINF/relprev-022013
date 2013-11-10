@@ -1,4 +1,4 @@
-package br.com.ufg.inf.relprev.interceptor;
+package br.ufg.inf.es.relprev.interceptor;
 
 import br.com.caelum.vraptor.InterceptionException;
 import br.com.caelum.vraptor.Intercepts;
@@ -6,9 +6,9 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
-import br.com.ufg.inf.relprev.annotation.NaoAutenticado;
-import br.com.ufg.inf.relprev.controller.LoginController;
-import br.com.ufg.inf.relprev.sessao.UsuarioInfo;
+import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
+import br.ufg.inf.es.relprev.controller.LoginController;
+import br.ufg.inf.es.relprev.sessao.UsuarioInfo;
 
 @Intercepts
 public class LoginInterceptor implements Interceptor {
