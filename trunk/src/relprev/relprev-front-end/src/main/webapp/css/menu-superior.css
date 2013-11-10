@@ -84,8 +84,9 @@ body {
 
 .botoesMenu {
 	float: right;
-	margin-top: 0.75em;
+	margin-top: 0.7em;
 	margin-left: 1em;
+	padding-bottom: 8px;
 }
 
 .nomeUsuario {
