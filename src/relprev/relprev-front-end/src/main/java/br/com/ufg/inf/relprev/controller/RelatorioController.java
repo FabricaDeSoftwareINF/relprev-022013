@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.google.gson.Gson;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
+import br.com.caelum.vraptor.serialization.gson.GsonJSONSerialization;
 import br.com.caelum.vraptor.view.Results;
 import br.com.ufg.inf.relprev.annotation.NaoAutenticado;
 import br.ufg.inf.es.relprev.client.dominio.Relprev;
@@ -44,7 +47,7 @@ public class RelatorioController {
 	@Get("/teste")
 	public void teste(){
 		String teste = "teste";
-		result.use(Results.json()).from(teste).serialize();
+		result.use(Results.json()).from(teste, "teste").serialize();
 	}
 	
 	//Remover este método após conclusão da classe.
