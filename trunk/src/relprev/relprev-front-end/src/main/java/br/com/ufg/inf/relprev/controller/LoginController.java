@@ -3,12 +3,14 @@ package br.com.ufg.inf.relprev.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
+import br.com.caelum.vraptor.view.Results;
 import br.com.ufg.inf.relprev.annotation.NaoAutenticado;
 import br.com.ufg.inf.relprev.sessao.UsuarioInfo;
 
@@ -25,7 +27,7 @@ public class LoginController {
 	}	
 	
 	@NaoAutenticado
-	@Path("/")
+	@Get("/")
 	public void login() {}
 	
 	@NaoAutenticado
@@ -39,7 +41,9 @@ public class LoginController {
 			validator.add(new ValidationMessage("Login e/ou senha inválidos", "erro"));	
 		}
 		
-		validator.onErrorUsePageOf(LoginController.class).login();
+		
+		validator.onErrorRedirectTo(LoginController.class).login();
+		
 		usuarioInfo.login(usuario);
 		
 		result.redirectTo(RelatorioController.class).relatorio();		
