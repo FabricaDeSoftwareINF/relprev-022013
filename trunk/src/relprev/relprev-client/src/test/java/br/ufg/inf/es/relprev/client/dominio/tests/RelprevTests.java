@@ -1,14 +1,14 @@
 package br.ufg.inf.es.relprev.client.dominio.tests;
 
+import br.ufg.inf.es.relprev.client.dominio.Relator;
+import br.ufg.inf.es.relprev.client.dominio.Relprev;
+import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import junit.framework.TestCase;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import br.ufg.inf.es.relprev.client.dominio.Relator;
-import br.ufg.inf.es.relprev.client.dominio.Relprev;
 
 /**
  * User: halisson
@@ -26,8 +26,8 @@ public class RelprevTests extends TestCase {
     public void testRelprevDeveConterData() {
         Relprev relprev = new Relprev();
         Date data = new Date();
-        relprev.setData(data);
-        assertEquals(data, relprev.getData());
+        relprev.setDataHora(data);
+        assertEquals(data, relprev.getDataHora());
     }
 
     public void testRelprevDeveConterEnvolvidos() {
@@ -40,8 +40,8 @@ public class RelprevTests extends TestCase {
     public void testRelprevDeveConterSituacao() {
         Relprev relprev = new Relprev();
         String situacao = "Situação de risco ao fazer tal e tal coisa =x";
-        relprev.setSituacao(situacao);
-        assertEquals(situacao, relprev.getSituacao());
+        relprev.setDescricao(situacao);
+        assertEquals(situacao, relprev.getDescricao());
     }
 
     public void testRelprevDeveConterAnexos() {
@@ -72,7 +72,12 @@ public class RelprevTests extends TestCase {
     }
 
     //TODO: Corrigir para usar mocks e mockar requisição real
-    public void testDeveSerPossivelListarOsRelprevsExistentes() {
+    public void testDeveSerPossivelListarOsRelprevsExistentes() throws RequestException {
         assertNotNull(Relprev.list());
+    }
+
+    //TODO: Corrigir para usar mocks e mockar requisição real
+    public void testDeveSerPossivelObterUmRelprevPeloId() throws RequestException {
+        assertNotNull(Relprev.get(2));
     }
 }

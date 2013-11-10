@@ -1,12 +1,15 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * User: halisson Date: 11/2/13
  */
 public class Relator {
 
 	private String nome;
-	private String contato;
+    @JsonProperty(value = "email")
+    private String contato;
 
 	public void setNome(String nome) {
 		this.nome = nome;
