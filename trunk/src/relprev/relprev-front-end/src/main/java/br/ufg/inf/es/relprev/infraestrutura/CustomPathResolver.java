@@ -1,4 +1,4 @@
-package br.com.ufg.inf.relprev.infraestrutura;
+package br.ufg.inf.es.relprev.infraestrutura;
 
 import br.com.caelum.vraptor.http.FormatResolver;
 import br.com.caelum.vraptor.ioc.Component;
