@@ -1,5 +1,6 @@
 package br.com.ufg.inf.relprev.controller;
 
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
@@ -12,5 +13,6 @@ public class InicioController {
 		this.result = result;
 	}
 	
+	@Path("")
 	public void principal() {}
 }

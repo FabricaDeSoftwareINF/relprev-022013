@@ -8,18 +8,18 @@
     <title><fmt:message key="relprev" /></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
-      	<link href="../css/bootstrap.min.css" rel="stylesheet">
-      	<link href="../css/relprev.css" rel="stylesheet">
-      	<link href="../css/menu-superior.css" rel="stylesheet">
-      	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
-		<script type="text/javascript" src="../js/utilitarios.js"></script>
-		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+      	<link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
+      	<link href="<c:url value="/css/relprev.css"/>" rel="stylesheet">
+      	<link href="<c:url value="/css/menu-superior.css" />" rel="stylesheet">
+      	<script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
+		<script type="text/javascript" src="<c:url value="/js/utilitarios.js"/>" ></script>
+		<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>" ></script>
   	</head>
     <body>
     	<div class="container">
         	<div id="topo">
             	<div id="sessao">
-                	<span style="margin: 10px">Nome do usuário</span>
+                	<span style="margin: 10px" value="${usuarioInfo.nome}"></span>
                     <a href="#"><fmt:message key="menu.sair" /></a>
                 </div>
                 <div id="selecao-ano">
@@ -41,7 +41,7 @@
 		          		</button>
 		          		<a class="navbar-brand" href="#"><fmt:message key="relprev" /></a>
 		          		<div class="nomeUsuario visible-xs">
-			          		Nome do usuário
+			          		Olá, ${usuarioInfo.nome}
 			          	</div>
 		        	</div>
 		        	<div class="collapse navbar-collapse">
@@ -53,17 +53,18 @@
 			            	<li class="visible-xs"><a href=""><fmt:message key="menu.configuracoes" /></a></li>
 							<li class="visible-xs"><a href=""><fmt:message key="menu.sair" /></a></li>
 			          	</ul>			          	
-			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg">
+			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg" onclick="location.href='<c:url value="/logout"/>';" >
 	  						<span class="glyphicon glyphicon-log-out"></span>
+	  										
 						</button>
 			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg">
 	  						<span class="glyphicon glyphicon-wrench"></span>
 						</button>
-			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg">
+			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg" onclick="print()">
 	  						<span class="glyphicon glyphicon-print"></span>
 						</button>
 						<div class="nomeUsuario hidden-xs">
-			          		Nome do usuário
+			          		Olá, ${usuarioInfo.nome}
 			          	</div>							
 	          		</div>				
 		    	</div>	          
@@ -71,5 +72,6 @@
             <div class="conteudo">                
             </div>
         </div>
+        
     </body>
 </html>

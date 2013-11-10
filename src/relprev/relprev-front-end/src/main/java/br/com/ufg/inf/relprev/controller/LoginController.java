@@ -27,7 +27,7 @@ public class LoginController {
 	}	
 	
 	@NaoAutenticado
-	@Get("/")
+	@Get("/login")
 	public void login() {}
 	
 	@NaoAutenticado
@@ -39,18 +39,18 @@ public class LoginController {
 		
 		if(!usuario.equals(senha)){
 			validator.add(new ValidationMessage("Login e/ou senha inválidos", "erro"));	
-		}
-		
+		}		
 		
 		validator.onErrorRedirectTo(LoginController.class).login();
 		
 		usuarioInfo.login(usuario);
 		
-		result.redirectTo(RelatorioController.class).relatorio();		
+		result.redirectTo(InicioController.class).principal();		
 	}
 	
 	@Path("/logout")
 	public void logout(){
+		System.out.println("logout");
 		usuarioInfo.logout();
 		result.redirectTo(LoginController.class).login();
 	}
