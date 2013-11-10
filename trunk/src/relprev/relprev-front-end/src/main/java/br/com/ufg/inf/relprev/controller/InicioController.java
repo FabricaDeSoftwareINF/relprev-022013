@@ -12,5 +12,5 @@ public class InicioController {
 		this.result = result;
 	}
 	
-	public void template() {}
+	public void principal() {}
 }
