@@ -81,3 +81,17 @@ body {
         padding-right: 0;
     }
 }
+
+.botoesMenu {
+	float: right;
+	margin-top: 0.25em;
+	margin-left: 1em;
+}
+
+.nomeUsuario {
+	float: right;
+	color: white;
+	font-weight: bold;
+	line-height: 50px;
+	padding-right: 1em;
+}
