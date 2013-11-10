@@ -49,14 +49,14 @@
 			            	<li class="visible-xs"><a href=""><fmt:message key="menu.configuracoes" /></a></li>
 							<li class="visible-xs"><a href=""><fmt:message key="menu.sair" /></a></li>
 			          	</ul>			          	
-			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg" onclick="location.href='<c:url value="/logout"/>';" >
+			          	<button type="button" class="hidden-xs botoesMenu btn btn-default" onclick="location.href='<c:url value="/logout"/>';" >
 	  						<span class="glyphicon glyphicon-log-out"></span>
 	  										
 						</button>
-			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg">
+			          	<button type="button" class="hidden-xs botoesMenu btn btn-default">
 	  						<span class="glyphicon glyphicon-wrench"></span>
 						</button>
-			          	<button type="button" class="hidden-xs botoesMenu btn btn-default btn-lg" onclick="print()">
+			          	<button type="button" class="hidden-xs botoesMenu btn btn-default" onclick="print()">
 	  						<span class="glyphicon glyphicon-print"></span>
 						</button>
 						<div class="nomeUsuario hidden-xs">
@@ -67,7 +67,6 @@
 	        </div>                      
             <div class="conteudo">                
             </div>
-        </div>
-        
+        </div>        
     </body>
 </html>
