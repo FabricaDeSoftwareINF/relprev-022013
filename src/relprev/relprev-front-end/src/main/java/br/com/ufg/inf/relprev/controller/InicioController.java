@@ -1,4 +1,4 @@
-package br.com.ufg.inf.controller;
+package br.com.ufg.inf.relprev.controller;
 
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;

@@ -7,19 +7,22 @@
 	<head>
 		<title><fmt:message key="login.titulo" /></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-		<link href="../css/site.css" rel="stylesheet" type="text/css">
-		<link href="../css/login.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
-		<script type="text/javascript" src="../js/utilitarios.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/login.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="js/utilitarios.js"></script>
 	</head>
 	<body>
 		<div class="container">
-	      <form class="form-signin">
+	      <form action="<c:url value='/login'/>" method="post" class="form-signin">
 	        <h2 class="form-signin-heading"><fmt:message key="login.label" /></h2>
-	        <input type="text" class="form-control" placeholder="<fmt:message key="login.usuario" />" required="" autofocus="">
-	        <input type="password" class="form-control" placeholder="<fmt:message key="login.senha" />" required="">
+	        <input type="text" name="usuario" class="form-control" placeholder="<fmt:message key="login.usuario" />" required="" autofocus="">
+	        <input type="password" name="senha" class="form-control" placeholder="<fmt:message key="login.senha" />" required="">
+	        <c:forEach var="error" items="${errors}">
+			    ${error.category} - ${error.message}<br />
+			</c:forEach>
 	        <label class="checkbox">
 	          <input type="checkbox" value="remember-me"><fmt:message key="login.lembrarme" />
 	        </label>	        
