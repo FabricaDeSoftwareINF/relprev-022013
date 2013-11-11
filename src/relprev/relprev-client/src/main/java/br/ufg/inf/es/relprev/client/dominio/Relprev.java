@@ -45,7 +45,10 @@ public class Relprev extends ObjetoDeDominio {
 
     public void save() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_CREATE;
-        doPost(url, converter.toJson(this));
+        RelprevResponse response = (RelprevResponse) converter.fromJson(doPost(url, converter.toJson(this)), RelprevResponse.class);
+        if (!response.getSuccess()) {
+            throw new RequestException(response.getMessage());
+        }
     }
 
     public Integer getId() {
