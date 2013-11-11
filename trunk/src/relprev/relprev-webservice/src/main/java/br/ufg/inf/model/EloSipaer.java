@@ -7,26 +7,27 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.annotation.Hiddenable;
+import br.ufg.inf.model.support.annotation.Updatable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 /**
- * Entidade para persistência e representação de um Elo SIPAER
+ * Entidade para persistência e representação JSON de um Elo SIPAER
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 @Entity
+@Hiddenable
 @Table(name = "elos_sipaer")
 @JsonInclude(Include.NON_EMPTY)
 @JsonRootName(value = "eloSipaer")
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"versao", "new", "isHidden", "dataInsercaoAlteracao"})
-public class EloSipaer extends AbstractEntity {
+@Updatable(newinsert = true, updatable = false)
+public class EloSipaer extends AbstractEntity<EloSipaer> {
 
     private static final long serialVersionUID = 3850763253702817582L;
 

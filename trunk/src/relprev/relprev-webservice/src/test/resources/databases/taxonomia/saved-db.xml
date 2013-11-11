@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<taxonomias id="1" nome="Taxonomia 1" status="false" padrao_minimo="true" hidden="false" />
+	<taxonomias id="2" nome="Taxonomia 2" status="true" padrao_minimo="false" hidden="false" />
+	<taxonomias id="3" nome="Taxonomia 3" status="false" padrao_minimo="true" hidden="false" />
+</dataset>
