@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufg.inf.model.EloSipaer;
 import br.ufg.inf.repository.EloSipaerRepository;
+import br.ufg.inf.service.support.GenericWebService;
 import br.ufg.inf.service.support.WebServicesURL;
 
 /**
- * Serviços para o Elo SIPAER
+ * Serviços para o {@link EloSipaer}
  * 
  * @created 07/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @see GenericWebService
  */
 @Controller
 @RequestMapping(value = WebServicesURL.URL_ELOSIPAER)

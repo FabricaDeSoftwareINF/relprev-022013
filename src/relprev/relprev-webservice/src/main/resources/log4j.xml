@@ -11,7 +11,7 @@
 	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="file" value="logs/${artifactId}-${version}.log" />
 		<param name="datePattern" value="'.'yyyy-MM-dd-HH" />
-		<param name="immediateFlush" value="true" />
+		<param name="immediateFlush" value="false" />
 		<param name="append" value="true" />
 		<param name="threshold" value="info" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -40,7 +40,7 @@
 	</logger>
 
 	<root>
-		<priority value="${log4j.level}" />
+		<priority value="warn" />
 		<appender-ref ref="asyncConsoleAppender" />
 		<appender-ref ref="asyncfileAppender" />
 	</root>

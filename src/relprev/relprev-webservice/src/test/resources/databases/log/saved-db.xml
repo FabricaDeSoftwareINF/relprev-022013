@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<log_alteracao_dados id="1" tabela_alterada="elos_sipaer" descricao_alteracao="Criação de objeto de id 1." tipo_alteracao="0" />
+	<log_alteracao_dados id="2" tabela_alterada="relatores" descricao_alteracao="Atualização de objeto de id 1 para novo objeto de id 2." tipo_alteracao="1" />
+	<log_alteracao_dados id="3" tabela_alterada="situacoes" descricao_alteracao="Remoção de objeto de id 1." tipo_alteracao="2" />
+	<log_alteracao_dados id="4" tabela_alterada="relatorios_prevencao" descricao_alteracao="Atualização de objeto de id 1 para novo objeto de id 2." tipo_alteracao="1" />
+	<log_alteracao_dados id="5" tabela_alterada="relatorios_prevencao" descricao_alteracao="Remoção de objeto de id 1." tipo_alteracao="2" />
+</dataset>

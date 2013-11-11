@@ -21,8 +21,9 @@ import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.Anexo;
+import br.ufg.inf.model.support.annotation.Hiddenable;
+import br.ufg.inf.model.support.annotation.Updatable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,15 +33,15 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * Entidade para persistência e retorno de JSON de relatórios de prevenção
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 @Entity
+@Hiddenable
 @JsonInclude(Include.NON_EMPTY)
 @JsonRootName(value = "relPrev")
 @Table(name = "relatorios_prevencao")
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"versao", "new", "isHidden", "dataInsercaoAlteracao"})
-public class RelPrev extends AbstractEntity {
+@Updatable(newinsert = true, updatable = false)
+public class RelPrev extends AbstractEntity<RelPrev> {
 
     private static final long serialVersionUID = -2567465353998731784L;
 

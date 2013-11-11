@@ -4,11 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Teste para valores dos tipos de alteração {@link TipoAlteracao}
+ * Teste para valores dos tipos de alteração ({@link TipoAlteracao})
  * <p />
- * {@link #testTipoNumericoCREATE()} deve retornar {@code 1} <br />
- * {@link #testTipoNumericoUPDATE()} deve retornar {@code 2} <br />
- * {@link #testTipoNumericoDELETE()} deve retornar {@code 3} <br />
+ * {@link #testTipoNumericoCREATE()} deve retornar {@code 0} <br />
+ * {@link #testTipoNumericoUPDATE()} deve retornar {@code 1} <br />
+ * {@link #testTipoNumericoDELETE()} deve retornar {@code 2} <br />
  * {@link #testDescricaoCREATE()} deve retornar {@code Criação} <br />
  * {@link #testDescricaoUPDATE()} deve retornar {@code Atualização} <br />
  * {@link #testDescricaoDELETE()} deve retornar {@code Remoção} <br />
@@ -17,24 +17,23 @@ import org.junit.Test;
  * {@link #testFromTipoDELETE()} deve retornar {@link TipoAlteracao#DELETE} <br />
  * 
  * @created 05/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 public class TipoAlteracaoTest {
 
     @Test
     public void testTipoNumericoCREATE() {
-        Assert.assertEquals(TipoAlteracao.CREATE.getTipo(), Integer.valueOf(1));
+        Assert.assertEquals(TipoAlteracao.CREATE.getTipo(), Integer.valueOf(0));
     }
 
     @Test
     public void testTipoNumericoUPDATE() {
-        Assert.assertEquals(TipoAlteracao.UPDATE.getTipo(), Integer.valueOf(2));
+        Assert.assertEquals(TipoAlteracao.UPDATE.getTipo(), Integer.valueOf(1));
     }
 
     @Test
     public void testTipoNumericoDELETE() {
-        Assert.assertEquals(TipoAlteracao.DELETE.getTipo(), Integer.valueOf(3));
+        Assert.assertEquals(TipoAlteracao.DELETE.getTipo(), Integer.valueOf(2));
     }
 
     @Test
@@ -54,17 +53,17 @@ public class TipoAlteracaoTest {
 
     @Test
     public void testFromTipoCREATE() {
-        Assert.assertEquals(TipoAlteracao.fromTipo(1), TipoAlteracao.CREATE);
+        Assert.assertEquals(TipoAlteracao.fromTipo(0), TipoAlteracao.CREATE);
     }
 
     @Test
     public void testFromTipoUPDATE() {
-        Assert.assertEquals(TipoAlteracao.fromTipo(2), TipoAlteracao.UPDATE);
+        Assert.assertEquals(TipoAlteracao.fromTipo(1), TipoAlteracao.UPDATE);
     }
 
     @Test
     public void testFromTipoDELETE() {
-        Assert.assertEquals(TipoAlteracao.fromTipo(3), TipoAlteracao.DELETE);
+        Assert.assertEquals(TipoAlteracao.fromTipo(2), TipoAlteracao.DELETE);
     }
 
     @Test

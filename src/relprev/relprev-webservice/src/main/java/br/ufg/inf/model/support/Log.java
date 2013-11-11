@@ -2,29 +2,33 @@ package br.ufg.inf.model.support;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import br.ufg.inf.model.support.annotation.Updatable;
 
 /**
  * Entidade para persistência de log de alteração de Dados
  * 
  * @created 03/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 @Entity
+@Updatable(updatable = false)
 @Table(name = "log_alteracao_dados")
-public class Log extends AbstractEntity {
+public class Log extends AbstractEntity<Log> {
 
     private static final long serialVersionUID = 546132176769100844L;
 
-    @Transient
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "tipo_alteracao", nullable = false)
     private TipoAlteracao tipoAlteracao;
 
-    @Column(name = "tabela_alterada", length = 30)
+    @Column(name = "tabela_alterada", length = 30, nullable = false)
     private String tabelaAlterada;
 
-    @Column(name = "descricao_alteracao", length = 5000)
+    @Column(name = "descricao_alteracao", length = 5000, nullable = false)
     private String descricaoAlteracao;
 
     public TipoAlteracao getTipoAlteracao() {
@@ -33,22 +37,6 @@ public class Log extends AbstractEntity {
 
     public void setTipoAlteracao(final TipoAlteracao tipoAlteracao) {
         this.tipoAlteracao = tipoAlteracao;
-    }
-
-    @Column(name = "tipo_alteracao", length = 10)
-    public Integer getTipoAlteracaoInteiro() {
-        if (this.getTipoAlteracao() != null) {
-            return this.getTipoAlteracao().getTipo();
-        }
-        return null;
-    }
-
-    public void setTipoAlteracaoInteiro(final Integer tipoAlteracaoInteiro) {
-        if (tipoAlteracaoInteiro != null && tipoAlteracaoInteiro > 0 && tipoAlteracaoInteiro < 4) {
-            this.setTipoAlteracao(TipoAlteracao.fromTipo(tipoAlteracaoInteiro));
-        } else {
-            this.setTipoAlteracao(null);
-        }
     }
 
     public String getTabelaAlterada() {

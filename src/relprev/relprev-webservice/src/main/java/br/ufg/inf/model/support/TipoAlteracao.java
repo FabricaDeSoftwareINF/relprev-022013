@@ -4,32 +4,33 @@ package br.ufg.inf.model.support;
  * Enumerado dos tipos de alterações em uma entidade do modelo persistível
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 public enum TipoAlteracao {
 
     /**
      * Representa um evento de criação de dados na base de dados
      */
-    CREATE(1, "Criação"),
+    CREATE(0, "Criação", "Criação de objeto de id %s."),
 
     /**
      * Representa um evento de atualização de dados na base de dados
      */
-    UPDATE(2, "Atualização"),
+    UPDATE(1, "Atualização", "Atualização de objeto de id %s para novo objeto de id %s."),
 
     /**
      * Representa um evento de remoção de dados na base de dados
      */
-    DELETE(3, "Remoção");
+    DELETE(2, "Remoção", "Remoção de objeto de id %s.");
 
     private Integer tipo;
     private String descricao;
+    private String mensagem;
 
-    private TipoAlteracao(final Integer tipo, final String descricao) {
+    private TipoAlteracao(final Integer tipo, final String descricao, final String mensagem) {
         this.tipo = tipo;
         this.descricao = descricao;
+        this.mensagem = mensagem;
     }
 
     /**
@@ -51,12 +52,24 @@ public enum TipoAlteracao {
     }
 
     /**
-     * Entrega valor do tipo enumerado {@link TipoAlteracao} de acordo com a representação numérica
-     * dele
+     * Recupera uma mensagem descritiva do tipo de alteração
+     * 
+     * @return {@link String} mensagem
+     */
+    public String getMensagem() {
+        return this.mensagem;
+    }
+
+    /**
+     * Entrega valor do tipo enumerado {@link TipoAlteracao} de acordo com a representação numérica dele
      * 
      * @param tipo
-     *            tipo da alteração, senco {@code 1} para Criação ({@code CREATE}), {@code 2} para
-     *            Atualização ({@code UPDATE}) e {@code 3} para Remoção ({@code DELETE})
+     *            tipo da alteração, sendo<br />
+     *            <ul>
+     *            <li>{@code 0} para Criação ({@code CREATE})</li>
+     *            <li>{@code 1} para Atualização ({@code UPDATE})</li>
+     *            <li>{@code 2} para Remoção ({@code DELETE})</li>
+     *            </ul>
      * @return {@link TipoAlteracao}
      */
     public static TipoAlteracao fromTipo(final Integer tipo) {

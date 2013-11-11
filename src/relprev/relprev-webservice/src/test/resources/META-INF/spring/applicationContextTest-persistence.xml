@@ -11,8 +11,10 @@
 	<context:component-scan base-package="br.ufg.inf.repository,br.ufg.inf.repository.support" />
 
 	<!-- C3p0 configuration -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" p:driverClass="org.h2.Driver" 
-		p:jdbcUrl="jdbc:h2:mem:datajpa" p:user="sa" p:password="" p:acquireRetryDelay="1000" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" p:driverClass="org.h2.Driver"
+		p:jdbcUrl="jdbc:h2:mem:relprev-test" p:user="sa" p:password="" p:acquireRetryDelay="1000" />
+
+	<util:properties id="jpaProperties" location="classpath:hibernate-test.properties" />
 
 	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator" />
 
@@ -21,7 +23,7 @@
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-		p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="jpaVendorAdapter"/>
+		p:dataSource-ref="dataSource" p:jpaProperties-ref="jpaProperties" p:jpaVendorAdapter-ref="jpaVendorAdapter"/>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" p:entityManagerFactory-ref="entityManagerFactory" />
 

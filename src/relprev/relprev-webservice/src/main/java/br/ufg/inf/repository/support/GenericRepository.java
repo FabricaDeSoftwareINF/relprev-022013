@@ -11,15 +11,14 @@ import org.springframework.data.repository.NoRepositoryBean;
 import br.ufg.inf.model.support.AbstractEntity;
 
 /**
- * Repositório genérico para extender recursos do Spring Data, para queries ou métodos mais
- * elaborados
+ * Repositório genérico para extender recursos do Spring Data, para queries ou métodos mais elaborados
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @see JpaRepository
  */
 @NoRepositoryBean
-public interface GenericRepository<E extends AbstractEntity, PK extends Serializable> extends JpaRepository<E, PK>,
+public interface GenericRepository<E extends AbstractEntity<E>, PK extends Serializable> extends JpaRepository<E, PK>,
         JpaSpecificationExecutor<E> {
 
     /**
@@ -28,16 +27,5 @@ public interface GenericRepository<E extends AbstractEntity, PK extends Serializ
      * @return {@link EntityManager}
      */
     EntityManager getEntityManager();
-
-    /**
-     * Consulta um objeto baseado no {@link Class} e ID do objeto
-     * 
-     * @param entityClass
-     *            {@link Class}
-     * @param id
-     *            id do objeto
-     * @return {@code E} entity
-     */
-    E findOne(final Class<E> entityClass, final PK id);
 
 }
