@@ -80,4 +80,9 @@ public class RelprevTests extends TestCase {
     public void testDeveSerPossivelObterUmRelprevPeloId() throws RequestException {
         assertNotNull(Relprev.get(2));
     }
+
+    //TODO: Corrigir para usar mocks e mockar requisição real
+    public void testDeveSerPossivelPersistirUmRelprev() throws RequestException {
+        new Relprev().save();
+    }
 }

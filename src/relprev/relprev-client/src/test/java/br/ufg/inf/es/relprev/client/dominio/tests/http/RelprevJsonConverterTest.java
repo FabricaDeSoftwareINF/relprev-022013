@@ -45,7 +45,7 @@ public class RelprevJsonConverterTest extends TestCase {
         relprev.setDataHora(new Date());
         relprev.setPessoalEnvolvido("Muitos Loucos");
         relprev.setDescricao("Situação maluca nehh... bem maluca");
-        relprev.setEloSipaer(eloSipaer);
+//        relprev.setEloSipaer(eloSipaer);
         relprev.setSituacoes(situacoes);
 
         String json = new JsonConverter().toJson(relprev);

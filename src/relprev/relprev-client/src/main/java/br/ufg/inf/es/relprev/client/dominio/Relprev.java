@@ -1,6 +1,5 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
-import br.ufg.inf.es.relprev.client.http.JsonConverter;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.client.http.response.RelprevResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,12 +13,12 @@ import java.util.Set;
 import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.*;
 
 /**
  * User: halisson Date: 11/2/13 Time: 2:17 AM
  */
 public class Relprev extends ObjetoDeDominio {
-    private static JsonConverter converter = new JsonConverter();
     @JsonProperty
     private String local;
     @JsonProperty(value = "data")
@@ -35,17 +34,17 @@ public class Relprev extends ObjetoDeDominio {
 
     public static List<Relprev> list() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV;
-        return ((RelprevResponse) (converter.fromJson(doGet(url), RelprevResponse.class))).getData();
+        return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData();
     }
 
     public static Relprev get(Integer id) throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + id;
-        return ((RelprevResponse) (converter.fromJson(doGet(url), RelprevResponse.class))).getData().get(0);
+        return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData().get(0);
     }
 
     public void save() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_CREATE;
-        RelprevResponse response = (RelprevResponse) converter.fromJson(doPost(url, converter.toJson(this)), RelprevResponse.class);
+        RelprevResponse response = (RelprevResponse) fromJson(doPost(url, toJson(this)), RelprevResponse.class);
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
