@@ -8,11 +8,19 @@ import br.ufg.inf.model.RelPrev;
 import br.ufg.inf.repository.RelatorioDePrevencaoRepository;
 
 /**
- * Testes para {@link RelatorioDePrevencaoWebService}
- * 
+ * Testes para os endpoints REST dos Relatórios de Prevenção
+ * <p />
+ * {@link #testCreate()} <br />
+ * {@link #testUpdate()} <br />
+ * {@link #testDelete()} <br />
+ * {@link #testFind())} <br />
+ * {@link #testFindRelPrevByDescricao()} <br />
+ * {@link #testFindRelPrevByLocal()} <br />
+ *
  * @created 05/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @see RelatorioDePrevencaoRepository
+ * @see RelatorioDePrevencaoWebService
  */
 @ContextConfiguration(locations = {""})
 public class RelatorioDePrevencaoWebServiceTest extends GenericWebServiceTest<RelPrev, RelatorioDePrevencaoRepository> {

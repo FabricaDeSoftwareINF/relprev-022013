@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufg.inf.model.Relator;
 import br.ufg.inf.repository.RelatorRepository;
+import br.ufg.inf.service.support.GenericWebService;
 import br.ufg.inf.service.support.WebServicesURL;
 
 /**

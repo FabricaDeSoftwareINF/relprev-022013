@@ -14,15 +14,13 @@
 		<property name="basenames">
 			<list>
 				<value>classpath:localization/validation</value>
-				<!-- default spring security messages -->
-				<value>classpath:org/springframework/security/messages</value>
 			</list>
 		</property>
 	</bean>
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
-		p:validationMessageSource-ref="messageSource"/>
+		p:validationMessageSource-ref="messageSource" />
 
-	<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor" />
+	<bean class="org.springframework.validation.beanvalidation.BeanValidationPostProcessor" />
 
 </beans>

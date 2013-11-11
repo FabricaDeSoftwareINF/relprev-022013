@@ -22,10 +22,11 @@
 		<url.artifactory>${project.url}/artifactory</url.artifactory>
 
 		<!-- versões de dependências comuns a todos os projetos -->
-		<sl4j.version>1.7.5</sl4j.version>
 		<junit.version>4.11</junit.version>
+		<log4j.version>1.2.17</log4j.version>
 		<mockito.version>1.9.5</mockito.version>
 		<servlet-api.version>2.5</servlet-api.version>
+		<commons-logging.version>1.1.3</commons-logging.version>
 
 		<!-- versões de dependências comuns a mais de um projeto -->
 		<jackson.version>2.2.3</jackson.version>
@@ -113,14 +114,14 @@
 	<dependencies>
 		<!-- dependencies para log -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${sl4j.version}</version>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${sl4j.version}</version>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
 		</dependency>
 
 		<!-- dependências para teste -->

@@ -7,9 +7,10 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Telefone;
+import br.ufg.inf.model.support.annotation.Updatable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,14 +19,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Entidade para persistência e retorno de JSON de relatores de um relatório de prevenção
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 @Entity
+@Hiddenable
 @Table(name = "relatores")
 @JsonInclude(Include.NON_EMPTY)
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"versao", "new", "isHidden", "dataInsercaoAlteracao"})
-public class Relator extends AbstractEntity {
+@Updatable(newinsert = true, updatable = false)
+public class Relator extends AbstractEntity<Relator> {
 
     private static final long serialVersionUID = -671624807223719350L;
 

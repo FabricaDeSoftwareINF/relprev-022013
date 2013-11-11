@@ -1,4 +1,4 @@
-package br.ufg.inf.service;
+package br.ufg.inf.service.support;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -9,9 +9,7 @@ import java.util.List;
 
 import javax.persistence.Table;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanCreationException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,21 +26,16 @@ import br.ufg.inf.model.support.Log;
 import br.ufg.inf.model.support.TipoAlteracao;
 import br.ufg.inf.repository.support.GenericRepository;
 import br.ufg.inf.repository.support.LogRepository;
-import br.ufg.inf.service.support.ReponseMessages;
-import br.ufg.inf.service.support.ResponseEntity;
-import br.ufg.inf.service.support.WebServicesURL;
 
 /**
- * Serviços comuns a todos os EndPoints REST, contendo também métodos utilitários de construção de
- * mensagens de resposta
+ * Serviços comuns a todos os EndPoints REST, contendo também métodos utilitários de construção de mensagens de resposta
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
-public abstract class GenericWebService<E extends AbstractEntity, R extends GenericRepository<E, Long>> {
+public abstract class GenericWebService<E extends AbstractEntity<E>, R extends GenericRepository<E, Long>> {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     protected static final String APPLICATION_JSON = MediaType.APPLICATION_JSON_VALUE;
 
@@ -59,23 +52,25 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
     /**
      * Lista todos os objetos contantes na base de dados
      * 
-     * @return reposta do processamento
+     * @return resposta do processamento
      */
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_LIST, method = {GET, POST}, produces = APPLICATION_JSON)
     public final ResponseEntity<E> list() {
-        ResponseEntity<E> _return = new ResponseEntity<E>();
+        ResponseEntity<E> response = new ResponseEntity<E>();
         this.getLogger().debug("listando objetos");
         try {
             final List<E> dataList = this.getRepository().findAll();
-            _return = _return.success(true).data(dataList).count(new Long(dataList.size()))
-                    .message(ReponseMessages.LIST_MESSAGE).status(HttpStatus.OK);
-            this.getLogger().debug(dataList.size() + " objetos listados");
+            final Integer dataListSize = dataList.size();
+            final String message = dataListSize > 0 ? String.format(ReponseMessages.LIST_MESSAGE, dataListSize)
+                    : ReponseMessages.NOTLIST_MESSAGE;
+            response = response.success(true).data(dataList).message(message).status(HttpStatus.OK);
+            this.getLogger().debug(message);
         } catch (final Exception e) {
-            _return = _return.success(false).count(0L).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
+            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
             this.getLogger().error("erro ao listar objetos " + e.getMessage(), e);
         }
-        return _return;
+        return response;
     }
 
     /**
@@ -88,17 +83,19 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_FIND, method = {GET, POST}, produces = APPLICATION_JSON)
     public final ResponseEntity<E> find(@PathVariable("id") final Long id) {
-        ResponseEntity<E> _return = new ResponseEntity<E>();
+        ResponseEntity<E> response = new ResponseEntity<E>();
         this.getLogger().debug("consultando objeto de id " + id);
         try {
             final E entity = this.getRepository().findOne(id);
-            _return = _return.success(true).data(entity).message(ReponseMessages.FIND_MESSAGE).status(HttpStatus.OK);
-            this.getLogger().debug("objeto consultado com sucesso: " + entity.toString());
+            final String message = entity != null ? String.format(ReponseMessages.FIND_MESSAGE, id) : String.format(
+                    ReponseMessages.NOTFIND_MESSAGE, id);
+            response = response.success(true).data(entity).message(message).status(HttpStatus.OK);
+            this.getLogger().debug(message);
         } catch (final Exception e) {
-            _return = _return.success(false).count(0L).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
+            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
             this.getLogger().error("problema ao consultar objeto: " + e.getMessage(), e);
         }
-        return _return;
+        return response;
     }
 
     /**
@@ -106,27 +103,23 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
      * 
      * @param entity
      *            objeto a ser persistido
-     * @return reposta do processamento
+     * @return resposta do processamento
      */
     @ResponseBody
-    @RequestMapping(value = WebServicesURL.URL_CREATE,
-        method = POST,
-        consumes = APPLICATION_JSON,
-        produces = APPLICATION_JSON)
+    @RequestMapping(value = WebServicesURL.URL_CREATE, method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public final ResponseEntity<E> create(@RequestBody final E entity) {
-        ResponseEntity<E> _return = new ResponseEntity<E>();
+        ResponseEntity<E> response = new ResponseEntity<E>();
         this.getLogger().debug("criando objeto");
         try {
             final E persistedEntity = this.getRepository().save(entity);
             this.beforeCreate(persistedEntity);
             this.getLogger().debug("objeto " + persistedEntity.toString() + " criado com sucesso");
-            _return = _return.success(true).data(persistedEntity).message(ReponseMessages.CREATE_MESSAGE)
-                    .status(HttpStatus.OK);
+            response = response.success(true).data(persistedEntity).message(ReponseMessages.CREATE_MESSAGE).status(HttpStatus.OK);
         } catch (final Exception e) {
-            _return = _return.success(false).count(0L).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
+            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
             this.getLogger().error("problema ao criar objeto " + entity.toString() + ": " + e.getMessage(), e);
         }
-        return _return;
+        return response;
     }
 
     /**
@@ -134,27 +127,23 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
      * 
      * @param entity
      *            entidade a ser atualizada
-     * @return reposta do processamento
+     * @return resposta do processamento
      */
     @ResponseBody
-    @RequestMapping(value = WebServicesURL.URL_UPDATE,
-        method = PUT,
-        consumes = APPLICATION_JSON,
-        produces = APPLICATION_JSON)
+    @RequestMapping(value = WebServicesURL.URL_UPDATE, method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public final ResponseEntity<E> update(@RequestBody final E entity) {
-        ResponseEntity<E> _return = new ResponseEntity<E>();
+        ResponseEntity<E> response = new ResponseEntity<E>();
         this.getLogger().debug("atualizando objeto " + entity.toString());
         try {
             final E persistedEntity = this.getRepository().save(entity);
             this.beforeUpdate(persistedEntity);
-            _return = _return.success(true).data(persistedEntity).message(ReponseMessages.UPDATE_MESSAGE)
-                    .status(HttpStatus.OK);
+            response = response.success(true).data(persistedEntity).message(ReponseMessages.UPDATE_MESSAGE).status(HttpStatus.OK);
             this.getLogger().debug("objeto " + persistedEntity.toString() + " atualizado com sucesso");
         } catch (final Exception e) {
-            _return = _return.success(false).count(0L).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
+            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
             this.getLogger().error("problema ao atualizar objeto " + entity.toString() + ": " + e.getMessage(), e);
         }
-        return _return;
+        return response;
     }
 
     /**
@@ -162,24 +151,24 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
      * 
      * @param id
      *            id da entidade a ser removida
-     * @return reposta do processamento
+     * @return resposta do processamento
      */
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_DELETE, method = DELETE, produces = APPLICATION_JSON)
     public final ResponseEntity<E> delete(@PathVariable("id") final Long id) {
-        ResponseEntity<E> _return = new ResponseEntity<E>();
+        ResponseEntity<E> response = new ResponseEntity<E>();
         final E entity = this.getRepository().findOne(id);
         this.getLogger().debug("excluindo objeto " + entity.toString());
         try {
             this.beforeDelete(entity);
             this.getRepository().delete(entity);
-            _return = _return.success(true).data(entity).message(ReponseMessages.DELETE_MESSAGE).status(HttpStatus.OK);
+            response = response.success(true).data(entity).message(ReponseMessages.DELETE_MESSAGE).status(HttpStatus.OK);
             this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
         } catch (final Exception e) {
-            _return = _return.success(false).count(0L).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
+            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
             this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + e.getMessage(), e);
         }
-        return _return;
+        return response;
     }
 
     /**
@@ -192,8 +181,8 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
     @ResponseBody
     @ExceptionHandler(HttpClientErrorException.class)
     public ResponseEntity<E> handleException(final HttpClientErrorException ex) {
-        final ResponseEntity<E> _return = new ResponseEntity<E>();
-        return _return.success(false).count(0L).message(ex.getMessage()).status(ex.getStatusCode());
+        final ResponseEntity<E> response = new ResponseEntity<E>();
+        return response.success(false).message(ex.getMessage()).status(ex.getStatusCode());
     }
 
     /**
@@ -206,22 +195,8 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
     @ResponseBody
     @ExceptionHandler(HttpServerErrorException.class)
     public ResponseEntity<E> handleException(final HttpServerErrorException ex) {
-        final ResponseEntity<E> _return = new ResponseEntity<E>();
-        return _return.success(false).count(0L).message(ex.getMessage()).status(ex.getStatusCode());
-    }
-
-    /**
-     * Manipula exceções para status HTTP {@code 4xx}
-     * 
-     * @param ex
-     *            {@link BeanCreationException}
-     * @return resposta ao cliente
-     */
-    @ResponseBody
-    @ExceptionHandler(BeanCreationException.class)
-    public ResponseEntity<E> handleException(final BeanCreationException ex) {
-        final ResponseEntity<E> _return = new ResponseEntity<E>();
-        return _return.success(false).count(0L).message(ex.getMessage()).status(HttpStatus.INTERNAL_SERVER_ERROR);
+        final ResponseEntity<E> response = new ResponseEntity<E>();
+        return response.success(false).message(ex.getMessage()).status(ex.getStatusCode());
     }
 
     /**
@@ -231,7 +206,7 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
      *            entidade do modelo de domínio
      */
     protected void beforeCreate(final E entity) {
-        final Log log = this.buildLogRegistryCreate(entity);
+        final Log log = this.buildLogRegistry(TipoAlteracao.CREATE, entity);
         this.getLogRepository().save(log);
     }
 
@@ -242,7 +217,7 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
      *            entidade do modelo de domínio
      */
     protected void beforeUpdate(final E entity) {
-        final Log log = this.buildLogRegistryUpdate(entity);
+        final Log log = this.buildLogRegistry(TipoAlteracao.UPDATE, entity);
         this.getLogRepository().save(log);
     }
 
@@ -253,7 +228,7 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
      *            entidade do modelo de domínio
      */
     protected void beforeDelete(final E entity) {
-        final Log log = this.buildLogRegistryDelete(entity);
+        final Log log = this.buildLogRegistry(TipoAlteracao.DELETE, entity);
         this.getLogRepository().save(log);
     }
 
@@ -261,22 +236,9 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
         return this.logRepository;
     }
 
-    private Log buildLogRegistryCreate(final E entity) {
-        return this.buildLogRegistry(TipoAlteracao.CREATE, entity);
-    }
-
-    private Log buildLogRegistryUpdate(final E entity) {
-        return this.buildLogRegistry(TipoAlteracao.UPDATE, entity);
-    }
-
-    private Log buildLogRegistryDelete(final E entity) {
-        return this.buildLogRegistry(TipoAlteracao.DELETE, entity);
-    }
-
     private Log buildLogRegistry(final TipoAlteracao tipoAlteracao, final E entity) {
         final String tableName = this.getTableName(entity);
-        final String descricaoAlteracao = String.format(tipoAlteracao.getDescricao() + " de objeto de id %s.",
-                entity.getId());
+        final String descricaoAlteracao = String.format(tipoAlteracao.getDescricao() + " de objeto de id %s.", entity.getId());
         final Log log = new Log();
         log.setTabelaAlterada(tableName);
         log.setTipoAlteracao(tipoAlteracao);
@@ -284,6 +246,13 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
         return log;
     }
 
+    /**
+     * Recupera, para log de alteração, o nome da tabela na base relacional de uma entidade JPA
+     * 
+     * @param entity
+     *            &lt;E extends {@link AbstractEntity}&gt;
+     * @return {@link String} nome da tabela na base de dados
+     */
     private String getTableName(final E entity) {
         final Class<?> clazz = entity.getClass();
         if (!clazz.isAnnotationPresent(Table.class)) {
@@ -293,6 +262,11 @@ public abstract class GenericWebService<E extends AbstractEntity, R extends Gene
         return tableAnnotation.name();
     }
 
+    /**
+     * Logger para uso também nas sub-classes
+     * 
+     * @return {@link Logger}
+     */
     protected Logger getLogger() {
         return this.logger;
     }
