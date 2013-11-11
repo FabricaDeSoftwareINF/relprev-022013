@@ -1,6 +1,6 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
-import br.ufg.inf.es.relprev.client.http.HttpClient;
+import br.ufg.inf.es.relprev.client.http.JsonConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**

@@ -11,13 +11,13 @@ import java.io.IOException;
  * Time: 10:26 PM
  */
 public class JsonConverter {
-    ObjectMapper objectMapper = new ObjectMapper();
+    static ObjectMapper objectMapper = new ObjectMapper();
 
-    public JsonConverter() {
+    static {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    public Object fromJson(String json, Class clazz) {
+    static public Object fromJson(String json, Class clazz) {
         try {
             return objectMapper.readValue(json, clazz);
         } catch (IOException e) {
@@ -25,7 +25,7 @@ public class JsonConverter {
         }
     }
 
-    public String toJson(Object object) {
+    static public String toJson(Object object) {
         try {
             return objectMapper.writeValueAsString(object);
         } catch (IOException e) {
