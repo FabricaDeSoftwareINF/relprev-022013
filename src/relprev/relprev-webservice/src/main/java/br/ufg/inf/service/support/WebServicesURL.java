@@ -4,16 +4,15 @@ package br.ufg.inf.service.support;
  * URLs dos endpoints REST (web services)
  * 
  * @created 02/11/2013
- * @author Bruno César Ribeiro e Silva - <a
- *         href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
+ * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 public interface WebServicesURL {
 
     String URL_LIST = ""; // GET, POST
     String URL_FIND = "/{id}"; // GET
+    String URL_DELETE = "{id}"; // DELETE
     String URL_CREATE = "/create"; // POST
     String URL_UPDATE = "/update"; // PUT
-    String URL_DELETE = "/delete/{id}"; // DELETE
 
     // relprev service
     String URL_RELPREV = "/relprev";
@@ -26,4 +25,9 @@ public interface WebServicesURL {
     // relator service
     String URL_RELATOR = "/relator";
 
+    // taxonomia service
+    String URL_TAXONOMIA = "/taxonomia";
+
+    // situacao service
+    String URL_SITUACAO = "/situacao";
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<situacoes id="1" descricao="Situação 1" hidden="false" />
+	<situacoes id="2" descricao="Situação 2" hidden="false" />
+	<situacoes id="3" descricao="Situação 3" hidden="true" />
+	<situacoes id="4" descricao="Situação 4" hidden="false" />
+	<situacoes id="5" descricao="Situação 5" hidden="true" />
+	<situacoes id="6" descricao="Nova Situação 3" hidden="false" versao_anterior="3" />
+</dataset>
