@@ -73,12 +73,12 @@ public class RelprevTests extends TestCase {
 
     //TODO: Corrigir para usar mocks e mockar requisição real
     public void testDeveSerPossivelListarOsRelprevsExistentes() throws RequestException {
-        assertNotNull(Relprev.list());
+        assertNotNull(new Relprev().list());
     }
 
     //TODO: Corrigir para usar mocks e mockar requisição real
     public void testDeveSerPossivelObterUmRelprevPeloId() throws RequestException {
-        assertNotNull(Relprev.get(2));
+        assertNotNull(new Relprev().get(2));
     }
 
     //TODO: Corrigir para usar mocks e mockar requisição real

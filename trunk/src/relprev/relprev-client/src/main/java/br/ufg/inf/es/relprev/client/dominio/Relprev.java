@@ -13,7 +13,8 @@ import java.util.Set;
 import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.*;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
 
 /**
  * User: halisson Date: 11/2/13 Time: 2:17 AM
@@ -32,22 +33,27 @@ public class Relprev extends ObjetoDeDominio {
     private EloSipaer eloSipaer;
     private Set<Situacao> situacoes;
 
-    public static List<Relprev> list() throws RequestException {
+    public List<Relprev> list() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV;
         return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData();
     }
 
-    public static Relprev get(Integer id) throws RequestException {
+    public Relprev get(Integer id) throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + id;
         return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData().get(0);
     }
 
-    public void save() throws RequestException {
+    public Relprev save() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_CREATE;
         RelprevResponse response = (RelprevResponse) fromJson(doPost(url, toJson(this)), RelprevResponse.class);
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
+        return this;
+    }
+
+    public Relprev delete() {
+        return null;
     }
 
     public Integer getId() {

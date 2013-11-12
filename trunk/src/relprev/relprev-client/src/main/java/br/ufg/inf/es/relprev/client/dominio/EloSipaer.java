@@ -1,17 +1,17 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
+import br.ufg.inf.es.relprev.client.http.response.EloSipaerResponse;
 import br.ufg.inf.es.relprev.client.http.response.RelprevResponse;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-import static br.ufg.inf.es.relprev.client.RelprevConfig.ACTION_CREATE;
-import static br.ufg.inf.es.relprev.client.RelprevConfig.CONTROLLER_ELO_SIPAER;
-import static br.ufg.inf.es.relprev.client.RelprevConfig.URL_SERVIDOR;
+import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.*;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
 
 /**
  * User: halisson
@@ -25,23 +25,29 @@ public class EloSipaer extends ObjetoDeDominio {
     @JsonProperty(value = "sigla")
     private String sigla;
 
-
-    public static List<Relprev> list() throws RequestException {
+    public List<EloSipaer> list() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_ELO_SIPAER;
-        return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData();
+        return ((EloSipaerResponse) (fromJson(doGet(url), EloSipaerResponse.class))).getData();
     }
 
-    public static Relprev get(Integer id) throws RequestException {
+    public EloSipaer get(Integer id) throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_ELO_SIPAER + "/" + id;
-        return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData().get(0);
+        return ((EloSipaerResponse) (fromJson(doGet(url), EloSipaerResponse.class))).getData().get(0);
     }
 
-    public void save() throws RequestException {
+    public EloSipaer save() throws RequestException {
+        //TODO: Corrigir para preencher propriedades de acordo com response
         String url = URL_SERVIDOR + "/" + CONTROLLER_ELO_SIPAER + "/" + ACTION_CREATE;
         RelprevResponse response = (RelprevResponse) fromJson(doPost(url, toJson(this)), RelprevResponse.class);
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
+
+        return this;
+    }
+
+    public EloSipaer delete() {
+        return null;
     }
 
     public String getOrganizacao() {
