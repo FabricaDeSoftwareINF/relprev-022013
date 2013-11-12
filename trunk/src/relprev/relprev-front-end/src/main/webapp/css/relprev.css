@@ -36,3 +36,8 @@
     padding: 20px;
     margin-top: 15px;
 }
+
+#botoesRelatorio {
+	max-width: 200px; 
+	margin-bottom: 20px;
+}

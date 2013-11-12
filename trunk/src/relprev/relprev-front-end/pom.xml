@@ -54,5 +54,14 @@
          </dependency> 
 	</dependencies>
 	
-
+	<build>
+		<finalName>relprev</finalName>
+		<plugins>
+			<!-- http://maven.apache.org/plugins/maven-war-plugin/ -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -8,7 +8,7 @@
 	</div>
 	<div id="camposResposta" class="camposAba col-xs-12 col-md-12">
 		<div class="col-xs-4 col-md-4">
-			<label class="col-xs-12 col-md-12"><fmt:message key="resposta.ao" /></label>
+			<label class="col-xs-12 col-md-12"><fmt:message key="ao" /></label>
 			<input id="respostaAo" type="text" class="col-xs-12 col-md-12"/>
 		</div>		
 		<div class="col-xs-4 col-md-4">

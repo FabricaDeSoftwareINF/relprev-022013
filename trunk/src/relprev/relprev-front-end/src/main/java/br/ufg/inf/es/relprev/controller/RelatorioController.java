@@ -27,16 +27,17 @@ public class RelatorioController {
 	}
 
 	@Path("/relatorio/inicio")
-	public void relatorio() {}
+	public void relatorioCompleto() {}
 	
-	public void template() {}
+	@Path("/relatorio/relatorio")
+	public void relatorio() {}
 	
 	@Post("/relatorio")
 	public void salvar(final Relprev relprev, final List<UploadedFile> files) {
 		try {
 			relprev.save();
 			this.gerarLog(relprev, files);
-			this.result.redirectTo(RelatorioController.class).relatorio();
+			this.result.redirectTo(RelatorioController.class).relatorioCompleto();
 		} catch (RequestException e) {
 			logger.info(e.getMessage());
 		}		
@@ -51,6 +52,9 @@ public class RelatorioController {
 			return new ArrayList<Relprev>();
 		}		
 	}
+
+	@Path("/relatorio/dadosgerais")
+	public void dadosGerais() {}
 	
 	@NaoAutenticado
 	@Get("/teste")

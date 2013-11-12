@@ -37,7 +37,7 @@ public class LoginController {
 		logger.log(Level.INFO, "Usuario: " + usuario);
 		logger.log(Level.INFO, "Senha: " + senha);
 		
-		if(!usuario.equals(senha)){
+		if(usuario == null || senha == null || !usuario.equals(senha)){
 			validator.add(new ValidationMessage("Login e/ou senha inválidos", "erro"));	
 		}		
 		
