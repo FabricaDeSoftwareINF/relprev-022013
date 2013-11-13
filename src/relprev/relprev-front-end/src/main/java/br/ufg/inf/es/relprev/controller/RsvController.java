@@ -4,14 +4,14 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
+import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 
 @Resource
-public class RsvController {
+public class RsvController extends ControllerPadrao<Object> {
 
-    private final Result result;
-
-    public RsvController(final Result result) {
-        this.result = result;
+    public RsvController(final Result result, final Validator validator) {
+    	super(result, validator);
     }
 
     @Get("/rsv")
@@ -20,4 +20,5 @@ public class RsvController {
 
     public void novoRsv() {
     }
+
 }
