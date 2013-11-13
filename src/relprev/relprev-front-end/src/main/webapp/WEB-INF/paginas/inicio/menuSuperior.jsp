@@ -21,9 +21,15 @@
                 <ul class="nav navbar-nav">	            
                     <li><a href=""><fmt:message key="menu.estatisticas" /></a></li>
                     <li><a href= "<c:url value="/rsv"/>"> <fmt:message key="menu.rsv" /> </a></li>
-                    <li><a href=""><fmt:message key="menu.elosipaer" /></a></li>
                     <li><a href=""><fmt:message key="menu.impressao" /></a></li>
-                    <li><a href=""><fmt:message key="menu.configuracoes" /></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="menu.configuracoes" /> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><fmt:message key="menu.sistema" /></a></li>
+                            <li><a href="<c:url value="/configuracoes/eloSipaer"/>"><fmt:message key="menu.elosipaer" /></a></li>
+                            <li><a href="<c:url value="/configuracoes/usuarios"/>"><fmt:message key="menu.usuario" /></a></li>
+                        </ul>
+                    </li>
                     <li><a href=""><fmt:message key="menu.sair" /></a></li>
                 </ul>
                 <div class="nomeUsuario hidden-xs">

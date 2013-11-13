@@ -9,17 +9,21 @@
         RSV - RELPREV
     </jsp:attribute>
     <jsp:body>
-        <div class="text-center">
-            <label><fmt:message key="rsv.recomendacao" /></label>
-        </div>
+        <div class="labelMaiuscula">
+            <div class="text-center tituloPagina">
+                <label><fmt:message key="rsv.recomendacao" /></label>
+            </div>
 
-        <div class="row">
-            <a href="<c:url value="/rsv/novoRsv"/>" class="btn btn-default active col-md-1" role="button"> <fmt:message key="rsv.novo" /></a>
+            <div class="row">
+                <a href="<c:url value="/rsv/novoRsv"/>" class="btn btn-default active col-md-1" role="button">
+                    <fmt:message key="novo" />
+                </a>
 
-            <div class="col-md-2">
-                <select class="form-control">
-                    <option><fmt:message key="rsv.recebido" /></option>
-                </select>
+                <div class="col-md-2">
+                    <select class="form-control">
+                        <option><fmt:message key="rsv.recebido" /></option>
+                    </select>
+                </div>
             </div>
         </div>
         <hr/>
