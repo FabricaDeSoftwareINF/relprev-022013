@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufg.inf.model.Taxonomia;
 import br.ufg.inf.repository.TaxonomiaRepository;
+import br.ufg.inf.repository.support.LogRepository;
 import br.ufg.inf.service.support.GenericWebService;
 import br.ufg.inf.service.support.WebServicesURL;
 
@@ -21,11 +22,8 @@ import br.ufg.inf.service.support.WebServicesURL;
 public class TaxonomiaWebService extends GenericWebService<Taxonomia, TaxonomiaRepository> {
 
     @Autowired
-    private TaxonomiaRepository repository;
-
-    @Override
-    public TaxonomiaRepository getRepository() {
-        return this.repository;
+    public TaxonomiaWebService(final TaxonomiaRepository repository, final LogRepository logRepository) {
+        super(repository, logRepository);
     }
 
 }

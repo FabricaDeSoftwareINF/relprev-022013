@@ -1,5 +1,7 @@
 package br.ufg.inf.repository;
 
+import static com.github.springtestdbunit.assertion.DatabaseAssertionMode.NON_STRICT;
+
 import java.util.List;
 
 import org.hamcrest.Matcher;
@@ -21,7 +23,6 @@ import br.ufg.inf.model.EloSipaer;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
-import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 /**
  * Testes para {@link EloSipaer}
@@ -46,7 +47,7 @@ public class EloSipaerRepositoryTest {
 
     @Test
     @DatabaseSetup(INITIAL_DB)
-    @ExpectedDatabase(value = SAVED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = SAVED_DB, assertionMode = NON_STRICT)
     public void testSave() {
         this.repository.save(this.getEloSipaer());
     }
@@ -54,7 +55,7 @@ public class EloSipaerRepositoryTest {
     @Test
     @Ignore // TODO verificar dataset
     @DatabaseSetup(SAVED_DB)
-    @ExpectedDatabase(value = UPDATED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
         final EloSipaer elo = new EloSipaer();
         elo.setId(1L);
@@ -66,7 +67,7 @@ public class EloSipaerRepositoryTest {
     @Test
     @Ignore // TODO verificar dataset
     @DatabaseSetup(UPDATED_DB)
-    @ExpectedDatabase(value = DELETED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = DELETED_DB, assertionMode = NON_STRICT)
     public void testDelete() {
         final EloSipaer elo = this.getEloSipaer();
         elo.setId(3L);

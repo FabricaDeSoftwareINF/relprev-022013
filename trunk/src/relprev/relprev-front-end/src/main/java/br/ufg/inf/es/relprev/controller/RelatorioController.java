@@ -67,7 +67,7 @@ public class RelatorioController {
 	//Remover este método após conclusão da classe.
 	private void gerarLog(final Relprev relprev, final List<UploadedFile> files){
 		logger.log(Level.OFF, "Local: " + relprev.getLocal());
-		logger.info("Situação: " + relprev.getSituacoes());
+		logger.info("Situação: " + relprev.getSituacao());
 		logger.info("Pessoal envolvido: " + relprev.getPessoalEnvolvido());
 		if(relprev.getRelator() != null){
 			logger.info("Nome do relator: " + relprev.getRelator().getNome());

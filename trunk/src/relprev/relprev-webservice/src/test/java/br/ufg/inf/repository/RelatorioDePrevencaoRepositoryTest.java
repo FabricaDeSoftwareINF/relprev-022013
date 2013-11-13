@@ -1,10 +1,10 @@
 package br.ufg.inf.repository;
 
+import static com.github.springtestdbunit.assertion.DatabaseAssertionMode.NON_STRICT;
+
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -26,7 +26,6 @@ import br.ufg.inf.model.Relator;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
-import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 /**
  * Testes para Relatórios de Prevenção
@@ -38,13 +37,14 @@ import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
  * {@link #testFindAll()} <br />
  * {@link #testFindByDescricaoSituacaoPerigosaContainsIgnoreCase()} <br />
  * {@link #testFindByLocalIgnoreCase()} <br />
- *
+ * 
  * @created 05/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  * @see RelPrev
  * @see RelatorioDePrevencaoRepository
  */
-@Ignore // TODO ajustar os datasets
+@Ignore
+// TODO ajustar os datasets
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/META-INF/spring/applicationContextTest-persistence.xml"})
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
@@ -61,14 +61,14 @@ public class RelatorioDePrevencaoRepositoryTest {
 
     @Test
     @DatabaseSetup(INITIAL_DB)
-    @ExpectedDatabase(value = SAVED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = SAVED_DB, assertionMode = NON_STRICT)
     public void testSave() {
         this.repository.save(this.getrRelPrevTest());
     }
 
     @Test
     @DatabaseSetup(SAVED_DB)
-    @ExpectedDatabase(value = UPDATED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
         final RelPrev relPrevUpdate = this.getrRelPrevTest();
         relPrevUpdate.setEnvolvidos("Teste Envolvidos Alterados");
@@ -78,7 +78,7 @@ public class RelatorioDePrevencaoRepositoryTest {
 
     @Test
     @DatabaseSetup(UPDATED_DB)
-    @ExpectedDatabase(value = DELETED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = DELETED_DB, assertionMode = NON_STRICT)
     public void testDelete() {
         this.repository.delete(this.getrRelPrevTest());
     }
@@ -132,7 +132,6 @@ public class RelatorioDePrevencaoRepositoryTest {
         relator.setNome("Relator 3");
         relator.setEmail("relator.tres@email.com.br");
         relator.setTelefone("3333333333");
-
 
         final RelPrev relPrev = new RelPrev();
         relPrev.setEnvolvidos("Envolvidos RelPrev 3");

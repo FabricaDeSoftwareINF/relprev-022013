@@ -27,4 +27,5 @@ public interface WebServicesURL {
 
     // taxonomia service
     String URL_TAXONOMIA = "/taxonomia";
+
 }

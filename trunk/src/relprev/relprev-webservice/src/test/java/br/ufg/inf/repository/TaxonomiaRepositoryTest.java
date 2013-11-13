@@ -1,5 +1,7 @@
 package br.ufg.inf.repository;
 
+import static com.github.springtestdbunit.assertion.DatabaseAssertionMode.NON_STRICT;
+
 import java.util.List;
 
 import org.hamcrest.Matcher;
@@ -21,7 +23,6 @@ import br.ufg.inf.model.Taxonomia;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
-import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 /**
  * Testes para Taxonomia
@@ -54,7 +55,7 @@ public class TaxonomiaRepositoryTest {
 
     @Test
     @DatabaseSetup(INITIAL_DB)
-    @ExpectedDatabase(value = SAVED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = SAVED_DB, assertionMode = NON_STRICT)
     public void testSave() {
         this.repository.save(this.getTaxonomia());
     }
@@ -62,7 +63,7 @@ public class TaxonomiaRepositoryTest {
     @Test
     @Ignore
     @DatabaseSetup(SAVED_DB)
-    @ExpectedDatabase(value = UPDATED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
         final Taxonomia taxonomia = new Taxonomia();
         taxonomia.setId(1L);
@@ -75,7 +76,7 @@ public class TaxonomiaRepositoryTest {
     @Test
     @Ignore
     @DatabaseSetup(UPDATED_DB)
-    @ExpectedDatabase(value = DELETED_DB, assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = DELETED_DB, assertionMode = NON_STRICT)
     public void testDelete() {
         final Taxonomia taxonomia = this.getTaxonomia();
         taxonomia.setId(3L);
