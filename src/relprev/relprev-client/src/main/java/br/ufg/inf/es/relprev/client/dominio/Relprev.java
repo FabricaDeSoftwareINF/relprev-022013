@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.File;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
 import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
@@ -31,7 +30,15 @@ public class Relprev extends ObjetoDeDominio {
     private List<File> anexos;
     private Relator relator;
     private EloSipaer eloSipaer;
-    private Set<Situacao> situacoes;
+    private String situacao;
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
 
     public List<Relprev> list() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV;
@@ -134,13 +141,5 @@ public class Relprev extends ObjetoDeDominio {
             return relator.getNome();
         }
         return "";
-    }
-
-    public Set<Situacao> getSituacoes() {
-        return situacoes;
-    }
-
-    public void setSituacoes(Set<Situacao> situacoes) {
-        this.situacoes = situacoes;
     }
 }

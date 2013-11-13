@@ -22,7 +22,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import br.ufg.inf.model.EloSipaer;
 import br.ufg.inf.model.RelPrev;
 import br.ufg.inf.model.Relator;
-import br.ufg.inf.model.Situacao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -134,9 +133,6 @@ public class RelatorioDePrevencaoRepositoryTest {
         relator.setEmail("relator.tres@email.com.br");
         relator.setTelefone("3333333333");
 
-        // situação
-        final Situacao situacao = new Situacao();
-        situacao.setDescricao("Situação 5");
 
         final RelPrev relPrev = new RelPrev();
         relPrev.setEnvolvidos("Envolvidos RelPrev 3");
@@ -144,9 +140,7 @@ public class RelatorioDePrevencaoRepositoryTest {
         relPrev.setDataSituacaoPerigosa(this.getDataInsercaoAlteracao());
         relPrev.setEloSipaer(elo);
         relPrev.setRelator(relator);
-        final Set<Situacao> set = new HashSet<Situacao>();
-        set.add(situacao);
-        relPrev.setSituacoes(set);
+        relPrev.setSituacao("tensa");
         return relPrev;
     }
 
