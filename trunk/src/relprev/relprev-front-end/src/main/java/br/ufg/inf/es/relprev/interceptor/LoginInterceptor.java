@@ -33,5 +33,4 @@ public class LoginInterceptor implements Interceptor {
 		// TODO Auto-generated method stub
 		return !usuarioInfo.isLogado() && !method.containsAnnotation(NaoAutenticado.class);
 	}
-
 }
