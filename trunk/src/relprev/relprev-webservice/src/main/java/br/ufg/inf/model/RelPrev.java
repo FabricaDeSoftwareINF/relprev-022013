@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 /**
  * Entidade para persistência e retorno de JSON de relatórios de prevenção
- * 
+ *
  * @created 02/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
@@ -62,6 +62,10 @@ public class RelPrev extends AbstractEntity<RelPrev> {
     @Size(min = 1, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
     private String descricaoSituacaoPerigosa;
 
+    @JsonProperty(value = "situacao")
+    @Column(name = "situacao", length = 5000)
+    private String situacao;
+
     @JsonProperty(value = "data")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, name = "data")
@@ -78,13 +82,6 @@ public class RelPrev extends AbstractEntity<RelPrev> {
     @JoinColumn(name = "relator_id")
     @ManyToOne(cascade = CascadeType.ALL)
     private Relator relator;
-
-    @JsonProperty(value = "situacoes")
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "relatorio_prevencao_situacoes",
-        joinColumns = {@JoinColumn(name = "relprev_id")},
-        inverseJoinColumns = {@JoinColumn(name = "situacao_id")})
-    private Set<Situacao> situacoes;
 
     @JoinColumn(name = "relprev_id")
     @JsonProperty(value = "anexos")
@@ -139,14 +136,6 @@ public class RelPrev extends AbstractEntity<RelPrev> {
         this.relator = relator;
     }
 
-    public Set<Situacao> getSituacoes() {
-        return this.situacoes;
-    }
-
-    public void setSituacoes(final Set<Situacao> situacoes) {
-        this.situacoes = situacoes;
-    }
-
     public Set<Anexo> getAnexos() {
         return this.anexos;
     }
@@ -155,4 +144,11 @@ public class RelPrev extends AbstractEntity<RelPrev> {
         this.anexos = anexos;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
 }

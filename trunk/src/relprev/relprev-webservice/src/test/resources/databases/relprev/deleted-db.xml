@@ -21,11 +21,4 @@
 	<relatorios_prevencao id="1" envolvidos="Envolvidos RelPrev 1" local="Local 1" descricao="Descricao 1" data="2013-11-05 00:00:00.0" elosipaer_id="1" relator_id="1" hidden="false" />
 	<relatorios_prevencao id="2" envolvidos="Envolvidos RelPrev 2" local="Local 2" descricao="Descrição 2" data="2013-11-05 00:00:00.0" elosipaer_id="2" relator_id="2" hidden="false" />
 	<relatorios_prevencao id="3" envolvidos="Teste Envolvidos Alterados" local="Local 3" descricao="Teste Descrição Alterada" data="2013-11-05 00:00:00.0" elosipaer_id="3" relator_id="3" hidden="false" />
-
-	<!-- situações dos relatórios de prevenção -->
-	<relatorio_prevencao_situacoes relprev_id="1" situacao_id="1" />
-	<relatorio_prevencao_situacoes relprev_id="1" situacao_id="2" />
-	<relatorio_prevencao_situacoes relprev_id="2" situacao_id="3" />
-	<relatorio_prevencao_situacoes relprev_id="2" situacao_id="4" />
-	<relatorio_prevencao_situacoes relprev_id="3" situacao_id="5" />
 </dataset>
