@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -62,16 +60,16 @@ public class RelPrev extends AbstractEntity<RelPrev> {
     @Size(min = 1, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
     private String descricaoSituacaoPerigosa;
 
-    @JsonProperty(value = "situacao")
-    @Column(name = "situacao", length = 5000)
-    private String situacao;
-
     @JsonProperty(value = "data")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, name = "data")
     @Past(message = "{validation.RelPrev.dataSituacaoPerigosa.Past.message}")
     @NotNull(message = "{validation.RelPrev.dataSituacaoPerigosa.NotNull.message}")
     private Date dataSituacaoPerigosa;
+
+    @JsonProperty(value = "situacao")
+    @Column(name = "situacao", length = 5000)
+    private String situacao;
 
     @JsonProperty
     @JoinColumn(name = "elosipaer_id")
@@ -120,6 +118,14 @@ public class RelPrev extends AbstractEntity<RelPrev> {
         this.dataSituacaoPerigosa = dataSituacaoPerigosa;
     }
 
+    public String getSituacao() {
+        return this.situacao;
+    }
+
+    public void setSituacao(final String situacao) {
+        this.situacao = situacao;
+    }
+
     public EloSipaer getEloSipaer() {
         return this.eloSipaer;
     }
@@ -144,11 +150,4 @@ public class RelPrev extends AbstractEntity<RelPrev> {
         this.anexos = anexos;
     }
 
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
 }

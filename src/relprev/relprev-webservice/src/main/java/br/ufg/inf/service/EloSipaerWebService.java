@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufg.inf.model.EloSipaer;
 import br.ufg.inf.repository.EloSipaerRepository;
+import br.ufg.inf.repository.support.LogRepository;
 import br.ufg.inf.service.support.GenericWebService;
 import br.ufg.inf.service.support.WebServicesURL;
 
@@ -21,11 +22,8 @@ import br.ufg.inf.service.support.WebServicesURL;
 public class EloSipaerWebService extends GenericWebService<EloSipaer, EloSipaerRepository> {
 
     @Autowired
-    private EloSipaerRepository repository;
-
-    @Override
-    public EloSipaerRepository getRepository() {
-        return this.repository;
+    public EloSipaerWebService(final EloSipaerRepository repository, final LogRepository logRepository) {
+        super(repository, logRepository);
     }
 
 }

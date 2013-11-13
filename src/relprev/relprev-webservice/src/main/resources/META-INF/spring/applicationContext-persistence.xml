@@ -8,11 +8,7 @@
 						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 						http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
 
-	<!-- C3p0 configuration -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close" p:driverClass="${jdbc.driver}" p:jdbcUrl="${jdbc.url}"
-		p:user="${jdbc.user}" p:password="${jdbc.password}" p:acquireRetryDelay="1000"
-		p:maxIdleTime="240" p:maxPoolSize="20" p:minPoolSize="5" p:autoCommitOnClose="false" />
+	<import resource="applicationContext-persistence-${environment}.xml"/>
 
 	<util:properties id="jpaProperties" location="classpath:hibernate.properties" />
 

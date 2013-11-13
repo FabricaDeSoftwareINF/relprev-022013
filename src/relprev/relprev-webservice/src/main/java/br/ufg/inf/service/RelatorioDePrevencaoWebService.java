@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.ufg.inf.model.RelPrev;
 import br.ufg.inf.repository.RelatorioDePrevencaoRepository;
+import br.ufg.inf.repository.support.LogRepository;
 import br.ufg.inf.service.support.GenericWebService;
 import br.ufg.inf.service.support.ReponseMessages;
-import br.ufg.inf.service.support.ResponseEntity;
+import br.ufg.inf.service.support.Response;
+import br.ufg.inf.service.support.ResponseBuilder;
 import br.ufg.inf.service.support.WebServicesURL;
 
 /**
@@ -31,43 +33,40 @@ import br.ufg.inf.service.support.WebServicesURL;
 public class RelatorioDePrevencaoWebService extends GenericWebService<RelPrev, RelatorioDePrevencaoRepository> {
 
     @Autowired
-    private RelatorioDePrevencaoRepository repository;
-
-    @Override
-    public RelatorioDePrevencaoRepository getRepository() {
-        return this.repository;
+    public RelatorioDePrevencaoWebService(final RelatorioDePrevencaoRepository repository, final LogRepository logRepository) {
+        super(repository, logRepository);
     }
 
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_LOCAL + "/{local}", method = {GET, POST}, produces = APPLICATION_JSON)
-    public ResponseEntity<RelPrev> findRelPrevByLocal(@PathVariable("local") final String local) {
-        ResponseEntity<RelPrev> response = new ResponseEntity<RelPrev>();
-        this.getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
+    public Response<RelPrev> findRelPrevByLocal(@PathVariable("local") final String local) {
+        Response<RelPrev> response;
+        getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
         try {
-            final List<RelPrev> dataList = this.getRepository().findByLocalIgnoreCase(local);
-            response = response.success(true).data(dataList).message(ReponseMessages.LIST_MESSAGE).status(HttpStatus.OK);
-            this.getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
+            final List<RelPrev> dataList = getRepository().findByLocalIgnoreCase(local);
+            response = new ResponseBuilder<RelPrev>().success(true).data(dataList).message(ReponseMessages.LIST_MESSAGE).status(HttpStatus.OK).build();
+            getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
         } catch (final Exception e) {
-            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
-            this.getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
+            response = new ResponseBuilder<RelPrev>().success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST).build();
+            getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
         }
         return response;
     }
 
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_DESCRICAO + "/{descricao}",
-        method = {GET, POST},
-        produces = APPLICATION_JSON)
-    public ResponseEntity<RelPrev> findRelPrevByDescricao(@PathVariable("descricao") final String descricao) {
-        ResponseEntity<RelPrev> response = new ResponseEntity<RelPrev>();
-        this.getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
+    method = {GET, POST},
+    produces = APPLICATION_JSON)
+    public Response<RelPrev> findRelPrevByDescricao(@PathVariable("descricao") final String descricao) {
+        Response<RelPrev> response;
+        getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
         try {
-            final List<RelPrev> dataList = this.getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(descricao);
-            response = response.success(true).data(dataList).message(ReponseMessages.LIST_MESSAGE).status(HttpStatus.OK);
-            this.getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
+            final List<RelPrev> dataList = getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(descricao);
+            response = new ResponseBuilder<RelPrev>().success(true).data(dataList).message(ReponseMessages.LIST_MESSAGE).status(HttpStatus.OK).build();
+            getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
         } catch (final Exception e) {
-            response = response.success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST);
-            this.getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
+            response = new ResponseBuilder<RelPrev>().success(false).message(e.getMessage()).status(HttpStatus.BAD_REQUEST).build();
+            getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
         }
         return response;
     }

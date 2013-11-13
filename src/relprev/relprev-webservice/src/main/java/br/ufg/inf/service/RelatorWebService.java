@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufg.inf.model.Relator;
 import br.ufg.inf.repository.RelatorRepository;
+import br.ufg.inf.repository.support.LogRepository;
 import br.ufg.inf.service.support.GenericWebService;
 import br.ufg.inf.service.support.WebServicesURL;
 
@@ -21,11 +22,8 @@ import br.ufg.inf.service.support.WebServicesURL;
 public class RelatorWebService extends GenericWebService<Relator, RelatorRepository> {
 
     @Autowired
-    private RelatorRepository repository;
-    
-    @Override
-    public RelatorRepository getRepository() {
-        return this.repository;
+    public RelatorWebService(final RelatorRepository repository, final LogRepository logRepository) {
+        super(repository, logRepository);
     }
 
 }
