@@ -8,6 +8,7 @@
         <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet" media="all">
         <link href="<c:url value="/css/relprev.css"/>" rel="stylesheet" media="all">
         <link href="<c:url value="/css/menu-superior.css" />" rel="stylesheet" media="all">
+        <link href="<c:url value="/css/site.css" />" rel="stylesheet" media="all">
         <script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
         <script type="text/javascript" src="<c:url value="/js/utilitarios.js"/>" ></script>
         <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>" ></script>

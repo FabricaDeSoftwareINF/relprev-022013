@@ -1,0 +1,65 @@
+.dadosGerais {
+	width: 767px;
+	margin: auto;
+}
+
+.abas {
+	margin-top: 1em;
+	float: left;
+}
+
+.aba {
+	margin: auto;
+	max-width: 960px;
+	max-height: 410px;
+}
+
+textarea {
+	float: left;
+	max-height: 220px;	
+	max-width: 905px;
+	resize: none;
+	margin-top: 1em;
+}
+
+.aba,
+textarea {
+	height: 100%;
+	width: 100%;
+}
+
+.tituloAba {
+	padding-top: 2em;
+}
+
+.camposAba {
+	padding-top: 1.5em
+}
+
+.aba label {
+	padding-left: 0;	
+}
+
+.camposAba input {
+	max-width: 175px;
+}
+
+.dadosGerais .btn-group-vertical {
+	float: left;
+	margin-top: 6em;
+}
+
+.dadosGerais #abas {
+	float: left;
+	width: 573px;
+	height: 350px;
+	margin-top: 1em;
+}
+
+#descricaoEncaminhamento,
+#descricaoResposta,
+#descricaoAcoesRecomendadas,
+#descricaoParecerDoSetor {
+	margin-top: 1em;
+	height: 55%;
+}

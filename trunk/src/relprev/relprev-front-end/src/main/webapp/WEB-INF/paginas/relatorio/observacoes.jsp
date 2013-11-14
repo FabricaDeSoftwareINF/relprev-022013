@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<div class="aba fundoAbas labelPadrao">
+<div id="observacoes" class="aba fundoAbas labelPadrao" style="display: none">
 	<div class="tituloAba col-md-12 textoCentralizado">
 		<label><fmt:message key="observacoes" /></label>
 	</div>

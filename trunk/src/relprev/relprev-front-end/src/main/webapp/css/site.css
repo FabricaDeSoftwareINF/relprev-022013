@@ -10,16 +10,12 @@
     padding-left: 0 !important;
 }
 
-.aba {
-    background-color: #F7F7F7;
-}
-
-input,
+input:not([type="file"]),
 textarea {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    border: 1px solid #AFA89D;
+    border: 1px solid #AFA89D !important;
 }
 
 .textoOverflowEllipsis{
@@ -28,6 +24,6 @@ textarea {
     text-overflow: ellipsis
 }
 
-.tituloPagina{
+.tituloPagina {
     font-size: 150%;
 }
