@@ -48,8 +48,22 @@
 				<hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
 				<hibernate.use_sql_comments>true</hibernate.use_sql_comments>
 				<hibernate.generate_statistics>true</hibernate.generate_statistics>
+				<hibernate.dialect>org.hibernate.dialect.PostgreSQL82Dialect</hibernate.dialect>
 			</properties>
-			
+
+			<dependencies>
+				<dependency>
+					<groupId>com.mchange</groupId>
+					<artifactId>c3p0</artifactId>
+					<version>${c3p0.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>${jdbc.groupId}</groupId>
+					<artifactId>${jdbc.artifactId}</artifactId>
+					<version>${jdbc.version}</version>
+				</dependency>
+			</dependencies>
+
 			<pluginRepositories>
 				<pluginRepository>
 					<id>maven.java.net</id>
@@ -78,6 +92,7 @@
 				<hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
 				<hibernate.use_sql_comments>false</hibernate.use_sql_comments>
 				<hibernate.generate_statistics>false</hibernate.generate_statistics>
+				<hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
 			</properties>
 		</profile>
 		<profile>
@@ -90,21 +105,6 @@
 				<jdbc.password>postgres</jdbc.password>
 				<jdbc.driver>org.postgresql.Driver</jdbc.driver>
 				<jdbc.url>jdbc:postgresql://localhost:5432/relprev</jdbc.url>
-
-				<hibernate.dialect>org.hibernate.dialect.PostgreSQL82Dialect</hibernate.dialect>
-			</properties>
-		</profile>
-		<profile>
-			<id>mariadb</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<jdbc.groupId>org.jumpmind.symmetric.jdbc</jdbc.groupId>
-				<jdbc.artifactId>mariadb-java-client</jdbc.artifactId>
-				<jdbc.version>1.1.1</jdbc.version>
-
-				<hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
 			</properties>
 		</profile>
 	</profiles>
@@ -146,16 +146,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>${c3p0.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${jdbc.groupId}</groupId>
-			<artifactId>${jdbc.artifactId}</artifactId>
-			<version>${jdbc.version}</version>
 		</dependency>
 
 		<!-- beans validation -->
@@ -262,16 +252,21 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${c3p0.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${sl4j-test.version}</version>
-			<scope>test</scope>
+			<version>${sl4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>${sl4j-test.version}</version>
-			<scope>test</scope>
+			<version>${sl4j.version}</version>
 		</dependency>
 	</dependencies>
 </project>
