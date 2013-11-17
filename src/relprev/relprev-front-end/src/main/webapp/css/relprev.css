@@ -37,7 +37,8 @@
     margin-top: 15px;
 }
 
-#botoesRelatorio {
+#botoesRelatorio,
+#botoesDadosGerais {
 	max-width: 200px; 
 	margin-bottom: 20px;
 }

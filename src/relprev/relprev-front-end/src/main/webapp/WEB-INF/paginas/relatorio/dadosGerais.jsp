@@ -17,33 +17,41 @@
 			</label>
 			<textarea id="descricaoResumo" class="col-xs-12 col-md-12"></textarea>
 		</div>
-		<div class="btn-group-vertical">
-	  		<button id="encaminhamentoBotao" type="button" class="botaoAba btn btn-default" style="background-color: #EBEBEB;">
-	  			<fmt:message key="encaminhamento" />
-	  		</button>
-	  		<button id="parecerDoSetorBotao" type="button" class="botaoAba btn btn-default">
-	  			<fmt:message key="parecerDoSetor" />
-	  		</button>
-	  		<button id="respostaBotao" type="button" class="botaoAba btn btn-default">
-	  			<fmt:message key="resposta" />
-	  		</button>
-	  		<button id="acoesRecomendadasBotao" type="button" class="botaoAba btn btn-default">
-	  			<fmt:message key="acoesRecomendadas" />
-	  		</button>
-  			<button id="observacoesBotao" type="button" class="botaoAba btn btn-default">
-	  			<fmt:message key="observacoes" />
-  			</button>
-	  		<button id="concluirBotao" type="button" class="botaoAba btn btn-default">
-	  			<fmt:message key="concluir" />
-	  		</button>
-		</div>	
+		<ul id="navAbas" class="nav nav-tabs">
+			<li id="encaminhamentoAba" class="active">
+				<a><fmt:message key="encaminhamento" /></a>
+			</li>
+  			<li id="parecerDoSetorAba">
+  				<a><fmt:message key="parecerDoSetor" /></a>
+  			</li>
+  			<li id="respostaAba">
+  				<a><fmt:message key="resposta" /></a>
+			</li>
+  			<li id="acoesRecomendadasAba">
+				<a><fmt:message key="acoesRecomendadas" /></a>
+			</li>
+  			<li id="observacoesAba">
+  				<a><fmt:message key="observacoes" /></a>
+			</li>
+  			<li id="concluirAba">
+  				<a><fmt:message key="concluir" /></a>
+  			</li>
+		</ul>		
 		<div id="abas" class="panel panel-default">				
 			<%@include file="encaminhamento.jsp" %>
 			<%@include file="parecerDoSetor.jsp" %>
 			<%@include file="resposta.jsp" %>
 			<%@include file="acoesRecomendadas.jsp" %>
 			<%@include file="observacoes.jsp" %>
-		</div>		
+		</div>
+		<div id="botoesDadosGerais" class="container">
+	        <button type="submit" class="btn btn-primary">
+	        	<fmt:message key="salvar" />
+	        </button>
+	        <button type="reset" class="btn btn-default">
+	        	<fmt:message key="cancelar" />
+	        </button>
+	    </div>
 	</div>
 	<script type="text/javascript" src="<c:url value="/js/abas.js"/>" ></script>
 </jsp:body>
