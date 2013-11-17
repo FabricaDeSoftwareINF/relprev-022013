@@ -6,9 +6,7 @@
 	<div class="tituloAba col-md-12 textoCentralizado">
 		<label><fmt:message key="observacoes" /></label>
 	</div>
-	<div id="camposObservacoes" class="camposAba col-xs-12 col-md-12">
-		<div class=" col-md-12">
-			<textarea id="observacoes" class="col-xs-12 col-md-12"></textarea>
-		</div>
+	<div id="camposObservacoes" class="camposAba col-xs-12 col-md-12">		
+		<textarea id="observacoes" class="col-xs-12 col-md-12"></textarea>		
 	</div>		
 </div>
