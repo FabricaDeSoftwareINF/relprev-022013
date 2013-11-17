@@ -19,7 +19,7 @@
 			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="dataMaiuscula" /></label>
 			<input id="acaoData" type="text" class="form-control"/>
 		</div>
-		<div class=" col-md-12">
+		<div class="col-xs-12 col-md-12">
 			<textarea id="descricaoAcoesRecomendadas" class="col-xs-12 col-md-12"></textarea>
 		</div>
 	</div>		
