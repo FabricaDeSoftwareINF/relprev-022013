@@ -1,23 +1,19 @@
-.dadosGerais {
-	width: 767px;
-	margin: auto;
-}
-
-.abas {
+.abas,
+#navAbas,
+#descricaoEncaminhamento,
+#descricaoResposta,
+#descricaoAcoesRecomendadas,
+#descricaoParecerDoSetor {
 	margin-top: 1em;
-	float: left;
 }
 
-.aba {
+.dadosGerais {
 	margin: auto;
-	max-width: 960px;
-	max-height: 410px;
 }
 
 textarea {
-	float: left;
-	max-height: 220px;	
-	max-width: 905px;
+	display: block;
+	max-height: 220px;
 	resize: none;
 	margin-top: 1em;
 }
@@ -50,16 +46,19 @@ textarea {
 }
 
 .dadosGerais #abas {
-	float: left;
-	width: 573px;
-	height: 350px;
-	margin-top: 1em;
+	border-top: none;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
 }
 
-#descricaoEncaminhamento,
-#descricaoResposta,
-#descricaoAcoesRecomendadas,
-#descricaoParecerDoSetor {
-	margin-top: 1em;
-	height: 55%;
+.camposAba div {
+	display: inline-block;
+}
+
+#abas {
+	height: 410px;	
+}
+
+.nav-tabs>li {
+	cursor: pointer;
 }

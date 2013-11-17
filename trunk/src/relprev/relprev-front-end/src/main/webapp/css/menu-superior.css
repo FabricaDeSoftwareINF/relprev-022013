@@ -89,10 +89,19 @@ body {
 	padding-bottom: 8px;
 }
 
-.nomeUsuario {
-	float: right;
-	color: white;
+.nomeUsuario,
+.collapse.navbar-collapse>li {
+	float: right;	
 	font-weight: bold;
 	line-height: 50px;
-	padding-right: 1em;
+	padding-left: 3em;
+}
+
+.nomeUsuario {
+	padding-right: 1em;	
+}
+
+.nomeUsuario,
+.collapse.navbar-collapse>li a {
+	color: white;
 }

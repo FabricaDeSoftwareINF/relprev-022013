@@ -1,12 +1,10 @@
-$('.botaoAba').on('click', function() { exibaAba(this); });
-		
-function exibaAba(botao) {			
+$('#navAbas').find('li').on('click', function() { exibaAba(this); });
+
+function exibaAba(aba) {	
 	escondaAbas();
-	$('#'.concat(botao.id.replace('Botao', ''))).show();
-	$('.botaoAba').each(function() {
-		$(this).css('background-color', '');
-	});
-	$(botao).css('background-color', '#EBEBEB');
+	$('#navAbas').find('li').removeClass('active');
+	$(aba).addClass('active');
+	$('#'.concat(aba.id.replace('Aba', ''))).show();	
 };
 
 function escondaAbas() {

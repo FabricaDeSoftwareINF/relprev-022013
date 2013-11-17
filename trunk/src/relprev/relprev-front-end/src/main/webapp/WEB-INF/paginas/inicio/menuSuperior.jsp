@@ -14,7 +14,7 @@
                 </button>
                 <a class="navbar-brand" href="#"><fmt:message key="relprev" /></a>
                 <div class="nomeUsuario visible-xs">
-                    Olá, ${usuarioInfo.nome}
+                    ${usuarioInfo.nome}
                 </div>
             </div>
             <div class="collapse navbar-collapse">
@@ -30,10 +30,11 @@
                             <li><a href="<c:url value="/configuracoes/usuarios"/>"><fmt:message key="menu.usuario" /></a></li>
                         </ul>
                     </li>
-                    <li><a href=""><fmt:message key="menu.sair" /></a></li>
+                    <li class="visible-xs"><a href="<c:url value="/login/logout"/>"><fmt:message key="menu.sair" /></a></li>
                 </ul>
+                <li class="visible-md visible-lg"><a href="<c:url value="/login/logout"/>"><fmt:message key="menu.sair" /></a></li>
                 <div class="nomeUsuario hidden-xs">
-                    Olá, ${usuarioInfo.nome}
+                    ${usuarioInfo.nome}
                 </div>							
             </div>				
         </div>	          
