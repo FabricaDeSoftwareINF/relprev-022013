@@ -40,6 +40,14 @@ public class Relprev extends ObjetoDeDominio {
         this.situacao = situacao;
     }
 
+    protected String getController() {
+        return CONTROLLER_RELPREV;
+    }
+
+    protected Class getResponseClass() {
+        return RelprevResponse.class;
+    }
+
     public List<Relprev> list() throws RequestException {
         String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV;
         return ((RelprevResponse) (fromJson(doGet(url), RelprevResponse.class))).getData();
