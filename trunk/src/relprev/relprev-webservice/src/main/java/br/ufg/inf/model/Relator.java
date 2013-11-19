@@ -3,6 +3,7 @@ package br.ufg.inf.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -31,17 +32,23 @@ public class Relator extends AbstractEntity<Relator> {
     private static final long serialVersionUID = -671624807223719350L;
 
     @JsonProperty
-    @Column(length = 120)
+    @Column(length = 50)
+    @Size(min = 1, max = 50, message = "{validation.Relator.nome.Size.message}")
     private String nome;
 
     @JsonProperty
     @Column(length = 20)
-    @Telefone(message = "{validation.Relator.telefone.Telefone.message}")
-    private String telefone;
+    @Telefone(message = "{validation.Relator.telefoneCelular.Telefone.message}")
+    private String telefoneCelular;
+
+    @JsonProperty
+    @Column(length = 20)
+    @Telefone(message = "{validation.Relator.telefoneResidencial.Telefone.message}")
+    private String telefoneResidencial;
 
     @JsonProperty
     @Column(length = 120)
-    @Email(message = "{validation.Relator.email.Email.message}")
+    @Email(message = "{validation.Relator.email.Email.message}", regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;
 
     public String getNome() {
@@ -52,12 +59,20 @@ public class Relator extends AbstractEntity<Relator> {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return this.telefone;
+    public String getTelefoneCelular() {
+        return this.telefoneCelular;
     }
 
-    public void setTelefone(final String telefone) {
-        this.telefone = telefone;
+    public void setTelefoneCelular(final String telefoneCelular) {
+        this.telefoneCelular = telefoneCelular;
+    }
+
+    public String getTelefoneResidencial() {
+        return this.telefoneResidencial;
+    }
+
+    public void setTelefoneResidencial(final String telefoneResidencial) {
+        this.telefoneResidencial = telefoneResidencial;
     }
 
     public String getEmail() {

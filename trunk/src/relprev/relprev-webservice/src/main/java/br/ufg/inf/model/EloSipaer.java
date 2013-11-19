@@ -1,15 +1,20 @@
 package br.ufg.inf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.ufg.inf.model.security.Usuario;
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,17 +36,30 @@ public class EloSipaer extends AbstractEntity<EloSipaer> {
 
     private static final long serialVersionUID = 3850763253702817582L;
 
+    @JsonIgnore
+    @JoinColumn(name = "usuario_id")
+    @ManyToOne(cascade = CascadeType.ALL) //, optional = false) TODO concluir mapeamento assim que existir validação dos usuários
+    private Usuario usuario;
+
     @JsonProperty
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 20)
     @NotNull(message = "{validation.EloSipaer.organizacao.NotNull.message}")
-    @Size(min = 1, max = 100, message = "{validation.EloSipaer.organizacao.Size.message}")
+    @Size(min = 1, max = 20, message = "{validation.EloSipaer.organizacao.Size.message}")
     private String organizacao;
 
     @JsonProperty(value = "sigla")
-    @Column(name = "sigla_organizacao", nullable = false, length = 10)
+    @Column(name = "sigla_organizacao", nullable = false, length = 20)
     @NotNull(message = "{validation.EloSipaer.siglaOrganizacao.NotNull.message}")
-    @Size(min = 1, max = 10, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
+    @Size(min = 1, max = 20, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
     private String siglaOrganizacao;
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(final Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public String getOrganizacao() {
         return this.organizacao;

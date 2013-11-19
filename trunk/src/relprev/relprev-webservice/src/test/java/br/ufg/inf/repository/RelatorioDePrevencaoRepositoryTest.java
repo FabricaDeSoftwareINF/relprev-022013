@@ -131,7 +131,8 @@ public class RelatorioDePrevencaoRepositoryTest {
         final Relator relator = new Relator();
         relator.setNome("Relator 3");
         relator.setEmail("relator.tres@email.com.br");
-        relator.setTelefone("3333333333");
+        relator.setTelefoneCelular("3333333333");
+        relator.setTelefoneResidencial("3333333333");
 
         final RelPrev relPrev = new RelPrev();
         relPrev.setEnvolvidos("Envolvidos RelPrev 3");
