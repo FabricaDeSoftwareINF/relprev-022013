@@ -44,20 +44,21 @@ public class RelPrev extends AbstractEntity<RelPrev> {
     private static final long serialVersionUID = -2567465353998731784L;
 
     @JsonProperty
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, length = 60)
     @NotNull(message = "{validation.RelPrev.envolvidos.NotNull.message}")
-    @Size(min = 1, message = "{validation.RelPrev.envolvidos.Size.message}")
+    @Size(min = 1, max = 60, message = "{validation.RelPrev.envolvidos.Size.message}")
     private String envolvidos;
 
     @JsonProperty
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, length = 60)
     @NotNull(message = "{validation.RelPrev.local.NotNull.message}")
-    @Size(min = 1, message = "{validation.RelPrev.local.Size.message}")
+    @Size(min = 1, max = 60, message = "{validation.RelPrev.local.Size.message}")
     private String local;
 
     @JsonProperty(value = "descricao")
-    @Column(name = "descricao", length = 5000)
-    @Size(min = 1, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
+    @Column(nullable = false, name = "descricao", length = 600)
+    @NotNull(message = "{validation.RelPrev.descricaoSituacaoPerigosa.NotNull.message}")
+    @Size(min = 1, max = 600, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
     private String descricaoSituacaoPerigosa;
 
     @JsonProperty(value = "data")
@@ -80,6 +81,11 @@ public class RelPrev extends AbstractEntity<RelPrev> {
     @JoinColumn(name = "relator_id")
     @ManyToOne(cascade = CascadeType.ALL)
     private Relator relator;
+
+    @JsonProperty
+    @JoinColumn(name = "situacoes_id")
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    private Situacao situacoes;
 
     @JoinColumn(name = "relprev_id")
     @JsonProperty(value = "anexos")
@@ -136,6 +142,14 @@ public class RelPrev extends AbstractEntity<RelPrev> {
 
     public Relator getRelator() {
         return this.relator;
+    }
+
+    public Situacao getSituacoes() {
+        return this.situacoes;
+    }
+
+    public void setSituacoes(final Situacao situacoes) {
+        this.situacoes = situacoes;
     }
 
     public void setRelator(final Relator relator) {

@@ -1,7 +1,14 @@
 package br.ufg.inf.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,9 +37,9 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
     private static final long serialVersionUID = -8111373397877993819L;
 
     @JsonProperty
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     @NotNull(message = "{validation.Taxonomia.nome.NotNull.message}")
-    @Size(min = 1, message = "{validation.Taxonomia.nome.Size.message}")
+    @Size(min = 1, max = 20, message = "{validation.Taxonomia.nome.Size.message}")
     private String nome;
 
     @JsonProperty
@@ -41,7 +48,8 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
     private Boolean status;
 
     @JsonProperty
-    @Column(name = "padrao_minimo")
+    @Column(name = "padrao_minimo", nullable = false)
+    @NotNull(message = "{validation.Taxonomia.padraoMinimo.NotNull.message}")
     private Boolean padraoMinimo;
 
     public String getNome() {
@@ -66,6 +74,42 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
 
     public void setPadraoMinimo(final Boolean padraoMinimo) {
         this.padraoMinimo = padraoMinimo;
+    }
+
+    /*
+     * FORMATAÇÕES
+     * 
+     * Existem duas formatações para os itens de uma taxonomia, em que o usuário deve escolher uma.
+     * 
+     * 1). A taxonomia tem somente um campo para uma Descrição(TEXTO(600))
+     * 2). A taxonomia tem uma lista de categorias(TEXTO(15)), onde cada categoria pode conter uma lista com sub-categorias(TEXTO(15)).
+     */
+    @JsonProperty
+    @Column(length = 600)
+    @Size(min = 1, max = 600, message = "{validation.Taxonomia.descricao.Size.message}")
+    private String descricao;
+
+    @JsonProperty(value = "categorias")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "taxonomia_categorias",
+        joinColumns = {@JoinColumn(name = "taxonomia_id")},
+        inverseJoinColumns = {@JoinColumn(name = "categoria_id")})
+    private Set<Categoria> categorias;
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public void setDescricao(final String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Set<Categoria> getCategorias() {
+        return this.categorias;
+    }
+
+    public void setCategorias(final Set<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
 }

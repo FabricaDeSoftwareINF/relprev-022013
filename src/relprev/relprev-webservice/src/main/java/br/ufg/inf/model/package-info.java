@@ -1,5 +1,5 @@
 /**
- * Entidades do modelo de domínio.<br />
+ * Entidades do modelo de domínio<br />
  * São tanto entidades de persistência (JPA) quanto de reposta (JSON) a clientes
  *
  * @created 02/11/2013

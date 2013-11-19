@@ -5,28 +5,101 @@
 	<entry key="validation.Email.message">Endereço de e-mail Inválido</entry>
 	<entry key="validation.Telefone.message">Número de telefone Inválido</entry>
 
+	<!-- entidade AcaoRecomendada -->
+	<entry key="validation.AcaoRecomendada.descricao.NotNull.message">A descrição da Ação Recomendada deve ser informada</entry>
+	<entry key="validation.AcaoRecomendada.descricao.Size.message"> A descrição da Ação Recomendada deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.AcaoRecomendada.destinatario.NotNull.message">O destinatário da Ação Recomendada deve ser informado</entry>
+	<entry key="validation.AcaoRecomendada.destinatario.Size.message">O destinatário da Ação Recomendada deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.AcaoRecomendada.remetente.NotNull.message">O remetente da Ação Recomendada deve ser informado</entry>
+	<entry key="validation.AcaoRecomendada.remetente.Size.message">O remetente da Ação Recomendada deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.AcaoRecomendada.data.NotNull.message">A data da Ação Recomendada deve ser informada</entry>
+
+	<!-- entidade Encaminhamento -->
+	<entry key="validation.Encaminhamento.descricao.NotNull.message">A descrição do Encaminhamento deve ser informada</entry>
+	<entry key="validation.Encaminhamento.descricao.Size.message"> A descrição do Encaminhamento deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.Encaminhamento.destinatario.NotNull.message">O destinatário do Encaminhamento deve ser informado</entry>
+	<entry key="validation.Encaminhamento.destinatario.Size.message">O destinatário do Encaminhamento deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Encaminhamento.remetente.NotNull.message">O remetente do Encaminhamento deve ser informado</entry>
+	<entry key="validation.Encaminhamento.remetente.Size.message">O remetente do Encaminhamento deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Encaminhamento.data.NotNull.message">A data do Encaminhamento deve ser informada</entry>
+	<entry key="validation.Encaminhamento.data.Future.message">A data do Encaminhamento não pode ser uma data passada</entry>
+
+	<!-- entidade Resposta -->
+	<entry key="validation.Resposta.descricao.NotNull.message">A descrição da Resposta deve ser informada</entry>
+	<entry key="validation.Resposta.descricao.Size.message"> A descrição da Resposta deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.Resposta.destinatario.NotNull.message">O destinatário da Resposta deve ser informado</entry>
+	<entry key="validation.Resposta.destinatario.Size.message">O destinatário da Resposta deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Resposta.remetente.NotNull.message">O remetente da Resposta deve ser informado</entry>
+	<entry key="validation.Resposta.remetente.Size.message">O remetente da Resposta deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Resposta.data.NotNull.message">A data da Resposta deve ser informada</entry>
+	<entry key="validation.Resposta.data.Future.message">A data da Resposta não pode ser uma data passada</entry>
+
+	<!-- entidade Categoria -->
+	<entry key="validation.Categoria.nome.NotNull.message">A Categoria deve ser informada</entry>
+	<entry key="validation.Categoria.nome.Size.message">O nome da Categoria deve ter no mínimo um caracter</entry>
+
 	<!-- entidade EloSipaer -->
-	<entry key="validation.EloSipaer.organizacao.NotNull.message">Organização não deve ser Nula</entry>
-	<entry key="validation.EloSipaer.organizacao.Size.message">Organização deve ter no mínimo um caracter e no Máximo 100</entry>
-	<entry key="validation.EloSipaer.siglaOrganizacao.NotNull.message">Sigla da Organização não deve ser Nula</entry>
-	<entry key="validation.EloSipaer.siglaOrganizacao.Size.message">Sigla da Organização deve ter no mínimo um caracter e no Máximo 10</entry>
+	<entry key="validation.EloSipaer.organizacao.NotNull.message">A organização do Elo SIPAER deve ser informada</entry>
+	<entry key="validation.EloSipaer.organizacao.Size.message">A organização do Elo SIPAER deve possuir entre 10 e 20 caracteres</entry>
+	<entry key="validation.EloSipaer.siglaOrganizacao.NotNull.message">A Sigla da Organização do Elo SIPAER deve ser informada</entry>
+	<entry key="validation.EloSipaer.siglaOrganizacao.Size.message">A Sigla da Organização do Elo SIPAER deve possuir entre 10 e 20 caracteres</entry>
 
 	<!-- entidade Relator -->
-	<entry key="validation.Relator.email.Email.message">Endereço de e-mail informado para o Relator não é Válido</entry>
-	<entry key="validation.Relator.telefone.Telefone.message">Número de telefone informado para o Relator não é Válido</entry>
+	<entry key="validation.Relator.nome.Size.message">Nome do Relator deve possuir entre 1 e 50 caracteres</entry>
+	<entry key="validation.Relator.email.Email.message">Endereço de e-mail informado para o Relator não é válido</entry>
+	<entry key="validation.Relator.telefoneCelular.Telefone.message">Número de telefone celular informado para o Relator não é válido</entry>
+	<entry key="validation.Relator.telefoneResidencial.Telefone.message">Número de telefone residencial informado para o Relator não é válido</entry>
 
 	<!-- entidade RelPrev -->
-	<entry key="validation.RelPrev.envolvidos.NotNull.message">Os envolvidos no Relatório de Prevenção (RelPrev) não podem ser Nulos</entry>
-	<entry key="validation.RelPrev.envolvidos.Size.message">O conteúdo do campo dos envolvidos no Relatório de Prevenção (RelPrev) não pode ser Vazio</entry>
-	<entry key="validation.RelPrev.local.NotNull.message">O local no Relatório de Prevenção (RelPrev) não pode ser Nulo</entry>
-	<entry key="validation.RelPrev.local.Size.message">O conteúdo do campo de local no Relatório de Prevenção (RelPrev) não pode ser Vazio</entry>
-	<entry key="validation.RelPrev.descricaoSituacaoPerigosa.Size.message">O conteúdo do campo de descrição da situação perigosa no Relatório de Prevenção (RelPrev) não pode ser Vazio</entry>
-	<entry key="validation.RelPrev.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser Informada</entry>
-	<entry key="validation.RelPrev.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data Futura</entry>
-	<entry key=""></entry>
+	<entry key="validation.RelPrev.envolvidos.NotNull.message">O(s) envolvido(s) no Relatório de Prevenção (RelPrev) deve(m) ser informado(s)</entry>
+	<entry key="validation.RelPrev.envolvidos.Size.message">O conteúdo do campo dos envolvidos no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.RelPrev.local.NotNull.message">O local no Relatório de Prevenção (RelPrev) deve ser informado</entry>
+	<entry key="validation.RelPrev.local.Size.message">O local no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.RelPrev.descricaoSituacaoPerigosa.NotNull.message">A descrição da Situação Perigosa deve ser informada</entry>
+	<entry key="validation.RelPrev.descricaoSituacaoPerigosa.Size.message">A descrição da situação perigosa no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.RelPrev.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser informada</entry>
+	<entry key="validation.RelPrev.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data futura</entry>
+
+	<!-- entidade ParecerSetor -->
+	<entry key="validation.ParecerSetor.descricao.NotNull.message">A descrição do Parecer do Setor deve ser informada</entry>
+	<entry key="validation.ParecerSetor.descricao.Size.message">A descrição do Parecer do Setor deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.ParecerSetor.data.NotNull.message">A data do Parecer do Setor deve ser informada</entry>
+	<entry key="validation.ParecerSetor.data.Future.message">A data do Parecer do Setor não pode ser uma data passada</entry>
+
+	<!-- entidade Situacao -->
+	<entry key="validation.Situacao.temEncaminhamento.NotNull.message">Deve ser informado se o Relatório de Prevenção tem ou não Encaminhamento</entry>
+	<entry key="validation.Situacao.temDivulgacao.NotNull.message">Deve ser informado se o Relatório de Prevenção tem ou não Divulgação</entry>
+	<entry key="validation.Situacao.temAcaoRecomendada.NotNull.message">Deve ser informado se o Relatório de Prevenção tem ou não Ação Divulgada</entry>
+	<entry key="validation.Situacao.foiConcluido.NotNull.message">Deve ser informado se o Relatório de Prevenção foi ou não Concluído</entry>
 
 	<!-- entidade Taxonomia -->
-	<entry key="validation.Taxonomia.nome.NotNull.message">O nome da Taxonomia não deve ser Nula</entry>
-	<entry key="validation.Taxonomia.nome.Size.message">O nome da Taxonomia não deve ser Vazio</entry>
-	<entry key="validation.Taxonomia.status.NotNull.message">O status da Taxonomia deve ser Informado</entry>
+	<entry key="validation.Taxonomia.nome.NotNull.message">O nome da Taxonomia não deve ser informado</entry>
+	<entry key="validation.Taxonomia.nome.Size.message">O nome da Taxonomia deve possuir entre 1 e 20 caracteres</entry>
+	<entry key="validation.Taxonomia.status.NotNull.message">O status da Taxonomia deve ser informado</entry>
+	<entry key="validation.Taxonomia.padraoMinimo.NotNull.message">O Padrão Mínimo da Taxonomia deve ser informado</entry>
+	<entry key="validation.Taxonomia.descricao.Size.message">A descrição da Taxonomia deve possuir entre 1 e 600 caracteres</entry>
+
+	<!-- entidade Usuario -->
+	<entry key="validation.Usuario.email.Email.message">Endereço de e-mail informado para o usuário não é válido</entry>
+	<entry key="validation.Usuario.especialidade.Size.message">A especialidade do usuário deve possuir entre 1 e 30 caracteres</entry>
+	<entry key="validation.Usuario.funcao.NotNull.message">A função do usuário deve ser informada</entry>
+	<entry key="validation.Usuario.funcao.Size.message">A função do usuário deve possuir entre 1 e 30 caracteres</entry>
+	<entry key="validation.Usuario.nomeCompleto.NotNull.message">O nome do usuário deve ser informado</entry>
+	<entry key="validation.Usuario.nomeCompleto.Size.message">O nome do usuário deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Usuario.posto.NotNull.message">O posto do usuário deve ser informado</entry>
+	<entry key="validation.Usuario.posto.Size.message">O posto do usuário deve possuir entre 1 e 20 caracteres</entry>
+	<entry key="validation.Usuario.siglaSecao.NotNull.message">A sigla da seção do usuário deve ser informada</entry>
+	<entry key="validation.Usuario.siglaSecao.Size.message">O  do usuário deve possuir entre 1 e 15 caracteres</entry>
+	<entry key="validation.Usuario.telefoneCelular.Telefone.message">Número de telefone celular informado para o usuário não é válido</entry>
+	<entry key="validation.Usuario.telefoneFixo.Telefone.message">Número de telefone fixo informado para o usuário não é válido</entry>
+
+	<entry key="validation.Usuario.usuario.NotNull.message">O usuário(login) deve ser informado</entry>
+	<entry key="validation.Usuario.usuario.Size.message">O login do usuário deve possuir entre 1 e 45 caracteres</entry>
+	<entry key="validation.Usuario.senha.NotNull.message">A senha do usuário deve ser informada</entry>
+	<entry key="validation.Usuario.senha.Size.message">A senha do usuário deve possuir 128 caracteres</entry>
+	<entry key="validation.Usuario.ativo.NotNull.message">A informação de que se o usuário está ativo ou não é obrigatória</entry>
+
+	<!-- entidade CategoriaDIVOP -->
+	<entry key="validation.CategoriaDIVOP.nome.NotNull.message">A Categoria deve ser informada</entry>
+	<entry key="validation.CategoriaDIVOP.nome.Size.message">O nome da Categoria deve ter no mínimo um caracter</entry>
 </properties>

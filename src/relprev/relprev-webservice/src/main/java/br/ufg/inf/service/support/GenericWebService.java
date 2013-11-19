@@ -8,6 +8,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 import java.util.List;
 
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,7 +105,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      */
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_CREATE, method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    public final Response<E> create(@RequestBody final E entity) {
+    public final Response<E> create(@Valid @RequestBody final E entity) {
         Response<E> response;
         this.getLogger().debug("criando objeto");
         try {
@@ -128,7 +129,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      */
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_UPDATE, method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    public final Response<E> update(@RequestBody final E entity) {
+    public final Response<E> update(@Valid @RequestBody final E entity) {
         Response<E> response;
         this.getLogger().debug("atualizando objeto " + entity.toString());
         try {
