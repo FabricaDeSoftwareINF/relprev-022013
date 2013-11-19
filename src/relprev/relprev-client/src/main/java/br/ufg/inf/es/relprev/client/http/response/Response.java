@@ -1,6 +1,6 @@
 package br.ufg.inf.es.relprev.client.http.response;
 
-import br.ufg.inf.es.relprev.client.dominio.Relprev;
+import br.ufg.inf.es.relprev.client.dominio.ObjetoDeDominio;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 11/6/13
  * Time: 10:20 PM
  */
-public abstract class Response<T> {
+public abstract class Response<T extends ObjetoDeDominio> {
     @JsonProperty
     private String message;
     @JsonProperty
