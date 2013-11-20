@@ -24,7 +24,7 @@
             	<fmt:message key="data" />
             </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="data"  value="${relprev.data}"/>
+                <input type="text" class="form-control calendario" id="data"  value="${relprev.data}"/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-calendar"></span>
