@@ -25,13 +25,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 
 /**
- * Testes para Taxonomia
- * <P />
- * {@link #testSave()} <br />
- * {@link #testUpdate()} <br />
- * {@link #testDelete()} <br />
- * {@link #testFind()} <br />
- * {@link #testFindAll()} <br />
+ * Testes para {@link Taxonomia}
  *
  * @created 10/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>

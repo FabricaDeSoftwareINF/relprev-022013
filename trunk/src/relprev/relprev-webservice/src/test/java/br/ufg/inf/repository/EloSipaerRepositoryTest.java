@@ -19,6 +19,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import br.ufg.inf.model.EloSipaer;
+import br.ufg.inf.model.test.EloSipaerBuilder;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -57,10 +58,7 @@ public class EloSipaerRepositoryTest {
     @DatabaseSetup(SAVED_DB)
     @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
-        final EloSipaer elo = new EloSipaer();
-        elo.setId(1L);
-        elo.setSiglaOrganizacao("ORG1N");
-        elo.setOrganizacao("Nova Versão da Organização 1");
+        final EloSipaer elo = new EloSipaerBuilder().id(1L).organizacao("Nova Versão da Organização 1").sigla("ORG1N").build();
         this.repository.save(elo);
     }
 
@@ -105,10 +103,7 @@ public class EloSipaerRepositoryTest {
     }
 
     private EloSipaer getEloSipaer() {
-        final EloSipaer elo = new EloSipaer();
-        elo.setOrganizacao("Organização 3");
-        elo.setSiglaOrganizacao("ORG3");
-        return elo;
+        return new EloSipaerBuilder().organizacao("Organização 3").sigla("ORG3").build();
     }
 
 }
