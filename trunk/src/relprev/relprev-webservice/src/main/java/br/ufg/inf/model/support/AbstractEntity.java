@@ -51,7 +51,6 @@ public abstract class AbstractEntity<E extends Serializable> implements Persista
     private Date dataInsercaoAlteracao;
 
     @JsonIgnore
-    @OneToOne(optional = true)
     @JoinColumn(name = "versao_anterior")
     private E versaoAnterior;
 

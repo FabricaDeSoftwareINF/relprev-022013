@@ -13,7 +13,7 @@
 		</div>		
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12"><fmt:message key="dataMaiuscula" /></label>
-			<input id="dataParecer" type="text" class="form-control"/>
+			<input id="dataParecer" type="text" class="form-control calendario"/>
 		</div>
 		<div class="col-xs-12 col-md-12">
 			<textarea id="descricaoParecerDoSetor"></textarea>

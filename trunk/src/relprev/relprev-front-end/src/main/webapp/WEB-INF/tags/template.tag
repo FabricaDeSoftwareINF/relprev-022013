@@ -29,5 +29,18 @@
         <div id="body" class="container">
             <jsp:doBody/>
         </div>
+        
+        <script type="text/javascript" language="javascript">
+			$(document).ready(function() {
+				CrieCamposDeCalendario();
+			});
+
+			function CrieCamposDeCalendario() {
+				$(".calendario").datepicker({
+					inline: true
+				});
+			}
+        </script>
+        
     </body>
 </html>
