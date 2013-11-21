@@ -14,6 +14,7 @@
 <script src="../js/bootstrap.file-input.js"></script>
 <script type="text/javascript" src="../js/jquery.MultiFile.js"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>
+<script type="text/javascript" src="<c:url value="/js/jquery.meio.mask.js"/>" ></script>
 
     <div class="row">
         <div class="form-group col-md-12">
@@ -42,7 +43,7 @@
             	<fmt:message key="hora" />
             </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="hora"  value="${relprev.hora}"/>
+                <input type="text" class="form-control hora" id="hora"  value="${relprev.hora}"/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-time"></span>
