@@ -3,7 +3,8 @@
 #descricaoEncaminhamento,
 #descricaoResposta,
 #descricaoAcoesRecomendadas,
-#descricaoParecerDoSetor {
+#descricaoParecerDoSetor,
+#botoesDadosGerais {
 	margin-top: 1em;
 }
 
@@ -61,4 +62,10 @@ textarea {
 
 .nav-tabs>li {
 	cursor: pointer;
+}
+
+.avaliacao label,
+.reavaliacao label {
+	float: left;
+	line-height: 34px;
 }
