@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-	<elos_sipaer id="1" organizacao="Organização 1" sigla_organizacao="ORG1" hidden="false" />
-	<elos_sipaer id="2" organizacao="Organização 2" sigla_organizacao="ORG2" hidden="false" />
-	<elos_sipaer id="3" organizacao="Organização 3" sigla_organizacao="ORG3" hidden="false" />
-</dataset>
