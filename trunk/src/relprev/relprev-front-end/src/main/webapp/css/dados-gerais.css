@@ -69,3 +69,11 @@ textarea {
 	float: left;
 	line-height: 34px;
 }
+
+.avaliacaoReavaliacao .risco {
+	padding: 15px;
+}
+
+.avaliacaoReavaliacao .row div {
+	margin: 0;
+}
