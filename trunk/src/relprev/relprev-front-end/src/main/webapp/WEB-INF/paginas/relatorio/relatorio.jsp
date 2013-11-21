@@ -3,12 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link href="../css/relprev.css" rel="stylesheet">
+
+<!-- Estilos para os componentes do jQuery UI, tais como o DatePicker. -->
+<link href="<c:url value="/css/ui-lightness/jquery-ui-1.10.3.custom.css" />" rel="stylesheet" media="all">
+
 <div class="container" style="text-align: center">
     <h4 class="labelMaiuscula"><fmt:message key="dados.gerais.ocorrencia" /></h4>
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../js/bootstrap.file-input.js"></script>
 <script type="text/javascript" src="../js/jquery.MultiFile.js"></script>
+<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>
 
     <div class="row">
         <div class="form-group col-md-12">
@@ -95,7 +100,8 @@
 				remove:'<span class="glyphicon glyphicon-remove"></span>',
 				duplicate:'Arquivo já selecionado:\n$file!'
 			}
-		});
+		}); 
 	});
-	//$('input[type=file]').pekeUpload(propriedades);
 </script>
+
+<%@include file="../../partials/calendario.jsp" %>

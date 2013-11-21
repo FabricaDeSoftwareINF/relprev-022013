@@ -33,7 +33,7 @@ public class RelatorioController extends ControllerPadrao<Relprev> {
 	@Path("/relatorio/dadosgerais")
 	public void dadosGerais() {}
 	
-	//Remover este método após conclusão da classe.
+	//TODO: Remover este método após conclusão da classe.
 	private void gerarLog(final Relprev relprev, final List<UploadedFile> files){
 		logger.log(Level.OFF, "Local: " + relprev.getLocal());
 		logger.info("Situação: " + relprev.getSituacao());
