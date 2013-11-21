@@ -15,6 +15,7 @@
         
 		<script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery.meio.mask.js"/>" ></script>
     </head>
     <body>
         <div id="borda" class="container">
