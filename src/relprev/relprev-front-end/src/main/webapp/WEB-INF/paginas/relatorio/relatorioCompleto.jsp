@@ -9,7 +9,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Estilos para os componentes do jQuery UI, tais como o DatePicker. -->
+<link href="<c:url value="/css/ui-lightness/jquery-ui-1.10.3.custom.css" />" rel="stylesheet" media="all">
+        
 		<script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>
     </head>
     <body>
         <div id="borda" class="container">
@@ -37,5 +42,7 @@
         		</form>
        		</div>
        	</div>
+       	
+       	<%@include file="../../partials/calendario.jsp" %>
     </body>
 </html>
