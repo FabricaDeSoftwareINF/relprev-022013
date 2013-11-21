@@ -44,6 +44,50 @@
 			<%@include file="acoesRecomendadas.jsp" %>
 			<%@include file="observacoes.jsp" %>
 		</div>
+		<div class="avaliacaoReavaliacao form-group row">
+			<div class="avaliacao col-md-6">
+				<label class="labelMaiuscula"><fmt:message key="reavaliacao" /></label>
+				<div class="col-md-2">
+					<select class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<select class="form-control">
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+						<option>D</option>
+						<option>E</option>
+					</select>
+				</div>
+			</div>		
+			<div class="reavaliacao col-md-6">
+				<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
+				<div class="col-md-2">
+					<select class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<select class="form-control">
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+						<option>D</option>
+						<option>E</option>
+					</select>
+				</div>
+			</div>
+		</div>
 		<div id="botoesDadosGerais" class="container">
 	        <button type="submit" class="btn btn-primary">
 	        	<fmt:message key="salvar" />
