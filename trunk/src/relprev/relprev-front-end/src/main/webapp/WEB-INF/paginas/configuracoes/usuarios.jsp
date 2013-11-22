@@ -33,7 +33,7 @@
                         <fmt:message key="usuario.posto" />:
                     </div>
                     <div class="col-md-3">
-                        <fmt:message key="usuario.funcao" />:
+                        <fmt:message key="funcao" />:
                     </div>
                     <div class="col-md-3">
                         <fmt:message key="usuario.telefone" />:
@@ -44,7 +44,7 @@
                         <fmt:message key="usuario.nome" />:
                     </div>
                     <div class="col-md-3">
-                        <fmt:message key="usuario.funcao" />:
+                        <fmt:message key="funcao" />:
                     </div>
                     <div class="col-md-3">
                         <fmt:message key="usuario.siglasecao" />:
