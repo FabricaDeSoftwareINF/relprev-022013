@@ -74,6 +74,23 @@ textarea {
 	padding: 15px;
 }
 
-.avaliacaoReavaliacao .row div {
+.avaliacaoReavaliacao div.row {
 	margin: 0;
+}
+
+.risco .glyphicon.glyphicon-info-sign {
+	cursor: pointer;
+}
+
+.conteudoModal {
+	width: 1040px;
+	margin: auto;
+}
+
+div.dialogoModal.modal-dialog {
+	width: 100% !important;
+}
+
+.modal-backdrop.fade.in {
+	opacity: 0.5;
 }
