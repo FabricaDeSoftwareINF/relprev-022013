@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,9 +23,9 @@
 			        <h1 class="labelMaiuscula"><fmt:message key="relatorio.prevencao" /></h1>
 			    </div>			    
 			    <div id="aviso">
-			        De acordo com as regulamentaÁıes brasileiras, este relato (ou parte dele) <b>somente ser· usado para a 
-			        prevenÁ„o de acidentes aeron·uticos</b>, a fim de aumentar a seguranÁa operacional. Este relato n„o precisa
-			        ser identificado, se o for, o relator ser· informado sobre as medidas adotadas.
+			        De acordo com as regulamenta√ß√µes brasileiras, este relato (ou parte dele) <b>somente ser√° usado para a 
+			        preven√ß√£o de acidentes aeron√°uticos</b>, a fim de aumentar a seguran√ßa operacional. Este relato n√£o precisa
+			        ser identificado, se o for, o relator ser√° informado sobre as medidas adotadas.
 			    </div>			    
 			    <hr/>
 			    <form action="<c:url value='/relatorio'/>" method="post" enctype="multipart/form-data">
