@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
-import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
-import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
+import static br.ufg.inf.es.relprev.client.RelprevConfig.ACTION_CREATE;
+import static br.ufg.inf.es.relprev.client.RelprevConfig.URL_SERVIDOR;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.*;
 import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
 import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
 
@@ -19,30 +19,61 @@ import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
  */
 public abstract class ObjetoDeDominio {
     @JsonProperty
-    protected Integer id;
+    public Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public List list() throws RequestException {
         String url = URL_SERVIDOR + "/" + getController();
-        return ((Response) (fromJson(doGet(url), getResponseClass()))).getData();
+
+        Response response = ((Response) (fromJson(doGet(url), getResponseClass())));
+
+        if (!response.getSuccess()) {
+            throw new RequestException(response.getMessage());
+        }
+
+        return response.getData();
     }
 
     public ObjetoDeDominio get(Integer id) throws RequestException {
         String url = URL_SERVIDOR + "/" + getController() + "/" + id;
-        return (ObjetoDeDominio) ((Response) (fromJson(doGet(url), getResponseClass()))).getData().get(0);
+        Response response = ((Response) (fromJson(doGet(url), getResponseClass())));
+        return (ObjetoDeDominio) response.getData().get(0);
     }
 
     public ObjetoDeDominio save() throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_CREATE;
-        Response response = (Response) fromJson(doPost(url, toJson(this)), getResponseClass());
+        Response response = null;
+        if (this.getId() == null) {
+            String url = URL_SERVIDOR + "/" + getController() + "/" + ACTION_CREATE;
+            response = (Response) fromJson(doPost(url, toJson(this)), getResponseClass());
+            this.id = ((ObjetoDeDominio) response.getData().get(0)).id;
+        } else {
+            String url = URL_SERVIDOR + "/" + getController() + "/" + ACTION_CREATE;
+            response = (Response) fromJson(doPut(url, toJson(this)), getResponseClass());
+        }
+
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
-        this.id = ((ObjetoDeDominio) response.getData().get(0)).id;
+
         return this;
     }
 
-    public ObjetoDeDominio delete() {
-        return null;
+    public ObjetoDeDominio delete() throws RequestException {
+        String url = URL_SERVIDOR + "/" + getController() + id;
+        Response response = (Response) fromJson(doDelete(url), getResponseClass());
+
+        if (!response.getSuccess()) {
+            throw new RequestException(response.getMessage());
+        }
+
+        return this;
     }
 
     protected abstract String getController();

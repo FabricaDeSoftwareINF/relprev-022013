@@ -7,24 +7,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Relator {
 
-	private String nome;
+    private String nome;
     @JsonProperty(value = "email")
-    private String contato;
+    private String email;
+    @JsonProperty(value = "telefone")
+    private String telefone;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getTelefone() {
+        return telefone;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-	public void setContato(String contato) {
-		this.contato = contato;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getContato() {
-		return contato;
-	}
-	
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

@@ -19,7 +19,7 @@ public class RelprevJsonConverterTest extends TestCase {
 
         Relator relator = new Relator();
         relator.setNome("Relator Show");
-        relator.setContato("RelatorShow@Aq.ui");
+        relator.setEmail("RelatorShow@Aq.ui");
 
         EloSipaer eloSipaer = new EloSipaer();
         eloSipaer.setOrganizacao("Des. Organização ");

@@ -33,12 +33,10 @@ public class EloSipaer extends ObjetoDeDominio {
         this.sigla = siglaOrganizacao;
     }
 
-    @Override
     protected String getController() {
         return CONTROLLER_ELO_SIPAER;
     }
 
-    @Override
     protected Class getResponseClass() {
         return EloSipaerResponse.class;
     }
