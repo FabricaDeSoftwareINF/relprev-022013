@@ -31,11 +31,6 @@
             </label>
             <div class="input-group">
                 <input type="text" class="form-control calendario" id="data"  value="${relprev.data}"/>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </button>
-                </span>
             </div>
         </div>
         <div class="form-group col-md-4">
@@ -44,11 +39,6 @@
             </label>
             <div class="input-group">
                 <input type="text" class="form-control hora" id="hora"  value="${relprev.hora}"/>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </button>
-                </span>
             </div>
         </div>
     </div>
