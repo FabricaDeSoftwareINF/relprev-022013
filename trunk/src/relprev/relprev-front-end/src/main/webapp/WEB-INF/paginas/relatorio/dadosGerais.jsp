@@ -48,7 +48,20 @@
 			<div class="row">
 				<div class="risco">
 					<label class="labelMaiuscula"><fmt:message key="risco" /></label>
-					<span class="glyphicon glyphicon-info-sign"></span>
+					<span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modalTabelaRisco"></span>					
+					<div class="modal fade" id="modalTabelaRisco" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="dialogoModal modal-dialog">
+					    <div class="conteudoModal modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        <h4 class="modal-title" id="myModalLabel">Matriz de Avaliação de Risco</h4>
+					      </div>
+					      <div class="modal-body">
+					        <img src="../img/tabela-risco.jpg"/>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 				</div>
 				<div class="reavaliacao col-md-6">
 					<label class="labelMaiuscula"><fmt:message key="reavaliacao" /></label>
