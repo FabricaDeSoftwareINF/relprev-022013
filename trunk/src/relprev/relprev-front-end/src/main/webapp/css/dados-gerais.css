@@ -92,5 +92,5 @@ div.dialogoModal.modal-dialog {
 }
 
 .modal-backdrop.fade.in {
-	opacity: 0.5;
+	opacity: 0.1;
 }
