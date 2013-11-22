@@ -40,7 +40,8 @@ public class RelatorioController extends ControllerPadrao<Relprev> {
 		logger.info("Pessoal envolvido: " + relprev.getPessoalEnvolvido());
 		if(relprev.getRelator() != null){
 			logger.info("Nome do relator: " + relprev.getRelator().getNome());
-			logger.info("Contato do relator: " + relprev.getRelator().getContato());
+			logger.info("Telefone do relator: " + relprev.getRelator().getTelefone());
+			logger.info("Email do relator: " + relprev.getRelator().getEmail());
 		}
 		
 		if(files!= null && files.size() > 0){
