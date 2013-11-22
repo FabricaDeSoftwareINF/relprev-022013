@@ -57,7 +57,7 @@ public class RelprevTests extends TestCase {
         String nome = "RelatorShow";
         String contato = "RelatorShow@show.com";
         relator.setNome(nome);
-        relator.setContato(contato);
+        relator.setEmail(contato);
         relprev.setRelator(relator);
         assertEquals(nome, relprev.getNomeRelator());
         assertEquals(contato, relprev.getContatoRelator());

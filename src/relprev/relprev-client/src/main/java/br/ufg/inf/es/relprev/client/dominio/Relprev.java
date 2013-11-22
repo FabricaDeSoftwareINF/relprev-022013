@@ -138,7 +138,7 @@ public class Relprev extends ObjetoDeDominio {
     @JsonIgnore
     public String getContatoRelator() {
         if (relator != null) {
-            return relator.getContato();
+            return relator.getEmail();
         }
         return "";
     }
