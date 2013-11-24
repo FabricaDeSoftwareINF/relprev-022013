@@ -31,27 +31,27 @@ public class Log extends AbstractEntity<Log> {
     @Column(name = "descricao_alteracao", length = 5000, nullable = false)
     private String descricaoAlteracao;
 
-    public TipoAlteracao getTipoAlteracao() {
+    public TipoAlteracao getTipoAlteracao() { // NOSONAR
         return this.tipoAlteracao;
     }
 
-    public void setTipoAlteracao(final TipoAlteracao tipoAlteracao) {
+    public void setTipoAlteracao(final TipoAlteracao tipoAlteracao) { // NOSONAR
         this.tipoAlteracao = tipoAlteracao;
     }
 
-    public String getTabelaAlterada() {
+    public String getTabelaAlterada() { // NOSONAR
         return this.tabelaAlterada;
     }
 
-    public void setTabelaAlterada(final String tabelaAlterada) {
+    public void setTabelaAlterada(final String tabelaAlterada) { // NOSONAR
         this.tabelaAlterada = tabelaAlterada;
     }
 
-    public String getDescricaoAlteracao() {
+    public String getDescricaoAlteracao() { // NOSONAR
         return this.descricaoAlteracao;
     }
 
-    public void setDescricaoAlteracao(final String descricaoAlteracao) {
+    public void setDescricaoAlteracao(final String descricaoAlteracao) { // NOSONAR
         this.descricaoAlteracao = descricaoAlteracao;
     }
 

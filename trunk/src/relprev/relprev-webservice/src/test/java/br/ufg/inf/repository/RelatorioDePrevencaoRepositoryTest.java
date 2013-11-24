@@ -20,7 +20,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import br.ufg.inf.model.EloSipaer;
-import br.ufg.inf.model.RelPrev;
+import br.ufg.inf.model.RelatorioPrevencao;
 import br.ufg.inf.model.Relator;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
@@ -40,7 +40,7 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
  * 
  * @created 05/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
- * @see RelPrev
+ * @see RelatorioPrevencao
  * @see RelatorioDePrevencaoRepository
  */
 @Ignore
@@ -70,7 +70,7 @@ public class RelatorioDePrevencaoRepositoryTest {
     @DatabaseSetup(SAVED_DB)
     @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
-        final RelPrev relPrevUpdate = this.getrRelPrevTest();
+        final RelatorioPrevencao relPrevUpdate = this.getrRelPrevTest();
         relPrevUpdate.setEnvolvidos("Teste Envolvidos Alterados");
         relPrevUpdate.setDescricaoSituacaoPerigosa("Teste Descrição Alterada");
         this.repository.save(relPrevUpdate);
@@ -98,7 +98,7 @@ public class RelatorioDePrevencaoRepositoryTest {
     @Test
     @DatabaseSetup(INITIAL_DB)
     public void testFindByLocalIgnoreCase() {
-        final List<RelPrev> resultList = this.repository.findByLocalIgnoreCase("Local 1");
+        final List<RelatorioPrevencao> resultList = this.repository.findByLocalIgnoreCase("Local 1");
         Assert.assertThat(resultList.size(), Matchers.is(1));
         Assert.assertThat(
                 resultList,
@@ -111,7 +111,7 @@ public class RelatorioDePrevencaoRepositoryTest {
     @Test
     @DatabaseSetup(INITIAL_DB)
     public void testFindByDescricaoSituacaoPerigosaContainsIgnoreCase() {
-        final List<RelPrev> resultList = this.repository.findByDescricaoSituacaoPerigosaContainsIgnoreCase("Descrição 2");
+        final List<RelatorioPrevencao> resultList = this.repository.findByDescricaoSituacaoPerigosaContainsIgnoreCase("Descrição 2");
         Assert.assertThat(resultList.size(), Matchers.is(1));
         Assert.assertThat(
                 resultList,
@@ -121,7 +121,7 @@ public class RelatorioDePrevencaoRepositoryTest {
                         Matchers.hasProperty("descricaoSituacaoPerigosa", Matchers.is("Descrição 2")))));
     }
 
-    private RelPrev getrRelPrevTest() {
+    private RelatorioPrevencao getrRelPrevTest() {
         // elo sipaer
         final EloSipaer elo = new EloSipaer();
         elo.setOrganizacao("Organização 3");
@@ -134,17 +134,17 @@ public class RelatorioDePrevencaoRepositoryTest {
         relator.setTelefoneCelular("3333333333");
         relator.setTelefoneResidencial("3333333333");
 
-        final RelPrev relPrev = new RelPrev();
+        final RelatorioPrevencao relPrev = new RelatorioPrevencao();
         relPrev.setEnvolvidos("Envolvidos RelPrev 3");
         relPrev.setLocal("Local 3");
-        relPrev.setDataSituacaoPerigosa(this.getDataInsercaoAlteracao());
+        relPrev.setDataSituacaoPerigosa(this.getDataSituacaoPerigosa());
         relPrev.setEloSipaer(elo);
         relPrev.setRelator(relator);
         relPrev.setSituacao("tensa");
         return relPrev;
     }
 
-    private Date getDataInsercaoAlteracao() {
+    private Date getDataSituacaoPerigosa() {
         final Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, 2013);
         cal.set(Calendar.MONTH, Calendar.NOVEMBER);

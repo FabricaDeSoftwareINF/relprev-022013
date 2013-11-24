@@ -1,16 +1,16 @@
 package br.ufg.inf.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,28 +30,28 @@ public class Observacao extends AbstractEntity<Observacao> {
 
     private static final long serialVersionUID = -1663284302278096055L;
 
-    @JsonProperty
-    @JoinColumn(name = "analise_id")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Analise analise;
+    @JsonIgnore
+    @OneToOne(optional = false)
+    @JoinColumn(name = "relprev_id")
+    private RelatorioPrevencao relPrev;
 
     @JsonProperty
     @Column(length = 5000)
     private String descricao;
 
-    public Analise getAnalise() {
-        return this.analise;
+    public RelatorioPrevencao getRelPrev() { // NOSONAR
+        return this.relPrev;
     }
 
-    public void setAnalise(final Analise analise) {
-        this.analise = analise;
+    public void setRelPrev(final RelatorioPrevencao relPrev) { // NOSONAR
+        this.relPrev = relPrev;
     }
 
-    public String getDescricao() {
+    public String getDescricao() { // NOSONAR
         return this.descricao;
     }
 
-    public void setDescricao(final String descricao) {
+    public void setDescricao(final String descricao) { // NOSONAR
         this.descricao = descricao;
     }
 

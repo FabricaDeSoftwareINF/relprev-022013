@@ -52,37 +52,36 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
     @NotNull(message = "{validation.Taxonomia.padraoMinimo.NotNull.message}")
     private Boolean padraoMinimo;
 
-    public String getNome() {
+    public String getNome() { // NOSONAR
         return this.nome;
     }
 
-    public void setNome(final String nome) {
+    public void setNome(final String nome) { // NOSONAR
         this.nome = nome;
     }
 
-    public Boolean getStatus() {
+    public Boolean getStatus() { // NOSONAR
         return this.status;
     }
 
-    public void setStatus(final Boolean status) {
+    public void setStatus(final Boolean status) { // NOSONAR
         this.status = status;
     }
 
-    public Boolean getPadraoMinimo() {
+    public Boolean getPadraoMinimo() { // NOSONAR
         return this.padraoMinimo;
     }
 
-    public void setPadraoMinimo(final Boolean padraoMinimo) {
+    public void setPadraoMinimo(final Boolean padraoMinimo) { // NOSONAR
         this.padraoMinimo = padraoMinimo;
     }
 
     /*
      * FORMATAÇÕES
-     * 
      * Existem duas formatações para os itens de uma taxonomia, em que o usuário deve escolher uma.
-     * 
      * 1). A taxonomia tem somente um campo para uma Descrição(TEXTO(600))
-     * 2). A taxonomia tem uma lista de categorias(TEXTO(15)), onde cada categoria pode conter uma lista com sub-categorias(TEXTO(15)).
+     * 2). A taxonomia tem uma lista de categorias(TEXTO(15)), onde cada categoria pode conter uma lista com
+     * sub-categorias(TEXTO(15)).
      */
     @JsonProperty
     @Column(length = 600)
@@ -96,19 +95,19 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
         inverseJoinColumns = {@JoinColumn(name = "categoria_id")})
     private Set<Categoria> categorias;
 
-    public String getDescricao() {
+    public String getDescricao() { // NOSONAR
         return this.descricao;
     }
 
-    public void setDescricao(final String descricao) {
+    public void setDescricao(final String descricao) { // NOSONAR
         this.descricao = descricao;
     }
 
-    public Set<Categoria> getCategorias() {
+    public Set<Categoria> getCategorias() { // NOSONAR
         return this.categorias;
     }
 
-    public void setCategorias(final Set<Categoria> categorias) {
+    public void setCategorias(final Set<Categoria> categorias) { // NOSONAR
         this.categorias = categorias;
     }
 

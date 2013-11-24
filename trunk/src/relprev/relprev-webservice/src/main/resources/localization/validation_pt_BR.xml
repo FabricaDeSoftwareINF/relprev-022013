@@ -21,18 +21,8 @@
 	<entry key="validation.Encaminhamento.destinatario.Size.message">O destinatário do Encaminhamento deve possuir entre 1 e 60 caracteres</entry>
 	<entry key="validation.Encaminhamento.remetente.NotNull.message">O remetente do Encaminhamento deve ser informado</entry>
 	<entry key="validation.Encaminhamento.remetente.Size.message">O remetente do Encaminhamento deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Encaminhamento.data.Future.message">A data de Encaminhamento não pode ser anterior à data de Inserção do Relatório de Prevenção</entry>
 	<entry key="validation.Encaminhamento.data.NotNull.message">A data do Encaminhamento deve ser informada</entry>
-	<entry key="validation.Encaminhamento.data.Future.message">A data do Encaminhamento não pode ser uma data passada</entry>
-
-	<!-- entidade Resposta -->
-	<entry key="validation.Resposta.descricao.NotNull.message">A descrição da Resposta deve ser informada</entry>
-	<entry key="validation.Resposta.descricao.Size.message"> A descrição da Resposta deve possuir entre 1 e 600 caracteres</entry>
-	<entry key="validation.Resposta.destinatario.NotNull.message">O destinatário da Resposta deve ser informado</entry>
-	<entry key="validation.Resposta.destinatario.Size.message">O destinatário da Resposta deve possuir entre 1 e 60 caracteres</entry>
-	<entry key="validation.Resposta.remetente.NotNull.message">O remetente da Resposta deve ser informado</entry>
-	<entry key="validation.Resposta.remetente.Size.message">O remetente da Resposta deve possuir entre 1 e 60 caracteres</entry>
-	<entry key="validation.Resposta.data.NotNull.message">A data da Resposta deve ser informada</entry>
-	<entry key="validation.Resposta.data.Future.message">A data da Resposta não pode ser uma data passada</entry>
 
 	<!-- entidade Categoria -->
 	<entry key="validation.Categoria.nome.NotNull.message">A Categoria deve ser informada</entry>
@@ -50,6 +40,12 @@
 	<entry key="validation.Relator.telefoneCelular.Telefone.message">Número de telefone celular informado para o Relator não é válido</entry>
 	<entry key="validation.Relator.telefoneResidencial.Telefone.message">Número de telefone residencial informado para o Relator não é válido</entry>
 
+	<!-- entidade ParecerSetor -->
+	<entry key="validation.ParecerSetor.descricao.NotNull.message">A descrição do Parecer do Setor deve ser informada</entry>
+	<entry key="validation.ParecerSetor.descricao.Size.message">A descrição do Parecer do Setor deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.ParecerSetor.data.Future.message">A data de Parecer do Setor não pode ser anterior à data de Inserção do Relatório de Prevenção</entry>
+	<entry key="validation.ParecerSetor.data.NotNull.message">A data do Parecer do Setor deve ser informada</entry>
+
 	<!-- entidade RelPrev -->
 	<entry key="validation.RelPrev.envolvidos.NotNull.message">O(s) envolvido(s) no Relatório de Prevenção (RelPrev) deve(m) ser informado(s)</entry>
 	<entry key="validation.RelPrev.envolvidos.Size.message">O conteúdo do campo dos envolvidos no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
@@ -60,11 +56,15 @@
 	<entry key="validation.RelPrev.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser informada</entry>
 	<entry key="validation.RelPrev.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data futura</entry>
 
-	<!-- entidade ParecerSetor -->
-	<entry key="validation.ParecerSetor.descricao.NotNull.message">A descrição do Parecer do Setor deve ser informada</entry>
-	<entry key="validation.ParecerSetor.descricao.Size.message">A descrição do Parecer do Setor deve possuir entre 1 e 600 caracteres</entry>
-	<entry key="validation.ParecerSetor.data.NotNull.message">A data do Parecer do Setor deve ser informada</entry>
-	<entry key="validation.ParecerSetor.data.Future.message">A data do Parecer do Setor não pode ser uma data passada</entry>
+	<!-- entidade Resposta -->
+	<entry key="validation.Resposta.descricao.NotNull.message">A descrição da Resposta deve ser informada</entry>
+	<entry key="validation.Resposta.descricao.Size.message"> A descrição da Resposta deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.Resposta.destinatario.NotNull.message">O destinatário da Resposta deve ser informado</entry>
+	<entry key="validation.Resposta.destinatario.Size.message">O destinatário da Resposta deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Resposta.remetente.NotNull.message">O remetente da Resposta deve ser informado</entry>
+	<entry key="validation.Resposta.remetente.Size.message">O remetente da Resposta deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.Resposta.data.Future.message">A data de Resposta não pode ser anterior à data de Inserção do Relatório de Prevenção</entry>
+	<entry key="validation.Resposta.data.NotNull.message">A data da Resposta deve ser informada</entry>
 
 	<!-- entidade Situacao -->
 	<entry key="validation.Situacao.temEncaminhamento.NotNull.message">Deve ser informado se o Relatório de Prevenção tem ou não Encaminhamento</entry>

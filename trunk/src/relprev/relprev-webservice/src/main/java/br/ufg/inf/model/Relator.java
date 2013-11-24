@@ -48,38 +48,39 @@ public class Relator extends AbstractEntity<Relator> {
 
     @JsonProperty
     @Column(length = 120)
-    @Email(message = "{validation.Relator.email.Email.message}", regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
+    @Email(message = "{validation.Relator.email.Email.message}",
+        regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;
 
-    public String getNome() {
+    public String getNome() { // NOSONAR
         return this.nome;
     }
 
-    public void setNome(final String nome) {
+    public void setNome(final String nome) { // NOSONAR
         this.nome = nome;
     }
 
-    public String getTelefoneCelular() {
+    public String getTelefoneCelular() { // NOSONAR
         return this.telefoneCelular;
     }
 
-    public void setTelefoneCelular(final String telefoneCelular) {
+    public void setTelefoneCelular(final String telefoneCelular) { // NOSONAR
         this.telefoneCelular = telefoneCelular;
     }
 
-    public String getTelefoneResidencial() {
+    public String getTelefoneResidencial() { // NOSONAR
         return this.telefoneResidencial;
     }
 
-    public void setTelefoneResidencial(final String telefoneResidencial) {
+    public void setTelefoneResidencial(final String telefoneResidencial) { // NOSONAR
         this.telefoneResidencial = telefoneResidencial;
     }
 
-    public String getEmail() {
+    public String getEmail() { // NOSONAR
         return this.email;
     }
 
-    public void setEmail(final String email) {
+    public void setEmail(final String email) { // NOSONAR
         this.email = email;
     }
 

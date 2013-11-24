@@ -26,6 +26,7 @@
 		<log4j.version>1.2.17</log4j.version>
 		<mockito.version>1.9.5</mockito.version>
 		<servlet-api.version>2.5</servlet-api.version>
+		<commons-lang.version>3.1</commons-lang.version>
 		<commons-logging.version>1.1.3</commons-logging.version>
 
 		<!-- versões de dependências comuns a mais de um projeto -->
@@ -113,18 +114,6 @@
 
 	<!-- dependências comuns a todos os projetos -->
 	<dependencies>
-		<!-- dependencies para log -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>${commons-logging.version}</version>
-		</dependency>
-
 		<!-- dependências para teste -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -143,6 +132,26 @@
 	<!-- dependências comuns a mais de um projeto -->
 	<dependencyManagement>
 		<dependencies>
+			<!-- dependências para log -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+
+			<!-- dependências apache commons -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging.version}</version>
+			</dependency>
+
+			<!-- dependência para servlet -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
@@ -150,6 +159,7 @@
 				<scope>provided</scope>
 			</dependency>
 
+			<!-- dependências para json -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>

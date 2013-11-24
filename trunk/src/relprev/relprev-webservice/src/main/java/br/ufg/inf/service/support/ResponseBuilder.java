@@ -1,13 +1,12 @@
 package br.ufg.inf.service.support;
 
-import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.util.ReflectionUtils;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.util.ReflectionUtil;
 
 /**
  * Builder para construção de objetos para retorno dos endpoints REST
@@ -32,7 +31,7 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
      * @return {@link ResponseBuilder}
      */
     public ResponseBuilder<E> success(final Boolean success) {
-        setField("success", success);
+        ReflectionUtil.setField(this.response, "success", success);
         return this;
     }
 
@@ -44,7 +43,7 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
      * @return {@link ResponseBuilder}
      */
     public ResponseBuilder<E> data(final List<E> data) {
-        setField("data", data);
+        ReflectionUtil.setField(this.response, "data", data);
         return this;
     }
 
@@ -59,7 +58,7 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
         final List<E> dataList = new LinkedList<E>();
         if (data != null) {
             dataList.add(data);
-            setField("data", dataList);
+            ReflectionUtil.setField(this.response, "data", dataList);
         }
         return this;
     }
@@ -72,7 +71,7 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
      * @return {@link ResponseBuilder}
      */
     public ResponseBuilder<E> count(final Long count) {
-        setField("count", count);
+        ReflectionUtil.setField(this.response, "count", count);
         return this;
     }
 
@@ -84,7 +83,7 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
      * @return {@link ResponseBuilder}
      */
     public ResponseBuilder<E> message(final String message) {
-        setField("message", message);
+        ReflectionUtil.setField(this.response, "message", message);
         return this;
     }
 
@@ -96,27 +95,12 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
      * @return {@link Response}
      */
     public ResponseBuilder<E> status(final HttpStatus status) {
-        setField("status", status.value());
+        ReflectionUtil.setField(this.response, "status", status.value());
         return this;
     }
 
     public Response<E> build() {
         return this.response;
-    }
-
-    /**
-     * Seta em um atributo de uma classe o atributo com nome '{@code name}' o valor '{@code value}' no objeto desta instância
-     *
-     * @param name nome do atributo a ser setado o conteúdo
-     * @param value conteúdo a ser setado
-     * @see ReflectionUtils#findField(Class, String)
-     * @see ReflectionUtils#makeAccessible(Field)
-     * @see ReflectionUtils#setField(Field, Object, Object)
-     */
-    private void setField(final String name, final Object value) {
-        final Field field = ReflectionUtils.findField(this.response.getClass(), name);
-        ReflectionUtils.makeAccessible(field);
-        ReflectionUtils.setField(field, this.response, value);
     }
 
 }

@@ -78,6 +78,21 @@
 			</pluginRepositories>
 		</profile>
 		<profile>
+			<id>homo</id>
+			<properties>
+				<environment>prod</environment>
+				<log4j.level>warn</log4j.level>
+
+				<!-- hibernate properties -->
+				<hibernate.show.sql>true</hibernate.show.sql>
+				<hibernate.format.sql>false</hibernate.format.sql>
+				<hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
+				<hibernate.use_sql_comments>false</hibernate.use_sql_comments>
+				<hibernate.generate_statistics>false</hibernate.generate_statistics>
+				<hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
+			</properties>
+		</profile>
+		<profile>
 			<id>prod</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -141,6 +156,28 @@
 	</build>
 
 	<dependencies>
+		<!-- log -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${sl4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${sl4j.version}</version>
+		</dependency>
+
+		<!-- commons dependencies -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+
 		<!-- dependências para persistência -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -256,17 +293,6 @@
 			<artifactId>c3p0</artifactId>
 			<version>${c3p0.version}</version>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${sl4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${sl4j.version}</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 import br.ufg.inf.model.EloSipaer;
 import br.ufg.inf.model.test.EloSipaerBuilder;
 import br.ufg.inf.repository.EloSipaerRepository;
-import br.ufg.inf.service.support.ReponseMessages;
+import br.ufg.inf.service.support.ResponseMessages;
 import br.ufg.inf.service.support.WebServicesURL;
 
 /**
@@ -72,7 +72,7 @@ public class EloSipaerWebServiceTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].organizacao", Matchers.is("Organizacao 1")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].sigla", Matchers.is("OES1")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.count", Matchers.is(1L)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message", Matchers.is(ReponseMessages.FIND_MESSAGE)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message", Matchers.is(ResponseMessages.FIND_MESSAGE)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.status", Matchers.is(HttpStatus.OK.value())));
         Mockito.verify(this.eloRepository, Mockito.times(1)).findOne(1L);
         Mockito.verifyNoMoreInteractions(this.eloRepository);

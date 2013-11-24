@@ -41,40 +41,40 @@ public class Situacao extends AbstractEntity<Situacao> {
     @NotNull(message = "{validation.Situacao.temAcaoRecomendada.NotNull.message}")
     private Boolean temAcaoRecomendada;
 
-    @JsonProperty
+    @JsonProperty(value = "concluido")
     @Column(nullable = false, name = "foi_concluido")
     @NotNull(message = "{validation.Situacao.foiConcluido.NotNull.message}")
     private Boolean foiConcluido;
 
-    public Boolean getTemEncaminhamento() {
+    public Boolean getTemEncaminhamento() { // NOSONAR
         return this.temEncaminhamento;
     }
 
-    public void setTemEncaminhamento(final Boolean temEncaminhamento) {
+    public void setTemEncaminhamento(final Boolean temEncaminhamento) { // NOSONAR
         this.temEncaminhamento = temEncaminhamento;
     }
 
-    public Boolean getTemDivulgacao() {
+    public Boolean getTemDivulgacao() { // NOSONAR
         return this.temDivulgacao;
     }
 
-    public void setTemDivulgacao(final Boolean temDivulgacao) {
+    public void setTemDivulgacao(final Boolean temDivulgacao) { // NOSONAR
         this.temDivulgacao = temDivulgacao;
     }
 
-    public Boolean getTemAcaoRecomendada() {
+    public Boolean getTemAcaoRecomendada() { // NOSONAR
         return this.temAcaoRecomendada;
     }
 
-    public void setTemAcaoRecomendada(final Boolean temAcaoRecomendada) {
+    public void setTemAcaoRecomendada(final Boolean temAcaoRecomendada) { // NOSONAR
         this.temAcaoRecomendada = temAcaoRecomendada;
     }
 
-    public Boolean getFoiConcluido() {
+    public Boolean getFoiConcluido() { // NOSONAR
         return this.foiConcluido;
     }
 
-    public void setFoiConcluido(final Boolean foiConcluido) {
+    public void setFoiConcluido(final Boolean foiConcluido) { // NOSONAR
         this.foiConcluido = foiConcluido;
     }
 

@@ -19,6 +19,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import br.ufg.inf.model.Taxonomia;
+import br.ufg.inf.model.test.TaxonomiaBuilder;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -59,11 +60,8 @@ public class TaxonomiaRepositoryTest {
     @DatabaseSetup(SAVED_DB)
     @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
-        final Taxonomia taxonomia = new Taxonomia();
-        taxonomia.setId(1L);
-        taxonomia.setNome("Nova Versão da Taxonomia 1");
-        taxonomia.setStatus(true);
-        taxonomia.setPadraoMinimo(false);
+        final Taxonomia taxonomia = new TaxonomiaBuilder().id(1L).nome("Nova Versão da Taxonomia 1").status(true).padrao(false)
+                .build();
         this.repository.save(taxonomia);
     }
 
@@ -102,11 +100,7 @@ public class TaxonomiaRepositoryTest {
     }
 
     private Taxonomia getTaxonomia() {
-        final Taxonomia taxonomia = new Taxonomia();
-        taxonomia.setNome("Taxonomia 3");
-        taxonomia.setStatus(false);
-        taxonomia.setPadraoMinimo(true);
-        return taxonomia;
+        return new TaxonomiaBuilder().nome("Taxonomia 3").status(false).padrao(true).build();
     }
 
 }

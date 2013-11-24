@@ -49,27 +49,27 @@ public class Categoria extends AbstractEntity<Categoria> {
     @Size(min = 1, message = "{validation.Categoria.nome.Size.message}")
     private String nome;
 
-    public Categoria getCategoriaPai() {
+    public Categoria getCategoriaPai() { // NOSONAR
         return this.categoriaPai;
     }
 
-    public void setCategoriaPai(final Categoria categoriaPai) {
+    public void setCategoriaPai(final Categoria categoriaPai) { // NOSONAR
         this.categoriaPai = categoriaPai;
     }
 
-    public Taxonomia getTaxonomia() {
+    public Taxonomia getTaxonomia() { // NOSONAR
         return this.taxonomia;
     }
 
-    public void setTaxonomia(final Taxonomia taxonomia) {
+    public void setTaxonomia(final Taxonomia taxonomia) { // NOSONAR
         this.taxonomia = taxonomia;
     }
 
-    public String getNome() {
+    public String getNome() { // NOSONAR
         return this.nome;
     }
 
-    public void setNome(final String nome) {
+    public void setNome(final String nome) { // NOSONAR
         this.nome = nome;
     }
 
