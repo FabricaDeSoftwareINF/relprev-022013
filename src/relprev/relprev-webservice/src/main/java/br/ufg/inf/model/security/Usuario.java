@@ -26,7 +26,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Entity
 @Hiddenable
-@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "usuario", "id"})) // TODO verificar constraint
+@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "usuario", "id"}))
+// TODO verificar constraint
 @JsonInclude(Include.NON_EMPTY)
 @Updatable(newinsert = true, updatable = false)
 public class Usuario extends AbstractEntity<Usuario> {
@@ -35,7 +36,8 @@ public class Usuario extends AbstractEntity<Usuario> {
 
     @JsonProperty
     @Column(length = 120)
-    @Email(message = "{validation.Usuario.email.Email.message}", regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
+    @Email(message = "{validation.Usuario.email.Email.message}",
+        regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;
 
     @JsonProperty
@@ -95,91 +97,91 @@ public class Usuario extends AbstractEntity<Usuario> {
     @NotNull(message = "{validation.Usuario.ativo.NotNull.message}")
     private Boolean ativo;
 
-    public String getEmail() {
+    public String getEmail() { // NOSONAR
         return this.email;
     }
 
-    public void setEmail(final String email) {
+    public void setEmail(final String email) { // NOSONAR
         this.email = email;
     }
 
-    public String getEspecialidade() {
+    public String getEspecialidade() { // NOSONAR
         return this.especialidade;
     }
 
-    public void setEspecialidade(final String especialidade) {
+    public void setEspecialidade(final String especialidade) { // NOSONAR
         this.especialidade = especialidade;
     }
 
-    public String getFuncao() {
+    public String getFuncao() { // NOSONAR
         return this.funcao;
     }
 
-    public void setFuncao(final String funcao) {
+    public void setFuncao(final String funcao) { // NOSONAR
         this.funcao = funcao;
     }
 
-    public String getNomeCompleto() {
+    public String getNomeCompleto() { // NOSONAR
         return this.nomeCompleto;
     }
 
-    public void setNomeCompleto(final String nomeCompleto) {
+    public void setNomeCompleto(final String nomeCompleto) { // NOSONAR
         this.nomeCompleto = nomeCompleto;
     }
 
-    public String getPosto() {
+    public String getPosto() { // NOSONAR
         return this.posto;
     }
 
-    public void setPosto(final String posto) {
+    public void setPosto(final String posto) { // NOSONAR
         this.posto = posto;
     }
 
-    public String getSiglaSecao() {
+    public String getSiglaSecao() { // NOSONAR
         return this.siglaSecao;
     }
 
-    public void setSiglaSecao(final String siglaSecao) {
+    public void setSiglaSecao(final String siglaSecao) { // NOSONAR
         this.siglaSecao = siglaSecao;
     }
 
-    public String getTelefoneCelular() {
+    public String getTelefoneCelular() { // NOSONAR
         return this.telefoneCelular;
     }
 
-    public void setTelefoneCelular(final String telefoneCelular) {
+    public void setTelefoneCelular(final String telefoneCelular) { // NOSONAR
         this.telefoneCelular = telefoneCelular;
     }
 
-    public String getTelefoneFixo() {
+    public String getTelefoneFixo() { // NOSONAR
         return this.telefoneFixo;
     }
 
-    public void setTelefoneFixo(final String telefoneFixo) {
+    public void setTelefoneFixo(final String telefoneFixo) { // NOSONAR
         this.telefoneFixo = telefoneFixo;
     }
 
-    public String getUsuario() {
+    public String getUsuario() { // NOSONAR
         return this.usuario;
     }
 
-    public void setUsuario(final String usuario) {
+    public void setUsuario(final String usuario) { // NOSONAR
         this.usuario = usuario;
     }
 
-    public String getSenha() {
+    public String getSenha() { // NOSONAR
         return this.senha;
     }
 
-    public void setSenha(final String senha) {
+    public void setSenha(final String senha) { // NOSONAR
         this.senha = senha;
     }
 
-    public Boolean getAtivo() {
+    public Boolean getAtivo() { // NOSONAR
         return this.ativo;
     }
 
-    public void setAtivo(final Boolean ativo) {
+    public void setAtivo(final Boolean ativo) { // NOSONAR
         this.ativo = ativo;
     }
 

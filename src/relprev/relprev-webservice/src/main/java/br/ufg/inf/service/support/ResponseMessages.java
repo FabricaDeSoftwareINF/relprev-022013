@@ -6,7 +6,7 @@ package br.ufg.inf.service.support;
  * @created 03/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
-public interface ReponseMessages {
+public interface ResponseMessages {
 
     String CREATE_MESSAGE = "Objeto criado com Sucesso";
     String UPDATE_MESSAGE = "Objeto atualizado com Sucesso";

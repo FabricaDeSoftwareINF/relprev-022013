@@ -8,11 +8,26 @@ package br.ufg.inf.service.support;
  */
 public interface WebServicesURL {
 
-    String URL_LIST = ""; // GET, POST
-    String URL_FIND = "/{id}"; // GET
-    String URL_DELETE = "{id}"; // DELETE
-    String URL_CREATE = "/create"; // POST
-    String URL_UPDATE = "/update"; // PUT
+    /**
+     * GET, POST
+     */
+    String URL_LIST = "";
+    /**
+     * GET
+     */
+    String URL_FIND = "/{id}";
+    /**
+     * DELETE
+     */
+    String URL_DELETE = "{id}";
+    /**
+     * POST
+     */
+    String URL_CREATE = "/create";
+    /**
+     * PUT
+     */
+    String URL_UPDATE = "/update";
 
     // relprev service
     String URL_RELPREV = "/relprev";

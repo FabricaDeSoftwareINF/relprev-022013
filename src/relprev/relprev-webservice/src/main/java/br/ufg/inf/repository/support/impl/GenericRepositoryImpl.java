@@ -2,6 +2,7 @@ package br.ufg.inf.repository.support.impl;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -47,9 +48,14 @@ public class GenericRepositoryImpl<E extends AbstractEntity<E>, PK extends Seria
     @Transactional
     public <S extends E> S save(final S entity) {
         Assert.notNull(entity, "A entidade não pode ser nula!");
-        entity.setDataInsercaoAlteracao(Calendar.getInstance().getTime());
+        final Date dataInsercaoAlteracao = Calendar.getInstance().getTime();
+        entity.setDataInsercaoAlteracao(dataInsercaoAlteracao);
         if (entity.getClass().isAnnotationPresent(Hiddenable.class)) {
             entity.setHidden(Boolean.FALSE);
+            /*
+             * TODO necessário incluir feature que set todos os objetos relacionados que são também hiddenable com os atributos
+             * 'hidden' e 'dataInsercaoAlteracao'
+             */
         }
         if (this.getEntityInformation().isNew(entity)) {
             this.getEntityManager().persist(entity);
@@ -58,7 +64,7 @@ public class GenericRepositoryImpl<E extends AbstractEntity<E>, PK extends Seria
             final Boolean newInsert = updatable.newinsert();
             final Boolean isUpdatable = updatable.updatable();
             if (newInsert) {
-                // atualizando o estado da versão antida da entidade
+                // atualizando o estado da versão antiga da entidade
                 final E oldEntity = this.findOne(this.isHiddenByID(entity.getId()));
                 if (oldEntity.getClass().isAnnotationPresent(Hiddenable.class)) {
                     oldEntity.setHidden(Boolean.TRUE);
@@ -68,7 +74,6 @@ public class GenericRepositoryImpl<E extends AbstractEntity<E>, PK extends Seria
                 // a nova versão é a que foi enviada
                 entity.setVersaoAnterior(oldEntity);
                 this.getEntityManager().persist(entity);
-
                 return entity;
             }
             if (isUpdatable) {

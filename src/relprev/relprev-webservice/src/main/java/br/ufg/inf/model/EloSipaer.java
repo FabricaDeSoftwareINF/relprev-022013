@@ -38,7 +38,8 @@ public class EloSipaer extends AbstractEntity<EloSipaer> {
 
     @JsonIgnore
     @JoinColumn(name = "usuario_id")
-    @ManyToOne(cascade = CascadeType.ALL) //, optional = false) TODO concluir mapeamento assim que existir validação dos usuários
+    @ManyToOne(cascade = CascadeType.ALL)
+    // , optional = false) TODO concluir mapeamento assim que existir validação dos usuários
     private Usuario usuario;
 
     @JsonProperty
@@ -53,27 +54,27 @@ public class EloSipaer extends AbstractEntity<EloSipaer> {
     @Size(min = 1, max = 20, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
     private String siglaOrganizacao;
 
-    public Usuario getUsuario() {
+    public Usuario getUsuario() { // NOSONAR
         return this.usuario;
     }
 
-    public void setUsuario(final Usuario usuario) {
+    public void setUsuario(final Usuario usuario) { // NOSONAR
         this.usuario = usuario;
     }
 
-    public String getOrganizacao() {
+    public String getOrganizacao() { // NOSONAR
         return this.organizacao;
     }
 
-    public void setOrganizacao(final String organizacao) {
+    public void setOrganizacao(final String organizacao) { // NOSONAR
         this.organizacao = organizacao;
     }
 
-    public String getSiglaOrganizacao() {
+    public String getSiglaOrganizacao() { // NOSONAR
         return this.siglaOrganizacao;
     }
 
-    public void setSiglaOrganizacao(final String siglaOrganizacao) {
+    public void setSiglaOrganizacao(final String siglaOrganizacao) { // NOSONAR
         this.siglaOrganizacao = siglaOrganizacao;
     }
 

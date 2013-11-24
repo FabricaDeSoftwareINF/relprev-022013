@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.ufg.inf.model.support.AbstractEntity;
@@ -23,16 +24,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Hiddenable
 @JsonInclude(Include.NON_EMPTY)
-@Table(name = "analises_taxonomia")
+@Table(name = "relatorio_taxonomia")
 @Updatable(newinsert = true, updatable = false)
-public class AnaliseTaxonomia extends AbstractEntity<AnaliseTaxonomia> {
+public class RelatorioTaxonomia extends AbstractEntity<RelatorioTaxonomia> {
 
     private static final long serialVersionUID = -3558622120537900967L;
 
     @JsonProperty
-    @JoinColumn(name = "analise_id")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Analise analise;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "relprev_id")
+    private RelatorioPrevencao relPrev;
 
     @JsonProperty
     @JoinColumn(name = "taxonomia_id")
@@ -44,27 +45,27 @@ public class AnaliseTaxonomia extends AbstractEntity<AnaliseTaxonomia> {
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Categoria categoria;
 
-    public Analise getAnalise() {
-        return this.analise;
+    public RelatorioPrevencao getRelPrev() { // NOSONAR
+        return this.relPrev;
     }
 
-    public void setAnalise(final Analise analise) {
-        this.analise = analise;
+    public void setRelPrev(final RelatorioPrevencao relPrev) { // NOSONAR
+        this.relPrev = relPrev;
     }
 
-    public Taxonomia getTaxonomia() {
+    public Taxonomia getTaxonomia() { // NOSONAR
         return this.taxonomia;
     }
 
-    public void setTaxonomia(final Taxonomia taxonomia) {
+    public void setTaxonomia(final Taxonomia taxonomia) { // NOSONAR
         this.taxonomia = taxonomia;
     }
 
-    public Categoria getCategoria() {
+    public Categoria getCategoria() { // NOSONAR
         return this.categoria;
     }
 
-    public void setCategoria(final Categoria categoria) {
+    public void setCategoria(final Categoria categoria) { // NOSONAR
         this.categoria = categoria;
     }
 

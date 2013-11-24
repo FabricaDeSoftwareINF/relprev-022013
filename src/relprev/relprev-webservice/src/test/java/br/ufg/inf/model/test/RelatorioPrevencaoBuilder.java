@@ -6,7 +6,7 @@ import java.util.Set;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import br.ufg.inf.model.EloSipaer;
-import br.ufg.inf.model.RelPrev;
+import br.ufg.inf.model.RelatorioPrevencao;
 import br.ufg.inf.model.Relator;
 import br.ufg.inf.model.support.Anexo;
 
@@ -15,57 +15,57 @@ import br.ufg.inf.model.support.Anexo;
  * 
  * @created 12/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
- * @see RelPrev
+ * @see RelatorioPrevencao
  */
-public class RelPrevBuilder {
+public class RelatorioPrevencaoBuilder {
 
-    private final RelPrev relPrev;
+    private final RelatorioPrevencao relPrev;
 
-    public RelPrevBuilder() {
-        this.relPrev = new RelPrev();
+    public RelatorioPrevencaoBuilder() {
+        this.relPrev = new RelatorioPrevencao();
     }
 
-    public RelPrevBuilder id(final Long id) {
+    public RelatorioPrevencaoBuilder id(final Long id) {
         ReflectionTestUtils.setField(this.relPrev, "id", id);
         return this;
     }
 
-    public RelPrevBuilder envolvidos(final String envolvidos) {
+    public RelatorioPrevencaoBuilder envolvidos(final String envolvidos) {
         ReflectionTestUtils.setField(this.relPrev, "envolvidos", envolvidos);
         return this;
     }
 
-    public RelPrevBuilder local(final String local) {
+    public RelatorioPrevencaoBuilder local(final String local) {
         ReflectionTestUtils.setField(this.relPrev, "local", local);
         return this;
     }
 
-    public RelPrevBuilder descricao(final String descricao) {
+    public RelatorioPrevencaoBuilder descricao(final String descricao) {
         ReflectionTestUtils.setField(this.relPrev, "descricaoSituacaoPerigosa", descricao);
         return this;
     }
 
-    public RelPrevBuilder data(final Date data) {
+    public RelatorioPrevencaoBuilder data(final Date data) {
         ReflectionTestUtils.setField(this.relPrev, "dataSituacaoPerigosa", data);
         return this;
     }
 
-    public RelPrevBuilder eloSipaer(final EloSipaer eloSipaer) {
+    public RelatorioPrevencaoBuilder eloSipaer(final EloSipaer eloSipaer) {
         ReflectionTestUtils.setField(this.relPrev, "eloSipaer", eloSipaer);
         return this;
     }
 
-    public RelPrevBuilder relator(final Relator relator) {
+    public RelatorioPrevencaoBuilder relator(final Relator relator) {
         ReflectionTestUtils.setField(this.relPrev, "relator", relator);
         return this;
     }
 
-    public RelPrevBuilder anexos(final Set<Anexo> anexos) {
+    public RelatorioPrevencaoBuilder anexos(final Set<Anexo> anexos) {
         ReflectionTestUtils.setField(this.relPrev, "anexos", anexos);
         return this;
     }
 
-    public RelPrev build() {
+    public RelatorioPrevencao build() {
         return this.relPrev;
     }
 
