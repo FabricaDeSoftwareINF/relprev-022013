@@ -39,7 +39,7 @@ public class Response<E extends AbstractEntity<E>> implements Serializable {
         return this.success;
     }
 
-    public void setSuccess(final Boolean success) { // NOSONAR
+    public void setSuccess(final Boolean success) {
         this.success = success;
     }
 
@@ -47,7 +47,7 @@ public class Response<E extends AbstractEntity<E>> implements Serializable {
         return this.data;
     }
 
-    public void setData(final List<E> data) { // NOSONAR
+    public void setData(final List<E> data) {
         this.data = data;
     }
 
@@ -55,7 +55,7 @@ public class Response<E extends AbstractEntity<E>> implements Serializable {
         return this.count != null ? this.count : this.getData() != null ? this.getData().size() : 0L;
     }
 
-    public void setCount(final Long count) { // NOSONAR
+    public void setCount(final Long count) {
         this.count = count;
     }
 
@@ -63,7 +63,7 @@ public class Response<E extends AbstractEntity<E>> implements Serializable {
         return this.message;
     }
 
-    public void setMessage(final String message) { // NOSONAR
+    public void setMessage(final String message) {
         this.message = message;
     }
 
@@ -71,7 +71,7 @@ public class Response<E extends AbstractEntity<E>> implements Serializable {
         return this.status;
     }
 
-    public void setStatus(final Integer status) { // NOSONAR
+    public void setStatus(final Integer status) {
         this.status = status;
     }
 

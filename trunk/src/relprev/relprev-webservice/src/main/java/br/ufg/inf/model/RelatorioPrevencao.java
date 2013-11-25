@@ -44,6 +44,8 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
 
     private static final long serialVersionUID = -2567465353998731784L;
 
+    private static final String RELPREV = "relPrev";
+
     @JsonProperty
     @Column(nullable = false, length = 60)
     @NotNull(message = "{validation.RelPrev.envolvidos.NotNull.message}")
@@ -76,7 +78,8 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     @ManyToOne
     @JsonProperty
     @JoinColumn(name = "elosipaer_id")
-    private EloSipaer eloSipaer; // TODO não existe na EOR esta associação. Confirmar como ficará
+    // TODO não existe na EOR esta associação. Confirmar como ficará
+    private EloSipaer eloSipaer;
 
     @JsonProperty
     @JoinColumn(name = "relator_id")
@@ -94,146 +97,146 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     private Set<Anexo> anexos;
 
     @JsonProperty
-    @OneToOne(mappedBy = "relPrev", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private AcaoRecomendada acaoRecomendada;
 
     @JsonProperty
-    @OneToOne(mappedBy = "relPrev", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private ClassificacaoRisco classificacaoRisco;
 
     @JsonProperty
-    @OneToOne(mappedBy = "relPrev", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private Encaminhamento encaminhamento;
 
     @JsonProperty
-    @OneToOne(mappedBy = "relPrev", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private Observacao observacao;
 
     @JsonProperty
-    @OneToOne(mappedBy = "relPrev", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private ParecerSetor parecerSetor;
 
     @JsonProperty
-    @OneToOne(mappedBy = "relPrev", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private Resposta resposta;
 
-    public String getEnvolvidos() { // NOSONAR
+    public String getEnvolvidos() {
         return this.envolvidos;
     }
 
-    public void setEnvolvidos(final String envolvidos) { // NOSONAR
+    public void setEnvolvidos(final String envolvidos) {
         this.envolvidos = envolvidos;
     }
 
-    public String getLocal() { // NOSONAR
+    public String getLocal() {
         return this.local;
     }
 
-    public void setLocal(final String local) { // NOSONAR
+    public void setLocal(final String local) {
         this.local = local;
     }
 
-    public String getDescricaoSituacaoPerigosa() { // NOSONAR
+    public String getDescricaoSituacaoPerigosa() {
         return this.descricaoSituacaoPerigosa;
     }
 
-    public void setDescricaoSituacaoPerigosa(final String descricaoSituacaoPerigosa) { // NOSONAR
+    public void setDescricaoSituacaoPerigosa(final String descricaoSituacaoPerigosa) {
         this.descricaoSituacaoPerigosa = descricaoSituacaoPerigosa;
     }
 
-    public Date getDataSituacaoPerigosa() { // NOSONAR
+    public Date getDataSituacaoPerigosa() {
         return this.dataSituacaoPerigosa;
     }
 
-    public void setDataSituacaoPerigosa(final Date dataSituacaoPerigosa) { // NOSONAR
+    public void setDataSituacaoPerigosa(final Date dataSituacaoPerigosa) {
         this.dataSituacaoPerigosa = dataSituacaoPerigosa;
     }
 
-    public String getSituacao() { // NOSONAR
+    public String getSituacao() {
         return this.situacao;
     }
 
-    public void setSituacao(final String situacao) { // NOSONAR
+    public void setSituacao(final String situacao) {
         this.situacao = situacao;
     }
 
-    public EloSipaer getEloSipaer() { // NOSONAR
+    public EloSipaer getEloSipaer() {
         return this.eloSipaer;
     }
 
-    public void setEloSipaer(final EloSipaer eloSipaer) { // NOSONAR
+    public void setEloSipaer(final EloSipaer eloSipaer) {
         this.eloSipaer = eloSipaer;
     }
 
-    public Relator getRelator() { // NOSONAR
+    public Relator getRelator() {
         return this.relator;
     }
 
-    public Situacao getSituacoes() { // NOSONAR
+    public Situacao getSituacoes() {
         return this.situacoes;
     }
 
-    public void setSituacoes(final Situacao situacoes) { // NOSONAR
+    public void setSituacoes(final Situacao situacoes) {
         this.situacoes = situacoes;
     }
 
-    public void setRelator(final Relator relator) { // NOSONAR
+    public void setRelator(final Relator relator) {
         this.relator = relator;
     }
 
-    public Set<Anexo> getAnexos() { // NOSONAR
+    public Set<Anexo> getAnexos() {
         return this.anexos;
     }
 
-    public void setAnexos(final Set<Anexo> anexos) { // NOSONAR
+    public void setAnexos(final Set<Anexo> anexos) {
         this.anexos = anexos;
     }
 
-    public AcaoRecomendada getAcaoRecomendada() { // NOSONAR
+    public AcaoRecomendada getAcaoRecomendada() {
         return this.acaoRecomendada;
     }
 
-    public void setAcaoRecomendada(final AcaoRecomendada acaoRecomendada) { // NOSONAR
+    public void setAcaoRecomendada(final AcaoRecomendada acaoRecomendada) {
         this.acaoRecomendada = acaoRecomendada;
     }
 
-    public ClassificacaoRisco getClassificacaoRisco() { // NOSONAR
+    public ClassificacaoRisco getClassificacaoRisco() {
         return this.classificacaoRisco;
     }
 
-    public void setClassificacaoRisco(final ClassificacaoRisco classificacaoRisco) { // NOSONAR
+    public void setClassificacaoRisco(final ClassificacaoRisco classificacaoRisco) {
         this.classificacaoRisco = classificacaoRisco;
     }
 
-    public Encaminhamento getEncaminhamento() { // NOSONAR
+    public Encaminhamento getEncaminhamento() {
         return this.encaminhamento;
     }
 
-    public void setEncaminhamento(final Encaminhamento encaminhamento) { // NOSONAR
+    public void setEncaminhamento(final Encaminhamento encaminhamento) {
         this.encaminhamento = encaminhamento;
     }
 
-    public Observacao getObservacao() { // NOSONAR
+    public Observacao getObservacao() {
         return this.observacao;
     }
 
-    public void setObservacao(final Observacao observacao) { // NOSONAR
+    public void setObservacao(final Observacao observacao) {
         this.observacao = observacao;
     }
 
-    public ParecerSetor getParecerSetor() { // NOSONAR
+    public ParecerSetor getParecerSetor() {
         return this.parecerSetor;
     }
 
-    public void setParecerSetor(final ParecerSetor parecerSetor) { // NOSONAR
+    public void setParecerSetor(final ParecerSetor parecerSetor) {
         this.parecerSetor = parecerSetor;
     }
 
-    public Resposta getResposta() { // NOSONAR
+    public Resposta getResposta() {
         return this.resposta;
     }
 
-    public void setResposta(final Resposta resposta) { // NOSONAR
+    public void setResposta(final Resposta resposta) {
         this.resposta = resposta;
     }
 

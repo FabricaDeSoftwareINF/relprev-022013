@@ -52,35 +52,35 @@ public class Relator extends AbstractEntity<Relator> {
         regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;
 
-    public String getNome() { // NOSONAR
+    public String getNome() {
         return this.nome;
     }
 
-    public void setNome(final String nome) { // NOSONAR
+    public void setNome(final String nome) {
         this.nome = nome;
     }
 
-    public String getTelefoneCelular() { // NOSONAR
+    public String getTelefoneCelular() {
         return this.telefoneCelular;
     }
 
-    public void setTelefoneCelular(final String telefoneCelular) { // NOSONAR
+    public void setTelefoneCelular(final String telefoneCelular) {
         this.telefoneCelular = telefoneCelular;
     }
 
-    public String getTelefoneResidencial() { // NOSONAR
+    public String getTelefoneResidencial() {
         return this.telefoneResidencial;
     }
 
-    public void setTelefoneResidencial(final String telefoneResidencial) { // NOSONAR
+    public void setTelefoneResidencial(final String telefoneResidencial) {
         this.telefoneResidencial = telefoneResidencial;
     }
 
-    public String getEmail() { // NOSONAR
+    public String getEmail() {
         return this.email;
     }
 
-    public void setEmail(final String email) { // NOSONAR
+    public void setEmail(final String email) {
         this.email = email;
     }
 

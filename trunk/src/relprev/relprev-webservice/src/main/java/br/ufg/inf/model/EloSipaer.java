@@ -54,27 +54,27 @@ public class EloSipaer extends AbstractEntity<EloSipaer> {
     @Size(min = 1, max = 20, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
     private String siglaOrganizacao;
 
-    public Usuario getUsuario() { // NOSONAR
+    public Usuario getUsuario() {
         return this.usuario;
     }
 
-    public void setUsuario(final Usuario usuario) { // NOSONAR
+    public void setUsuario(final Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public String getOrganizacao() { // NOSONAR
+    public String getOrganizacao() {
         return this.organizacao;
     }
 
-    public void setOrganizacao(final String organizacao) { // NOSONAR
+    public void setOrganizacao(final String organizacao) {
         this.organizacao = organizacao;
     }
 
-    public String getSiglaOrganizacao() { // NOSONAR
+    public String getSiglaOrganizacao() {
         return this.siglaOrganizacao;
     }
 
-    public void setSiglaOrganizacao(final String siglaOrganizacao) { // NOSONAR
+    public void setSiglaOrganizacao(final String siglaOrganizacao) {
         this.siglaOrganizacao = siglaOrganizacao;
     }
 

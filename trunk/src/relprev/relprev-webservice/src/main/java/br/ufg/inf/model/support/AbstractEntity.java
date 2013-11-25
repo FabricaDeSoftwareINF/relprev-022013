@@ -51,55 +51,54 @@ public abstract class AbstractEntity<E extends Serializable> implements Persista
     private Date dataInsercaoAlteracao;
 
     @JsonIgnore
-    @OneToOne(optional = true)
-    // não retirar a opcionalidade, pois não é obrigatório. A primeira versão nunca tem versão anterior
+    @OneToOne(optional = true) // não retirar a opcionalidade, pois não é obrigatório. A primeira versão nunca tem versão anterior
     @JoinColumn(name = "versao_anterior")
     private E versaoAnterior;
 
     @Override
-    public Long getId() { // NOSONAR
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(final Long id) { // NOSONAR
+    public void setId(final Long id) {
         this.id = id;
     }
 
-    public Long getVersao() { // NOSONAR
+    public Long getVersao() {
         return this.versao;
     }
 
-    public void setVersao(final Long versao) { // NOSONAR
+    public void setVersao(final Long versao) {
         this.versao = versao;
     }
 
-    public Boolean getHidden() { // NOSONAR
+    public Boolean getHidden() {
         return this.hidden;
     }
 
-    public void setHidden(final Boolean hidden) { // NOSONAR
+    public void setHidden(final Boolean hidden) {
         this.hidden = hidden;
     }
 
-    public Date getDataInsercaoAlteracao() { // NOSONAR
+    public Date getDataInsercaoAlteracao() {
         return this.dataInsercaoAlteracao;
     }
 
-    public void setDataInsercaoAlteracao(final Date dataInsercaoAlteracao) { // NOSONAR
+    public void setDataInsercaoAlteracao(final Date dataInsercaoAlteracao) {
         this.dataInsercaoAlteracao = dataInsercaoAlteracao;
     }
 
-    public E getVersaoAnterior() { // NOSONAR
+    public E getVersaoAnterior() {
         return this.versaoAnterior;
     }
 
-    public void setVersaoAnterior(final E versaoAnterior) { // NOSONAR
+    public void setVersaoAnterior(final E versaoAnterior) {
         this.versaoAnterior = versaoAnterior;
     }
 
     @Override
     @JsonIgnore
-    public boolean isNew() { // NOSONAR
+    public boolean isNew() {
         return this.getId() == null;
     }
 

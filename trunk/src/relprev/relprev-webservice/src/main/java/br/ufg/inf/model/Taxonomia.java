@@ -52,27 +52,27 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
     @NotNull(message = "{validation.Taxonomia.padraoMinimo.NotNull.message}")
     private Boolean padraoMinimo;
 
-    public String getNome() { // NOSONAR
+    public String getNome() {
         return this.nome;
     }
 
-    public void setNome(final String nome) { // NOSONAR
+    public void setNome(final String nome) {
         this.nome = nome;
     }
 
-    public Boolean getStatus() { // NOSONAR
+    public Boolean getStatus() {
         return this.status;
     }
 
-    public void setStatus(final Boolean status) { // NOSONAR
+    public void setStatus(final Boolean status) {
         this.status = status;
     }
 
-    public Boolean getPadraoMinimo() { // NOSONAR
+    public Boolean getPadraoMinimo() {
         return this.padraoMinimo;
     }
 
-    public void setPadraoMinimo(final Boolean padraoMinimo) { // NOSONAR
+    public void setPadraoMinimo(final Boolean padraoMinimo) {
         this.padraoMinimo = padraoMinimo;
     }
 
@@ -95,19 +95,19 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
         inverseJoinColumns = {@JoinColumn(name = "categoria_id")})
     private Set<Categoria> categorias;
 
-    public String getDescricao() { // NOSONAR
+    public String getDescricao() {
         return this.descricao;
     }
 
-    public void setDescricao(final String descricao) { // NOSONAR
+    public void setDescricao(final String descricao) {
         this.descricao = descricao;
     }
 
-    public Set<Categoria> getCategorias() { // NOSONAR
+    public Set<Categoria> getCategorias() {
         return this.categorias;
     }
 
-    public void setCategorias(final Set<Categoria> categorias) { // NOSONAR
+    public void setCategorias(final Set<Categoria> categorias) {
         this.categorias = categorias;
     }
 

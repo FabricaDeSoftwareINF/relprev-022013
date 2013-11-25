@@ -53,27 +53,27 @@ public class ParecerSetor extends AbstractEntity<ParecerSetor> {
     @NotNull(message = "{validation.ParecerSetor.data.NotNull.message}")
     private Date data;
 
-    public RelatorioPrevencao getRelPrev() { // NOSONAR
+    public RelatorioPrevencao getRelPrev() {
         return this.relPrev;
     }
 
-    public void setRelPrev(final RelatorioPrevencao relPrev) { // NOSONAR
+    public void setRelPrev(final RelatorioPrevencao relPrev) {
         this.relPrev = relPrev;
     }
 
-    public String getDescricao() { // NOSONAR
+    public String getDescricao() {
         return this.descricao;
     }
 
-    public void setDescricao(final String descricao) { // NOSONAR
+    public void setDescricao(final String descricao) {
         this.descricao = descricao;
     }
 
-    public Date getData() { // NOSONAR
+    public Date getData() {
         return this.data;
     }
 
-    public void setData(final Date data) { // NOSONAR
+    public void setData(final Date data) {
         this.data = data;
     }
 

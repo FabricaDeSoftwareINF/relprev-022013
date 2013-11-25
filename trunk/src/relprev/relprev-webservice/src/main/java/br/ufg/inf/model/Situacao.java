@@ -46,35 +46,35 @@ public class Situacao extends AbstractEntity<Situacao> {
     @NotNull(message = "{validation.Situacao.foiConcluido.NotNull.message}")
     private Boolean foiConcluido;
 
-    public Boolean getTemEncaminhamento() { // NOSONAR
+    public Boolean getTemEncaminhamento() {
         return this.temEncaminhamento;
     }
 
-    public void setTemEncaminhamento(final Boolean temEncaminhamento) { // NOSONAR
+    public void setTemEncaminhamento(final Boolean temEncaminhamento) {
         this.temEncaminhamento = temEncaminhamento;
     }
 
-    public Boolean getTemDivulgacao() { // NOSONAR
+    public Boolean getTemDivulgacao() {
         return this.temDivulgacao;
     }
 
-    public void setTemDivulgacao(final Boolean temDivulgacao) { // NOSONAR
+    public void setTemDivulgacao(final Boolean temDivulgacao) {
         this.temDivulgacao = temDivulgacao;
     }
 
-    public Boolean getTemAcaoRecomendada() { // NOSONAR
+    public Boolean getTemAcaoRecomendada() {
         return this.temAcaoRecomendada;
     }
 
-    public void setTemAcaoRecomendada(final Boolean temAcaoRecomendada) { // NOSONAR
+    public void setTemAcaoRecomendada(final Boolean temAcaoRecomendada) {
         this.temAcaoRecomendada = temAcaoRecomendada;
     }
 
-    public Boolean getFoiConcluido() { // NOSONAR
+    public Boolean getFoiConcluido() {
         return this.foiConcluido;
     }
 
-    public void setFoiConcluido(final Boolean foiConcluido) { // NOSONAR
+    public void setFoiConcluido(final Boolean foiConcluido) {
         this.foiConcluido = foiConcluido;
     }
 

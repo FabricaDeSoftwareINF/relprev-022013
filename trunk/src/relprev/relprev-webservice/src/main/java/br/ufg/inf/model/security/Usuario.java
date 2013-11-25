@@ -27,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Hiddenable
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "usuario", "id"}))
-// TODO verificar constraint
 @JsonInclude(Include.NON_EMPTY)
 @Updatable(newinsert = true, updatable = false)
 public class Usuario extends AbstractEntity<Usuario> {
@@ -97,91 +96,91 @@ public class Usuario extends AbstractEntity<Usuario> {
     @NotNull(message = "{validation.Usuario.ativo.NotNull.message}")
     private Boolean ativo;
 
-    public String getEmail() { // NOSONAR
+    public String getEmail() {
         return this.email;
     }
 
-    public void setEmail(final String email) { // NOSONAR
+    public void setEmail(final String email) {
         this.email = email;
     }
 
-    public String getEspecialidade() { // NOSONAR
+    public String getEspecialidade() {
         return this.especialidade;
     }
 
-    public void setEspecialidade(final String especialidade) { // NOSONAR
+    public void setEspecialidade(final String especialidade) {
         this.especialidade = especialidade;
     }
 
-    public String getFuncao() { // NOSONAR
+    public String getFuncao() {
         return this.funcao;
     }
 
-    public void setFuncao(final String funcao) { // NOSONAR
+    public void setFuncao(final String funcao) {
         this.funcao = funcao;
     }
 
-    public String getNomeCompleto() { // NOSONAR
+    public String getNomeCompleto() {
         return this.nomeCompleto;
     }
 
-    public void setNomeCompleto(final String nomeCompleto) { // NOSONAR
+    public void setNomeCompleto(final String nomeCompleto) {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public String getPosto() { // NOSONAR
+    public String getPosto() {
         return this.posto;
     }
 
-    public void setPosto(final String posto) { // NOSONAR
+    public void setPosto(final String posto) {
         this.posto = posto;
     }
 
-    public String getSiglaSecao() { // NOSONAR
+    public String getSiglaSecao() {
         return this.siglaSecao;
     }
 
-    public void setSiglaSecao(final String siglaSecao) { // NOSONAR
+    public void setSiglaSecao(final String siglaSecao) {
         this.siglaSecao = siglaSecao;
     }
 
-    public String getTelefoneCelular() { // NOSONAR
+    public String getTelefoneCelular() {
         return this.telefoneCelular;
     }
 
-    public void setTelefoneCelular(final String telefoneCelular) { // NOSONAR
+    public void setTelefoneCelular(final String telefoneCelular) {
         this.telefoneCelular = telefoneCelular;
     }
 
-    public String getTelefoneFixo() { // NOSONAR
+    public String getTelefoneFixo() {
         return this.telefoneFixo;
     }
 
-    public void setTelefoneFixo(final String telefoneFixo) { // NOSONAR
+    public void setTelefoneFixo(final String telefoneFixo) {
         this.telefoneFixo = telefoneFixo;
     }
 
-    public String getUsuario() { // NOSONAR
+    public String getUsuario() {
         return this.usuario;
     }
 
-    public void setUsuario(final String usuario) { // NOSONAR
+    public void setUsuario(final String usuario) {
         this.usuario = usuario;
     }
 
-    public String getSenha() { // NOSONAR
+    public String getSenha() {
         return this.senha;
     }
 
-    public void setSenha(final String senha) { // NOSONAR
+    public void setSenha(final String senha) {
         this.senha = senha;
     }
 
-    public Boolean getAtivo() { // NOSONAR
+    public Boolean getAtivo() {
         return this.ativo;
     }
 
-    public void setAtivo(final Boolean ativo) { // NOSONAR
+    public void setAtivo(final Boolean ativo) {
         this.ativo = ativo;
     }
 

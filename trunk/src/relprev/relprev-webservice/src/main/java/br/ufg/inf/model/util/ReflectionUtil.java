@@ -12,6 +12,8 @@ import org.springframework.util.ReflectionUtils;
  */
 public class ReflectionUtil {
 
+    private ReflectionUtil() { }
+
     /**
      * Seta em um atributo de uma classe o atributo com nome '{@code name}' o valor '{@code value}' no objeto desta instância
      * 
