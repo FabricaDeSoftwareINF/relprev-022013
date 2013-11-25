@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
+ * Entidade que relaciona um relatório de prevenção a taxonomia e categoria
  * 
  * @created 19/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
@@ -45,27 +45,27 @@ public class RelatorioTaxonomia extends AbstractEntity<RelatorioTaxonomia> {
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Categoria categoria;
 
-    public RelatorioPrevencao getRelPrev() { // NOSONAR
+    public RelatorioPrevencao getRelPrev() {
         return this.relPrev;
     }
 
-    public void setRelPrev(final RelatorioPrevencao relPrev) { // NOSONAR
+    public void setRelPrev(final RelatorioPrevencao relPrev) {
         this.relPrev = relPrev;
     }
 
-    public Taxonomia getTaxonomia() { // NOSONAR
+    public Taxonomia getTaxonomia() {
         return this.taxonomia;
     }
 
-    public void setTaxonomia(final Taxonomia taxonomia) { // NOSONAR
+    public void setTaxonomia(final Taxonomia taxonomia) {
         this.taxonomia = taxonomia;
     }
 
-    public Categoria getCategoria() { // NOSONAR
+    public Categoria getCategoria() {
         return this.categoria;
     }
 
-    public void setCategoria(final Categoria categoria) { // NOSONAR
+    public void setCategoria(final Categoria categoria) {
         this.categoria = categoria;
     }
 

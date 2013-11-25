@@ -272,7 +272,8 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
         if (relprev != null) {
             try {
                 final String property = Introspector.decapitalize(entity.getClass().getSimpleName());
-                ReflectionUtil.setField(relprev, property, entity); // só para o retorno
+                // preenche o relprev com a entity para o retorno, para não consultar novamente
+                ReflectionUtil.setField(relprev, property, entity);
 
                 ReflectionUtil.setField(entity, "relPrev", relprev);
                 this.getLogger().debug("incluindo " + entity.getClass().getName() + " para relprev de id " + relPrevID);

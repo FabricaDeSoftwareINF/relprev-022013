@@ -31,19 +31,19 @@ public class Anexo extends AbstractEntity<Anexo> {
     @Column(nullable = false, name = "path_anexo")
     private String pathAnexo;
 
-    public String getMimeType() { // NOSONAR
+    public String getMimeType() {
         return this.mimeType;
     }
 
-    public void setMimeType(final String mimeType) { // NOSONAR
+    public void setMimeType(final String mimeType) {
         this.mimeType = mimeType;
     }
 
-    public String getPathAnexo() { // NOSONAR
+    public String getPathAnexo() {
         return this.pathAnexo;
     }
 
-    public void setPathAnexo(final String pathAnexo) { // NOSONAR
+    public void setPathAnexo(final String pathAnexo) {
         this.pathAnexo = pathAnexo;
     }
 

@@ -43,27 +43,27 @@ public class ClassificacaoRisco extends AbstractEntity<ClassificacaoRisco> {
     @Column(name = "avaliacao_final", length = 2)
     private String avaliacaoFinal;
 
-    public RelatorioPrevencao getRelPrev() { // NOSONAR
+    public RelatorioPrevencao getRelPrev() {
         return this.relPrev;
     }
 
-    public void setRelPrev(final RelatorioPrevencao relPrev) { // NOSONAR
+    public void setRelPrev(final RelatorioPrevencao relPrev) {
         this.relPrev = relPrev;
     }
 
-    public String getAvaliacaoInicial() { // NOSONAR
+    public String getAvaliacaoInicial() {
         return this.avaliacaoInicial;
     }
 
-    public void setAvaliacaoInicial(final String avaliacaoInicial) { // NOSONAR
+    public void setAvaliacaoInicial(final String avaliacaoInicial) {
         this.avaliacaoInicial = avaliacaoInicial;
     }
 
-    public String getAvaliacaoFinal() { // NOSONAR
+    public String getAvaliacaoFinal() {
         return this.avaliacaoFinal;
     }
 
-    public void setAvaliacaoFinal(final String avaliacaoFinal) { // NOSONAR
+    public void setAvaliacaoFinal(final String avaliacaoFinal) {
         this.avaliacaoFinal = avaliacaoFinal;
     }
 

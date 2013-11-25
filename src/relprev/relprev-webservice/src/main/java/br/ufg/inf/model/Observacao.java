@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
+ * Entidade para inclusão de observação a respeito de um relatório de Prevenção
  * 
  * @created 19/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
@@ -39,19 +39,19 @@ public class Observacao extends AbstractEntity<Observacao> {
     @Column(length = 5000)
     private String descricao;
 
-    public RelatorioPrevencao getRelPrev() { // NOSONAR
+    public RelatorioPrevencao getRelPrev() {
         return this.relPrev;
     }
 
-    public void setRelPrev(final RelatorioPrevencao relPrev) { // NOSONAR
+    public void setRelPrev(final RelatorioPrevencao relPrev) {
         this.relPrev = relPrev;
     }
 
-    public String getDescricao() { // NOSONAR
+    public String getDescricao() {
         return this.descricao;
     }
 
-    public void setDescricao(final String descricao) { // NOSONAR
+    public void setDescricao(final String descricao) {
         this.descricao = descricao;
     }
 
