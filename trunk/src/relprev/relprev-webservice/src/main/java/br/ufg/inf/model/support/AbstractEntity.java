@@ -51,7 +51,8 @@ public abstract class AbstractEntity<E extends Serializable> implements Persista
     private Date dataInsercaoAlteracao;
 
     @JsonIgnore
-    @OneToOne(optional = true) // não retirar a opcionalidade, pois não é obrigatório. A primeira versão nunca tem versão anterior
+    // não retirar a opcionalidade, pois não é obrigatório. A primeira versão nunca tem versão anterior
+    @OneToOne(optional = true)
     @JoinColumn(name = "versao_anterior")
     private E versaoAnterior;
 

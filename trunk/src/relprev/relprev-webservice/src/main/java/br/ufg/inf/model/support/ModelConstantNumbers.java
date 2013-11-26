@@ -8,6 +8,8 @@ package br.ufg.inf.model.support;
  */
 public final class ModelConstantNumbers {
 
+    private ModelConstantNumbers() { }
+
     /**
      * Constante para coluna JPA de tamanho 2
      */
