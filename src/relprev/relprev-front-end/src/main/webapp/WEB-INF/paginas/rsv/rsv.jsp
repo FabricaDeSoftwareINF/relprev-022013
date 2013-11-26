@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -36,7 +35,7 @@
                         <div class="col-md-12">001/ 1GDA / 2013</div>
 
                         <div class="col-md-12 textoOverflowEllipsis">
-                            RSV: O chefe do setor de material dever· de imediato estabelecer o procedimento
+                            RSV: O chefe do setor de material dever√° de imediato estabelecer o procedimento
                         </div>
                     </div>
                 </div>
