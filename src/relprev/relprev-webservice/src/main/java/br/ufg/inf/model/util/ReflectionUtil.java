@@ -10,7 +10,7 @@ import org.springframework.util.ReflectionUtils;
  * @created 22/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
-public class ReflectionUtil {
+public final class ReflectionUtil {
 
     private ReflectionUtil() { }
 
