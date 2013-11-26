@@ -7,6 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -36,7 +37,7 @@ public class Observacao extends AbstractEntity<Observacao> {
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
-    @Column(length = 5000)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_5000)
     private String descricao;
 
     public RelatorioPrevencao getRelPrev() {

@@ -20,6 +20,7 @@ import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.Anexo;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -47,21 +48,27 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     private static final String RELPREV = "relPrev";
 
     @JsonProperty
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60)
     @NotNull(message = "{validation.RelPrev.envolvidos.NotNull.message}")
-    @Size(min = 1, max = 60, message = "{validation.RelPrev.envolvidos.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_60,
+        message = "{validation.RelPrev.envolvidos.Size.message}")
     private String envolvidos;
 
     @JsonProperty
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60)
     @NotNull(message = "{validation.RelPrev.local.NotNull.message}")
-    @Size(min = 1, max = 60, message = "{validation.RelPrev.local.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_60,
+        message = "{validation.RelPrev.local.Size.message}")
     private String local;
 
     @JsonProperty(value = "descricao")
-    @Column(nullable = false, name = "descricao", length = 600)
+    @Column(nullable = false, name = "descricao", length = ModelConstantNumbers.COLUMN_SIZE_600)
     @NotNull(message = "{validation.RelPrev.descricaoSituacaoPerigosa.NotNull.message}")
-    @Size(min = 1, max = 600, message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_600,
+        message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
     private String descricaoSituacaoPerigosa;
 
     @JsonProperty(value = "data")
@@ -72,7 +79,7 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     private Date dataSituacaoPerigosa;
 
     @JsonProperty(value = "situacao")
-    @Column(name = "situacao", length = 5000)
+    @Column(name = "situacao", length = ModelConstantNumbers.COLUMN_SIZE_5000)
     private String situacao;
 
     @ManyToOne

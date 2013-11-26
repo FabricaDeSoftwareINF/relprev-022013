@@ -1,4 +1,4 @@
-package br.ufg.inf.repository.support;
+package br.ufg.inf.repository.support.factory;
 
 import java.io.Serializable;
 

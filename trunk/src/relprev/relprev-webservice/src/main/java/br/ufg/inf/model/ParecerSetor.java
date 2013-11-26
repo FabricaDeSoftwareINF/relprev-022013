@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -42,9 +43,11 @@ public class ParecerSetor extends AbstractEntity<ParecerSetor> {
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
-    @Column(length = 600, nullable = false)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_600, nullable = false)
     @NotNull(message = "{validation.ParecerSetor.descricao.NotNull.message}")
-    @Size(min = 1, max = 600, message = "{validation.ParecerSetor.descricao.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_600,
+        message = "{validation.ParecerSetor.descricao.Size.message}")
     private String descricao;
 
     @JsonProperty

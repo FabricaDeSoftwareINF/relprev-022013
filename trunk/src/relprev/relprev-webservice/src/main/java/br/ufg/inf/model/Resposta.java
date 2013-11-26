@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -43,21 +44,21 @@ public class Resposta extends AbstractEntity<Resposta> {
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
-    @Column(length = 60, nullable = false)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_60, nullable = false)
     @NotNull(message = "{validation.Resposta.remetente.NotNull.message}")
-    @Size(min = 1, message = "{validation.Resposta.remetente.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1, message = "{validation.Resposta.remetente.Size.message}")
     private String remetente;
 
     @JsonProperty
-    @Column(length = 60, nullable = false)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_60, nullable = false)
     @NotNull(message = "{validation.Resposta.destinatario.NotNull.message}")
-    @Size(min = 1, message = "{validation.Resposta.destinatario.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1, message = "{validation.Resposta.destinatario.Size.message}")
     private String destinatario;
 
     @JsonProperty
-    @Column(length = 600, nullable = false)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_600, nullable = false)
     @NotNull(message = "{validation.Resposta.descricao.NotNull.message}")
-    @Size(min = 1, message = "{validation.Resposta.descricao.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1, message = "{validation.Resposta.descricao.Size.message}")
     private String descricao;
 
     @JsonProperty

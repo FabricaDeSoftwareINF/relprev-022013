@@ -7,6 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -36,11 +37,11 @@ public class ClassificacaoRisco extends AbstractEntity<ClassificacaoRisco> {
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
-    @Column(name = "avaliacao_inicial", length = 2)
+    @Column(name = "avaliacao_inicial", length = ModelConstantNumbers.COLUMN_SIZE_2)
     private String avaliacaoInicial;
 
     @JsonProperty
-    @Column(name = "avaliacao_final", length = 2)
+    @Column(name = "avaliacao_final", length = ModelConstantNumbers.COLUMN_SIZE_2)
     private String avaliacaoFinal;
 
     public RelatorioPrevencao getRelPrev() {
