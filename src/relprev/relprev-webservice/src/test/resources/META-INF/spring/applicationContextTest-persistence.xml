@@ -29,6 +29,6 @@
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<jpa:repositories base-package="br.ufg.inf.repository,br.ufg.inf.repository.support" transaction-manager-ref="transactionManager"
-		entity-manager-factory-ref="entityManagerFactory" factory-class="br.ufg.inf.repository.support.RepositoryFactoryBean" />
+		entity-manager-factory-ref="entityManagerFactory" factory-class="br.ufg.inf.repository.support.factory.RepositoryFactoryBean" />
 
 </beans>

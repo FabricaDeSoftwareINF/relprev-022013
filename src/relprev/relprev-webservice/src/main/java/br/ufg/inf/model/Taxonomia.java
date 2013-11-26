@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -37,9 +38,11 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
     private static final long serialVersionUID = -8111373397877993819L;
 
     @JsonProperty
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_20)
     @NotNull(message = "{validation.Taxonomia.nome.NotNull.message}")
-    @Size(min = 1, max = 20, message = "{validation.Taxonomia.nome.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_20,
+        message = "{validation.Taxonomia.nome.Size.message}")
     private String nome;
 
     @JsonProperty
@@ -84,8 +87,10 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
      * sub-categorias(TEXTO(15)).
      */
     @JsonProperty
-    @Column(length = 600)
-    @Size(min = 1, max = 600, message = "{validation.Taxonomia.descricao.Size.message}")
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_600)
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_600,
+        message = "{validation.Taxonomia.descricao.Size.message}")
     private String descricao;
 
     @JsonProperty(value = "categorias")

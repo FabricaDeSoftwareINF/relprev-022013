@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Telefone;
 import br.ufg.inf.model.support.annotation.Updatable;
@@ -32,22 +33,24 @@ public class Relator extends AbstractEntity<Relator> {
     private static final long serialVersionUID = -671624807223719350L;
 
     @JsonProperty
-    @Column(length = 50)
-    @Size(min = 1, max = 50, message = "{validation.Relator.nome.Size.message}")
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_50)
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_50,
+        message = "{validation.Relator.nome.Size.message}")
     private String nome;
 
     @JsonProperty
-    @Column(length = 20)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_20)
     @Telefone(message = "{validation.Relator.telefoneCelular.Telefone.message}")
     private String telefoneCelular;
 
     @JsonProperty
-    @Column(length = 20)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_20)
     @Telefone(message = "{validation.Relator.telefoneResidencial.Telefone.message}")
     private String telefoneResidencial;
 
     @JsonProperty
-    @Column(length = 120)
+    @Column(length = ModelConstantNumbers.COLUMN_SIZE_120)
     @Email(message = "{validation.Relator.email.Email.message}",
         regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;

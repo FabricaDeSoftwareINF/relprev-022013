@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.security.Usuario;
 import br.ufg.inf.model.support.AbstractEntity;
+import br.ufg.inf.model.support.ModelConstantNumbers;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -43,15 +44,19 @@ public class EloSipaer extends AbstractEntity<EloSipaer> {
     private Usuario usuario;
 
     @JsonProperty
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_20)
     @NotNull(message = "{validation.EloSipaer.organizacao.NotNull.message}")
-    @Size(min = 1, max = 20, message = "{validation.EloSipaer.organizacao.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_20,
+        message = "{validation.EloSipaer.organizacao.Size.message}")
     private String organizacao;
 
     @JsonProperty(value = "sigla")
-    @Column(name = "sigla_organizacao", nullable = false, length = 20)
+    @Column(name = "sigla_organizacao", nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_20)
     @NotNull(message = "{validation.EloSipaer.siglaOrganizacao.NotNull.message}")
-    @Size(min = 1, max = 20, message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
+    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
+        max = ModelConstantNumbers.FIELD_SIZE_20,
+        message = "{validation.EloSipaer.siglaOrganizacao.Size.message}")
     private String siglaOrganizacao;
 
     public Usuario getUsuario() {
