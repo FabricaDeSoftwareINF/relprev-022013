@@ -13,7 +13,7 @@ import br.ufg.inf.es.relprev.client.dominio.Relprev;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
 
 @Resource
-public class RelatorioController extends ControllerPadrao<Relprev> {
+public class RelatorioController extends GenericController<Relprev> {
 
 	private final Logger logger;
 	private final Result result;
@@ -33,21 +33,26 @@ public class RelatorioController extends ControllerPadrao<Relprev> {
 	@Path("/relatorio/dadosgerais")
 	public void dadosGerais() {}
 	
-	//TODO: Remover este método após conclusão da classe.
-	private void gerarLog(final Relprev relprev, final List<UploadedFile> files){
+	public void ultimosRelatorios(){}
+	
+	//Remover este método após conclusão da classe.
+	@Override
+	protected void gerarLog(final Relprev relprev){
 		logger.log(Level.OFF, "Local: " + relprev.getLocal());
 		logger.info("Situação: " + relprev.getSituacao());
 		logger.info("Pessoal envolvido: " + relprev.getPessoalEnvolvido());
+		
 		if(relprev.getRelator() != null){
 			logger.info("Nome do relator: " + relprev.getRelator().getNome());
 			logger.info("Telefone do relator: " + relprev.getRelator().getTelefone());
-			logger.info("Email do relator: " + relprev.getRelator().getEmail());
+			logger.info("Email do relator: " + relprev.getRelator().getEmail());			
 		}
 		
+		/*
 		if(files!= null && files.size() > 0){
 			logger.info(files.size() +"");
 			logger.info(files.get(0)+"");
-		}
+		}*/
 	}
 
 	@Override

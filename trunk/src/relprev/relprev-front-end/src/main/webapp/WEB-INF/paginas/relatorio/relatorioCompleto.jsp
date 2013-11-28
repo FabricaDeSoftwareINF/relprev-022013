@@ -28,7 +28,7 @@
 			        ser identificado, se o for, o relator será informado sobre as medidas adotadas.
 			    </div>			    
 			    <hr/>
-			    <form action="<c:url value='/relatorio'/>" method="post" enctype="multipart/form-data">
+			    <form action="<c:url value='/relatorio/save'/>" method="post" enctype="multipart/form-data">
 						<% String relprev = "relprev"; %>
         		<%@include file="relatorio.jsp" %>
         		<div id="botoesRelatorio" class="container">
