@@ -31,7 +31,7 @@
                         <fmt:message key="elo.posto" />:
                     </div>
                     <div class="col-md-3">
-                        <fmt:message key="elo.funcao" />:
+                        <fmt:message key="funcao" />:
                     </div>
                     <div class="col-md-3">
                         <fmt:message key="elo.telefone" />:
