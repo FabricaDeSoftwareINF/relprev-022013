@@ -27,7 +27,7 @@
   				<a><fmt:message key="resposta" /></a>
 			</li>
   			<li id="acoesRecomendadasAba">
-				<a><fmt:message key="acoesRecomendadas" /></a>
+				<a><fmt:message key="acoes.recomendadas" /></a>
 			</li>
   			<li id="observacoesAba">
   				<a><fmt:message key="observacoes" /></a>
