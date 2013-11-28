@@ -18,7 +18,7 @@
 		<div class="container">
 	      <form action="<c:url value='/login'/>" method="post" class="form-signin">
 	        <h2 class="form-signin-heading"><fmt:message key="login.label" /></h2>
-	        <input type="text" name="usuario" class="form-control" value="${usuario}" placeholder="<fmt:message key="login.usuario" />" required="" autofocus="">
+	        <input type="text" name="usuario" class="form-control" value="${usuario}" placeholder="Usuário" required="" autofocus="">
 	        <input type="password" name="senha" class="form-control" value="${senha}" placeholder="<fmt:message key="login.senha" />" required="">
 	        <c:forEach var="error" items="${errors}">
 			    ${error.category} - ${error.message}<br />
