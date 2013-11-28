@@ -27,7 +27,7 @@ public class Relprev extends ObjetoDeDominio {
     private String pessoalEnvolvido;
     @JsonProperty
     private String descricao;
-    private List<File> anexos;
+    private List<Anexo> anexos;
     private Relator relator;
     private EloSipaer eloSipaer;
     private String situacao;
@@ -111,11 +111,11 @@ public class Relprev extends ObjetoDeDominio {
         this.descricao = descricao;
     }
 
-    public List<File> getAnexos() {
+    public List<Anexo> getAnexos() {
         return anexos;
     }
 
-    public void setAnexos(List<File> anexos) {
+    public void setAnexos(List<Anexo> anexos) {
         this.anexos = anexos;
     }
 
