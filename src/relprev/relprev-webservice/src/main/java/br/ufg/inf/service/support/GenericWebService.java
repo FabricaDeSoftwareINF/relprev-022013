@@ -114,7 +114,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
         this.getLogger().debug("criando objeto");
         try {
             final E persistedEntity = this.getRepository().save(entity);
-            this.beforeCreate(persistedEntity);
+            this.afterCreate(persistedEntity);
             this.getLogger().debug("objeto " + persistedEntity.toString() + " criado com sucesso");
             response = new ResponseBuilder<E>().success(true).data(persistedEntity).message(ResponseMessages.CREATE_MESSAGE)
                     .status(HttpStatus.OK).build();
@@ -140,7 +140,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
         this.getLogger().debug("atualizando objeto " + entity.toString());
         try {
             final E persistedEntity = this.getRepository().save(entity);
-            this.beforeUpdate(persistedEntity);
+            this.afterUpdate(persistedEntity);
             response = new ResponseBuilder<E>().success(true).data(persistedEntity)
                     .message(String.format(ResponseMessages.UPDATE_MESSAGE, entity.getId())).status(HttpStatus.OK).build();
             this.getLogger().debug("objeto " + persistedEntity.toString() + " atualizado com sucesso");
@@ -180,13 +180,32 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
     }
 
     /**
+     * Executa alterações na entidade de domínio depois da criação do registro
+     * 
+     * @param entity
+     *            entidade do modelo de domínio
+     */
+    protected <T extends AbstractEntity<T>> void afterCreate(final T entity) {
+        final Log log = this.buildLogRegistry(TipoAlteracao.CREATE, entity);
+        this.getLogRepository().save(log);
+    }
+
+    /**
      * Executa alterações na entidade de domínio antes da criação do registro
      * 
      * @param entity
      *            entidade do modelo de domínio
      */
-    protected void beforeCreate(final E entity) {
-        final Log log = this.buildLogRegistry(TipoAlteracao.CREATE, entity);
+    protected <T extends AbstractEntity<T>> void beforeCreate(final T entity) { }
+
+    /**
+     * Executa alterações na entidade de domínio depois da atualização do registro
+     * 
+     * @param entity
+     *            entidade do modelo de domínio
+     */
+    protected <T extends AbstractEntity<T>> void afterUpdate(final T entity) {
+        final Log log = this.buildLogRegistry(TipoAlteracao.UPDATE, entity);
         this.getLogRepository().save(log);
     }
 
@@ -196,10 +215,15 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      * @param entity
      *            entidade do modelo de domínio
      */
-    protected void beforeUpdate(final E entity) {
-        final Log log = this.buildLogRegistry(TipoAlteracao.UPDATE, entity);
-        this.getLogRepository().save(log);
-    }
+    protected <T extends AbstractEntity<T>> void beforeUpdate(final T entity) { }
+
+    /**
+     * Executa alterações na entidade de domínio depois da remoção do registro
+     * 
+     * @param entity
+     *            entidade do modelo de domínio
+     */
+    protected <T extends AbstractEntity<T>> void afterDelete(final T entity) { }
 
     /**
      * Executa alterações na entidade de domínio antes da remoção do registro
@@ -207,7 +231,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      * @param entity
      *            entidade do modelo de domínio
      */
-    protected void beforeDelete(final E entity) {
+    protected <T extends AbstractEntity<T>> void beforeDelete(final T entity) {
         final Log log = this.buildLogRegistry(TipoAlteracao.DELETE, entity);
         this.getLogRepository().save(log);
     }
@@ -239,7 +263,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      *            entidade do domínio
      * @return {@link Log}
      */
-    private Log buildLogRegistry(final TipoAlteracao tipoAlteracao, final E entity) {
+    private <T extends AbstractEntity<T>> Log buildLogRegistry(final TipoAlteracao tipoAlteracao, final T entity) {
         final String tableName = this.getTableName(entity);
         final String descricaoAlteracao = String.format(tipoAlteracao.getDescricao() + " de objeto de id %s.", entity.getId());
         final Log log = new Log();
@@ -256,7 +280,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      *            &lt;E extends {@link AbstractEntity}&gt;
      * @return {@link String} nome da tabela na base de dados
      */
-    private String getTableName(final E entity) {
+    private <T extends AbstractEntity<T>> String getTableName(final T entity) {
         final Class<?> clazz = entity.getClass();
         if (!clazz.isAnnotationPresent(Table.class)) {
             throw new IllegalArgumentException("Entidade " + entity.getClass().getName() + " não é uma entidade JPA");
