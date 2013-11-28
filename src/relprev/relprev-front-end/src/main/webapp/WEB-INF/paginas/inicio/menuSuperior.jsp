@@ -26,7 +26,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#"><fmt:message key="menu.sistema" /></a></li>
                             <li><a href="<c:url value="/eloSipaer"/>"><fmt:message key="menu.elosipaer" /></a></li>
-                            <li><a href="<c:url value="/usuario"/>"><fmt:message key="menu.usuario" /></a></li>
+                            <li><a href="<c:url value="/usuario"/>"><fmt:message key="usuario" /></a></li>
                         </ul>
                     </li>
                     <li class="visible-xs"><a href="<c:url value="/logout"/>"><fmt:message key="menu.sair" /></a></li>
