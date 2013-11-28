@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -14,7 +15,7 @@
             </div>
 
             <div class="row">
-                <a href="<c:url value="/configuracoes/novoEloSipaer"/>" class="btn btn-default active col-md-1" role="button"> <fmt:message key="elo.novo" /></a>
+                <a href="<c:url value="/eloSipaer/novo"/>" class="btn btn-primary col-md-1" role="button"> <fmt:message key="elo.novo" /></a>
             </div>
         </div>
 
@@ -30,7 +31,7 @@
                         <fmt:message key="elo.posto" />:
                     </div>
                     <div class="col-md-3">
-                        <fmt:message key="funcao" />:
+                        <fmt:message key="elo.funcao" />:
                     </div>
                     <div class="col-md-3">
                         <fmt:message key="elo.telefone" />:

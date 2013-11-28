@@ -20,7 +20,7 @@
             <label for="local" class="labelMaiuscula">
             	<fmt:message key="local" />
             </label>
-            <input type="text" name='relprev.local' value="${relprev.local}" class="form-control" id="local"/>
+            <input type="text" name='bean.local' value="${bean.local}" class="form-control" id="local"/>
         </div>
     </div>        
     <div class="row">
@@ -29,7 +29,7 @@
             	<fmt:message key="data" />
             </label>
             <div class="input-group">
-                <input type="text" class="form-control calendario" id="data"  value="${relprev.data}"/>
+                <input type="text" class="form-control calendario" id="data"  value="${bean.data}"/>
             </div>
         </div>
         <div class="form-group col-md-4">
@@ -46,8 +46,8 @@
             <label for="pessoalEnvolvido" class="labelMaiuscula">
             	<fmt:message key="pessoal.envolvido" />
             </label>
-            <input type="text" name="relprev.pessoalEnvolvido" class="form-control" id="pessoalEnvolvido"
-            	 value="${relprev.pessoalEnvolvido}"/>
+            <input type="text" name="bean.pessoalEnvolvido" class="form-control" id="pessoalEnvolvido"
+            	 value="${bean.pessoalEnvolvido}"/>
         </div>
     </div>
     <div class="row">
@@ -55,7 +55,7 @@
             <label for="situacao" class="labelMaiuscula">
             	<fmt:message key="situacao" />
             </label>
-            <textarea class="form-control" name="relprev.situacao"  value="${relprev.situacao}" rows="6" id="situacao"></textarea>
+            <textarea class="form-control" name="bean.situacao"  value="${bean.situacao}" rows="6" id="situacao"></textarea>
         </div>
     </div>
     <div class="row">
@@ -71,7 +71,7 @@
             <label for="relator" class="labelMaiuscula">
             	<fmt:message key="relator" />
             </label>
-            <input type="text" name="relprev.relator.nome" class="form-control" id="relator">
+            <input type="text" name="bean.relator.nome" class="form-control" id="relator">
         </div>
     </div>
     <div class="row">
@@ -79,7 +79,7 @@
             <label for="contato" class="labelMaiuscula">
             	<fmt:message key="email.telefone" />
             </label>
-            <input type="text" name="relprev.relator.contato" class="form-control" id="contato">
+            <input type="text" name="bean.relator.contato" class="form-control" id="contato">
         </div>
     </div>
     <hr/>

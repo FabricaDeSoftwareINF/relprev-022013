@@ -10,7 +10,7 @@ import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
 
 @Resource
-public class RsvController extends ControllerPadrao<ObjetoDeDominio> {
+public class RsvController extends GenericController<ObjetoDeDominio> {
 
     public RsvController(
     		final Result result,
@@ -19,15 +19,20 @@ public class RsvController extends ControllerPadrao<ObjetoDeDominio> {
     }
 
     @Get("/rsv")
-    public void rsv() {
+    public void inicio() {    	
     }
 
-    public void novoRsv() {
-    }
-
+    public void novo(){}
+    
 	@Override
 	protected Class<ObjetoDeDominio> obtenhaTipo() {
 		return ObjetoDeDominio.class;
+	}
+
+	@Override
+	protected void gerarLog(ObjetoDeDominio t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

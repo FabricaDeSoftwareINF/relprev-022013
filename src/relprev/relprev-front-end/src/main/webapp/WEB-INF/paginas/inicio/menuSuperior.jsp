@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><fmt:message key="relprev" /></a>
+                <a class="navbar-brand" href="<c:url value="/relatorio/ultimosRelatorios"/>"><fmt:message key="relprev" /></a>
                 <div class="nomeUsuario visible-xs">
                     ${usuarioInfo.nome}
                 </div>
@@ -25,13 +25,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="menu.configuracoes" /> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><fmt:message key="menu.sistema" /></a></li>
-                            <li><a href="<c:url value="/configuracoes/eloSipaer"/>"><fmt:message key="menu.elosipaer" /></a></li>
-                            <li><a href="<c:url value="/configuracoes/usuarios"/>"><fmt:message key="menu.usuario" /></a></li>
+                            <li><a href="<c:url value="/eloSipaer"/>"><fmt:message key="menu.elosipaer" /></a></li>
+                            <li><a href="<c:url value="/usuario"/>"><fmt:message key="menu.usuario" /></a></li>
                         </ul>
                     </li>
-                    <li class="visible-xs"><a href="<c:url value="/login/logout"/>"><fmt:message key="menu.sair" /></a></li>
+                    <li class="visible-xs"><a href="<c:url value="/logout"/>"><fmt:message key="menu.sair" /></a></li>
                 </ul>
-                <li class="visible-md visible-lg"><a href="<c:url value="/login/logout"/>"><fmt:message key="menu.sair" /></a></li>
+                <li class="visible-md visible-lg"><a href="<c:url value="/logout"/>"><fmt:message key="menu.sair" /></a></li>
                 <div class="nomeUsuario hidden-xs">
                     ${usuarioInfo.nome}
                 </div>							

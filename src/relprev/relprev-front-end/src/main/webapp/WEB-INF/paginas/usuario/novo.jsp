@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -7,51 +8,57 @@
 
     <div class="labelMaiuscula">
         <div class="text-center tituloPagina">
-            <label><fmt:message key="elo.identificacao" /></label>
+            <label><fmt:message key="usuario.identificacao" /></label>
         </div>
         <hr/>
 
 
         <div class="row">
-            <div class="form-group col-md-6">
-                <label><fmt:message key="elo.organizacao" /></label>
-                <input type="text" class="form-control">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label><fmt:message key="elo.siglaorganizacao" /></label>
-                <input type="text" class="form-control">
+            <div class="form-group col-md-3">
+                <label><fmt:message key="usuario.tipo" /></label>
+                <select class="form-control">
+                    <option>SUPERVISOR</option>
+                </select>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label><fmt:message key="elo.posto" /></label>
+                <label><fmt:message key="usuario.posto" /></label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group col-md-5">
-                <label><fmt:message key="elo.nome" /></label>
+                <label><fmt:message key="usuario.nome" /></label>
                 <input type="text" class="form-control">
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-3">
-                <label><fmt:message key="elo.funcao" /></label>
+                <label><fmt:message key="usuario.funcao" /></label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group col-md-4">
-                <label><fmt:message key="elo.siglasecao" /></label>
+                <label><fmt:message key="usuario.siglasecao" /></label>
                 <input type="text" class="form-control">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-md-3">
-                <label><fmt:message key="elo.telefone" /></label>
+                <label><fmt:message key="usuario.telefone" /></label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group col-md-4">
-                <label><fmt:message key="elo.email" /></label>
+                <label><fmt:message key="usuario.email" /></label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label><fmt:message key="usuario.login" /></label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+                <label><fmt:message key="usuario.senha" /></label>
                 <input type="text" class="form-control">
             </div>
         </div>
