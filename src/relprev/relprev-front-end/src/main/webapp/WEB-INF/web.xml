@@ -25,7 +25,7 @@
     </context-param>
     <context-param>
 		<param-name>br.com.caelum.vraptor.encoding</param-name>
-		<param-value>UTF-8</param-value>
+		<param-value>ISO-8859-1</param-value>
     </context-param>
 	  
     <session-config>
