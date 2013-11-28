@@ -13,8 +13,7 @@
 		<script type="text/javascript" src="<c:url value="js/jquery-2.0.3.js"/>"></script>
 		<script type="text/javascript" src="<c:url value="js/utilitarios.js"/>"></script>
 	</head>
-	<body>
-		<fmt:requestEncoding value="UTF-8" />
+	<body>		
 		<div class="container">
 	      <form action="<c:url value='/login'/>" method="post" class="form-signin">
 	        <h2 class="form-signin-heading"><fmt:message key="login.label" /></h2>
