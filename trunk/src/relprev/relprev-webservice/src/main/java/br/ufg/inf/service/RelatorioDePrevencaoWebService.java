@@ -238,7 +238,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/encaminhamento", method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
+    @RequestMapping(value = "/{id}/encaminhamento", method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> addEncaminhamento(@PathVariable("id") final Long id,
             @Valid @RequestBody final Encaminhamento encaminhamento, final BindingResult result) {
         if (result.hasErrors()) {
