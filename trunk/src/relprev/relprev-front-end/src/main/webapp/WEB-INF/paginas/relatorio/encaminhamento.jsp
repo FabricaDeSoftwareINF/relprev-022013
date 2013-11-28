@@ -5,15 +5,15 @@
 	<div id="tituloEncaminhamento" class="tituloAba col-xs-12 col-md-12 textoCentralizado">
 		<label><fmt:message key="encaminhamento.elosipaer" /></label>
 	</div>
-	<div id="camposEncaminhamento" class="camposAba col-xs-12 col-md-12">
-		<div class="col-xs-4 col-md-4">
-			<label class="col-xs-12 col-md-12"><fmt:message key="para" /></label>
-			<input id="encaminhamentoPara" type="text" class="form-control"/>
-		</div>
+	<div id="camposEncaminhamento" class="camposAba col-xs-12 col-md-12">		
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12"><fmt:message key="do" /></label>
 			<input id="encaminhamentoDo" type="text" class="form-control"/>
 		</div>		
+		<div class="col-xs-4 col-md-4">
+			<label class="col-xs-12 col-md-12"><fmt:message key="para" /></label>
+			<input id="encaminhamentoPara" type="text" class="form-control"/>
+		</div>
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12"><fmt:message key="dataMaiuscula" /></label>
 			<input id="encaminhamentoData" type="text" class="form-control calendario"/>
