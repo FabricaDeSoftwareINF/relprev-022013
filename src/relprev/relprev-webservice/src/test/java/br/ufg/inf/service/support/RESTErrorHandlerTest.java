@@ -3,6 +3,7 @@ package br.ufg.inf.service.support;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -15,6 +16,7 @@ import br.ufg.inf.model.support.AbstractEntity;
  * @author Raul
  *
  */
+@Ignore
 public class RESTErrorHandlerTest<E extends AbstractEntity<E>> {
 	@Mock
 	private HttpClientErrorException clientException;
