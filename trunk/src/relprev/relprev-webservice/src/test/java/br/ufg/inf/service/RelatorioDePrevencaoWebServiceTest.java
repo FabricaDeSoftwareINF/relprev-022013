@@ -29,7 +29,7 @@ import br.ufg.inf.service.support.WebServicesURL;
  * @created 05/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  * @see RelatorioDePrevencaoRepository
- * @see RelatorioDePrevencaoWebService
+ * @see RelatorioPrevencaoWebService
  */
 @Ignore
 @RunWith(MockitoJUnitRunner.class)
