@@ -90,16 +90,16 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_LOCAL + "/{local}", method = {GET, POST}, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> findRelPrevByLocal(@PathVariable("local") final String local) {
         Response<RelatorioPrevencao> response;
-        getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
+        this.getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
         try {
-            final List<RelatorioPrevencao> dataList = getRepository().findByLocalIgnoreCase(local);
+            final List<RelatorioPrevencao> dataList = this.getRepository().findByLocalIgnoreCase(local);
             response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(dataList)
                     .message(String.format(ResponseMessages.LIST_MESSAGE, dataList.size())).status(HttpStatus.OK).build();
-            getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
+            this.getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
         } catch (final Exception e) {
             response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(e.getMessage())
                     .status(HttpStatus.BAD_REQUEST).build();
-            getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
+            this.getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
         }
         return response;
     }
@@ -113,21 +113,21 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      */
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_DESCRICAO + "/{descricao}",
-    method = {GET, POST},
-    produces = APPLICATION_JSON)
+        method = {GET, POST},
+        produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> findRelPrevByDescricao(@PathVariable("descricao") final String descricao) {
         Response<RelatorioPrevencao> response;
-        getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
+        this.getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
         try {
-            final List<RelatorioPrevencao> dataList = getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(
+            final List<RelatorioPrevencao> dataList = this.getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(
                     descricao);
             response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(dataList)
                     .message(String.format(ResponseMessages.LIST_MESSAGE, dataList.size())).status(HttpStatus.OK).build();
-            getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
+            this.getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
         } catch (final Exception e) {
             response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(e.getMessage())
                     .status(HttpStatus.BAD_REQUEST).build();
-            getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
+            this.getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
         }
         return response;
     }
@@ -145,7 +145,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @RequestMapping(value = "/{id}/acao", method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> addAcaoRecomendada(@PathVariable("id") final Long id,
             @RequestBody final AcaoRecomendada acaoRecomendada) {
-        return createInterationObject(id, acaoRecomendada, this.acaoRecomendadaRepository);
+        return this.createInterationObject(id, acaoRecomendada, this.acaoRecomendadaRepository);
     }
 
     /**
@@ -161,7 +161,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @RequestMapping(value = "/{id}/acao", method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> updateAcaoRecomendada(@PathVariable("id") final Long id,
             @RequestBody final AcaoRecomendada acaoRecomendada) {
-        return updateInterationObject(id, acaoRecomendada, this.acaoRecomendadaRepository);
+        return this.updateInterationObject(id, acaoRecomendada, this.acaoRecomendadaRepository);
     }
 
     /**
@@ -174,10 +174,10 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/acao", method = DELETE, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> deleteAcaoRecomendada(@PathVariable("id") final Long id) {
-        // TODO work in progress
-        return null;
+    @RequestMapping(value = "/{idRelPrev}/acao/{id}", method = DELETE, produces = APPLICATION_JSON)
+    public Response<RelatorioPrevencao> deleteAcaoRecomendada(@PathVariable("idRelPrev") final Long idRelPrev,
+            @PathVariable("id") final Long id) {
+        return this.deleteInterationObject(idRelPrev, id, this.acaoRecomendadaRepository);
     }
 
     /**
@@ -193,7 +193,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @RequestMapping(value = "/{id}/classificacao", method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> addClassificacaoDeRisco(@PathVariable("id") final Long id,
             @RequestBody final ClassificacaoRisco classificacaoRisco) {
-        return createInterationObject(id, classificacaoRisco, this.classificacaoRiscoRepository);
+        return this.createInterationObject(id, classificacaoRisco, this.classificacaoRiscoRepository);
     }
 
     /**
@@ -209,7 +209,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @RequestMapping(value = "/{id}/classificacao", method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> updateClassificacaoDeRisco(@PathVariable("id") final Long id,
             @RequestBody final ClassificacaoRisco classificacaoRisco) {
-        return updateInterationObject(id, classificacaoRisco, this.classificacaoRiscoRepository);
+        return this.updateInterationObject(id, classificacaoRisco, this.classificacaoRiscoRepository);
     }
 
     /**
@@ -222,10 +222,10 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/classificacao", method = DELETE, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> deleteClassificacaoDeRisco(@PathVariable("id") final Long id) {
-        // TODO work in progress
-        return null;
+    @RequestMapping(value = "/{idRelPrev}/classificacao/{id}", method = DELETE, produces = APPLICATION_JSON)
+    public Response<RelatorioPrevencao> deleteClassificacaoDeRisco(@PathVariable("idRelPrev") final Long idRelPrev,
+            @PathVariable("id") final Long id) {
+        return this.deleteInterationObject(idRelPrev, id, this.classificacaoRiscoRepository);
     }
 
     /**
@@ -242,9 +242,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     public Response<RelatorioPrevencao> addEncaminhamento(@PathVariable("id") final Long id,
             @Valid @RequestBody final Encaminhamento encaminhamento, final BindingResult result) {
         if (result.hasErrors()) {
-            return buildDataInteracaoResponse(result);
+            return this.buildDataInteracaoResponse(result);
         }
-        return createInterationObject(id, encaminhamento, this.encaminhamentoRepository);
+        return this.createInterationObject(id, encaminhamento, this.encaminhamentoRepository);
     }
 
     /**
@@ -261,9 +261,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     public Response<RelatorioPrevencao> updateEncaminhamento(@PathVariable("id") final Long id,
             @Valid @RequestBody final Encaminhamento encaminhamento, final BindingResult result) {
         if (result.hasErrors()) {
-            return buildDataInteracaoResponse(result);
+            return this.buildDataInteracaoResponse(result);
         }
-        return updateInterationObject(id, encaminhamento, this.encaminhamentoRepository);
+        return this.updateInterationObject(id, encaminhamento, this.encaminhamentoRepository);
     }
 
     /**
@@ -276,10 +276,10 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/encaminhamento", method = DELETE, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> deleteEncaminhamento(@PathVariable("id") final Long id) {
-        // TODO work in progress
-        return null;
+    @RequestMapping(value = "/{idRelPrev}/encaminhamento/{id}", method = DELETE, produces = APPLICATION_JSON)
+    public Response<RelatorioPrevencao> deleteEncaminhamento(@PathVariable("idRelPrev") final Long idRelPrev,
+            @PathVariable("id") final Long id) {
+        return this.deleteInterationObject(idRelPrev, id, this.encaminhamentoRepository);
     }
 
     /**
@@ -294,7 +294,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @ResponseBody
     @RequestMapping(value = "/{id}/observacao", method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> addObservacao(@PathVariable("id") final Long id, @RequestBody final Observacao observacao) {
-        return createInterationObject(id, observacao, this.observacaoRepository);
+        return this.createInterationObject(id, observacao, this.observacaoRepository);
     }
 
     /**
@@ -308,8 +308,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      */
     @ResponseBody
     @RequestMapping(value = "/{id}/observacao", method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> updateObservacao(@PathVariable("id") final Long id, @RequestBody final Observacao observacao) {
-        return updateInterationObject(id, observacao, this.observacaoRepository);
+    public Response<RelatorioPrevencao> updateObservacao(@PathVariable("id") final Long id,
+            @RequestBody final Observacao observacao) {
+        return this.updateInterationObject(id, observacao, this.observacaoRepository);
     }
 
     /**
@@ -322,10 +323,10 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/observacao", method = DELETE, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> deleteObservacao(@PathVariable("id") final Long id) {
-        // TODO work in progress
-        return null;
+    @RequestMapping(value = "/{idRelPrev}/observacao/{id}", method = DELETE, produces = APPLICATION_JSON)
+    public Response<RelatorioPrevencao> deleteObservacao(@PathVariable("idRelPrev") final Long idRelPrev,
+            @PathVariable("id") final Long id) {
+        return this.deleteInterationObject(idRelPrev, id, this.observacaoRepository);
     }
 
     /**
@@ -342,9 +343,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     public Response<RelatorioPrevencao> addParecerSetor(@PathVariable("id") final Long id,
             @Valid @RequestBody final ParecerSetor parecerSetor, final BindingResult result) {
         if (result.hasErrors()) {
-            return buildDataInteracaoResponse(result);
+            return this.buildDataInteracaoResponse(result);
         }
-        return createInterationObject(id, parecerSetor, this.parecerSetorRepository);
+        return this.createInterationObject(id, parecerSetor, this.parecerSetorRepository);
     }
 
     /**
@@ -361,9 +362,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     public Response<RelatorioPrevencao> updateParecerSetor(@PathVariable("id") final Long id,
             @Valid @RequestBody final ParecerSetor parecerSetor, final BindingResult result) {
         if (result.hasErrors()) {
-            return buildDataInteracaoResponse(result);
+            return this.buildDataInteracaoResponse(result);
         }
-        return updateInterationObject(id, parecerSetor, this.parecerSetorRepository);
+        return this.updateInterationObject(id, parecerSetor, this.parecerSetorRepository);
     }
 
     /**
@@ -376,10 +377,10 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/parecer", method = DELETE, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> deleteParecerSetor(@PathVariable("id") final Long id) {
-        // TODO work in progress
-        return null;
+    @RequestMapping(value = "/{idRelPrev}/parecer/{id}", method = DELETE, produces = APPLICATION_JSON)
+    public Response<RelatorioPrevencao> deleteParecerSetor(@PathVariable("idRelPrev") final Long idRelPrev,
+            @PathVariable("id") final Long id) {
+        return this.deleteInterationObject(idRelPrev, id, this.parecerSetorRepository);
     }
 
     /**
@@ -396,9 +397,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     public Response<RelatorioPrevencao> addResposta(@PathVariable("id") final Long id,
             @Valid @RequestBody final Resposta resposta, final BindingResult result) {
         if (result.hasErrors()) {
-            return buildDataInteracaoResponse(result);
+            return this.buildDataInteracaoResponse(result);
         }
-        return createInterationObject(id, resposta, this.respostaRepository);
+        return this.createInterationObject(id, resposta, this.respostaRepository);
     }
 
     /**
@@ -415,9 +416,9 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     public Response<RelatorioPrevencao> updateResposta(@PathVariable("id") final Long id,
             @Valid @RequestBody final Resposta resposta, final BindingResult result) {
         if (result.hasErrors()) {
-            return buildDataInteracaoResponse(result);
+            return this.buildDataInteracaoResponse(result);
         }
-        return updateInterationObject(id, resposta, this.respostaRepository);
+        return this.updateInterationObject(id, resposta, this.respostaRepository);
     }
 
     /**
@@ -430,10 +431,10 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      * @return {@link Response}
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/resposta", method = DELETE, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> deleteResposta(@PathVariable("id") final Long id) {
-        // TODO work in progress
-        return null;
+    @RequestMapping(value = "/{idRelPrev}/resposta/{id}", method = DELETE, produces = APPLICATION_JSON)
+    public Response<RelatorioPrevencao> deleteResposta(@PathVariable("idRelPrev") final Long idRelPrev,
+            @PathVariable("id") final Long id) {
+        return this.deleteInterationObject(idRelPrev, id, this.respostaRepository);
     }
 
     /**
@@ -470,7 +471,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      */
     private <E extends AbstractEntity<E>, R extends GenericRepository<E, Long>> Response<RelatorioPrevencao> createInterationObject(
             final Long relPrevID, final E entity, final R targetRepository) {
-        return persistInterationObject(relPrevID, entity,  targetRepository, TipoAlteracao.CREATE);
+        return this.persistInterationObject(relPrevID, entity, targetRepository, TipoAlteracao.CREATE);
     }
 
     /**
@@ -494,7 +495,46 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      */
     private <E extends AbstractEntity<E>, R extends GenericRepository<E, Long>> Response<RelatorioPrevencao> updateInterationObject(
             final Long relPrevID, final E entity, final R targetRepository) {
-        return persistInterationObject(relPrevID, entity, targetRepository, TipoAlteracao.UPDATE);
+        return this.persistInterationObject(relPrevID, entity, targetRepository, TipoAlteracao.UPDATE);
+    }
+
+    /**
+     * Exclui o objeto da interação com o relatório de prevenção. A interação pode ser uma das seguintes:
+     * <ul>
+     * <li>{@link AcaoRecomendada}</li>
+     * <li>{@link ClassificacaoRisco}</li>
+     * <li>{@link Encaminhamento}</li>
+     * <li>{@link Observacao}</li>
+     * <li>{@link ParecerSetor}</li>
+     * <li>{@link Resposta}</li>
+     * </ul>
+     * 
+     * @param idRelPrev
+     *            id do relatório de prevenção
+     * @param id
+     *            id do objeto da entidade da interação do relatório de prevenção a ser excluído
+     * @param targetRepository
+     *            repositório de dados da interação do relatório de prevenção
+     */
+    private <E extends AbstractEntity<E>, R extends GenericRepository<E, Long>> Response<RelatorioPrevencao> deleteInterationObject(
+            final Long idRelPrev, final Long id, final R targetRepository) {
+        Response<RelatorioPrevencao> response;
+        final E entity = targetRepository.findOne(id);
+        this.getLogger().debug("excluindo objeto " + entity.toString());
+        try {
+            this.beforeDelete(entity);
+            targetRepository.delete(entity);
+            final RelatorioPrevencao relPrevEntity = this.getRepository().findOne(idRelPrev);
+            response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(relPrevEntity)
+                    .message(ResponseMessages.DELETE_MESSAGE).status(HttpStatus.OK).build();
+            this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
+        } catch (final Exception e) {
+            final String message = ExceptionUtils.getRootCauseMessage(e);
+            response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(message).status(HttpStatus.BAD_REQUEST)
+                    .build();
+            this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + message, e);
+        }
+        return response;
     }
 
     /**
@@ -517,44 +557,46 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
         final String partialLogMessage = alteracao.getDescricao() + " de " + className + " para relprev de id " + relPrevID;
 
         Response<RelatorioPrevencao> response;
-        getLogger().debug("consultando relprev de id " + relPrevID + " para " + alteracao.getDescricao() + " de " + className);
-        final RelatorioPrevencao relprev = getRepository().findOne(relPrevID);
+        this.getLogger().debug(
+                "consultando relprev de id " + relPrevID + " para " + alteracao.getDescricao() + " de " + className);
+        final RelatorioPrevencao relprev = this.getRepository().findOne(relPrevID);
         if (relprev != null) {
             try {
                 final String property = Introspector.decapitalize(entity.getClass().getSimpleName());
-                // preenche o relprev com a entity para o retorno, para não consultar novamente
-                ReflectionUtil.setField(relprev, property, entity);
-                ReflectionUtil.setField(entity, "relPrev", relprev);
-                getLogger().debug(alteracao.getDescricao() + " de " + className + " para relprev de id " + relPrevID);
+                this.getLogger().debug(alteracao.getDescricao() + " de " + className + " para relprev de id " + relPrevID);
 
                 E persistedEntity;
                 String responseMessage;
                 if (alteracao.equals(TipoAlteracao.CREATE)) {
+                    // preenche o relprev com a entity para o retorno, para não consultar novamente
+                    ReflectionUtil.setField(relprev, property, entity);
+                    ReflectionUtil.setField(entity, "relPrev", relprev);
                     persistedEntity = targetRepository.save(entity);
-                    afterCreate(persistedEntity);
+                    this.afterCreate(persistedEntity);
                     responseMessage = ResponseMessages.CREATE_MESSAGE;
-                } else if (alteracao.equals(TipoAlteracao.UPDATE)) {
-                    persistedEntity = targetRepository.save(entity);
-                    afterUpdate(persistedEntity);
-                    responseMessage = ResponseMessages.UPDATE_MESSAGE;
                 } else {
-                    beforeDelete(entity);
-                    targetRepository.delete(entity);
-                    responseMessage = ResponseMessages.DELETE_MESSAGE;
+                    // preenche o relprev com a entity para o retorno, para não consultar novamente
+                    ReflectionUtil.setField(relprev, property, entity);
+                    ReflectionUtil.setField(entity, "relPrev", relprev);
+                    persistedEntity = targetRepository.save(entity);
+                    this.afterUpdate(persistedEntity);
+                    responseMessage = ResponseMessages.UPDATE_MESSAGE;
                 }
                 response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(relprev).message(responseMessage)
                         .status(HttpStatus.OK).build();
-                getLogger().debug("sucesso na " + partialLogMessage);
+                this.getLogger().debug("sucesso na " + partialLogMessage);
             } catch (final Exception e) {
                 final String message = ExceptionUtils.getRootCauseMessage(e);
-                response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(message).status(HttpStatus.BAD_REQUEST).build();
-                getLogger().error("erro na " + partialLogMessage, e);
+                response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(message)
+                        .status(HttpStatus.BAD_REQUEST).build();
+                this.getLogger().error("erro na " + partialLogMessage, e);
             }
         } else {
-            final String message = String.format("RelPrev de %s não encontrato para %s de %s.", relPrevID, alteracao.getDescricao(),
-                    className);
-            getLogger().debug(message);
-            response = new ResponseBuilder<RelatorioPrevencao>().success(true).message(message).status(HttpStatus.NOT_FOUND).build();
+            final String message = String.format("RelPrev de %s não encontrato para %s de %s.", relPrevID,
+                    alteracao.getDescricao(), className);
+            this.getLogger().debug(message);
+            response = new ResponseBuilder<RelatorioPrevencao>().success(true).message(message).status(HttpStatus.NOT_FOUND)
+                    .build();
         }
         return response;
     }
