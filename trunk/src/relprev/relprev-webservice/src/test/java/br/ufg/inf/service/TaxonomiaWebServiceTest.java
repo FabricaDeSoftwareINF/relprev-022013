@@ -7,33 +7,33 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import br.ufg.inf.repository.EloSipaerRepository;
+import br.ufg.inf.repository.TaxonomiaRepository;
 import br.ufg.inf.repository.support.LogRepository;
 
 /**
- * Testes para os endpoints REST dos Elos SIPAER
+ * Testes para os endpoints REST de Taxonomia
  * 
- * @created 12/11/2013
+ * @created 30/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
- * @see EloSipaerRepository
- * @see EloSipaerWebService
+ * @see TaxonomiaRepository
+ * @see TaxonomiaWebService
  */
 @RunWith(MockitoJUnitRunner.class)
-public class EloSipaerWebServiceTest {
+public class TaxonomiaWebServiceTest {
 
     @Mock
-    private EloSipaerWebService eloSipaerWebService;
+    private TaxonomiaWebService taxonomiaWebService;
 
     @Mock
     private LogRepository logRepository;
 
     @Mock
-    private EloSipaerRepository eloRepository;
+    private TaxonomiaRepository taxonomiaRepository;
 
     @Test
     public void testConstrutor() {
-        this.eloSipaerWebService = new EloSipaerWebService(this.eloRepository, this.logRepository);
-        assertNotNull(this.eloSipaerWebService);
+        this.taxonomiaWebService = new TaxonomiaWebService(this.taxonomiaRepository, this.logRepository);
+        assertNotNull(this.taxonomiaWebService);
     }
 
 }

@@ -32,6 +32,17 @@ public class ResponseBuilderTest {
     }
 
     @Test
+    public void testResponseStatusNull() {
+        final Response<EloSipaer> successResponse = new ResponseBuilder<EloSipaer>().success(false)
+                .message("Simple Responde Setting Count").count(0L).status(null).build();
+        final Matcher<Response<EloSipaer>> mat1 = Matchers.allOf(Matchers.hasProperty("success", Matchers.is(false)),
+                Matchers.hasProperty("data", Matchers.nullValue()), Matchers.hasProperty("count", Matchers.is(0L)),
+                Matchers.hasProperty("message", Matchers.is("Simple Responde Setting Count")),
+                Matchers.hasProperty("status", Matchers.is(417)));
+        Assert.assertThat(successResponse, mat1);
+    }
+
+    @Test
     public void testSuccessEloSIPAERResponse() {
         final EloSipaer eloSipaer = new EloSipaerBuilder().id(1L).organizacao("Organização").sigla("ORG").build();
         final Response<EloSipaer> successResponse = new ResponseBuilder<EloSipaer>().success(true)

@@ -95,7 +95,7 @@ public class ResponseBuilder<E extends AbstractEntity<E>> {
      * @return {@link Response}
      */
     public ResponseBuilder<E> status(final HttpStatus status) {
-        ReflectionUtil.setField(this.response, "status", status.value());
+        ReflectionUtil.setField(this.response, "status", status == null ? HttpStatus.EXPECTATION_FAILED.value() : status.value());
         return this;
     }
 
