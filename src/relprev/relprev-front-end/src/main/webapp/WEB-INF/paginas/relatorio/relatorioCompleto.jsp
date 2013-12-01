@@ -10,11 +10,12 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         
         <!-- Estilos para os componentes do jQuery UI, tais como o DatePicker. -->
-<link href="<c:url value="/css/ui-lightness/jquery-ui-1.10.3.custom.css" />" rel="stylesheet" media="all">
+		<link href="<c:url value="/css/ui-lightness/jquery-ui-1.10.3.custom.css" />" rel="stylesheet" media="all">
         
 		<script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.meio.mask.js"/>" ></script>
+		<script type="text/javascript" src="<c:url value="/js/utilitarios.js"/>" ></script>
     </head>
     <body>
         <div id="borda" class="container">
@@ -35,7 +36,7 @@
 			        <button type="submit" class="btn btn-primary">
 			        	<fmt:message key="enviar" />
 			        </button>
-			        <button type="reset" class="btn btn-default">
+			        <button onclick="limpeCampos();" class="btn btn-default">
 			        	<fmt:message key="limpar" />
 			        </button>
 			    </div>
