@@ -36,7 +36,6 @@ public class RelatorioController extends GenericController<Relprev> {
 	public void ultimosRelatorios(){}
 	
 	//Remover este método após conclusão da classe.
-	@Override
 	protected void gerarLog(final Relprev relprev){
 		logger.log(Level.OFF, "Local: " + relprev.getLocal());
 		logger.info("Situação: " + relprev.getSituacao());
