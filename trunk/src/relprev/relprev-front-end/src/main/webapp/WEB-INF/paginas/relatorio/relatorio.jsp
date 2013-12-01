@@ -76,10 +76,16 @@
     </div>
     <div class="row">
         <div class="form-group col-md-12">
-            <label for="contato" class="labelMaiuscula">
-            	<fmt:message key="email.telefone" />
+            <label for="telefone" class="labelMaiuscula">
+            	<fmt:message key="telefone" />
             </label>
-            <input type="text" name="bean.relator.contato" class="form-control" id="contato">
+            <input type="text" name="bean.relator.telefone" class="form-control telefone" id="telefone">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="email" class="labelMaiuscula">
+            	<fmt:message key="email" />
+            </label>
+            <input type="text" name="bean.relator.email" class="form-control" id="email">
         </div>
     </div>
     <hr/>
