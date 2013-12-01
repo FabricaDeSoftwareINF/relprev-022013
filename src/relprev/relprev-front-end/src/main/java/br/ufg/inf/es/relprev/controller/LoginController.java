@@ -45,7 +45,7 @@ public class LoginController {
 		
 		usuarioInfo.login(usuario);
 		
-		result.redirectTo(RelatorioController.class).dadosGerais();		
+		result.redirectTo(RelatorioController.class).ultimosRelatorios();		
 	}
 	
 	@Path("/logout")
