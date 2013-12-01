@@ -23,10 +23,10 @@
   			<li id="parecerDoSetorAba">
   				<a><fmt:message key="parecerDoSetor" /></a>
   			</li>
-  			<li id="respostaAba">
+  			<li id="respostaAba" class="labelMaiuscula">
   				<a><fmt:message key="resposta" /></a>
 			</li>
-  			<li id="acoesRecomendadasAba">
+  			<li id="acoesRecomendadasAba" class="labelMaiuscula">
 				<a><fmt:message key="acoes.recomendadas" /></a>
 			</li>
   			<li id="observacoesAba">

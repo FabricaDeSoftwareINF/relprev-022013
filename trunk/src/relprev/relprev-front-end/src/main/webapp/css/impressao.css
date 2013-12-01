@@ -1,0 +1,12 @@
+th, td {
+	padding: 1em;
+}
+
+tr td:last-child,
+.botoes div {
+	text-align: center;
+}
+
+.botoes {
+	padding-top: 2em;
+}

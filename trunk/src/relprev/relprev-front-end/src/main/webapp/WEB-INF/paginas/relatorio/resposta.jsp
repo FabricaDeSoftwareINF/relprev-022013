@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div id="resposta" class="aba labelPadrao" style="display: none">
 	<div id="tituloResposta" class="tituloAba col-xs-12 col-md-12 textoCentralizado">
-		<label><fmt:message key="resposta.resposta" /></label>
+		<label class="textoMaiusculo"><fmt:message key="resposta" /></label>
 	</div>
 	<div id="camposResposta" class="camposAba col-xs-12 col-md-12">
 		<div class="col-xs-4 col-md-4">
