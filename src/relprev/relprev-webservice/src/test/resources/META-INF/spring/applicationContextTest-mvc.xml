@@ -41,15 +41,51 @@
 		</property>
 	</bean>
 
-	<bean id="logRepository" name="logRepository" class="org.mockito.Mockito" factory-method="mock">
-		<constructor-arg value="br.ufg.inf.repository.support.LogRepository"/>
+	<bean id="acaoRecomendadaRepository" name="acaoRecomendadaRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.AcaoRecomendadaRepository"/>
+	</bean>
+
+	<bean id="classificacaoRiscoRepository" name="classificacaoRiscoRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.ClassificacaoRiscoRepository"/>
 	</bean>
 
 	<bean id="eloSipaerRepository" name="eloSipaerRepository" class="org.mockito.Mockito" factory-method="mock">
 		<constructor-arg value="br.ufg.inf.repository.EloSipaerRepository"/>
 	</bean>
 
+	<bean id="encaminhamentoRepository" name="encaminhamentoRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.EncaminhamentoRepository"/>
+	</bean>
+
+	<bean id="observacaoRepository" name="observacaoRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.ObservacaoRepository"/>
+	</bean>
+
+	<bean id="parecerSetorRepository" name="parecerSetorRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.ParecerSetorRepository"/>
+	</bean>
+
 	<bean id="relatorioDePrevencaoRepository" name="relatorioDePrevencaoRepository" class="org.mockito.Mockito" factory-method="mock">
 		<constructor-arg value="br.ufg.inf.repository.RelatorioDePrevencaoRepository"/>
+	</bean>
+
+	<bean id="relatorRepository" name="relatorRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.RelatorRepository"/>
+	</bean>
+
+	<bean id="respostaRepository" name="respostaRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.RespostaRepository"/>
+	</bean>
+
+	<bean id="taxonomiaRepository" name="taxonomiaRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.TaxonomiaRepository"/>
+	</bean>
+
+	<bean id="usuarioRepository" name="usuarioRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.security.UsuarioRepository"/>
+	</bean>
+
+	<bean id="logRepository" name="logRepository" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="br.ufg.inf.repository.support.LogRepository"/>
 	</bean>
 </beans>

@@ -7,33 +7,33 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import br.ufg.inf.repository.EloSipaerRepository;
+import br.ufg.inf.repository.RelatorRepository;
 import br.ufg.inf.repository.support.LogRepository;
 
 /**
- * Testes para os endpoints REST dos Elos SIPAER
+ * Testes para os endpoints REST do Relator
  * 
- * @created 12/11/2013
+ * @created 30/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
- * @see EloSipaerRepository
- * @see EloSipaerWebService
+ * @see RelatorRepository
+ * @see RelatorWebService
  */
 @RunWith(MockitoJUnitRunner.class)
-public class EloSipaerWebServiceTest {
+public class RelatorWebServiceTest {
 
     @Mock
-    private EloSipaerWebService eloSipaerWebService;
+    private RelatorWebService relatorWebService;
 
     @Mock
     private LogRepository logRepository;
 
     @Mock
-    private EloSipaerRepository eloRepository;
+    private RelatorRepository relatorRepository;
 
     @Test
     public void testConstrutor() {
-        this.eloSipaerWebService = new EloSipaerWebService(this.eloRepository, this.logRepository);
-        assertNotNull(this.eloSipaerWebService);
+        this.relatorWebService = new RelatorWebService(this.relatorRepository, this.logRepository);
+        assertNotNull(this.relatorWebService);
     }
 
 }
