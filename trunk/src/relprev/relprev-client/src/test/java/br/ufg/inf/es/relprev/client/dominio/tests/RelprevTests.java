@@ -1,10 +1,8 @@
 package br.ufg.inf.es.relprev.client.dominio.tests;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevenvao;
+import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
 import junit.framework.TestCase;
 import br.ufg.inf.es.relprev.client.dominio.Anexo;
 import br.ufg.inf.es.relprev.client.dominio.Relator;
@@ -18,71 +16,62 @@ import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 public class RelprevTests extends TestCase {
 
     public void testRelprevDeveConterLocal() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
         relprev.setLocal("Local");
         TestCase.assertEquals("Local", relprev.getLocal());
     }
 
     public void testRelprevDeveConterData() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
         final Date data = new Date();
-        relprev.setDataHora(data);
-        TestCase.assertEquals(data, relprev.getDataHora());
+        relprev.setDataSituacaoPerigosa(data);
+        TestCase.assertEquals(data, relprev.getDataSituacaoPerigosa());
     }
 
     public void testRelprevDeveConterEnvolvidos() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
-        final String pessoalEnvolvido = "Mecanico A e B";
-        relprev.setPessoalEnvolvido(pessoalEnvolvido);
-        TestCase.assertEquals(pessoalEnvolvido, relprev.getPessoalEnvolvido());
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
+        final String envolvidos = "Mecanico A e B";
+        relprev.setEnvolvidos(envolvidos);
+        TestCase.assertEquals(envolvidos, relprev.getEnvolvidos());
     }
 
     public void testRelprevDeveConterSituacao() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
         final String situacao = "Situação de risco ao fazer tal e tal coisa =x";
-        relprev.setDescricao(situacao);
-        TestCase.assertEquals(situacao, relprev.getDescricao());
+        relprev.setDescricaoSituacaoPerigosa(situacao);
+        TestCase.assertEquals(situacao, relprev.getDescricaoSituacaoPerigosa());
     }
 
     public void testRelprevDeveConterAnexos() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
-        final List<Anexo> anexos = new ArrayList<Anexo>();
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
+        final Set<Anexo> anexos = new HashSet<Anexo>();
         relprev.setAnexos(anexos);
         TestCase.assertEquals(anexos, relprev.getAnexos());
     }
 
     public void testRelprevDeveConterRelator() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
         final Relator relator = new Relator();
         final String nome = "RelatorShow";
         final String contato = "RelatorShow@show.com";
         relator.setNome(nome);
         relator.setEmail(contato);
         relprev.setRelator(relator);
-        TestCase.assertEquals(nome, relprev.getNomeRelator());
-        TestCase.assertEquals(contato, relprev.getContatoRelator());
-    }
-
-    public void testRelprevSeNaoTiverRelatorDeveRetornarVazioParaONomeEContato() {
-        final RelatorioPrevenvao relprev = new RelatorioPrevenvao();
-        final String nome = "";
-        final String contato = "";
-        TestCase.assertEquals(nome, relprev.getNomeRelator());
-        TestCase.assertEquals(contato, relprev.getContatoRelator());
+        assertEquals(relprev.getRelator(), relator);
     }
 
     //TODO: Corrigir para usar mocks e mockar requisição real
     public void testDeveSerPossivelListarOsRelprevsExistentes() throws RequestException {
-        TestCase.assertNotNull(new RelatorioPrevenvao().list());
+        TestCase.assertNotNull(new RelatorioPrevencao().list());
     }
 
     //TODO: Corrigir para usar mocks e mockar requisição real
     public void testDeveSerPossivelObterUmRelprevPeloId() throws RequestException {
-        TestCase.assertNotNull(new RelatorioPrevenvao().get(2));
+        TestCase.assertNotNull(new RelatorioPrevencao().get(2));
     }
 
     //TODO: Corrigir para usar mocks e mockar requisição real
     public void testDeveSerPossivelPersistirUmRelprev() throws RequestException {
-        new RelatorioPrevenvao().save();
+        new RelatorioPrevencao().save();
     }
 }

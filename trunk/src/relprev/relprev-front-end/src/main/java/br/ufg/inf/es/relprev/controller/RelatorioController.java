@@ -9,11 +9,11 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
-import br.ufg.inf.es.relprev.client.dominio.Relprev;
+import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
 
 @Resource
-public class RelatorioController extends GenericController<Relprev> {
+public class RelatorioController extends GenericController<RelatorioPrevencao> {
 
 	private final Logger logger;
 	private final Result result;
@@ -36,14 +36,14 @@ public class RelatorioController extends GenericController<Relprev> {
 	public void ultimosRelatorios(){}
 	
 	//Remover este método após conclusão da classe.
-	protected void gerarLog(final Relprev relprev){
+	protected void gerarLog(final RelatorioPrevencao relprev){
 		logger.log(Level.OFF, "Local: " + relprev.getLocal());
 		logger.info("Situação: " + relprev.getSituacao());
-		logger.info("Pessoal envolvido: " + relprev.getPessoalEnvolvido());
+		logger.info("Pessoal envolvido: " + relprev.getEnvolvidos());
 		
 		if(relprev.getRelator() != null){
 			logger.info("Nome do relator: " + relprev.getRelator().getNome());
-			logger.info("Telefone do relator: " + relprev.getRelator().getTelefone());
+			logger.info("Telefone do relator: " + relprev.getRelator().getTelefoneCelular());
 			logger.info("Email do relator: " + relprev.getRelator().getEmail());			
 		}
 		
@@ -55,7 +55,7 @@ public class RelatorioController extends GenericController<Relprev> {
 	}
 
 	@Override
-	protected Class<Relprev> obtenhaTipo() {
-		return Relprev.class;
+	protected Class<RelatorioPrevencao> obtenhaTipo() {
+		return RelatorioPrevencao.class;
 	}
 }
