@@ -196,4 +196,12 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     protected Class getResponseClass() {
         return RelatorioPrevencaoResponse.class;
     }
+
+    public String getNomeRelator() {
+        return (relator == null) ? "" : relator.getNome();
+    }
+
+    public String getCelularRelator() {
+        return (relator == null) ? "" : relator.getTelefoneCelular();
+    }
 }

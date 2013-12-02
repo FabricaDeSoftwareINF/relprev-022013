@@ -10,33 +10,49 @@ import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
  */
 public class Relator extends ObjetoDeDominio {
 
+    private static final long serialVersionUID = -671624807223719350L;
+
+    @JsonProperty
     private String nome;
-    @JsonProperty(value = "email")
+
+    @JsonProperty
+    private String telefoneCelular;
+
+    @JsonProperty
+    private String telefoneResidencial;
+
+    @JsonProperty
     private String email;
-    @JsonProperty(value = "telefone")
-    private String telefone;
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(final String nome) {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTelefoneCelular() {
+        return this.telefoneCelular;
     }
 
-    public void setEmail(String email) {
+    public void setTelefoneCelular(final String telefoneCelular) {
+        this.telefoneCelular = telefoneCelular;
+    }
+
+    public String getTelefoneResidencial() {
+        return this.telefoneResidencial;
+    }
+
+    public void setTelefoneResidencial(final String telefoneResidencial) {
+        this.telefoneResidencial = telefoneResidencial;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(final String email) {
         this.email = email;
     }
 
