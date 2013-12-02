@@ -14,8 +14,6 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +27,6 @@ import br.ufg.inf.model.ParecerSetor;
 import br.ufg.inf.model.RelatorioPrevencao;
 import br.ufg.inf.model.Resposta;
 import br.ufg.inf.model.support.AbstractEntity;
-import br.ufg.inf.model.support.RelatorioInteracaoValidator;
 import br.ufg.inf.model.support.TipoAlteracao;
 import br.ufg.inf.model.util.ReflectionUtil;
 import br.ufg.inf.repository.AcaoRecomendadaRepository;
@@ -81,11 +78,6 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @Autowired
     public RelatorioDePrevencaoWebService(final RelatorioDePrevencaoRepository repository, final LogRepository logRepository) {
         super(repository, logRepository);
-    }
-
-    @InitBinder
-    protected void initBinder(final WebDataBinder binder) {
-        binder.setValidator(new RelatorioInteracaoValidator());
     }
 
     /**
