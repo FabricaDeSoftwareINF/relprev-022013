@@ -2,7 +2,7 @@ package br.ufg.inf.es.relprev.client.dominio.tests.http;
 
 import br.ufg.inf.es.relprev.client.dominio.EloSipaer;
 import br.ufg.inf.es.relprev.client.dominio.Relator;
-import br.ufg.inf.es.relprev.client.dominio.Relprev;
+import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevenvao;
 import br.ufg.inf.es.relprev.client.http.JsonConverter;
 import junit.framework.TestCase;
 
@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class RelprevJsonConverterTest extends TestCase {
     public void testConvert() {
-        Relprev relprev = new Relprev();
+        RelatorioPrevenvao relprev = new RelatorioPrevenvao();
 
         Relator relator = new Relator();
         relator.setNome("Relator Show");
