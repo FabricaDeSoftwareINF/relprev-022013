@@ -2,6 +2,9 @@ package br.ufg.inf.es.relprev.client.dominio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * User: halisson
+ */
 public class Anexo {
 
     private static final long serialVersionUID = 4571775183834766912L;

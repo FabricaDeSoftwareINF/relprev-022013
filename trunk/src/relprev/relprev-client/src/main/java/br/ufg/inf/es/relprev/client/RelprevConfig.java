@@ -14,5 +14,6 @@ public class RelprevConfig {
     public static final String CONTROLLER_RELPREV = "relprev";
     public static final String CONTROLLER_ELO_SIPAER = "elosipaer";
     public static final String CONTROLLER_TAXONOMIA = "taxonomia";
+    public static final String CONTROLLER_RELATOR = "relator";
     public static final String ACTION_CREATE = "create";
 }

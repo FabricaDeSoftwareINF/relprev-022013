@@ -1,7 +1,6 @@
 package br.ufg.inf.es.relprev.client.dominio.tests;
 
 import br.ufg.inf.es.relprev.client.dominio.EloSipaer;
-import br.ufg.inf.es.relprev.client.dominio.Relprev;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import junit.framework.TestCase;
 

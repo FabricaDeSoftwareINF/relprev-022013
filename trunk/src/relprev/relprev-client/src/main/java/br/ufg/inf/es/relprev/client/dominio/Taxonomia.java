@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import static br.ufg.inf.es.relprev.client.RelprevConfig.CONTROLLER_TAXONOMIA;
 
 /**
- * Entidade para persistência e retorno de JSON de taxonomias de um relatório de prevenção
- *
- * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
- * @created 09/11/2013
+ * User: halisson
  */
 public class Taxonomia extends ObjetoDeDominio {
 
