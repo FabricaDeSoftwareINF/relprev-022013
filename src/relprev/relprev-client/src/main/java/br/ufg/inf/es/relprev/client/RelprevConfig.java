@@ -16,4 +16,6 @@ public class RelprevConfig {
     public static final String CONTROLLER_TAXONOMIA = "taxonomia";
     public static final String CONTROLLER_RELATOR = "relator";
     public static final String ACTION_CREATE = "create";
+    public static final String ACTION_FIND_RELPREV_BY_LOCAL = "local";
+    public static final String ACTION_FIND_RELPREV_BY_DESCRICAO = "descricao";
 }

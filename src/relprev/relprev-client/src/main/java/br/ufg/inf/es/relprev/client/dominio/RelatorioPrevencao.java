@@ -1,20 +1,23 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
-import java.util.Date;
-import java.util.Set;
-
+import br.ufg.inf.es.relprev.client.http.exception.RequestException;
+import br.ufg.inf.es.relprev.client.http.response.RelatorioPrevencaoResponse;
+import br.ufg.inf.es.relprev.client.http.response.Response;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import br.ufg.inf.es.relprev.client.http.response.RelatorioPrevencaoResponse;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
 
 /**
  * User: halisson
  */
-@JsonInclude(Include.NON_EMPTY)
 @JsonRootName(value = "relPrev")
 public class RelatorioPrevencao extends ObjetoDeDominio {
 
@@ -43,8 +46,9 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     @JsonProperty
     private Relator relator;
 
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty
-    private Situacao situacoes;
+    private Situacao situacoes = new Situacao();
 
     @JsonProperty(value = "anexos")
     private Set<Anexo> anexos;
@@ -197,11 +201,27 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
         return RelatorioPrevencaoResponse.class;
     }
 
-    public String getNomeRelator() {
-        return (relator == null) ? "" : relator.getNome();
+    static List<RelatorioPrevencao> findRelPrevByLocal(String local) throws RequestException {
+        if (local == null || local.isEmpty()) {
+            throw new IllegalArgumentException("O local é obrigatório");
+        }
+        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_FIND_RELPREV_BY_LOCAL + "/" + local;
+        return findBy(url);
     }
 
-    public String getCelularRelator() {
-        return (relator == null) ? "" : relator.getTelefoneCelular();
+    static List<RelatorioPrevencao> findRelPrevByDescricao(String descricao) throws RequestException {
+        if (descricao == null || descricao.isEmpty()) {
+            throw new IllegalArgumentException("A descrição é obrigatória");
+        }
+        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_FIND_RELPREV_BY_DESCRICAO + "/" + descricao;
+        return findBy(url);
+    }
+
+    private static List<RelatorioPrevencao> findBy(String url) throws RequestException {
+        Response response = (Response) fromJson(doGet(url), RelatorioPrevencaoResponse.class);
+        if (!response.getSuccess()) {
+            throw new RequestException(response.getMessage());
+        }
+        return response.getData();
     }
 }
