@@ -25,17 +25,32 @@
 	        	</tr>	        	
 	        </thead>
 	        <tbody>	        	
-			    <c:forEach var="relprev" varStatus="status" items="${relprevList}">
+			    <c:forEach var="relprev" varStatus="status" items="${relatorioPrevencaoList}">
 			  		<tr>
 				    	<td>${relprev.id}</td>				    	
-				    	<td><fmt:formatDate dateStyle="short" value="${relprev.getDataHora()}" /></td>
+				    	<td><fmt:formatDate dateStyle="short" value="${relprev.getDataSituacaoPerigosa()}" /></td>
 				    	<td>${relprev.getSituacao()}</td>				    	
 				    	<td>${relprev.getRelator().getNome()}</td>
 				    	<td>
-	        				<span class="label label-success" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>
-	        				<span class="label label-success" title="<fmt:message key="relatorio.divulgacao" />"><fmt:message key="sigla.divulgacao" /></span>
-	        				<span class="label label-success" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
-	        				<span class="label label-default" title="<fmt:message key="resposta" />"><fmt:message key="sigla.resposta" /></span>
+				    		<c:if test="${relrpev.getEncaminhamento() == null}">
+				    			<span class="label label-default" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>
+				    		</c:if>
+	        				<c:if test="${relrpev.getEncaminhamento() != null}">
+				    			<span class="label label-success" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>
+				    		</c:if>
+				    		<span class="label label-success" title="<fmt:message key="relatorio.divulgacao" />"><fmt:message key="sigla.divulgacao" /></span>
+	        				<c:if test="${relrpev.getAcaoRecomendada() == null}">
+	        					<span class="label label-default" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
+	        				</c:if>
+	        				<c:if test="${relrpev.getAcaoRecomendada() != null}">
+	        					<span class="label label-success" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
+	        				</c:if>
+	        				<c:if test="${relrpev.getResposta() == null}">
+	        					<span class="label label-default" title="<fmt:message key="resposta" />"><fmt:message key="sigla.resposta" /></span>
+        					</c:if>
+        					<c:if test="${relrpev.getResposta() != null}">
+	        					<span class="label label-sucess" title="<fmt:message key="resposta" />"><fmt:message key="sigla.resposta" /></span>
+        					</c:if>
 	        				<span class="label label-default"><fmt:message key="fim" /></span>	
 	        			</td>
 				    	<td><input type="checkbox"/></td>

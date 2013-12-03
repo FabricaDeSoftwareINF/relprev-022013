@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.ufg.inf.es.relprev.client.dominio.EloSipaer;
+import br.ufg.inf.es.relprev.client.dominio.Encaminhamento;
 import br.ufg.inf.es.relprev.client.dominio.Relator;
 import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
@@ -22,7 +23,7 @@ public class ImpressaoController {
 	}
 
 	@Path("/impressao")
-	public List<RelatorioPrevencao> inicio() {
+	public List<RelatorioPrevencao> inicio() throws RequestException {
 		/*
 		 * try { relatorios = new Relprev().list(); } catch (RequestException e)
 		 * { e.printStackTrace(); }
@@ -38,12 +39,11 @@ public class ImpressaoController {
 		relator.setNome("Cap. José");
 		relatorio.setRelator(relator);
 		relatorios.add(relatorio);
-		
 		relatorio = new RelatorioPrevencao();
 		relatorio.id = 2;
 		relatorio.setDataSituacaoPerigosa(new Date(2012, 01, 01));
 		relatorio.setSituacao("Objeto estranho encontrado no chão dos hangaretes");
-		relator = new Relator();
+		relator = new Relator();		
 		relator.setNome("3s Pagan");
 		relatorio.setRelator(relator);
 		relatorios.add(relatorio);
@@ -56,6 +56,6 @@ public class ImpressaoController {
 		relator.setNome("3s Gilbert");
 		relatorio.setRelator(relator);
 		relatorios.add(relatorio);
-		return relatorios;		
+		return relatorios;
 	}
 }
