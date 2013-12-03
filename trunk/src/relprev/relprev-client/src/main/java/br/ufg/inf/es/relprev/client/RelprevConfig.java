@@ -18,4 +18,10 @@ public class RelprevConfig {
     public static final String ACTION_CREATE = "create";
     public static final String ACTION_FIND_RELPREV_BY_LOCAL = "local";
     public static final String ACTION_FIND_RELPREV_BY_DESCRICAO = "descricao";
+    public static final String ACTION_SET_ACAO_RECOMENDADA = "acao";
+    public static final String ACTION_SET_CLASSIFICACAO_DE_RISCO = "classificacao";
+    public static final String ACTION_SET_ENCAMINHAMENTO = "encaminhamento";
+    public static final String ACTION_SET_OBSERVACAO = "observacao";
+    public static final String ACTION_SET_PARECER_SETOR = "parecer";
+    public static final String ACTION_SET_RESPOSTA = "resposta";
 }
