@@ -12,8 +12,10 @@ import java.util.List;
 import java.util.Set;
 
 import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
-import static br.ufg.inf.es.relprev.client.http.HttpClient.*;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.*;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
 
 /**
  * User: halisson
@@ -115,20 +117,12 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
         return this.eloSipaer;
     }
 
-    public void setEloSipaer(final EloSipaer eloSipaer) {
-        this.eloSipaer = eloSipaer;
-    }
-
     public Relator getRelator() {
         return this.relator;
     }
 
     public Situacao getSituacoes() {
         return this.situacoes;
-    }
-
-    public void setSituacoes(final Situacao situacoes) {
-        this.situacoes = situacoes;
     }
 
     public void setRelator(final Relator relator) {
@@ -147,48 +141,24 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
         return this.acaoRecomendada;
     }
 
-    public void setAcaoRecomendada(final AcaoRecomendada acaoRecomendada) {
-        this.acaoRecomendada = acaoRecomendada;
-    }
-
     public ClassificacaoRisco getClassificacaoRisco() {
         return this.classificacaoRisco;
-    }
-
-    public void setClassificacaoRisco(final ClassificacaoRisco classificacaoRisco) {
-        this.classificacaoRisco = classificacaoRisco;
     }
 
     public Encaminhamento getEncaminhamento() {
         return this.encaminhamento;
     }
 
-    public void setEncaminhamento(final Encaminhamento encaminhamento) {
-        this.encaminhamento = encaminhamento;
-    }
-
     public Observacao getObservacao() {
         return this.observacao;
-    }
-
-    public void setObservacao(final Observacao observacao) {
-        this.observacao = observacao;
     }
 
     public ParecerSetor getParecerSetor() {
         return this.parecerSetor;
     }
 
-    public void setParecerSetor(final ParecerSetor parecerSetor) {
-        this.parecerSetor = parecerSetor;
-    }
-
     public Resposta getResposta() {
         return this.resposta;
-    }
-
-    public void setResposta(final Resposta resposta) {
-        this.resposta = resposta;
     }
 
     @Override
