@@ -1,21 +1,16 @@
 package br.ufg.inf.service;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import org.mockito.Mock;
 
 import br.ufg.inf.repository.RelatorioDePrevencaoRepository;
-import br.ufg.inf.service.support.WebServicesURL;
+import br.ufg.inf.repository.support.LogRepository;
+import br.ufg.inf.service.support.Response;
+
+
 
 /**
  * Testes para os endpoints REST dos Relatórios de Prevenção
@@ -25,36 +20,138 @@ import br.ufg.inf.service.support.WebServicesURL;
  * @see RelatorioDePrevencaoRepository
  * @see RelatorioPrevencaoWebService
  */
-@Ignore
-@WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/META-INF/spring/applicationContextTest-mvc.xml")
 public class RelatorioDePrevencaoWebServiceTest {
 
-    private MockMvc mockMvc;
-
-    @Autowired
+    @Mock
     private RelatorioDePrevencaoRepository relatorioDePrevencaoRepository;
-
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+    
+    @Mock
+    private LogRepository logRepository;
+    
+    private RelatorioDePrevencaoWebService relatorioDePrevencaoWebService;
 
     @Before
     public void setUp() {
-        Mockito.reset(this.relatorioDePrevencaoRepository);
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+    	relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(relatorioDePrevencaoRepository, logRepository);
     }
 
     @Test
     public void testFindRelPrevByLocal() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get(WebServicesURL.URL_RELPREV + WebServicesURL.URL_RELPREV_FIND_LOCAL
-                + "/{local}", "Local 1"));
+    	Response<?> r = relatorioDePrevencaoWebService.findRelPrevByLocal("Teste");
+    	
+    	assertNotNull(r);
     }
 
     @Test
     public void testFindRelPrevByDescricao() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get(WebServicesURL.URL_RELPREV + WebServicesURL.URL_RELPREV_FIND_DESCRICAO
-                + "/{descricao}", "Descrição 1"));
+    	Response<?> r = relatorioDePrevencaoWebService.findRelPrevByDescricao("Teste");
+    	
+    	assertNotNull(r);
+    }
+    
+    @Test
+    public void testFindRelPrevByLocalException() throws Exception {
+    	relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(null, logRepository);
+    	Response<?> r = relatorioDePrevencaoWebService.findRelPrevByLocal("Teste");
+    	
+    	assertNotNull(r);
     }
 
+    @Test
+    public void testFindRelPrevByDescricaoException() throws Exception {
+    	relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(null, logRepository);
+    	Response<?> r = relatorioDePrevencaoWebService.findRelPrevByDescricao("Teste");
+    	
+    	assertNotNull(r);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testAddAcaoRecomendada() throws Exception {
+    	relatorioDePrevencaoWebService.addAcaoRecomendada(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testUpdateAcaoRecomendada() throws Exception {
+    	relatorioDePrevencaoWebService.updateAcaoRecomendada(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testDeleteAcaoRecomendada() throws Exception {
+    	relatorioDePrevencaoWebService.deleteAcaoRecomendada(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testAddClassificacaoDeRisco() throws Exception {
+    	relatorioDePrevencaoWebService.addClassificacaoDeRisco(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testUpdateClassificacaoDeRisco() throws Exception {
+    	relatorioDePrevencaoWebService.updateClassificacaoDeRisco(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testDeleteClassificacaoDeRisco() throws Exception {
+    	relatorioDePrevencaoWebService.deleteClassificacaoDeRisco(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testAddEncaminhamento() throws Exception {
+    	relatorioDePrevencaoWebService.addEncaminhamento(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testUpdateEncaminhamento() throws Exception {
+    	relatorioDePrevencaoWebService.updateEncaminhamento(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testDeleteEncaminhamento() throws Exception {
+    	relatorioDePrevencaoWebService.deleteEncaminhamento(1L, null);
+    }
+
+    @Test(expected = NullPointerException.class) 
+    public void testAddObservacao() throws Exception {
+    	relatorioDePrevencaoWebService.addObservacao(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testUpdateObservacao() throws Exception {
+    	relatorioDePrevencaoWebService.updateObservacao(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testDeleteObservacao() throws Exception {
+    	relatorioDePrevencaoWebService.deleteObservacao(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testAddParecerSetor() throws Exception {
+    	relatorioDePrevencaoWebService.addParecerSetor(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testUpdateParecerSetor() throws Exception {
+    	relatorioDePrevencaoWebService.updateParecerSetor(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testDeleteParecerSetor() throws Exception {
+    	relatorioDePrevencaoWebService.deleteParecerSetor(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testAddResposta() throws Exception {
+    	relatorioDePrevencaoWebService.addResposta(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testUpdateResposta() throws Exception {
+    	relatorioDePrevencaoWebService.updateResposta(1L, null);
+    }
+    
+    @Test(expected = NullPointerException.class) 
+    public void testDeleteResposta() throws Exception {
+    	relatorioDePrevencaoWebService.deleteResposta(1L, null);
+    }
 }
