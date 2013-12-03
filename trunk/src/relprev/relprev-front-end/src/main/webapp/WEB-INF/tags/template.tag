@@ -15,7 +15,7 @@
         
         <!-- Importação de Javascript. -->
         <script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
-        <script type="text/javascript" src="<c:url value="/js/utilitarios.js"/>" ></script>
+        <script type="text/javascript" src="<c:url value="/js/relprev.utilitarios.js"/>" ></script>
         <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>" ></script>            
     </head>
     <body>
