@@ -7,22 +7,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * User: halisson
  */
-@JsonInclude(Include.NON_EMPTY)
+@JsonInclude(Include.ALWAYS)
 public class Situacao {
 
     private static final long serialVersionUID = 990407097291869785L;
 
     @JsonProperty
-    private Boolean temEncaminhamento;
+    private Boolean temEncaminhamento = false;
 
     @JsonProperty
-    private Boolean temDivulgacao;
+    private Boolean temDivulgacao = false;
 
     @JsonProperty
-    private Boolean temAcaoRecomendada;
+    private Boolean temAcaoRecomendada = false;
 
     @JsonProperty(value = "concluido")
-    private Boolean foiConcluido;
+    private Boolean foiConcluido = false;
 
     public Boolean getTemEncaminhamento() {
         return this.temEncaminhamento;
