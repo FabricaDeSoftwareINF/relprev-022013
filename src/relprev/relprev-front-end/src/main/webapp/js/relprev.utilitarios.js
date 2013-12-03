@@ -1,3 +1,5 @@
+var relprev = window.relprev || {};
+
 relprev.utilitarios = (function(instancia) {
 	if (instancia) {
 		return instancia;
@@ -11,5 +13,3 @@ relprev.utilitarios = (function(instancia) {
 		limpeCampos: limpeCampos
 	};
 })(relprev.utilitarios || undefined);
-
-var relprev = window.relprev || {};
