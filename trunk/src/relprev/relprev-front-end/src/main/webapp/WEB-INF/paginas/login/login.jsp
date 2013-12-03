@@ -11,7 +11,7 @@
 		<link href="<c:url value="css/site.css"/>" rel="stylesheet" type="text/css">
 		<link href="<c:url value="css/login.css"/>" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<c:url value="js/jquery-2.0.3.js"/>"></script>
-		<script type="text/javascript" src="<c:url value="js/utilitarios.js"/>"></script>
+		<script type="text/javascript" src="<c:url value="js/relprev.utilitarios.js"/>"></script>
 	</head>
 	<body>		
 		<div class="container">
