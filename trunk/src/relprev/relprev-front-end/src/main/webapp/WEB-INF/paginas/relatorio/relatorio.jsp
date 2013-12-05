@@ -20,7 +20,7 @@
             <label for="local" class="labelMaiuscula">
             	<fmt:message key="local" />
             </label>
-            <input type="text" name='bean.local' value="${bean.local}" class="form-control" id="local"/>
+            <input type="text" name='relatorioPrevencao.local' value="${relatorioPrevencao.local}" class="form-control" id="local"/>
         </div>
     </div>        
     <div class="row">
@@ -29,7 +29,8 @@
             	<fmt:message key="data" />
             </label>
             <div class="input-group">
-                <input type="text" class="form-control calendario" id="data"  value="${bean.data}"/>
+                <input type="text" class="form-control calendario" id="data" 
+                	value="<fmt:formatDate dateStyle="short" value="${relatorioPrevencao.dataSituacaoPerigosa}" />"/>
             </div>
         </div>
         <div class="form-group col-md-4">
@@ -37,7 +38,8 @@
             	<fmt:message key="hora" />
             </label>
             <div class="input-group">
-                <input type="text" class="form-control hora" id="hora"  value="${relprev.hora}"/>
+                <input type="text" class="form-control hora" id="hora" 
+                	value="<fmt:formatDate timeStyle="short" value="${relatorioPrevencao.dataSituacaoPerigosa}" />"/>
             </div>
         </div>
     </div>
@@ -46,8 +48,8 @@
             <label for="pessoalEnvolvido" class="labelMaiuscula">
             	<fmt:message key="pessoal.envolvido" />
             </label>
-            <input type="text" name="bean.pessoalEnvolvido" class="form-control" id="pessoalEnvolvido"
-            	 value="${bean.pessoalEnvolvido}"/>
+            <input type="text" name="relatorioPrevencao.envolvidos" class="form-control" id="pessoalEnvolvido"
+            	 value="${relatorioPrevencao.envolvidos}"/>
         </div>
     </div>
     <div class="row">
@@ -55,7 +57,7 @@
             <label for="situacao" class="labelMaiuscula">
             	<fmt:message key="situacao" />
             </label>
-            <textarea class="form-control" name="bean.situacao"  value="${bean.situacao}" rows="6" id="situacao"></textarea>
+            <textarea class="form-control" name="relatorioPrevencao.situacao"  value="${relatorioPrevencao.situacao}" rows="6" id="situacao"></textarea>
         </div>
     </div>
     <div class="row">
@@ -71,21 +73,31 @@
             <label for="relator" class="labelMaiuscula">
             	<fmt:message key="relator" />
             </label>
-            <input type="text" name="bean.relator.nome" class="form-control" id="relator">
+            <input type="text" name="relatorioPrevencao.relator.nome" class="form-control" id="relator"
+            	value="${relatorioPrevencao.relator.nome}">
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-12">
-            <label for="telefone" class="labelMaiuscula">
-            	<fmt:message key="telefone" />
+            <label for="telefoneCelular" class="labelMaiuscula">
+            	<fmt:message key="telefone.celular" />
             </label>
-            <input type="text" name="bean.relator.telefone" class="form-control telefone" id="telefone">
+            <input type="text" name="relatorioPrevencao.relator.telefoneCelular" class="form-control telefone" id="telefoneCelular"
+            	value="${relatorioPrevencao.relator.telefoneCelular}">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="telefone" class="labelMaiuscula">
+            	<fmt:message key="telefone.residencial" />
+            </label>
+            <input type="text" name="relatorioPrevencao.relator.telefoneResidencial" class="form-control telefone" id="telefoneResidencial"
+            	value="${relatorioPrevencao.relator.telefoneResidencial}">
         </div>
         <div class="form-group col-md-12">
             <label for="email" class="labelMaiuscula">
             	<fmt:message key="email" />
             </label>
-            <input type="text" name="bean.relator.email" class="form-control" id="email">
+            <input type="text" name="relatorioPrevencao.relator.email" class="form-control" id="email"
+            	value="${relatorioPrevencao.relator.email}">
         </div>
     </div>
     <hr/>
