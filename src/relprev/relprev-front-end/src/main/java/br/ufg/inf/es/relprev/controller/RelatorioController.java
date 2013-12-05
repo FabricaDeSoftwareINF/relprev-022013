@@ -52,26 +52,7 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		} catch (RequestException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
-		RelatorioPrevencao r = new RelatorioPrevencao();
-		r.setLocal("minhaCasa");
-		Date data = new Date(2013,11,04);
-		data.setHours(8);
-		data.setMinutes(20);
-		r.setDataSituacaoPerigosa(data);
-		r.setEnvolvidos("envolvidos");
-		r.setDescricaoSituacaoPerigosa("descricao situacao");
-		r.setId(1);
-		lista.add(r);
-		r = new RelatorioPrevencao();
-		r.setLocal("minhaCasa2");
-		r.setId(2);
-		Date data2 = new Date(2013,12,04,8,20);
-		r.setDataSituacaoPerigosa(data2);
-		r.setEnvolvidos("envolvidos2");
-		r.setDescricaoSituacaoPerigosa("descricao situacao2");
-		
-		lista.add(r);
+		}
 		return lista;
 	}
 	
