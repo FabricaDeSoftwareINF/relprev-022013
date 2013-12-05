@@ -23,13 +23,20 @@ public class ImpressaoController {
 	}
 
 	@Path("/impressao")
-	public List<RelatorioPrevencao> inicio() throws RequestException {
+	public List<RelatorioPrevencao> inicio()  {
+		List<RelatorioPrevencao> relatorios;
+		  try { 
+			  relatorios = new RelatorioPrevencao().list();
+			  
+		  } catch (RequestException e)
+		  { 
+			  relatorios = new ArrayList<RelatorioPrevencao>();
+			  e.printStackTrace();
+		  }
+		  
+		 return relatorios;
+		 
 		/*
-		 * try { relatorios = new Relprev().list(); } catch (RequestException e)
-		 * { e.printStackTrace(); }
-		 * 
-		 * return relatorios;
-		 */
 		List<RelatorioPrevencao> relatorios = new ArrayList<RelatorioPrevencao>();
 		RelatorioPrevencao relatorio = new RelatorioPrevencao();
 		relatorio.id = 1;
@@ -56,6 +63,6 @@ public class ImpressaoController {
 		relator.setNome("3s Gilbert");
 		relatorio.setRelator(relator);
 		relatorios.add(relatorio);
-		return relatorios;
+		return relatorios;*/
 	}
 }
