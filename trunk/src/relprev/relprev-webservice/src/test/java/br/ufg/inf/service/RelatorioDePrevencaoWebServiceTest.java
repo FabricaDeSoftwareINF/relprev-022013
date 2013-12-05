@@ -14,6 +14,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.ufg.inf.model.AcaoRecomendada;
+import br.ufg.inf.model.Observacao;
+import br.ufg.inf.model.ParecerSetor;
 import br.ufg.inf.model.Encaminhamento;
 import br.ufg.inf.model.ClassificacaoRisco;
 import br.ufg.inf.model.EloSipaer;
@@ -232,6 +234,62 @@ public class RelatorioDePrevencaoWebServiceTest {
         encaminhamento.setRelPrev(this.relprev);
 
         final Response<?> r = this.relatorioDePrevencaoWebService.updateEncaminhamento(this.relprev.getId(), encaminhamento);
+        assertNotNull(r);
+    }
+    
+    @Test
+    public void testAddObservacao() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Observacao observacao = new Observacao();
+        observacao.setDescricao("observacao descrição");
+        observacao.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.addObservacao(this.relprev.getId(), observacao);
+        assertNotNull(r);
+    }
+
+    @Test
+    public void testUpdateEncaminhamento() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Observacao observacao = new Observacao();
+        observacao.setDescricao("observacao descrição 2");
+        observacao.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.updateObservacao(this.relprev.getId(), observacao);
+        assertNotNull(r);
+    }
+    
+    @Test
+    public void testAddParecerSetor() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final ParecerSetor parecerSetor = new ParecerSetor();
+        parecerSetor.setDescricao("parecerSetor descrição");
+        parecerSetor.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.addParecerSetor(this.relprev.getId(), parecerSetor);
+        assertNotNull(r);
+    }
+
+    @Test
+    public void testUpdateParecerSetor() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final ParecerSetor parecerSetor = new ParecerSetor();
+        parecerSetor.setDescricao("parecerSetor descrição 2");
+        parecerSetor.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.updateParecerSetor(this.relprev.getId(), parecerSetor);
         assertNotNull(r);
     }
 
