@@ -14,6 +14,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.ufg.inf.model.AcaoRecomendada;
+import br.ufg.inf.model.Encaminhamento;
 import br.ufg.inf.model.ClassificacaoRisco;
 import br.ufg.inf.model.EloSipaer;
 import br.ufg.inf.model.RelatorioPrevencao;
