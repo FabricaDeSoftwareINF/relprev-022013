@@ -62,48 +62,48 @@
 					  </div>
 					</div>
 				</div>
+				<div class="avaliacao col-md-6">
+					<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
+					<div class="col-md-2">
+						<select class="form-control">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<select class="form-control">
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+							<option value="E">E</option>
+						</select>
+					</div>
+				</div>
 				<div class="reavaliacao col-md-6">
 					<label class="labelMaiuscula"><fmt:message key="reavaliacao" /></label>
 					<div class="col-md-2">
 						<select class="form-control">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>
 					</div>
 					<div class="col-md-2">
 						<select class="form-control">
-							<option>A</option>
-							<option>B</option>
-							<option>C</option>
-							<option>D</option>
-							<option>E</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+							<option value="E">E</option>
 						</select>
 					</div>
-				</div>		
-				<div class="avaliacao col-md-6">
-				<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
-				<div class="col-md-2">
-					<select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
 				</div>
-				<div class="col-md-2">
-					<select class="form-control">
-						<option>A</option>
-						<option>B</option>
-						<option>C</option>
-						<option>D</option>
-						<option>E</option>
-					</select>
-				</div>
-			</div>
 			</div>
 		</div>
 		<hr />
