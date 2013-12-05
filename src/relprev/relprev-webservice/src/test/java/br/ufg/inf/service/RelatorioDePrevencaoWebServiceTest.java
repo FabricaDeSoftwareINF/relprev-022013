@@ -173,7 +173,7 @@ public class RelatorioDePrevencaoWebServiceTest {
     @Test
     public void testAddClassificacaoRisco() throws Exception {
 
-        // relatorioDePrevencaoWebService.update(relprev);
+        relatorioDePrevencaoWebService.update(relprev);
         // System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
 
         final ClassificacaoRisco classificacaoRisco = new ClassificacaoRisco();
@@ -189,7 +189,7 @@ public class RelatorioDePrevencaoWebServiceTest {
     @Test
     public void testUpdateClassificacaoRisco() throws Exception {
 
-        // relatorioDePrevencaoWebService.update(relprev);
+        relatorioDePrevencaoWebService.update(relprev);
         // System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
 
         final ClassificacaoRisco classificacaoRisco = new ClassificacaoRisco();
