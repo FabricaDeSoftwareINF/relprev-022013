@@ -11,17 +11,18 @@
         <h4><fmt:message key="ultimosrelatorio.ultimos" /></h4>
         <hr/>
         
-        <c:forEach var="relprev" varStatus="status" items="${relatorioPrevencaoList}">
-        <a href="<c:url value="/relatorio/dadosgerais/${relprev.id}"/>">
-          <div class="item-relatorio row">            
+        <c:forEach var="item" varStatus="status" items="${relatorioPrevencaoList}">
+        <fmt:setLocale value="pt_BR" />
+        <a href="<c:url value="/relatorio/dadosgerais/${item.id}"/>">
+          <div class="item-relatorio row">         
                 <div class="col-md-2">
-                Data: <fmt:formatDate type="date" value="${relprev.dataSituacaoPerigosa}" dateStyle="short" />
+                Data: <fmt:formatDate type="both" dateStyle="full" value="${item.dataSituacaoPerigosa}" pattern="dd/MM/yyyy" />
                 </div>
                 <div class="col-md-2">
-                Hora: <fmt:formatDate pattern="HH:mm" value="${relprev.dataSituacaoPerigosa}" /></div>
-                <div class="col-md-8">Situação: "${relprev.descricaoSituacaoPerigosa}"</div>
-                <div class="col-md-2">Local: "${relprev.local}"</div>
-                <div class="col-md-4">Pessoal envolvido: "${relprev.envolvidos}"</div>
+                Hora: <fmt:formatDate pattern="HH:mm" value="${item.dataSituacaoPerigosa}" /></div>
+                <div class="col-md-8">Situação: "${item.descricaoSituacaoPerigosa}"</div>
+                <div class="col-md-2">Local: "${item.local}"</div>
+                <div class="col-md-4">Pessoal envolvido: "${item.envolvidos}"</div>
             </div>            
         </a>
         </c:forEach>

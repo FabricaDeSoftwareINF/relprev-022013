@@ -16,6 +16,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.multipart.DefaultUploadedFile;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
+import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
 import br.ufg.inf.es.relprev.cdn.CDN;
 import br.ufg.inf.es.relprev.client.dominio.Anexo;
 import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
@@ -34,6 +35,7 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
         this.logger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
     }
 
+    @NaoAutenticado
     public void saveWithFiles(RelatorioPrevencao relatorioPrevencao, List<UploadedFile> files) throws FileNotFoundException {
         if (files == null) {
             files = new ArrayList<UploadedFile>();
@@ -47,6 +49,7 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
         super.save(relatorioPrevencao);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
+    @NaoAutenticado
     @Get("/relatorio/inicio")
     public void relatorioCompleto() {
     }

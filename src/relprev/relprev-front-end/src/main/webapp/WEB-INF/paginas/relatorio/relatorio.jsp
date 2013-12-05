@@ -43,7 +43,7 @@
 
         <div class="input-group">
             <input type="text" class="form-control hora" id="hora"
-                   value="<fmt:formatDate timeStyle="short" value="${relatorioPrevencao.hora}" />"/>
+                   value="<fmt:formatDate timeStyle="short" value="${relatorioPrevencao.dataSituacaoPerigosa}" pattern="HH:mm" />"/>
         </div>
     </div>
 </div>
