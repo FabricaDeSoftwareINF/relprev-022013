@@ -10,23 +10,20 @@
     <jsp:body>
         <h4><fmt:message key="ultimosrelatorio.ultimos" /></h4>
         <hr/>
-        <a href="#">
-            <div class="item-relatorio row">
-                <div class="col-md-2">Data: 01/01/2013</div>
-                <div class="col-md-2">Hora: 17h39</div>
-                <div class="col-md-8">Situação: Pegaram meu checklist no bolso do meu anti-g e colocaram outro</div>
-                <div class="col-md-2">Local: SBAN</div>
-                <div class="col-md-4">Pessoal envolvido: Cap. João</div>
-            </div>
+        
+        <c:forEach var="relprev" varStatus="status" items="${relatorioPrevencaoList}">
+        <a href="<c:url value="/relatorio/{relprev.id}"/>">
+          <div class="item-relatorio row">            
+                <div class="col-md-2">
+                Data: <fmt:formatDate type="date" value="${relprev.dataSituacaoPerigosa}" dateStyle="short" />
+                </div>
+                <div class="col-md-2">
+                Hora: <fmt:formatDate pattern="HH:mm" value="${relprev.dataSituacaoPerigosa}" /></div>
+                <div class="col-md-8">Situação: "${relprev.descricaoSituacaoPerigosa}"</div>
+                <div class="col-md-2">Local: "${relprev.local}"</div>
+                <div class="col-md-4">Pessoal envolvido: "${relprev.envolvidos}"</div>
+            </div>            
         </a>
-        <a href="#">
-            <div class="item-relatorio row">
-                <div class="col-md-2">Data: 01/01/2013</div>
-                <div class="col-md-2">Hora: 17h39</div>
-                <div class="col-md-8">Situação: Pegaram meu checklist no bolso do meu anti-g e colocaram outro</div>
-                <div class="col-md-2">Local: SBAN</div>
-                <div class="col-md-4">Pessoal envolvido: Cap. João</div>
-            </div>
-        </a>
+        </c:forEach>
     </jsp:body>
 </t:template>
