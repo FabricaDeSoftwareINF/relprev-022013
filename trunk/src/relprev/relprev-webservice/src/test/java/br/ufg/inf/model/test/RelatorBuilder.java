@@ -30,7 +30,7 @@ public class RelatorBuilder {
     }
 
     public RelatorBuilder telefone(final String telefone) {
-        ReflectionTestUtils.setField(this.relator, "telefone", telefone);
+        ReflectionTestUtils.setField(this.relator, "telefoneCelular", telefone);
         return this;
     }
 
