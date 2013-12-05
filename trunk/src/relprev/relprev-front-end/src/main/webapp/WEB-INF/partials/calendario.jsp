@@ -8,7 +8,8 @@
 
 			function CrieCamposDeCalendario() {
 				$(".calendario").datepicker({
-					inline: true
+					inline: true,
+					dateFormat:"dd/mm/yy"
 				});
 			}
 
