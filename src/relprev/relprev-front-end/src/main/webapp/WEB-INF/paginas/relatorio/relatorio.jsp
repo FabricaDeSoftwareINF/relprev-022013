@@ -86,7 +86,7 @@
             	value="${relatorioPrevencao.relator.telefoneCelular}">
         </div>
         <div class="form-group col-md-12">
-            <label for="telefone" class="labelMaiuscula">
+            <label for="telefoneResidencial" class="labelMaiuscula">
             	<fmt:message key="telefone.residencial" />
             </label>
             <input type="text" name="relatorioPrevencao.relator.telefoneResidencial" class="form-control telefone" id="telefoneResidencial"
