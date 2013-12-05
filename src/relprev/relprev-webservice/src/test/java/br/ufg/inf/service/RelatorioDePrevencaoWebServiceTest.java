@@ -168,6 +168,23 @@ public class RelatorioDePrevencaoWebServiceTest {
     	Response<?> r = relatorioDePrevencaoWebService.updateAcaoRecomendada(relprev.getId(), acaoRecomendada);
     	assertNotNull(r);
     }
+    
+    @Test
+    public void testDeleteAcaoRecomendada() throws Exception {
+    	
+    	relatorioDePrevencaoWebService.update(relprev);
+    	System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
+    	
+    	AcaoRecomendada acaoRecomendada = new AcaoRecomendada();
+    	acaoRecomendada.setDescricao("ação descrição");
+    	acaoRecomendada.setDestinatario("destinatario 2");
+    	acaoRecomendada.setRemetente("remetente 2");
+    	acaoRecomendada.setRelPrev(relprev);
+    	
+      Response<?> r = relatorioDePrevencaoWebService.addAcaoRecomendada(relprev.getId(), acaoRecomendada);
+    	r = relatorioDePrevencaoWebService.deleteAcaoRecomendada(relprev.getId(), acaoRecomendada.getId());
+    	assertNotNull(r);
+    }
         
     @Test(expected = NullPointerException.class) 
     public void testAddAcaoRecomendadaException() throws Exception {
