@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<link href="../css/relprev.css" rel="stylesheet">
+<link href="<c:url value="/css/relprev.css" />" rel="stylesheet">
 
 <!-- Estilos para os componentes do jQuery UI, tais como o DatePicker. -->
 <link href="<c:url value="/css/ui-lightness/jquery-ui-1.10.3.custom.css" />" rel="stylesheet" media="all">
@@ -10,8 +10,8 @@
     <h4 class="labelMaiuscula"><fmt:message key="dados.gerais.ocorrencia" /></h4>
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.file-input.js"></script>
-<script type="text/javascript" src="../js/jquery.MultiFile.js"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.file-input.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/js/jquery.MultiFile.js" />"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.meio.mask.js"/>" ></script>
 

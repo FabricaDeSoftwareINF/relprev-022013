@@ -41,7 +41,7 @@ public class ImpressaoController {
 		relatorios.add(relatorio);
 		relatorio = new RelatorioPrevencao();
 		relatorio.id = 2;
-		relatorio.setDataSituacaoPerigosa(new Date(2012, 01, 01));
+		relatorio.setDataSituacaoPerigosa(new Date(2012, 01, 01));		
 		relatorio.setSituacao("Objeto estranho encontrado no chão dos hangaretes");
 		relator = new Relator();		
 		relator.setNome("3s Pagan");

@@ -8,14 +8,16 @@
 	<div id="camposParecerDoSetor" class="camposAba col-xs-12 col-md-12">
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12"><fmt:message key="setor" /></label>
-			<input id="setor" type="text" class="form-control"/>
+			<input id="setor" type="text" class="form-control"
+				value="${relatorioPrevencao.parecerSetor.setor}"/>
 		</div>		
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12"><fmt:message key="dataMaiuscula" /></label>
-			<input id="dataParecer" type="text" class="form-control calendario"/>
+			<input id="dataParecer" type="text" class="form-control calendario"
+				value="<fmt:formatDate dateStyle="short" value="${relatorioPrevencao.parecerSetor.data}" />"/>
 		</div>
 		<div class="col-xs-12 col-md-12">
-			<textarea id="descricaoParecerDoSetor"></textarea>
+			<textarea id="descricaoParecerDoSetor" value="${relatorioPrevencao.parecerSetor.descricao}"></textarea>
 		</div>
 	</div>		
 </div>
