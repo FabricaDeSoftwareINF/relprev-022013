@@ -252,7 +252,7 @@ public class RelatorioDePrevencaoWebServiceTest {
     }
 
     @Test
-    public void testUpdateEncaminhamento() throws Exception {
+    public void testUpdateObservacao() throws Exception {
 
         this.relatorioDePrevencaoWebService.update(this.relprev);
         //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
