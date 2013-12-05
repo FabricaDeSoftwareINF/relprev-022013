@@ -17,6 +17,7 @@ import br.ufg.inf.model.AcaoRecomendada;
 import br.ufg.inf.model.EloSipaer;
 import br.ufg.inf.model.RelatorioPrevencao;
 import br.ufg.inf.model.Situacao;
+import br.ufg.inf.model.ClassificacaoRisco;
 import br.ufg.inf.model.security.Usuario;
 import br.ufg.inf.repository.EloSipaerRepository;
 import br.ufg.inf.repository.RelatorioDePrevencaoRepository;
