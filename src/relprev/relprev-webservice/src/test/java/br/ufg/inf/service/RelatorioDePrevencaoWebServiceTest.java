@@ -14,6 +14,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.ufg.inf.model.AcaoRecomendada;
+import br.ufg.inf.model.Resposta;
 import br.ufg.inf.model.Observacao;
 import br.ufg.inf.model.ParecerSetor;
 import br.ufg.inf.model.Encaminhamento;
@@ -290,6 +291,56 @@ public class RelatorioDePrevencaoWebServiceTest {
         parecerSetor.setRelPrev(this.relprev);
 
         final Response<?> r = this.relatorioDePrevencaoWebService.updateParecerSetor(this.relprev.getId(), parecerSetor);
+        assertNotNull(r);
+    }
+    
+    @Test
+    public void testAddResposta() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Resposta resposta = new Resposta();
+        resposta.setDescricao("resposta descrição");
+        resposta.setDestinatario("destinatario");
+        resposta.setRemetente("remetente");
+        resposta.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.addResposta(this.relprev.getId(), resposta);
+        assertNotNull(r);
+    }
+
+    @Test
+    public void testUpdateResposta() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Resposta resposta = new Resposta();
+        resposta.setDescricao("resposta descrição");
+        resposta.setDestinatario("destinatario 2");
+        resposta.setRemetente("remetente 2");
+        resposta.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.updateResposta(this.relprev.getId(), resposta);
+        assertNotNull(r);
+    }
+    
+    @Test
+    public void testAddInserirEntidadeExistente() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Resposta resposta = new Resposta();
+        resposta.setDescricao("resposta descrição");
+        resposta.setDestinatario("destinatario");
+        resposta.setRemetente("remetente");
+        resposta.setRelPrev(this.relprev);
+
+        Response<?> r = this.relatorioDePrevencaoWebService.addResposta(this.relprev.getId(), resposta);
+        r = this.relatorioDePrevencaoWebService.addResposta(this.relprev.getId(), resposta);
+        
         assertNotNull(r);
     }
 
