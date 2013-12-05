@@ -25,10 +25,6 @@ public abstract class ObjetoDeDominio {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public List list() throws RequestException {
         String url = URL_SERVIDOR + "/" + getController();
 
