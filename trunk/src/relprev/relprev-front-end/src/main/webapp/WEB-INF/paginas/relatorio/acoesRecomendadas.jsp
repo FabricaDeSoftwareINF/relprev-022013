@@ -8,18 +8,22 @@
 	<div id="camposAcoesRecomendadas" class="camposAba col-xs-12 col-md-12">
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="do" /></label>
-			<input id="acaoDo" type="text" class="form-control"/>
+			<input id="acaoDo" type="text" class="form-control"
+				value="${relatorioPrevencao.acaoRecomendada.remetente}"/>
 		</div>		
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="para" /></label>
-			<input id="acaoAo" type="text" class="form-control"/>
+			<input id="acaoAo" type="text" class="form-control"
+				value="${relatorioPrevencao.acaoRecomendada.destinatario}"/>
 		</div>
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12 labelPadrao"><fmt:message key="dataMaiuscula" /></label>
-			<input id="acaoData" type="text" class="form-control calendario"/>
+			<input id="acaoData" type="text" class="form-control calendario"
+				value="<fmt:formatDate dateStyle="short" value="${relatorioPrevencao.acaoRecomendada.data}" />"/>
 		</div>
 		<div class="col-xs-12 col-md-12">
-			<textarea id="descricaoAcoesRecomendadas" class="col-xs-12 col-md-12"></textarea>
+			<textarea id="descricaoAcoesRecomendadas" class="col-xs-12 col-md-12"
+				value="${relatorioPrevencao.acaoRecomendada.descricao}"></textarea>
 		</div>
 	</div>		
 </div>

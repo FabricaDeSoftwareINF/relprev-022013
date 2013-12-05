@@ -6,6 +6,7 @@
 		<label><fmt:message key="observacoes" /></label>
 	</div>
 	<div id="camposObservacoes" class="camposAba col-xs-12 col-md-12">		
-		<textarea id="observacoes" class="col-xs-12 col-md-12"></textarea>		
+		<textarea id="observacoes" class="col-xs-12 col-md-12"
+			value="${relatorioPrevencao.observacao.descricao}"></textarea>		
 	</div>		
 </div>

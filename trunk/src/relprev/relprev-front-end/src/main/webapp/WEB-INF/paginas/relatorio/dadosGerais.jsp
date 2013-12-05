@@ -53,7 +53,7 @@
 					    <div class="conteudoModal modal-content">
 					      <div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					        <h4 class="modal-title" id="myModalLabel">Matriz de Avaliação de Risco</h4>
+					        <h4 class="modal-title" id="myModalLabel"><fmt:message key="matriz.avaliacao.risco" /></h4>
 					      </div>
 					      <div class="modal-body">
 					        <img src="<c:url value="/img/tabela-risco.jpg" />"/>
