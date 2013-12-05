@@ -61,9 +61,11 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		r.setDataSituacaoPerigosa(data);
 		r.setEnvolvidos("envolvidos");
 		r.setDescricaoSituacaoPerigosa("descricao situacao");
+		r.setId(1);
 		lista.add(r);
-		
+		r = new RelatorioPrevencao();
 		r.setLocal("minhaCasa2");
+		r.setId(2);
 		Date data2 = new Date(2013,12,04,8,20);
 		r.setDataSituacaoPerigosa(data2);
 		r.setEnvolvidos("envolvidos2");

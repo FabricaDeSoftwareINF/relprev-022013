@@ -12,7 +12,7 @@
         <hr/>
         
         <c:forEach var="relprev" varStatus="status" items="${relatorioPrevencaoList}">
-        <a href="<c:url value="/relatorio/{relprev.id}"/>">
+        <a href="<c:url value="/relatorio/dadosgerais/${relprev.id}"/>">
           <div class="item-relatorio row">            
                 <div class="col-md-2">
                 Data: <fmt:formatDate type="date" value="${relprev.dataSituacaoPerigosa}" dateStyle="short" />
