@@ -61,9 +61,9 @@
         <label for="descricaoSituacaoPerigosa" class="labelMaiuscula">
             <fmt:message key="situacao"/>
         </label>
-        <textarea class="form-control" name="relatorioPrevencao.descricaoSituacaoPerigosa"
-                  value="${relatorioPrevencao.descricaoSituacaoPerigosa}"
-                  rows="6" id="descricaoSituacaoPerigosa"></textarea>
+        <textarea class="form-control" name="relatorioPrevencao.descricaoSituacaoPerigosa"                  
+                  rows="6" id="descricaoSituacaoPerigosa">${relatorioPrevencao.descricaoSituacaoPerigosa}</textarea>
+
     </div>
 </div>
 <div class="row">
