@@ -170,19 +170,32 @@ public class RelatorioDePrevencaoWebServiceTest {
     }
     
     @Test
-    public void testDeleteAcaoRecomendada() throws Exception {
+    public void testAddClassificacaoRisco() throws Exception {
     	
-    	relatorioDePrevencaoWebService.update(relprev);
-    	System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
+    	//relatorioDePrevencaoWebService.update(relprev);
+    	//System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
     	
-    	AcaoRecomendada acaoRecomendada = new AcaoRecomendada();
-    	acaoRecomendada.setDescricao("ação descrição");
-    	acaoRecomendada.setDestinatario("destinatario 2");
-    	acaoRecomendada.setRemetente("remetente 2");
-    	acaoRecomendada.setRelPrev(relprev);
+    	ClassificacaoRisco classificacaoRisco = new ClassificacaoRisco();
+    	classificacaoRisco.setAvaliacaoInicial("AA");
+    	classificacaoRisco.setAvaliacaoFinal("AB");
+    	classificacaoRisco.setRelPrev(relprev);
     	
-      Response<?> r = relatorioDePrevencaoWebService.addAcaoRecomendada(relprev.getId(), acaoRecomendada);
-    	r = relatorioDePrevencaoWebService.deleteAcaoRecomendada(relprev.getId(), acaoRecomendada.getId());
+    	Response<?> r = relatorioDePrevencaoWebService.addClassificacaoRisco(relprev.getId(), classificacaoRisco);
+    	assertNotNull(r);
+    }
+    
+    @Test
+    public void testUpdateClassificacaoRisco() throws Exception {
+    	
+    	//relatorioDePrevencaoWebService.update(relprev);
+    	//System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
+    	
+    	ClassificacaoRisco classificacaoRisco = new ClassificacaoRisco();
+    	classificacaoRisco.setAvaliacaoInicial("AA");
+    	classificacaoRisco.setAvaliacaoFinal("AB");
+    	classificacaoRisco.setRelPrev(relprev);
+    	
+    	Response<?> r = relatorioDePrevencaoWebService.updateClassificacaoRisco(relprev.getId(), classificacaoRisco);
     	assertNotNull(r);
     }
         
