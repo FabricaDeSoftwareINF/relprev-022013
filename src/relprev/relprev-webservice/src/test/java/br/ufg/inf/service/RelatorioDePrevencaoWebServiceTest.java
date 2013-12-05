@@ -201,6 +201,38 @@ public class RelatorioDePrevencaoWebServiceTest {
                 classificacaoRisco);
         assertNotNull(r);
     }
+    
+    @Test
+    public void testAddEncaminhamento() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Encaminhamento encaminhamento = new Encaminhamento();
+        encaminhamento.setDescricao("encaminhamento descrição");
+        encaminhamento.setDestinatario("destinatario");
+        encaminhamento.setRemetente("remetente");
+        encaminhamento.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.addEncaminhamento(this.relprev.getId(), encaminhamento);
+        assertNotNull(r);
+    }
+
+    @Test
+    public void testUpdateEncaminhamento() throws Exception {
+
+        this.relatorioDePrevencaoWebService.update(this.relprev);
+        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
+
+        final Encaminhamento encaminhamento = new Encaminhamento();
+        encaminhamento.setDescricao("encaminhamento descrição");
+        encaminhamento.setDestinatario("destinatario 2");
+        encaminhamento.setRemetente("remetente 2");
+        encaminhamento.setRelPrev(this.relprev);
+
+        final Response<?> r = this.relatorioDePrevencaoWebService.updateEncaminhamento(this.relprev.getId(), encaminhamento);
+        assertNotNull(r);
+    }
 
     @Test(expected = NullPointerException.class)
     public void testAddAcaoRecomendadaException() throws Exception {
