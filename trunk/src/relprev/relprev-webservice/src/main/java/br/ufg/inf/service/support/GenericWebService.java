@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.HttpServerErrorException;
 
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.Log;
@@ -327,7 +326,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      * Manipula exceções para status HTTP {@code 5xx}, exceções do servidor
      * 
      * @param ex
-     *            {@link HttpServerErrorException}
+     *            {@link ConstraintViolationException}
      * @return resposta ao cliente
      */
     private Response<E> buildResponseForConstraintViolationException(final ConstraintViolationException ex) {
