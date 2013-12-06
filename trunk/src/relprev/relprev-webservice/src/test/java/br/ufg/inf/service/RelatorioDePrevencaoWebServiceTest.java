@@ -4,6 +4,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 
+import javax.validation.ConstraintViolationException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -373,6 +375,28 @@ public class RelatorioDePrevencaoWebServiceTest {
         r = this.relatorioDePrevencaoWebService.addResposta(this.relprev.getId(), resposta);
         
         assertNotNull(r);
+    }
+    
+    @Test(expected = ConstraintViolationException.class)
+    public void testInserirEntidadeComRestricao() throws Exception {
+
+    	final Usuario usuario = new Usuario();
+        usuario.setAtivo(true);
+        usuario.setDataInsercaoAlteracao(new Date());
+        usuario.setNomeCompleto("teste nome");
+        usuario.setFuncao("funçaõ");
+        usuario.setPosto("posto");
+        usuario.setSenha("");
+        usuario.setSiglaSecao("SIGLA");
+        usuario.setUsuario("usuario");
+
+        final EloSipaer eloSipaer = new EloSipaer();
+        eloSipaer.setDataInsercaoAlteracao(new Date());
+        eloSipaer.setOrganizacao("teste organização");
+        eloSipaer.setSiglaOrganizacao("SIGLA");
+        eloSipaer.setUsuario(usuario);
+
+        this.eloSipaerRepository.save(eloSipaer);
     }
 
     @Test(expected = NullPointerException.class)
