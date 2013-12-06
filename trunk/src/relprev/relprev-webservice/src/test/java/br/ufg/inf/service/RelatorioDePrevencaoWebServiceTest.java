@@ -11,19 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.ufg.inf.model.AcaoRecomendada;
-import br.ufg.inf.model.Resposta;
-import br.ufg.inf.model.Observacao;
-import br.ufg.inf.model.ParecerSetor;
-import br.ufg.inf.model.Encaminhamento;
 import br.ufg.inf.model.ClassificacaoRisco;
 import br.ufg.inf.model.EloSipaer;
+import br.ufg.inf.model.Encaminhamento;
+import br.ufg.inf.model.Observacao;
+import br.ufg.inf.model.ParecerSetor;
 import br.ufg.inf.model.RelatorioPrevencao;
+import br.ufg.inf.model.Resposta;
 import br.ufg.inf.model.Situacao;
 import br.ufg.inf.model.security.Usuario;
 import br.ufg.inf.repository.EloSipaerRepository;
+import br.ufg.inf.repository.ObservacaoRepository;
 import br.ufg.inf.repository.RelatorioDePrevencaoRepository;
 import br.ufg.inf.repository.support.LogRepository;
 import br.ufg.inf.service.support.Response;
@@ -37,6 +39,7 @@ import br.ufg.inf.service.support.Response;
  * @see RelatorioPrevencaoWebService
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 @ContextConfiguration({"classpath:META-INF/spring/applicationContextTest-mvc.xml",
         "classpath:META-INF/spring/applicationContextTest-persistence.xml"})
 @Transactional
@@ -48,6 +51,9 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Autowired
     private EloSipaerRepository eloSipaerRepository;
+    
+    @Autowired
+    private ObservacaoRepository observacaoRepository;
 
     @Autowired
     private LogRepository logRepository;
@@ -61,7 +67,7 @@ public class RelatorioDePrevencaoWebServiceTest {
         this.relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(this.relatorioDePrevencaoRepository,
                 this.logRepository);
 
-        this.relprev = new RelatorioPrevencao();
+        RelatorioPrevencao relprev = new RelatorioPrevencao();
 
         final Usuario usuario = new Usuario();
         usuario.setAtivo(true);
@@ -87,15 +93,16 @@ public class RelatorioDePrevencaoWebServiceTest {
         situacao.setTemDivulgacao(false);
         situacao.setTemEncaminhamento(false);
 
-        this.relprev.setDataInsercaoAlteracao(new Date());
-        this.relprev.setDataSituacaoPerigosa(new Date());
-        this.relprev.setDescricaoSituacaoPerigosa("teste descrição");
-        this.relprev.setEloSipaer(eloSipaer);
-        this.relprev.setEnvolvidos("teste envolvidos");
-        this.relprev.setLocal("teste local");
-        this.relprev.setSituacoes(situacao);
+        relprev.setDataInsercaoAlteracao(new Date());
+        relprev.setDataSituacaoPerigosa(new Date());
+        relprev.setDescricaoSituacaoPerigosa("teste descrição");
+        relprev.setEloSipaer(eloSipaer);
+        relprev.setEnvolvidos("teste envolvidos");
+        relprev.setLocal("teste local");
+        relprev.setSituacoes(situacao);
 
-        this.relatorioDePrevencaoWebService.create(this.relprev);
+        Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.create(relprev);
+        this.relprev = response.getData().get(0);
     }
 
     @Test
@@ -173,6 +180,8 @@ public class RelatorioDePrevencaoWebServiceTest {
         final Response<?> r = this.relatorioDePrevencaoWebService.updateAcaoRecomendada(this.relprev.getId(), acaoRecomendada);
         assertNotNull(r);
     }
+    
+    
 
     @Test
     public void testAddClassificacaoRisco() throws Exception {
@@ -264,6 +273,28 @@ public class RelatorioDePrevencaoWebServiceTest {
 
         final Response<?> r = this.relatorioDePrevencaoWebService.updateObservacao(this.relprev.getId(), observacao);
         assertNotNull(r);
+    }
+    
+    @Test
+    public void testDeleteObservacao() throws Exception {
+    	final RelatorioPrevencao persisted = this.relprev;
+
+    	final Observacao observacao = new Observacao();
+        observacao.setDescricao("observacao descrição 2");
+        observacao.setRelPrev(persisted);
+        
+        this.observacaoRepository.save(observacao);
+        
+        relprev.setObservacao(observacao);
+        
+        //Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.addObservacao(persisted.getId(), observacao);
+        
+        //Observacao observacaoPersistida = response.getData().get(0).getObservacao();
+        //response = this.relatorioDePrevencaoWebService.deleteAcaoRecomendada(persisted.getId(), observacaoPersistida.getId());
+        
+        this.observacaoRepository.delete(observacao);
+        //assertNotNull(response);
+        assertNotNull(observacao);
     }
     
     @Test
