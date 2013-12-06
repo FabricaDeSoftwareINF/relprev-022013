@@ -61,9 +61,8 @@
         <label for="descricaoSituacaoPerigosa" class="labelMaiuscula">
             <fmt:message key="situacao"/>
         </label>
-        <textarea class="form-control" name="relatorioPrevencao.descricaoSituacaoPerigosa"                  
+        <textarea class="form-control" name="relatorioPrevencao.descricaoSituacaoPerigosa"
                   rows="6" id="descricaoSituacaoPerigosa">${relatorioPrevencao.descricaoSituacaoPerigosa}</textarea>
-
     </div>
 </div>
 <div class="row">
@@ -74,6 +73,20 @@
         <input id="enviarArquivo" type="file" title="Selecionar.." multiple name="files[]">
     </div>
 </div>
+
+<div class="row">
+    <div class="form-group col-md-12">
+        <h3><fmt:message key="anexos"/></h3>
+        <ul>
+            <c:forEach items="${relatorioPrevencao.anexos}" var="anexo">
+                <li>
+                    <a href="<c:url value='/cdn/${relatorioPrevencao.id}/${anexo.pathAnexo}'/>">${anexo.pathAnexo} </a>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
+
 <div class="row">
     <div class="form-group col-md-12">
         <label for="relator" class="labelMaiuscula">
