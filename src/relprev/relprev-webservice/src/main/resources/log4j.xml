@@ -32,15 +32,15 @@
 	</logger>
 
 	<logger name="org.springframework">
-		<level value="warn" />
+		<level value=${log4j.level} />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="warn" />
+		<level value="${log4j.level}" />
 	</logger>
 
 	<root>
-		<priority value="warn" />
+		<priority value="${log4j.level}" />
 		<appender-ref ref="asyncConsoleAppender" />
 		<appender-ref ref="asyncfileAppender" />
 	</root>
