@@ -72,7 +72,7 @@ public class RESTErrorHandler<E extends AbstractEntity<E>> {
         final BindingResult result = ex.getBindingResult();
         final FieldError fieldError = result.getFieldError();
         final String message = this.messageSource.getMessage(fieldError.getDefaultMessage(), null, null);
-        return new ResponseBuilder<E>().success(false).status(HttpStatus.BAD_REQUEST).message(message.toString()).build();
+        return new ResponseBuilder<E>().success(false).status(HttpStatus.BAD_REQUEST).message(message).build();
     }
 
 }
