@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
-import br.ufg.inf.model.support.ModelConstantNumbers;
+import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -38,21 +38,20 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
     private static final long serialVersionUID = -8111373397877993819L;
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_20)
-    @NotNull(message = "{validation.Taxonomia.nome.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_20,
-        message = "{validation.Taxonomia.nome.Size.message}")
+    @NotNull(message = "validation.Taxonomia.nome.NotNull.message")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_20)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_20,
+        message = "validation.Taxonomia.nome.Size.message")
     private String nome;
 
     @JsonProperty
     @Column(nullable = false)
-    @NotNull(message = "{validation.Taxonomia.status.NotNull.message}")
+    @NotNull(message = "validation.Taxonomia.status.NotNull.message")
     private Boolean status;
 
     @JsonProperty
     @Column(name = "padrao_minimo", nullable = false)
-    @NotNull(message = "{validation.Taxonomia.padraoMinimo.NotNull.message}")
+    @NotNull(message = "validation.Taxonomia.padraoMinimo.NotNull.message")
     private Boolean padraoMinimo;
 
     public String getNome() {
@@ -87,15 +86,14 @@ public class Taxonomia extends AbstractEntity<Taxonomia> {
      * sub-categorias(TEXTO(15)).
      */
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_600)
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_600,
-        message = "{validation.Taxonomia.descricao.Size.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_600)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_600, 
+        message = "validation.Taxonomia.descricao.Size.message")
     private String descricao;
 
     @JsonProperty(value = "categorias")
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxonomia_categorias",
+    @JoinTable(name = "taxonomia_categorias", 
         joinColumns = {@JoinColumn(name = "taxonomia_id")},
         inverseJoinColumns = {@JoinColumn(name = "categoria_id")})
     private Set<Categoria> categorias;

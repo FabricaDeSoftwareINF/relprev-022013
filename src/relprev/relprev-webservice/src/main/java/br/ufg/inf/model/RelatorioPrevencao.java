@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.Anexo;
-import br.ufg.inf.model.support.ModelConstantNumbers;
+import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -48,38 +48,35 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     private static final String RELPREV = "relPrev";
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60)
-    @NotNull(message = "{validation.RelatorioPrevencao.envolvidos.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_60,
-        message = "{validation.RelatorioPrevencao.envolvidos.Size.message}")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_60)
+    @NotNull(message = "validation.RelatorioPrevencao.envolvidos.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.RelatorioPrevencao.envolvidos.Size.message")
     private String envolvidos;
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60)
-    @NotNull(message = "{validation.RelatorioPrevencao.local.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_60,
-        message = "{validation.RelatorioPrevencao.local.Size.message}")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_60)
+    @NotNull(message = "validation.RelatorioPrevencao.local.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.RelatorioPrevencao.local.Size.message")
     private String local;
 
     @JsonProperty(value = "descricao")
-    @Column(nullable = false, name = "descricao", length = ModelConstantNumbers.COLUMN_SIZE_600)
-    @NotNull(message = "{validation.RelatorioPrevencao.descricaoSituacaoPerigosa.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_600,
-        message = "{validation.RelatorioPrevencao.descricaoSituacaoPerigosa.Size.message}")
+    @Column(nullable = false, name = "descricao", length = ModelConstants.COLUMN_SIZE_600)
+    @NotNull(message = "validation.RelatorioPrevencao.descricaoSituacaoPerigosa.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_600,
+        message = "validation.RelatorioPrevencao.descricaoSituacaoPerigosa.Size.message")
     private String descricaoSituacaoPerigosa;
 
     @JsonProperty(value = "data")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, name = "data")
-    @Past(message = "{validation.RelatorioPrevencao.dataSituacaoPerigosa.Past.message}")
-    @NotNull(message = "{validation.RelatorioPrevencao.dataSituacaoPerigosa.NotNull.message}")
+    @Past(message = "validation.RelatorioPrevencao.dataSituacaoPerigosa.Past.message")
+    @NotNull(message = "validation.RelatorioPrevencao.dataSituacaoPerigosa.NotNull.message")
     private Date dataSituacaoPerigosa;
 
     @JsonProperty(value = "situacao")
-    @Column(name = "situacao", length = ModelConstantNumbers.COLUMN_SIZE_5000)
+    @Column(name = "situacao", length = ModelConstants.COLUMN_SIZE_5000)
     private String situacao;
 
     @ManyToOne
@@ -95,6 +92,7 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
 
     @JsonProperty
     @JoinColumn(name = "situacoes_id")
+    @NotNull(message = "validation.RelatorioPrevencao.situacoes.NotNull.message")
     @ManyToOne(cascade = CascadeType.PERSIST, optional = false, fetch = FetchType.EAGER)
     private Situacao situacoes;
 

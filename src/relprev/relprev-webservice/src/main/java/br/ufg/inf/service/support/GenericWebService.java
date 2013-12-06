@@ -6,20 +6,25 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Table;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpServerErrorException;
 
 import br.ufg.inf.model.support.AbstractEntity;
 import br.ufg.inf.model.support.Log;
@@ -42,6 +47,9 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
     private final R repository;
 
     private final LogRepository logRepository;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @Autowired
     public GenericWebService(final R repository, final LogRepository logRepository) {
@@ -120,7 +128,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
                     .status(HttpStatus.OK).build();
         } catch (final Exception e) {
             final String message = ExceptionUtils.getRootCauseMessage(e);
-            response = new ResponseBuilder<E>().success(false).message(message).status(HttpStatus.BAD_REQUEST).build();
+            response = handlingCatchedExceptions(e, message);
             this.getLogger().error("problema ao criar objeto " + entity.toString() + ": " + message, e);
         }
         return response;
@@ -146,7 +154,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
             this.getLogger().debug("objeto " + persistedEntity.toString() + " atualizado com sucesso");
         } catch (final Exception e) {
             final String message = ExceptionUtils.getRootCauseMessage(e);
-            response = new ResponseBuilder<E>().success(false).message(message).status(HttpStatus.BAD_REQUEST).build();
+            response = handlingCatchedExceptions(e, message);
             this.getLogger().error("problema ao atualizar objeto " + entity.toString() + ": " + message, e);
         }
         return response;
@@ -296,6 +304,45 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      */
     protected Logger getLogger() {
         return this.logger;
+    }
+
+    /**
+     * Trata a exceção, para geração da resposta, captura pelos end points
+     * 
+     * @param ex
+     *            {@link Exception}
+     * @return resposta ao cliente
+     */
+    private Response<E> handlingCatchedExceptions(final Exception ex, final String message) {
+        Response<E> response;
+        if (ex instanceof ConstraintViolationException) {
+            response = this.buildResponseForConstraintViolationException((ConstraintViolationException) ex);
+        } else {
+            response = new ResponseBuilder<E>().success(false).message(message).status(HttpStatus.BAD_REQUEST).build();
+        }
+        return response;
+    }
+
+    /**
+     * Manipula exceções para status HTTP {@code 5xx}, exceções do servidor
+     * 
+     * @param ex
+     *            {@link HttpServerErrorException}
+     * @return resposta ao cliente
+     */
+    private Response<E> buildResponseForConstraintViolationException(final ConstraintViolationException ex) {
+        this.logger.info("handleConstraintViolationException - Catching: " + ex.getClass().getSimpleName(), ex);
+        final StringBuilder messageResponse = new StringBuilder();
+        final Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
+        Integer violationsSize = violations.size();
+        for (final ConstraintViolation<?> violation : violations) {
+            messageResponse.append(this.messageSource.getMessage(violation.getMessage(), null, null));
+            if (violationsSize > 1) {
+                messageResponse.append(" | ");
+            }
+            violationsSize--;
+        }
+        return new ResponseBuilder<E>().success(false).message(messageResponse.toString()).status(HttpStatus.BAD_REQUEST).build();
     }
 
 }

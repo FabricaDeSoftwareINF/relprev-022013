@@ -1,14 +1,14 @@
 package br.ufg.inf.model.support;
 
 /**
- * Constantes numéricas usadas no modelo de entidades para evitar violações {@code MAGIC NUMBER} do Sonar
+ * Constantes usadas no modelo de entidades para evitar violações {@code MAGIC NUMBER} do Sonar
  * 
  * @created 25/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
-public final class ModelConstantNumbers {
+public final class ModelConstants {
 
-    private ModelConstantNumbers() { }
+    private ModelConstants() { }
 
     /**
      * Constante para coluna JPA de tamanho 2
@@ -109,5 +109,10 @@ public final class ModelConstantNumbers {
      * Constante para campo de tamanho mínimo ou máximo (bean validation) igual a 600
      */
     public static final int FIELD_SIZE_600 = COLUMN_SIZE_600;
+
+    /**
+     * Constante que representa o padrão de telefone (bean validation) a ser usado na aplicação
+     */
+    public static final String TELEFONE_REGEX = "([1-9]{2})?([0-9]{8,9})";
 
 }

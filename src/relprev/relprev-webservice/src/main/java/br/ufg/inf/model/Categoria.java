@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
-import br.ufg.inf.model.support.ModelConstantNumbers;
+import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -46,8 +46,8 @@ public class Categoria extends AbstractEntity<Categoria> {
 
     @JsonProperty
     @Column(nullable = false)
-    @NotNull(message = "{validation.Categoria.nome.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1, message = "{validation.Categoria.nome.Size.message}")
+    @NotNull(message = "validation.Categoria.nome.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.Categoria.nome.Size.message")
     private String nome;
 
     public Categoria getCategoriaPai() {

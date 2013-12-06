@@ -32,7 +32,7 @@
 	</logger>
 
 	<logger name="org.springframework">
-		<level value=${log4j.level} />
+		<level value="${log4j.level}" />
 	</logger>
 
 	<logger name="org.springframework.web">

@@ -5,14 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
 import br.ufg.inf.model.support.AbstractEntity;
-import br.ufg.inf.model.support.ModelConstantNumbers;
+import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
-import br.ufg.inf.model.support.annotation.Telefone;
 import br.ufg.inf.model.support.annotation.Updatable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -35,80 +35,72 @@ public class Usuario extends AbstractEntity<Usuario> {
     private static final long serialVersionUID = -2583035988668453632L;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_120)
-    @Email(message = "{validation.Usuario.email.Email.message}",
-        regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
+    @Column(length = ModelConstants.COLUMN_SIZE_120)
+    @Email(message = "validation.Usuario.email.Email.message", regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_30)
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_30,
-        message = "{validation.Usuario.especialidade.Size.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_30)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_30,
+        message = "validation.Usuario.especialidade.Size.message")
     private String especialidade;
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_30)
-    @NotNull(message = "{validation.Usuario.funcao.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_60,
-        message = "{validation.Usuario.funcao.Size.message}")
+    @NotNull(message = "validation.Usuario.funcao.NotNull.message")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_30)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.Usuario.funcao.Size.message")
     private String funcao;
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60, name = "nome_completo")
-    @NotNull(message = "{validation.Usuario.nomeCompleto.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_60,
-        message = "{validation.Usuario.nomeCompleto.Size.message}")
+    @NotNull(message = "validation.Usuario.nomeCompleto.NotNull.message")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_60, name = "nome_completo")
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.Usuario.nomeCompleto.Size.message")
     private String nomeCompleto;
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_20)
-    @NotNull(message = "{validation.Usuario.posto.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_20,
-        message = "{validation.Usuario.posto.Size.message}")
+    @NotNull(message = "validation.Usuario.posto.NotNull.message")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_20)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_20,
+        message = "validation.Usuario.posto.Size.message")
     private String posto;
 
     @JsonProperty
-    @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_15, name = "sigla_secao")
-    @NotNull(message = "{validation.Usuario.siglaSecao.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_15,
-        message = "{validation.Usuario.siglaSecao.Size.message}")
+    @NotNull(message = "validation.Usuario.siglaSecao.NotNull.message")
+    @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_15, name = "sigla_secao")
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_15,
+        message = "validation.Usuario.siglaSecao.Size.message")
     private String siglaSecao;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_30, name = "telefone_celular")
-    @Telefone(message = "{validation.Usuario.telefoneCelular.Telefone.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_30, name = "telefone_celular")
+    @Pattern(regexp = ModelConstants.TELEFONE_REGEX, message = "validation.Usuario.telefoneCelular.Telefone.message")
     private String telefoneCelular;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_30, name = "telefone_fixo")
-    @Telefone(message = "{validation.Usuario.telefoneFixo.Telefone.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_30, name = "telefone_fixo")
+    @Pattern(regexp = ModelConstants.TELEFONE_REGEX, message = "validation.Usuario.telefoneFixo.Telefone.message")
     private String telefoneFixo;
 
     /* informações para login do usuário */
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_45, nullable = false, updatable = false)
-    @NotNull(message = "{validation.Usuario.usuario.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_45,
-        message = "{validation.Usuario.usuario.Size.message}")
+    @NotNull(message = "validation.Usuario.usuario.NotNull.message")
+    @Column(length = ModelConstants.COLUMN_SIZE_45, nullable = false, updatable = false)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_45,
+        message = "validation.Usuario.usuario.Size.message")
     private String usuario;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_128, nullable = false)
-    @NotNull(message = "{validation.Usuario.senha.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_128,
-        max = ModelConstantNumbers.FIELD_SIZE_128,
-        message = "{validation.Usuario.senha.Size.message}")
+    @NotNull(message = "validation.Usuario.senha.NotNull.message")
+    @Column(length = ModelConstants.COLUMN_SIZE_128, nullable = false)
+    @Size(min = ModelConstants.FIELD_SIZE_128, max = ModelConstants.FIELD_SIZE_128,
+        message = "validation.Usuario.senha.Size.message")
     private String senha;
 
     @JsonProperty
     @Column(nullable = false)
-    @NotNull(message = "{validation.Usuario.ativo.NotNull.message}")
+    @NotNull(message = "validation.Usuario.ativo.NotNull.message")
     private Boolean ativo;
 
     public String getEmail() {

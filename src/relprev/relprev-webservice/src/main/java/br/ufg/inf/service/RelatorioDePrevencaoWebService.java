@@ -91,16 +91,16 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_LOCAL + "/{local}", method = {GET, POST}, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> findRelPrevByLocal(@PathVariable("local") final String local) {
         Response<RelatorioPrevencao> response;
-        this.getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
+        getLogger().debug("listando relatórios de prevenção por local '" + local + "'");
         try {
-            final List<RelatorioPrevencao> dataList = this.getRepository().findByLocalIgnoreCase(local);
+            final List<RelatorioPrevencao> dataList = getRepository().findByLocalIgnoreCase(local);
             response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(dataList)
                     .message(String.format(ResponseMessages.LIST_MESSAGE, dataList.size())).status(HttpStatus.OK).build();
-            this.getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
+            getLogger().debug("sucesso ao listar relatórios de prevenção por local '" + local + "'");
         } catch (final Exception e) {
             response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(e.getMessage())
                     .status(HttpStatus.BAD_REQUEST).build();
-            this.getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
+            getLogger().error("erro ao listar relatórios de prevenção por local '" + local + "'");
         }
         return response;
     }
@@ -114,21 +114,21 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      */
     @ResponseBody
     @RequestMapping(value = WebServicesURL.URL_RELPREV_FIND_DESCRICAO + "/{descricao}",
-        method = {GET, POST},
-        produces = APPLICATION_JSON)
+    method = {GET, POST},
+    produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> findRelPrevByDescricao(@PathVariable("descricao") final String descricao) {
         Response<RelatorioPrevencao> response;
-        this.getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
+        getLogger().debug("listando relatórios de prevenção por descrição '" + descricao + "'");
         try {
-            final List<RelatorioPrevencao> dataList = this.getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(
+            final List<RelatorioPrevencao> dataList = getRepository().findByDescricaoSituacaoPerigosaContainsIgnoreCase(
                     descricao);
             response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(dataList)
                     .message(String.format(ResponseMessages.LIST_MESSAGE, dataList.size())).status(HttpStatus.OK).build();
-            this.getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
+            getLogger().debug("sucesso ao listar relatórios de prevenção por descrição '" + descricao + "'");
         } catch (final Exception e) {
             response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(e.getMessage())
                     .status(HttpStatus.BAD_REQUEST).build();
-            this.getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
+            getLogger().error("erro ao listar relatórios de prevenção por descrição '" + descricao + "'");
         }
         return response;
     }
@@ -288,7 +288,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
      */
     @ResponseBody
     @RequestMapping(value = "/{id}/observacao", method = POST, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    public Response<RelatorioPrevencao> addObservacao(@PathVariable("id") final Long id, @RequestBody final Observacao observacao) {
+    public Response<RelatorioPrevencao> addObservacao(@PathVariable("id") final Long id, @Valid @RequestBody final Observacao observacao) {
         return this.createInterationObject(id, observacao, this.observacaoRepository);
     }
 
@@ -304,7 +304,7 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
     @ResponseBody
     @RequestMapping(value = "/{id}/observacao", method = PUT, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     public Response<RelatorioPrevencao> updateObservacao(@PathVariable("id") final Long id,
-            @RequestBody final Observacao observacao) {
+            @Valid @RequestBody final Observacao observacao) {
         return this.updateInterationObject(id, observacao, this.observacaoRepository);
     }
 
@@ -489,19 +489,19 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
             final Long idRelPrev, final Long id, final R targetRepository) {
         Response<RelatorioPrevencao> response;
         final E entity = targetRepository.findOne(id);
-        this.getLogger().debug("excluindo objeto " + entity.toString());
+        getLogger().debug("excluindo objeto " + entity.toString());
         try {
             this.beforeDelete(entity);
             targetRepository.delete(entity);
-            final RelatorioPrevencao relPrevEntity = this.getRepository().findOne(idRelPrev);
+            final RelatorioPrevencao relPrevEntity = getRepository().findOne(idRelPrev);
             response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(relPrevEntity)
                     .message(ResponseMessages.DELETE_MESSAGE).status(HttpStatus.OK).build();
-            this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
+            getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
         } catch (final Exception e) {
             final String message = ExceptionUtils.getRootCauseMessage(e);
             response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(message).status(HttpStatus.BAD_REQUEST)
                     .build();
-            this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + message, e);
+            getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + message, e);
         }
         return response;
     }
@@ -526,13 +526,13 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
         final String partialLogMessage = alteracao.getDescricao() + " de " + className + " para relprev de id " + relPrevID;
 
         Response<RelatorioPrevencao> response;
-        this.getLogger().debug(
+        getLogger().debug(
                 "consultando relprev de id " + relPrevID + " para " + alteracao.getDescricao() + " de " + className);
-        final RelatorioPrevencao relprev = this.getRepository().findOne(relPrevID);
+        final RelatorioPrevencao relprev = getRepository().findOne(relPrevID);
         if (relprev != null) {
             try {
                 final String property = Introspector.decapitalize(entity.getClass().getSimpleName());
-                this.getLogger().debug(alteracao.getDescricao() + " de " + className + " para relprev de id " + relPrevID);
+                getLogger().debug(alteracao.getDescricao() + " de " + className + " para relprev de id " + relPrevID);
 
                 E persistedEntity;
                 String responseMessage;
@@ -553,17 +553,17 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
                 }
                 response = new ResponseBuilder<RelatorioPrevencao>().success(true).data(relprev).message(responseMessage)
                         .status(HttpStatus.OK).build();
-                this.getLogger().debug("sucesso na " + partialLogMessage);
+                getLogger().debug("sucesso na " + partialLogMessage);
             } catch (final Exception e) {
                 final String message = ExceptionUtils.getRootCauseMessage(e);
                 response = new ResponseBuilder<RelatorioPrevencao>().success(false).message(message)
                         .status(HttpStatus.BAD_REQUEST).build();
-                this.getLogger().error("erro na " + partialLogMessage, e);
+                getLogger().error("erro na " + partialLogMessage, e);
             }
         } else {
             final String message = String.format("RelPrev de %s não encontrato para %s de %s.", relPrevID,
                     alteracao.getDescricao(), className);
-            this.getLogger().debug(message);
+            getLogger().debug(message);
             response = new ResponseBuilder<RelatorioPrevencao>().success(true).message(message).status(HttpStatus.NOT_FOUND)
                     .build();
         }

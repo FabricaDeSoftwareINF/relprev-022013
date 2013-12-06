@@ -15,20 +15,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"
-		p:favorParameter="true" p:parameterName="format" p:favorPathExtension="true"
-		p:ignoreAcceptHeader="true" p:defaultContentType="application/json">
-		<property name="mediaTypes">
-			<map>
-				<entry key="json" value="application/json" />
-			</map>
-		</property>
-		<property name="defaultViews">
-			<list>
-				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
-			</list>
-		</property>
-	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver" p:defaultLocale="pt_BR" />
 
 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"
 		p:supportedMediaTypes="application/json" />

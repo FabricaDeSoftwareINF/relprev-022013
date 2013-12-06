@@ -7,18 +7,10 @@
 
 	<context:component-scan base-package="br.ufg.inf*" />
 
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-		p:fallbackToSystemLocale="true" p:useCodeAsDefaultMessage="false" p:defaultEncoding="UTF-8">
-		<property name="basenames">
-			<list>
-				<value>localization/validation</value>
-			</list>
-		</property>
-	</bean>
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+		p:fallbackToSystemLocale="false" p:useCodeAsDefaultMessage="true" p:defaultEncoding="UTF-8" p:basenames="classpath:localization/validation" />
 
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
-		p:validationMessageSource-ref="messageSource" />
-
-	<bean class="org.springframework.validation.beanvalidation.BeanValidationPostProcessor" />
+	<!-- será usado para validar as datas das interações em relação a data do relprev -->
+	<!-- <bean class="org.springframework.expression.spel.standard.SpelExpressionParser" /> -->
 
 </beans>

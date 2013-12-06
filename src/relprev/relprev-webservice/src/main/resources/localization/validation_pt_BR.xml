@@ -52,10 +52,10 @@
 	<entry key="validation.RelatorioPrevencao.local.NotNull.message">O local no Relatório de Prevenção (RelPrev) deve ser informado</entry>
 	<entry key="validation.RelatorioPrevencao.local.Size.message">O local no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
 	<entry key="validation.RelatorioPrevencao.descricaoSituacaoPerigosa.NotNull.message">A descrição da Situação Perigosa deve ser informada</entry>
-
 	<entry key="validation.RelatorioPrevencao.descricaoSituacaoPerigosa.Size.message">A descrição da situação perigosa no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 600 caracteres</entry>
 	<entry key="validation.RelatorioPrevencao.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser informada</entry>
 	<entry key="validation.RelatorioPrevencao.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data futura</entry>
+	<entry key="validation.RelatorioPrevencao.situacoes.NotNull.message">As situações (encaminhamento, divulgação, ação recomendada e conclusão) devem ser informadas para o Relatório de Prevenção (RelPrev)</entry>
 
 	<!-- entidade Resposta -->
 	<entry key="validation.Resposta.descricao.NotNull.message">A descrição da Resposta deve ser informada</entry>
@@ -90,7 +90,7 @@
 	<entry key="validation.Usuario.posto.NotNull.message">O posto do usuário deve ser informado</entry>
 	<entry key="validation.Usuario.posto.Size.message">O posto do usuário deve possuir entre 1 e 20 caracteres</entry>
 	<entry key="validation.Usuario.siglaSecao.NotNull.message">A sigla da seção do usuário deve ser informada</entry>
-	<entry key="validation.Usuario.siglaSecao.Size.message">O  do usuário deve possuir entre 1 e 15 caracteres</entry>
+	<entry key="validation.Usuario.siglaSecao.Size.message">A sigla da seção do usuário deve possuir entre 1 e 15 caracteres</entry>
 	<entry key="validation.Usuario.telefoneCelular.Telefone.message">Número de telefone celular informado para o usuário não é válido</entry>
 	<entry key="validation.Usuario.telefoneFixo.Telefone.message">Número de telefone fixo informado para o usuário não é válido</entry>
 
@@ -99,8 +99,4 @@
 	<entry key="validation.Usuario.senha.NotNull.message">A senha do usuário deve ser informada</entry>
 	<entry key="validation.Usuario.senha.Size.message">A senha do usuário deve possuir 128 caracteres</entry>
 	<entry key="validation.Usuario.ativo.NotNull.message">A informação de que se o usuário está ativo ou não é obrigatória</entry>
-
-	<!-- entidade CategoriaDIVOP -->
-	<entry key="validation.CategoriaDIVOP.nome.NotNull.message">A Categoria deve ser informada</entry>
-	<entry key="validation.CategoriaDIVOP.nome.Size.message">O nome da Categoria deve ter no mínimo um caracter</entry>
 </properties>

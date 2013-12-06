@@ -3,14 +3,14 @@ package br.ufg.inf.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
 import br.ufg.inf.model.support.AbstractEntity;
-import br.ufg.inf.model.support.ModelConstantNumbers;
+import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
-import br.ufg.inf.model.support.annotation.Telefone;
 import br.ufg.inf.model.support.annotation.Updatable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -33,26 +33,24 @@ public class Relator extends AbstractEntity<Relator> {
     private static final long serialVersionUID = -671624807223719350L;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_50)
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_50,
-        message = "{validation.Relator.nome.Size.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_50)
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_50,
+    message = "validation.Relator.nome.Size.message")
     private String nome;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_20)
-    @Telefone(message = "{validation.Relator.telefoneCelular.Telefone.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_20)
+    @Pattern(regexp = ModelConstants.TELEFONE_REGEX, message = "validation.Relator.telefoneCelular.Telefone.message")
     private String telefoneCelular;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_20)
-    @Telefone(message = "{validation.Relator.telefoneResidencial.Telefone.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_20)
+    @Pattern(regexp = ModelConstants.TELEFONE_REGEX, message = "validation.Relator.telefoneResidencial.Telefone.message")
     private String telefoneResidencial;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_120)
-    @Email(message = "{validation.Relator.email.Email.message}",
-        regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
+    @Column(length = ModelConstants.COLUMN_SIZE_120)
+    @Email(message = "validation.Relator.email.Email.message", regexp = "[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}")
     private String email;
 
     public String getNome() {
