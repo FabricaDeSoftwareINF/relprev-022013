@@ -137,9 +137,20 @@ public class DadosRespostaAoRelator {
 	
 	private String secaoDoUsuario;
 	
-	public DadosRespostaAoRelator(String dataDaResposta, String remetente, String destinatario, String numeroDoRelprev, String siglaDaOrganizacaoDoSipaer,
-			int ano, String descricaoDoRelprev, String descricaoDaResposta, String nomeDoUsuario, String funcaoDoUsuario, String telefoneFixoDoUsuario,
-			String emailDoUsuario, String secaoDoUsuario)
+	public DadosRespostaAoRelator(
+			String dataDaResposta, 
+			String remetente, 
+			String destinatario, 
+			String numeroDoRelprev, 
+			String siglaDaOrganizacaoDoSipaer,
+			   int ano, 
+			String descricaoDoRelprev, 
+			String descricaoDaResposta, 
+			String nomeDoUsuario, 
+			String funcaoDoUsuario, 
+			String telefoneFixoDoUsuario,
+			String emailDoUsuario, 
+			String secaoDoUsuario)
 	{
 		setDataDaResposta(dataDaResposta);
 		setRemetente(remetente);
