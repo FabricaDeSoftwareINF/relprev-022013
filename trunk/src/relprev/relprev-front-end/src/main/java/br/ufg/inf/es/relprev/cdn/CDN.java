@@ -25,8 +25,7 @@ public class CDN {
             try {
                 Anexo anexo = new Anexo();
                 anexo.setPathAnexo(file.getFileName());
-                //TODO: Implementar detector de mimetype
-                anexo.setMimeType("BOOM");
+                anexo.setMimeType(file.getContentType());
 
                 File arquivo = obtenhaArquivoParaEscrever(anexo.getPathAnexo());
                 persistaArquivoNoDisco(file.getFile(), arquivo);
