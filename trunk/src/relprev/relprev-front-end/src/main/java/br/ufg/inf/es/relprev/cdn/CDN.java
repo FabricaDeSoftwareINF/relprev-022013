@@ -75,8 +75,7 @@ public class CDN {
 
     //    TODO: externalizar essa config
     public static String obtenhaDir() {
-//        return "/home/relprev/relatorios/";
-        return "";
+        return "/home/relprev/relatorios";
     }
 
     public static File obtenhaFileComCaminhoCompleto(String pathAnexo) {

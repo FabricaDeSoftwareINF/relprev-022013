@@ -39,11 +39,6 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
     public void saveWithFiles(RelatorioPrevencao relatorioPrevencao, List<UploadedFile> files) throws FileNotFoundException {
         if (files == null) {
             files = new ArrayList<UploadedFile>();
-
-//            File file = new File("/media/halisson/dados/dev/faculdade/relprev-022013/src/relprev/relprev-front-end/src/pom.xml");
-//            DefaultUploadedFile uploadedFile = new DefaultUploadedFile(new FileInputStream(file), "pom.xml", "TXT", file.length());
-
-//            files.add(uploadedFile);
         }
         relatorioPrevencao.setAnexos(CDN.save(files));
         super.save(relatorioPrevencao);    //To change body of overridden methods use File | Settings | File Templates.
