@@ -1,11 +1,11 @@
 package br.ufg.inf.es.relprev.relatorios;
 
 /**
- * Classe que representa a fonte de dados do relatório de resposta ao relator.
+ * Classe que representa os dados do relatório de resposta ao relator.
  * @author Ulysses
  *
  */
-public class FonteDeDadosRespostaAoRelator {
+public class DadosRespostaAoRelator {
 
 	private String dataDaResposta;
 	
@@ -137,7 +137,7 @@ public class FonteDeDadosRespostaAoRelator {
 	
 	private String secaoDoUsuario;
 	
-	public FonteDeDadosRespostaAoRelator(String dataDaResposta, String remetente, String destinatario, String numeroDoRelprev, String siglaDaOrganizacaoDoSipaer,
+	public DadosRespostaAoRelator(String dataDaResposta, String remetente, String destinatario, String numeroDoRelprev, String siglaDaOrganizacaoDoSipaer,
 			int ano, String descricaoDoRelprev, String descricaoDaResposta, String nomeDoUsuario, String funcaoDoUsuario, String telefoneFixoDoUsuario,
 			String emailDoUsuario, String secaoDoUsuario)
 	{
