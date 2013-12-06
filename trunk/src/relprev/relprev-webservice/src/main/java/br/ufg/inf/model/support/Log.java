@@ -25,10 +25,10 @@ public class Log extends AbstractEntity<Log> {
     @Column(name = "tipo_alteracao", nullable = false)
     private TipoAlteracao tipoAlteracao;
 
-    @Column(name = "tabela_alterada", length = ModelConstantNumbers.COLUMN_SIZE_30, nullable = false)
+    @Column(name = "tabela_alterada", length = ModelConstants.COLUMN_SIZE_30, nullable = false)
     private String tabelaAlterada;
 
-    @Column(name = "descricao_alteracao", length = ModelConstantNumbers.COLUMN_SIZE_5000, nullable = false)
+    @Column(name = "descricao_alteracao", length = ModelConstants.COLUMN_SIZE_5000, nullable = false)
     private String descricaoAlteracao;
 
     public TipoAlteracao getTipoAlteracao() {

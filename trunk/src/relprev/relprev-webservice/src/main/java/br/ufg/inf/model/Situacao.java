@@ -28,22 +28,22 @@ public class Situacao extends AbstractEntity<Situacao> {
 
     @JsonProperty
     @Column(nullable = false, name = "tem_encaminhamento")
-    @NotNull(message = "{validation.Situacao.temEncaminhamento.NotNull.message}")
+    @NotNull(message = "validation.Situacao.temEncaminhamento.NotNull.message")
     private Boolean temEncaminhamento;
 
     @JsonProperty
     @Column(nullable = false, name = "tem_divulgacao")
-    @NotNull(message = "{validation.Situacao.temDivulgacao.NotNull.message}")
+    @NotNull(message = "validation.Situacao.temDivulgacao.NotNull.message")
     private Boolean temDivulgacao;
 
     @JsonProperty
     @Column(nullable = false, name = "tem_acao_recomendada")
-    @NotNull(message = "{validation.Situacao.temAcaoRecomendada.NotNull.message}")
+    @NotNull(message = "validation.Situacao.temAcaoRecomendada.NotNull.message")
     private Boolean temAcaoRecomendada;
 
     @JsonProperty(value = "concluido")
     @Column(nullable = false, name = "foi_concluido")
-    @NotNull(message = "{validation.Situacao.foiConcluido.NotNull.message}")
+    @NotNull(message = "validation.Situacao.foiConcluido.NotNull.message")
     private Boolean foiConcluido;
 
     public Boolean getTemEncaminhamento() {

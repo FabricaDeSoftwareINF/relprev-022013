@@ -10,106 +10,111 @@ import org.junit.Test;
  * @created 29/11/2013
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
-public class ModelConstantNumbersTest {
+public class ModelConstantsTest {
 
     @Test
     public void testCOLUMN_SIZE_2() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_2, 2);
+        assertEquals(ModelConstants.COLUMN_SIZE_2, 2);
     }
 
     @Test
     public void testCOLUMN_SIZE_15() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_15, 15);
+        assertEquals(ModelConstants.COLUMN_SIZE_15, 15);
     }
 
     @Test
     public void testCOLUMN_SIZE_20() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_20, 20);
+        assertEquals(ModelConstants.COLUMN_SIZE_20, 20);
     }
 
     @Test
     public void testCOLUMN_SIZE_30() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_30, 30);
+        assertEquals(ModelConstants.COLUMN_SIZE_30, 30);
     }
 
     @Test
     public void testCOLUMN_SIZE_45() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_45, 45);
+        assertEquals(ModelConstants.COLUMN_SIZE_45, 45);
     }
 
     @Test
     public void testCOLUMN_SIZE_50() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_50, 50);
+        assertEquals(ModelConstants.COLUMN_SIZE_50, 50);
     }
 
     @Test
     public void testCOLUMN_SIZE_60() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_60, 60);
+        assertEquals(ModelConstants.COLUMN_SIZE_60, 60);
     }
 
     @Test
     public void testCOLUMN_SIZE_120() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_120, 120);
+        assertEquals(ModelConstants.COLUMN_SIZE_120, 120);
     }
 
     @Test
     public void testCOLUMN_SIZE_128() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_128, 128);
+        assertEquals(ModelConstants.COLUMN_SIZE_128, 128);
     }
 
     @Test
     public void testCOLUMN_SIZE_600() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_600, 600);
+        assertEquals(ModelConstants.COLUMN_SIZE_600, 600);
     }
 
     @Test
     public void testCOLUMN_SIZE_5000() {
-        assertEquals(ModelConstantNumbers.COLUMN_SIZE_5000, 5000);
+        assertEquals(ModelConstants.COLUMN_SIZE_5000, 5000);
     }
 
     @Test
     public void testFIELD_SIZE_1() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_1, 1);
+        assertEquals(ModelConstants.FIELD_SIZE_1, 1);
     }
 
     @Test
     public void testFIELD_SIZE_15() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_15, 15);
+        assertEquals(ModelConstants.FIELD_SIZE_15, 15);
     }
 
     @Test
     public void testFIELD_SIZE_20() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_20, 20);
+        assertEquals(ModelConstants.FIELD_SIZE_20, 20);
     }
 
     @Test
     public void testFIELD_SIZE_30() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_30, 30);
+        assertEquals(ModelConstants.FIELD_SIZE_30, 30);
     }
 
     @Test
     public void testFIELD_SIZE_45() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_45, 45);
+        assertEquals(ModelConstants.FIELD_SIZE_45, 45);
     }
 
     @Test
     public void testFIELD_SIZE_50() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_50, 50);
+        assertEquals(ModelConstants.FIELD_SIZE_50, 50);
     }
 
     @Test
     public void testFIELD_SIZE_60() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_60, 60);
+        assertEquals(ModelConstants.FIELD_SIZE_60, 60);
     }
 
     @Test
     public void testFIELD_SIZE_128() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_128, 128);
+        assertEquals(ModelConstants.FIELD_SIZE_128, 128);
     }
 
     @Test
     public void testFIELD_SIZE_600() {
-        assertEquals(ModelConstantNumbers.FIELD_SIZE_600, 600);
+        assertEquals(ModelConstants.FIELD_SIZE_600, 600);
+    }
+
+    @Test
+    public void testTELEFONE_REGEX() {
+        assertEquals(ModelConstants.TELEFONE_REGEX, "([1-9]{2})?([0-9]{8,9})");
     }
 
 }

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufg.inf.model.support.AbstractEntity;
-import br.ufg.inf.model.support.ModelConstantNumbers;
+import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
@@ -43,17 +43,16 @@ public class ParecerSetor extends AbstractEntity<ParecerSetor> {
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
-    @Column(length = ModelConstantNumbers.COLUMN_SIZE_600, nullable = false)
-    @NotNull(message = "{validation.ParecerSetor.descricao.NotNull.message}")
-    @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
-        max = ModelConstantNumbers.FIELD_SIZE_600,
-        message = "{validation.ParecerSetor.descricao.Size.message}")
+    @Column(length = ModelConstants.COLUMN_SIZE_600, nullable = false)
+    @NotNull(message = "validation.ParecerSetor.descricao.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_600,
+        message = "validation.ParecerSetor.descricao.Size.message")
     private String descricao;
 
     @JsonProperty
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    @NotNull(message = "{validation.ParecerSetor.data.NotNull.message}")
+    @NotNull(message = "validation.ParecerSetor.data.NotNull.message")
     private Date data;
 
     public RelatorioPrevencao getRelPrev() {
