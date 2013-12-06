@@ -37,7 +37,8 @@ public class Relator extends ObjetoDeDominio {
     }
 
     public void setTelefoneCelular(final String telefoneCelular) {
-        this.telefoneCelular = telefoneCelular;
+        if (telefoneCelular != null)
+            this.telefoneCelular = telefoneCelular.replaceAll("\\D+", "");
     }
 
     public String getTelefoneResidencial() {
@@ -45,7 +46,8 @@ public class Relator extends ObjetoDeDominio {
     }
 
     public void setTelefoneResidencial(final String telefoneResidencial) {
-        this.telefoneResidencial = telefoneResidencial;
+        if (telefoneResidencial != null)
+            this.telefoneResidencial = telefoneResidencial.replaceAll("\\D+", "");
     }
 
     public String getEmail() {
