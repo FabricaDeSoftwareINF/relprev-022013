@@ -1,5 +1,7 @@
 package br.ufg.inf.service.support;
 
+import static org.junit.Assert.*;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,9 +9,11 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
 
 import br.ufg.inf.model.EloSipaer;
+import br.ufg.inf.model.Relator;
 import br.ufg.inf.model.test.EloSipaerBuilder;
 
 /**
@@ -19,6 +23,49 @@ import br.ufg.inf.model.test.EloSipaerBuilder;
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 public class ResponseBuilderTest {
+	
+	@Mock
+	private List<Relator> relatores;
+	
+	@Test
+	public void testSetSuccess() {
+		Response<Relator> response = new Response<Relator>();
+		response.setSuccess(false);
+		
+		assertFalse(response.getSuccess());
+	}
+	
+	@Test
+	public void testSetData() {
+		Response<Relator> response = new Response<Relator>();
+		response.setData(relatores);
+		
+		assertEquals(relatores, response.getData());
+	}
+	
+	@Test
+	public void testSetCount() {
+		Response<Relator> response = new Response<Relator>();
+		response.setCount(1L);
+		
+		assertEquals(Long.valueOf(1L), response.getCount());
+	}
+	
+	@Test
+	public void testSetMessage() {
+		Response<Relator> response = new Response<Relator>();
+		response.setMessage("Teste");
+		
+		assertEquals("Teste", response.getMessage());
+	}
+	
+	@Test
+	public void testSetStatus() {
+		Response<Relator> response = new Response<Relator>();
+		response.setStatus(1);
+		
+		assertEquals(Integer.valueOf(1), response.getStatus());
+	}
 
     @Test
     public void testSimpleResponse() {
