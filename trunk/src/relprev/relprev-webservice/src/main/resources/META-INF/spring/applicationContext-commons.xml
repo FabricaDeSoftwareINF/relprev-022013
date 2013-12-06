@@ -7,12 +7,11 @@
 
 	<context:component-scan base-package="br.ufg.inf*" />
 
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-		p:fallbackToSystemLocale="false" p:useCodeAsDefaultMessage="true" p:defaultEncoding="UTF-8">
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:fallbackToSystemLocale="true" p:useCodeAsDefaultMessage="false" p:defaultEncoding="UTF-8">
 		<property name="basenames">
 			<list>
-				<value>classpath:localization/validation</value>
-				<value>classpath:org/hibernate/validator/ValidationMessages</value>
+				<value>localization/validation</value>
 			</list>
 		</property>
 	</bean>

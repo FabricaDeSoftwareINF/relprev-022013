@@ -46,15 +46,16 @@
 	<entry key="validation.ParecerSetor.data.Future.message">A data de Parecer do Setor não pode ser anterior à data de Inserção do Relatório de Prevenção</entry>
 	<entry key="validation.ParecerSetor.data.NotNull.message">A data do Parecer do Setor deve ser informada</entry>
 
-	<!-- entidade RelPrev -->
-	<entry key="validation.RelPrev.envolvidos.NotNull.message">O(s) envolvido(s) no Relatório de Prevenção (RelPrev) deve(m) ser informado(s)</entry>
-	<entry key="validation.RelPrev.envolvidos.Size.message">O conteúdo do campo dos envolvidos no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
-	<entry key="validation.RelPrev.local.NotNull.message">O local no Relatório de Prevenção (RelPrev) deve ser informado</entry>
-	<entry key="validation.RelPrev.local.Size.message">O local no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
-	<entry key="validation.RelPrev.descricaoSituacaoPerigosa.NotNull.message">A descrição da Situação Perigosa deve ser informada</entry>
-	<entry key="validation.RelPrev.descricaoSituacaoPerigosa.Size.message">A descrição da situação perigosa no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 600 caracteres</entry>
-	<entry key="validation.RelPrev.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser informada</entry>
-	<entry key="validation.RelPrev.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data futura</entry>
+	<!-- entidade RelatorioPrevencao -->
+	<entry key="validation.RelatorioPrevencao.envolvidos.NotNull.message">O(s) envolvido(s) no Relatório de Prevenção (RelPrev) deve(m) ser informado(s)</entry>
+	<entry key="validation.RelatorioPrevencao.envolvidos.Size.message">O conteúdo do campo dos envolvidos no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.RelatorioPrevencao.local.NotNull.message">O local no Relatório de Prevenção (RelPrev) deve ser informado</entry>
+	<entry key="validation.RelatorioPrevencao.local.Size.message">O local no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 60 caracteres</entry>
+	<entry key="validation.RelatorioPrevencao.descricaoSituacaoPerigosa.NotNull.message">A descrição da Situação Perigosa deve ser informada</entry>
+
+	<entry key="validation.RelatorioPrevencao.descricaoSituacaoPerigosa.Size.message">A descrição da situação perigosa no Relatório de Prevenção (RelPrev) deve possuir entre 1 e 600 caracteres</entry>
+	<entry key="validation.RelatorioPrevencao.dataSituacaoPerigosa.NotNull.message">A data da Situação Perigosa deve ser informada</entry>
+	<entry key="validation.RelatorioPrevencao.dataSituacaoPerigosa.Past.message">A data da Situação Perigosa não pode ser uma data futura</entry>
 
 	<!-- entidade Resposta -->
 	<entry key="validation.Resposta.descricao.NotNull.message">A descrição da Resposta deve ser informada</entry>

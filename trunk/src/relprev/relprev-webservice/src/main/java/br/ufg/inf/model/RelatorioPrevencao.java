@@ -49,33 +49,33 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
 
     @JsonProperty
     @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60)
-    @NotNull(message = "{validation.RelPrev.envolvidos.NotNull.message}")
+    @NotNull(message = "{validation.RelatorioPrevencao.envolvidos.NotNull.message}")
     @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
         max = ModelConstantNumbers.FIELD_SIZE_60,
-        message = "{validation.RelPrev.envolvidos.Size.message}")
+        message = "{validation.RelatorioPrevencao.envolvidos.Size.message}")
     private String envolvidos;
 
     @JsonProperty
     @Column(nullable = false, length = ModelConstantNumbers.COLUMN_SIZE_60)
-    @NotNull(message = "{validation.RelPrev.local.NotNull.message}")
+    @NotNull(message = "{validation.RelatorioPrevencao.local.NotNull.message}")
     @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
         max = ModelConstantNumbers.FIELD_SIZE_60,
-        message = "{validation.RelPrev.local.Size.message}")
+        message = "{validation.RelatorioPrevencao.local.Size.message}")
     private String local;
 
     @JsonProperty(value = "descricao")
     @Column(nullable = false, name = "descricao", length = ModelConstantNumbers.COLUMN_SIZE_600)
-    @NotNull(message = "{validation.RelPrev.descricaoSituacaoPerigosa.NotNull.message}")
+    @NotNull(message = "{validation.RelatorioPrevencao.descricaoSituacaoPerigosa.NotNull.message}")
     @Size(min = ModelConstantNumbers.FIELD_SIZE_1,
         max = ModelConstantNumbers.FIELD_SIZE_600,
-        message = "{validation.RelPrev.descricaoSituacaoPerigosa.Size.message}")
+        message = "{validation.RelatorioPrevencao.descricaoSituacaoPerigosa.Size.message}")
     private String descricaoSituacaoPerigosa;
 
     @JsonProperty(value = "data")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, name = "data")
-    @Past(message = "{validation.RelPrev.dataSituacaoPerigosa.Past.message}")
-    @NotNull(message = "{validation.RelPrev.dataSituacaoPerigosa.NotNull.message}")
+    @Past(message = "{validation.RelatorioPrevencao.dataSituacaoPerigosa.Past.message}")
+    @NotNull(message = "{validation.RelatorioPrevencao.dataSituacaoPerigosa.NotNull.message}")
     private Date dataSituacaoPerigosa;
 
     @JsonProperty(value = "situacao")

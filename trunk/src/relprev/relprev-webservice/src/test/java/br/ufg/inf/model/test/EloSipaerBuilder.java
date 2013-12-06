@@ -3,6 +3,7 @@ package br.ufg.inf.model.test;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import br.ufg.inf.model.EloSipaer;
+import br.ufg.inf.model.security.Usuario;
 
 /**
  * Classe para facilitar a criação de instâncias de Elos SIPAER usadas como mock nos testes
@@ -11,7 +12,7 @@ import br.ufg.inf.model.EloSipaer;
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  * @see EloSipaer
  */
-public class EloSipaerBuilder {
+public final class EloSipaerBuilder {
 
     private final EloSipaer eloSipaer;
 
@@ -31,6 +32,11 @@ public class EloSipaerBuilder {
 
     public EloSipaerBuilder sigla(final String sigla) {
         ReflectionTestUtils.setField(this.eloSipaer, "siglaOrganizacao", sigla);
+        return this;
+    }
+
+    public EloSipaerBuilder usuario(final Usuario usuario) {
+        ReflectionTestUtils.setField(this.eloSipaer, "usuario", usuario);
         return this;
     }
 
