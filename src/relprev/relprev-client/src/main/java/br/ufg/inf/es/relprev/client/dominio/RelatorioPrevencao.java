@@ -191,7 +191,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     }
 
     public AcaoRecomendada definaAcaoRecomendada(final AcaoRecomendada acaoRecomendada) throws RequestException {
-        final String url = RelPrevServicesConfig.getInstance().addRelPrevAcaoRecomendadaURL();
+        final String url = String.format(RelPrevServicesConfig.getInstance().addRelPrevAcaoRecomendadaURL(), this.getId());
         final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, acaoRecomendada);
 
         this.acaoRecomendada = relprevResponse.getAcaoRecomendada();
@@ -200,7 +200,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     }
 
     public Resposta definaResposta(final Resposta resposta) throws RequestException {
-        final String url = RelPrevServicesConfig.getInstance().addRelPrevRespostaURL();
+        final String url = String.format(RelPrevServicesConfig.getInstance().addRelPrevRespostaURL(), this.getId());
         final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, resposta);
 
         this.resposta = relprevResponse.getResposta();
@@ -209,7 +209,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     }
 
     public ParecerSetor definaParecerSetor(final ParecerSetor parecerSetor) throws RequestException {
-        final String url = RelPrevServicesConfig.getInstance().addRelPrevParecerDoSetorURL();
+        final String url = String.format(RelPrevServicesConfig.getInstance().addRelPrevParecerDoSetorURL(), this.getId());
         final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, parecerSetor);
 
         this.parecerSetor = relprevResponse.getParecerSetor();
@@ -218,7 +218,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     }
 
     public ClassificacaoRisco definaClassificacaoDeRisco(final ClassificacaoRisco classificacao) throws RequestException {
-        final String url = RelPrevServicesConfig.getInstance().addRelPrevClassificadaoDeRiscoURL();
+        final String url = String.format(RelPrevServicesConfig.getInstance().addRelPrevClassificadaoDeRiscoURL(), this.getId());
         final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, classificacao);
 
         this.classificacaoRisco = relprevResponse.getClassificacaoRisco();
@@ -227,7 +227,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     }
 
     public Encaminhamento definaEncaminhamento(final Encaminhamento encaminhamento) throws RequestException {
-        final String url = RelPrevServicesConfig.getInstance().addRelPrevEncaminhamentoURL();
+        final String url = String.format(RelPrevServicesConfig.getInstance().addRelPrevEncaminhamentoURL(), this.getId());
         final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, encaminhamento);
 
         this.encaminhamento = relprevResponse.getEncaminhamento();
@@ -236,7 +236,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
     }
 
     public Observacao definaObservacao(final Observacao observacao) throws RequestException {
-        final String url = RelPrevServicesConfig.getInstance().addRelPrevObservacaoURL();
+        final String url = String.format(RelPrevServicesConfig.getInstance().addRelPrevObservacaoURL(), this.getId());
         final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, observacao);
 
         this.observacao = relprevResponse.getObservacao();
