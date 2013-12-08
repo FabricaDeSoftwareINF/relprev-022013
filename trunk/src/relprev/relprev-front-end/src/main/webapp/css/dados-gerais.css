@@ -90,7 +90,3 @@ textarea {
 div.dialogoModal.modal-dialog {
 	width: 100% !important;
 }
-
-.modal-backdrop.fade.in {
-	opacity: 0.1;
-}
