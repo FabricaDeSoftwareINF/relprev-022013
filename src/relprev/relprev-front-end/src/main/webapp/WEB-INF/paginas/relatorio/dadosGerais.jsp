@@ -65,42 +65,34 @@
 				<div class="avaliacao col-md-6">
 					<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
 					<div class="col-md-2">
-						<select class="form-control">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
+						<select name="avalicaoPrimeiroNivel" class="form-control">
+						    <c:forEach var="item" items="${riscoPrimeiroNivel}">
+						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoInicial.charAt(0) ? 'selected="selected"' : ''}>${item}</option>
+						    </c:forEach>
 						</select>
 					</div>
 					<div class="col-md-2">
-						<select class="form-control">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-							<option value="D">D</option>
-							<option value="E">E</option>
+						<select name="avalicaoSegundoNivel" class="form-control">
+						    <c:forEach var="item" items="${riscoSegundoNivel}">
+						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoInicial.charAt(1) ? 'selected="selected"' : ''}>${item}</option>
+						    </c:forEach>
 						</select>
 					</div>
 				</div>
 				<div class="reavaliacao col-md-6">
 					<label class="labelMaiuscula"><fmt:message key="reavaliacao" /></label>
 					<div class="col-md-2">
-						<select class="form-control">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
+						<select name="reavalicaoPrimeiroNivel" class="form-control">
+						    <c:forEach var="item" items="${riscoPrimeiroNivel}">
+						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoFinal.charAt(0) ? 'selected="selected"' : ''}>${item}</option>
+						    </c:forEach>
 						</select>
 					</div>
 					<div class="col-md-2">
-						<select class="form-control">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-							<option value="D">D</option>
-							<option value="E">E</option>
+						<select name="reavalicaoSegundoNivel" class="form-control">
+						    <c:forEach var="item" items="${riscoSegundoNivel}">
+						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoFinal.charAt(1) ? 'selected="selected"' : ''}>${item}</option>
+						    </c:forEach>
 						</select>
 					</div>
 				</div>

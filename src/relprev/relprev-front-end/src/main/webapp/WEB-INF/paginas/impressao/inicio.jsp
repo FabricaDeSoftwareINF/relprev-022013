@@ -37,13 +37,7 @@
 				    		</c:if>
 	        				<c:if test="${relprev.encaminhamento != null}">
 				    			<span class="label label-success" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>
-				    		</c:if>
-				    		<c:if test="${relprev.parecerSetor == null}">
-				    			<span class="label label-default" title="<fmt:message key="relatorio.divulgacao" />"><fmt:message key="sigla.divulgacao" /></span>
-		    				</c:if>
-		    				<c:if test="${relprev.parecerSetor != null}">
-				    			<span class="label label-success" title="<fmt:message key="relatorio.divulgacao" />"><fmt:message key="sigla.divulgacao" /></span>
-		    				</c:if>
+				    		</c:if>				    		
 	        				<c:if test="${relprev.acaoRecomendada == null}">
 	        					<span class="label label-default" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
 	        				</c:if>
@@ -83,7 +77,7 @@
 				</button>
 			</div>
 			<div class="col-xs-3 col-md-3">
-				<button type="button" class="btn btn-default btn-md">
+				<button type="button" class="btn btn-default btn-md" disabled="disabled">
 	  				<span class="glyphicon glyphicon-print"></span>
 	  				<fmt:message key="relatorio.divulgacao" /> (<fmt:message key="sigla.divulgacao" />)
 				</button>

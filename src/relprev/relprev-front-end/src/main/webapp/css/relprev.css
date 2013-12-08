@@ -46,3 +46,36 @@
 .tituloPagina{
     font-size: 150%;
 }
+
+.modal-backdrop.fade.in {
+	opacity: 0.1;
+}
+.textoCentralizado {
+    text-align: center;
+}
+
+.labelPadrao {
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: bold;
+    color: black;
+    padding-left: 0 !important;
+}
+
+input:not([type="file"]),
+textarea {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #AFA89D !important;
+}
+
+.textoOverflowEllipsis{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.tituloPagina {
+    font-size: 150%;
+}
