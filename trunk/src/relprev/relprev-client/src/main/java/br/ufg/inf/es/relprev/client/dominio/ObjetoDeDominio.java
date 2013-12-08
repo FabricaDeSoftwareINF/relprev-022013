@@ -48,12 +48,11 @@ public abstract class ObjetoDeDominio {
 
     public ObjetoDeDominio save() throws RequestException {
         Response response = null;
+        final String url = this.getCreateURL();
         if (this.getId() == null) {
-            final String url = this.getCreateURL();
             response = (Response) fromJson(doPost(url, toJson(this)), this.getResponseClass());
-            this.id = ((ObjetoDeDominio) response.getData().get(0)).id;
-        } else {
-            final String url = this.getCreateURL();
+            this.id = response.getData() != null ? ((ObjetoDeDominio) response.getData().get(0)).id : null;
+        } else {           
             response = (Response) fromJson(doPut(url, toJson(this)), this.getResponseClass());
         }
 
