@@ -70,7 +70,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
             final List<E> dataList = this.getRepository().findAll();
             final Integer dataListSize = dataList.size();
             final String message = dataListSize > 0 ? String.format(ResponseMessages.LIST_MESSAGE, dataListSize)
-                    : ResponseMessages.NOTLIST_MESSAGE;
+                    : ResponseMessages.NOTFOUND_LIST_MESSAGE;
             response = new ResponseBuilder<E>().success(true).data(dataList).message(message).status(HttpStatus.OK).build();
             this.getLogger().debug(message);
         } catch (final Exception e) {
@@ -95,9 +95,15 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
         this.getLogger().debug("consultando objeto de id " + id);
         try {
             final E entity = this.getRepository().findOne(id);
-            final String message = entity != null ? String.format(ResponseMessages.FIND_MESSAGE, id) : String.format(
-                    ResponseMessages.NOTFIND_MESSAGE, id);
-            response = new ResponseBuilder<E>().success(true).data(entity).message(message).status(HttpStatus.OK).build();
+            String message = String.format(ResponseMessages.FIND_MESSAGE, id);
+            Boolean success = true;
+            HttpStatus status = HttpStatus.OK;
+            if (entity == null) {
+                message = String.format(ResponseMessages.NOTFOUND_MESSAGE, id);
+                success = false;
+                status = HttpStatus.NOT_FOUND;
+            }
+            response = new ResponseBuilder<E>().success(success).data(entity).message(message).status(status).build();
             this.getLogger().debug(message);
         } catch (final Exception e) {
             final String message = ExceptionUtils.getRootCauseMessage(e);
@@ -145,16 +151,23 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
     public final Response<E> update(@Valid @RequestBody final E entity) {
         Response<E> response;
         this.getLogger().debug("atualizando objeto " + entity.toString());
-        try {
-            final E persistedEntity = this.getRepository().save(entity);
-            this.afterUpdate(persistedEntity);
-            response = new ResponseBuilder<E>().success(true).data(persistedEntity)
-                    .message(String.format(ResponseMessages.UPDATE_MESSAGE, entity.getId())).status(HttpStatus.OK).build();
-            this.getLogger().debug("objeto " + persistedEntity.toString() + " atualizado com sucesso");
-        } catch (final Exception e) {
-            final String message = ExceptionUtils.getRootCauseMessage(e);
-            response = this.handlingCatchedExceptions(e, message);
-            this.getLogger().error("problema ao atualizar objeto " + entity.toString() + ": " + message, e);
+        final E oldEntity = this.getRepository().findOne(entity.getId());
+        if (oldEntity != null) {
+            try {
+                final E persistedEntity = this.getRepository().save(entity);
+                this.afterUpdate(persistedEntity);
+                response = new ResponseBuilder<E>().success(true).data(persistedEntity)
+                        .message(String.format(ResponseMessages.UPDATE_MESSAGE, entity.getId())).status(HttpStatus.OK).build();
+                this.getLogger().debug("objeto " + persistedEntity.toString() + " atualizado com sucesso");
+            } catch (final Exception e) {
+                final String message = ExceptionUtils.getRootCauseMessage(e);
+                response = this.handlingCatchedExceptions(e, message);
+                this.getLogger().error("problema ao atualizar objeto " + entity.toString() + ": " + message, e);
+            }
+        } else {
+            response = new ResponseBuilder<E>().success(false).data(entity)
+                    .message(String.format(ResponseMessages.NOTFOUND_UPDATE_MESSAGE, entity.getId())).status(HttpStatus.NOT_FOUND)
+                    .build();
         }
         return response;
     }
@@ -170,18 +183,23 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
     @RequestMapping(value = WebServicesURL.URL_DELETE, method = DELETE, produces = APPLICATION_JSON)
     public final Response<E> delete(@PathVariable("id") final Long id) {
         Response<E> response;
+        this.getLogger().debug("excluindo objeto de id " + id);
         final E entity = this.getRepository().findOne(id);
-        this.getLogger().debug("excluindo objeto " + entity.toString());
-        try {
-            this.beforeDelete(entity);
-            this.getRepository().delete(entity);
-            response = new ResponseBuilder<E>().success(true).data(entity).message(ResponseMessages.DELETE_MESSAGE)
-                    .status(HttpStatus.OK).build();
-            this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
-        } catch (final Exception e) {
-            final String message = ExceptionUtils.getRootCauseMessage(e);
-            response = new ResponseBuilder<E>().success(false).message(message).status(HttpStatus.BAD_REQUEST).build();
-            this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + message, e);
+        if (entity != null) {
+            try {
+                this.beforeDelete(entity);
+                this.getRepository().delete(entity);
+                response = new ResponseBuilder<E>().success(true).data(entity)
+                        .message(String.format(ResponseMessages.DELETE_MESSAGE, id)).status(HttpStatus.OK).build();
+                this.getLogger().debug("objeto " + entity.toString() + " excluido com sucesso");
+            } catch (final Exception e) {
+                final String message = ExceptionUtils.getRootCauseMessage(e);
+                response = new ResponseBuilder<E>().success(false).message(message).status(HttpStatus.BAD_REQUEST).build();
+                this.getLogger().error("problema ao excluir objeto " + entity.toString() + ": " + message, e);
+            }
+        } else {
+            response = new ResponseBuilder<E>().success(false)
+                    .message(String.format(ResponseMessages.NOTFOUND_DELETE_MESSAGE, id)).status(HttpStatus.NOT_FOUND).build();
         }
         return response;
     }
