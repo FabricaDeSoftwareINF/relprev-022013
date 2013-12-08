@@ -33,25 +33,26 @@
 				    	<td>${relprev.descricaoSituacaoPerigosa}</td>				    	
 				    	<td>${relprev.relator.nome}</td>
 				    	<td>
-				    		<c:if test="${relprev.encaminhamento == null}">
-				    			<span class="label label-default" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>
-				    		</c:if>
-	        				<c:if test="${relprev.encaminhamento != null}">
-				    			<span class="label label-success" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>
-				    		</c:if>				    		
-	        				<c:if test="${relprev.acaoRecomendada == null}">
-	        					<span class="label label-default" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
-	        				</c:if>
-	        				<c:if test="${relprev.acaoRecomendada != null}">
-	        					<span class="label label-success" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
-	        				</c:if>
-	        				<c:if test="${relprev.resposta == null}">
-	        					<span class="label label-default" title="<fmt:message key="resposta" />"><fmt:message key="sigla.resposta" /></span>
-        					</c:if>
-        					<c:if test="${relprev.resposta != null}">
-	        					<span class="label label-sucess" title="<fmt:message key="resposta" />"><fmt:message key="sigla.resposta" /></span>
-        					</c:if>
-	        				<span class="label label-default"><fmt:message key="fim" /></span>	
+				    		<span class="label 
+			    			<c:if test="${!relprev.situacoes.temEncaminhamento}">label-default</c:if>
+			    			<c:if test="${relprev.situacoes.temEncaminhamento}">label-success</c:if>
+			    			" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>	        							    		
+	        				<span class="label 
+	        				<c:if test="${!relprev.situacoes.temAcaoRecomendada}">label-default</c:if>
+	        				<c:if test="${relprev.situacoes.temAcaoRecomendada}">label-success</c:if>
+			  				" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
+			  				<span class="label 
+			  				<c:if test="${!relprev.situacoes.temDivulgacao}">label-default</c:if>
+	        				<c:if test="${relprev.situacoes.temDivulgacao}">label-success</c:if>
+			  				" title="<fmt:message key="relatorio.divulgacao" />"><fmt:message key="sigla.divulgacao" /></span>
+	        				<span class="label 
+	        				<c:if test="${relprev.resposta == null}">label-default</c:if>
+	        				<c:if test="${relprev.resposta != null}">label-success</c:if>
+	        				" title="<fmt:message key="resposta" />"><fmt:message key="sigla.resposta" /></span>        					
+	        				<span class="label 
+	        				<c:if test="${!relprev.situacoes.foiConcluido}">label-default</c:if>
+	        				<c:if test="${relprev.situacoes.foiConcluido}">label-success</c:if>
+	        				"><fmt:message key="fim" /></span>	
 	        			</td>
 				    	<td><input type="checkbox"/></td>
 			    	</tr>
