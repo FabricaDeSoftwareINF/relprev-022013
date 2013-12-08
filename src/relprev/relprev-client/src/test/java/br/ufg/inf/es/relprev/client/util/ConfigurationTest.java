@@ -20,7 +20,7 @@ public class ConfigurationTest {
         assertEquals(keyValue, "http://localhost:8080/services");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = RuntimeException.class)
     public void testGetPropertyNotFound() {
         this.configuration.getProperty("key.not.found");
     }

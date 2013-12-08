@@ -38,7 +38,7 @@ public class Configuration {
     public String getProperty(final String key) {
         final String property = this.properties.getProperty(key);
         if (property == null) {
-            throw new NullPointerException("não existe no arquivo de configuração " + this.fileName + " a chave " + key);
+            throw new RuntimeException("não existe no arquivo de configuração " + this.fileName + " a chave " + key);
         }
         return property;
     }

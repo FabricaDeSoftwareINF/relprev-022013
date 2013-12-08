@@ -262,7 +262,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
 
     private RelatorioPrevencao addRelationAndGetRelatorioAtualizado(final String url, final Object objeto)
             throws RequestException {
-        if (this.id == null) {
+        if (this.getId() == null) {
             throw new IllegalStateException("Não é possível adicionar uma relação à um objeto não persistido");
         }
 

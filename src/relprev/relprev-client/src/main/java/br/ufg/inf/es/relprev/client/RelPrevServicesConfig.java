@@ -30,7 +30,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para listagem de Relatório de Prevenção
      */
     public String listRelPrevURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV;
+        return this.serviceBaseURL() + this.controllerRelPrev;
     }
 
     /**
@@ -39,7 +39,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Relatório de Prevenção
      */
     public String findRelPrevURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_FIND;
+        return this.serviceBaseURL() + this.controllerRelPrev + this.actionFind;
     }
 
     /**
@@ -48,7 +48,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para criação de Relatório de Prevenção
      */
     public String createRelPrevURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_CREATE;
+        return this.serviceBaseURL() + this.controllerRelPrev + this.actionCreate;
     }
 
     /**
@@ -57,7 +57,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para atualização de Relatório de Prevenção
      */
     public String updateRelPrevURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_UPDATE;
+        return this.serviceBaseURL() + this.controllerRelPrev + this.actionUpdate;
     }
 
     /**
@@ -66,7 +66,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para remoção de Relatório de Prevenção
      */
     public String deleteRelPrevURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV;
+        return this.serviceBaseURL() + this.controllerRelPrev;
     }
 
     /**
@@ -75,7 +75,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Relatório de Prevenção pelo Local
      */
     public String findRelPrevByLocalURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_FIND_RELPREV_BY_LOCAL;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/local/";
     }
 
     /**
@@ -84,7 +84,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Relatório de Prevenção pela Descrição
      */
     public String findRelPrevByDescricaoURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_FIND_RELPREV_BY_DESCRICAO;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/descricao/";
     }
 
     /**
@@ -93,7 +93,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Ação Recomendada ao Relatório de Prevenção
      */
     public String addRelPrevAcaoRecomendadaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_SET_ACAO_RECOMENDADA;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/acao";
     }
 
     /**
@@ -102,7 +102,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Classificação de Risco ao Relatório de Prevenção
      */
     public String addRelPrevClassificadaoDeRiscoURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_SET_CLASSIFICACAO_DE_RISCO;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/classificacao";
     }
 
     /**
@@ -111,7 +111,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Encaminhamento ao Relatório de Prevenção
      */
     public String addRelPrevEncaminhamentoURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_SET_ENCAMINHAMENTO;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/encaminhamento";
     }
 
     /**
@@ -120,7 +120,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Observação ao Relatório de Prevenção
      */
     public String addRelPrevObservacaoURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_SET_OBSERVACAO;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/observacao";
     }
 
     /**
@@ -129,7 +129,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Parecer do Setor ao Relatório de Prevenção
      */
     public String addRelPrevParecerDoSetorURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_SET_PARECER_SETOR;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/parecer";
     }
 
     /**
@@ -138,7 +138,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Resposta ao Relatório de Prevenção
      */
     public String addRelPrevRespostaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELPREV + this.ACTION_SET_RESPOSTA;
+        return this.serviceBaseURL() + this.controllerRelPrev + "/resposta";
     }
 
     /**
@@ -147,7 +147,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para listagem de Elo SIPAER
      */
     public String listEloSIPAERURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_ELO_SIPAER;
+        return this.serviceBaseURL() + this.controllerEloSipaer;
     }
 
     /**
@@ -156,7 +156,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Elo SIPAER
      */
     public String findEloSIPAERURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_ELO_SIPAER + this.ACTION_FIND;
+        return this.serviceBaseURL() + this.controllerEloSipaer + this.actionFind;
     }
 
     /**
@@ -165,7 +165,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para criação de Elo SIPAER
      */
     public String createEloSIPAERURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_ELO_SIPAER + this.ACTION_CREATE;
+        return this.serviceBaseURL() + this.controllerEloSipaer + this.actionCreate;
     }
 
     /**
@@ -174,7 +174,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para atualização de Elo SIPAER
      */
     public String updateEloSIPAERURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_ELO_SIPAER + this.ACTION_UPDATE;
+        return this.serviceBaseURL() + this.controllerEloSipaer + this.actionUpdate;
     }
 
     /**
@@ -183,7 +183,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para remoção de Elo SIPAER
      */
     public String deleteEloSIPAERURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_ELO_SIPAER;
+        return this.serviceBaseURL() + this.controllerEloSipaer;
     }
 
     /**
@@ -192,7 +192,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para listagem de Taxonomia
      */
     public String listTaxonomiaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_TAXONOMIA;
+        return this.serviceBaseURL() + this.controllerTaxonomia;
     }
 
     /**
@@ -201,7 +201,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Taxonomia
      */
     public String findTaxonomiaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_TAXONOMIA + this.ACTION_FIND;
+        return this.serviceBaseURL() + this.controllerTaxonomia + this.actionFind;
     }
 
     /**
@@ -210,7 +210,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para criação de Taxonomia
      */
     public String createTaxonomiaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_TAXONOMIA + this.ACTION_CREATE;
+        return this.serviceBaseURL() + this.controllerTaxonomia + this.actionCreate;
     }
 
     /**
@@ -219,7 +219,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para atualização de Taxonomia
      */
     public String updateTaxonomiaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_TAXONOMIA + this.ACTION_UPDATE;
+        return this.serviceBaseURL() + this.controllerTaxonomia + this.actionUpdate;
     }
 
     /**
@@ -228,7 +228,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para remoção de Taxonomia
      */
     public String deleteTaxonomiaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_TAXONOMIA;
+        return this.serviceBaseURL() + this.controllerTaxonomia;
     }
 
     /**
@@ -237,7 +237,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para listagem de Categoria
      */
     public String listCategoriaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_CATEGORIA;
+        return this.serviceBaseURL() + this.controllerCategoria;
     }
 
     /**
@@ -246,7 +246,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Categoria
      */
     public String findCategoriaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_CATEGORIA + this.ACTION_FIND;
+        return this.serviceBaseURL() + this.controllerCategoria + this.actionFind;
     }
 
     /**
@@ -255,7 +255,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para criação de Categoria
      */
     public String createCategoriaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_CATEGORIA + this.ACTION_CREATE;
+        return this.serviceBaseURL() + this.controllerCategoria + this.actionCreate;
     }
 
     /**
@@ -264,7 +264,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para atualização de Categoria
      */
     public String updateCategoriaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_CATEGORIA + this.ACTION_UPDATE;
+        return this.serviceBaseURL() + this.controllerCategoria + this.actionUpdate;
     }
 
     /**
@@ -273,7 +273,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para remoção de Categoria
      */
     public String deleteCategoriaURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_CATEGORIA;
+        return this.serviceBaseURL() + this.controllerCategoria;
     }
 
     /**
@@ -282,7 +282,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para listagem de Relator
      */
     public String listRelatorURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELATOR;
+        return this.serviceBaseURL() + this.controllerRelator;
     }
 
     /**
@@ -291,7 +291,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para busca de Relator
      */
     public String findRelatorURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELATOR + this.ACTION_FIND;
+        return this.serviceBaseURL() + this.controllerRelator + this.actionFind;
     }
 
     /**
@@ -300,7 +300,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para criação de Relator
      */
     public String createRelatorURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELATOR + this.ACTION_CREATE;
+        return this.serviceBaseURL() + this.controllerRelator + this.actionCreate;
     }
 
     /**
@@ -309,7 +309,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para atualização de Relator
      */
     public String updateRelatorURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELATOR + this.ACTION_UPDATE;
+        return this.serviceBaseURL() + this.controllerRelator + this.actionUpdate;
     }
 
     /**
@@ -318,28 +318,18 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para remoção de Relator
      */
     public String deleteRelatorURL() {
-        return this.serviceBaseURL() + this.CONTROLLER_RELATOR;
+        return this.serviceBaseURL() + this.controllerRelator;
     }
 
-    private final String ACTION_FIND = "/";
-    private final String ACTION_CREATE = "/create";
-    private final String ACTION_UPDATE = "/update";
+    private final String actionFind = "/";
+    private final String actionCreate = "/create";
+    private final String actionUpdate = "/update";
 
-    private final String CONTROLLER_RELPREV = "/relprev";
-    private final String CONTROLLER_ELO_SIPAER = "/elosipaer";
-    private final String CONTROLLER_TAXONOMIA = "/taxonomia";
-    private final String CONTROLLER_RELATOR = "/relator";
-    private final String CONTROLLER_CATEGORIA = "/categoria";
-
-    private final String ACTION_FIND_RELPREV_BY_LOCAL = "/local/";
-    private final String ACTION_FIND_RELPREV_BY_DESCRICAO = "/descricao/";
-
-    private final String ACTION_SET_ACAO_RECOMENDADA = "/acao";
-    private final String ACTION_SET_CLASSIFICACAO_DE_RISCO = "/classificacao";
-    private final String ACTION_SET_ENCAMINHAMENTO = "/encaminhamento";
-    private final String ACTION_SET_OBSERVACAO = "/observacao";
-    private final String ACTION_SET_PARECER_SETOR = "/parecer";
-    private final String ACTION_SET_RESPOSTA = "/resposta";
+    private final String controllerRelPrev = "/relprev";
+    private final String controllerEloSipaer = "/elosipaer";
+    private final String controllerTaxonomia = "/taxonomia";
+    private final String controllerRelator = "/relator";
+    private final String controllerCategoria = "/categoria";
 
     private String serviceURL;
 

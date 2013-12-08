@@ -10,11 +10,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Date: 11/6/13
  * Time: 10:26 PM
  */
-public class JsonConverter {
+public final class JsonConverter {
 
     private JsonConverter() {}
 
-    private final static ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     static {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
