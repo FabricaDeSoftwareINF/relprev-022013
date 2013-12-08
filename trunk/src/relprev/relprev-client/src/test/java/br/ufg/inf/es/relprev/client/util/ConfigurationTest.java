@@ -12,12 +12,12 @@ import org.junit.Test;
  */
 public class ConfigurationTest {
 
-    private final Configuration configuration = new Configuration("services");
+    private final Configuration configuration = new Configuration("services-test");
 
     @Test
     public void testGetPropertyFound() {
         final String keyValue = this.configuration.getProperty("services.url");
-        assertEquals(keyValue, "${services.protocolo}://${services.domain}:${services.port}/${services.context}");
+        assertEquals(keyValue, "http://localhost:8080/services");
     }
 
     @Test(expected = NullPointerException.class)

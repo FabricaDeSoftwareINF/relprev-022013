@@ -11,7 +11,7 @@ public final class RelPrevServicesConfig {
 
     private static RelPrevServicesConfig instance;
 
-    private final Configuration configuration;
+    private Configuration configuration;
 
     private RelPrevServicesConfig() {
         this.configuration = new Configuration("services");
@@ -342,6 +342,17 @@ public final class RelPrevServicesConfig {
     private final String ACTION_SET_RESPOSTA = "/resposta";
 
     private String serviceURL;
+
+    /**
+     * Associa à instância de configuração dos serviços RelPrev uma {@link Configuration} Caso não seja associada uma, a padrão,
+     * de nome {@code services.properties} será usada
+     * 
+     * @param configuration
+     *            {@link Configuration} a ser associada
+     */
+    public void setConfiguration(final Configuration configuration) {
+        this.configuration = configuration;
+    }
 
     private String serviceBaseURL() {
         if (this.serviceURL == null) {

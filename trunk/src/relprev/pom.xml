@@ -36,6 +36,27 @@
 
     <profiles>
         <profile>
+            <id>dev</id>
+            <properties>
+                <environment>dev</environment>
+                <log4j.level>debug</log4j.level>
+
+                <!-- hibernate properties -->
+                <hibernate.show.sql>true</hibernate.show.sql>
+                <hibernate.format.sql>true</hibernate.format.sql>
+                <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+                <hibernate.use_sql_comments>true</hibernate.use_sql_comments>
+                <hibernate.generate_statistics>true</hibernate.generate_statistics>
+                <hibernate.dialect>org.hibernate.dialect.PostgreSQL82Dialect</hibernate.dialect>
+
+                <!-- server services properties -->
+                <services.protocolo>http</services.protocolo>
+                <services.domain>localhost</services.domain>
+                <services.port>8282</services.port>
+                <services.context>services</services.context>
+            </properties>
+        </profile>
+        <profile>
             <id>homo</id>
             <properties>
                 <environment>prod</environment>
@@ -83,6 +104,25 @@
     </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.xml</exclude>
+                    <exclude>**/*.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
         <!-- plugins comuns a todos os projetos -->
         <plugins>
             <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->

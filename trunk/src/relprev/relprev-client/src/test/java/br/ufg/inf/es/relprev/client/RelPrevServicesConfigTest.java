@@ -7,7 +7,10 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import br.ufg.inf.es.relprev.client.util.Configuration;
 
 /**
  * Testes para {@link RelPrevServicesConfig}
@@ -19,7 +22,12 @@ public class RelPrevServicesConfigTest {
 
     private final RelPrevServicesConfig config = RelPrevServicesConfig.getInstance();
 
-    private final String SERVICES_URL_WITHOUT_REPLACEMENT = "${services.protocolo}://${services.domain}:${services.port}/${services.context}";
+    private final String SERVICES_URL_WITHOUT_REPLACEMENT = "http://localhost:8080/services";
+
+    @Before
+    public void setUp() {
+        this.config.setConfiguration(new Configuration("services-test"));
+    }
 
     @Test
     public void testConstructorIsPrivate() throws Exception {
@@ -32,6 +40,13 @@ public class RelPrevServicesConfigTest {
     @Test
     public void testGetInstance() {
         final RelPrevServicesConfig anotherConfig = RelPrevServicesConfig.getInstance();
+        assertSame(this.config, anotherConfig);
+    }
+
+    @Test
+    public void testSetConfiguration() {
+        final RelPrevServicesConfig anotherConfig = RelPrevServicesConfig.getInstance();
+        anotherConfig.setConfiguration(new Configuration("services"));
         assertSame(this.config, anotherConfig);
     }
 
