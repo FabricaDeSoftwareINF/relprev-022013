@@ -6,6 +6,7 @@ relprev.relatorio = (function(instancia) {
 	}
 	
 	$(window).ready(function() {
+		atualizeDataHora();
 		$('#hora').on('change', function() {
 			atualizeDataHora();
 		});
