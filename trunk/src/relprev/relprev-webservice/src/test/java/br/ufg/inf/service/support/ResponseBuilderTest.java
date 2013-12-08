@@ -1,6 +1,7 @@
 package br.ufg.inf.service.support;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,49 +24,44 @@ import br.ufg.inf.model.test.EloSipaerBuilder;
  * @author Bruno César Ribeiro e Silva - <a href="mailto:bruno@brunocesar.com">bruno@brunocesar.com</a>
  */
 public class ResponseBuilderTest {
-	
-	@Mock
-	private List<Relator> relatores;
-	
-	@Test
-	public void testSetSuccess() {
-		Response<Relator> response = new Response<Relator>();
-		response.setSuccess(false);
-		
-		assertFalse(response.getSuccess());
-	}
-	
-	@Test
-	public void testSetData() {
-		Response<Relator> response = new Response<Relator>();
-		response.setData(relatores);
-		
-		assertEquals(relatores, response.getData());
-	}
-	
-	@Test
-	public void testSetCount() {
-		Response<Relator> response = new Response<Relator>();
-		response.setCount(1L);
-		
-		assertEquals(Long.valueOf(1L), response.getCount());
-	}
-	
-	@Test
-	public void testSetMessage() {
-		Response<Relator> response = new Response<Relator>();
-		response.setMessage("Teste");
-		
-		assertEquals("Teste", response.getMessage());
-	}
-	
-	@Test
-	public void testSetStatus() {
-		Response<Relator> response = new Response<Relator>();
-		response.setStatus(1);
-		
-		assertEquals(Integer.valueOf(1), response.getStatus());
-	}
+
+    @Mock
+    private List<Relator> relatores;
+
+    @Test
+    public void testSetSuccess() {
+        final Response<Relator> response = new Response<Relator>();
+        response.setSuccess(false);
+        assertFalse(response.getSuccess());
+    }
+
+    @Test
+    public void testSetData() {
+        final Response<Relator> response = new Response<Relator>();
+        response.setData(this.relatores);
+        assertEquals(this.relatores, response.getData());
+    }
+
+    @Test
+    public void testSetCount() {
+        final Response<Relator> response = new Response<Relator>();
+        response.setCount(1L);
+        assertEquals(Long.valueOf(1L), response.getCount());
+    }
+
+    @Test
+    public void testSetMessage() {
+        final Response<Relator> response = new Response<Relator>();
+        response.setMessage("Teste");
+        assertEquals("Teste", response.getMessage());
+    }
+
+    @Test
+    public void testSetStatus() {
+        final Response<Relator> response = new Response<Relator>();
+        response.setStatus(1);
+        assertEquals(Integer.valueOf(1), response.getStatus());
+    }
 
     @Test
     public void testSimpleResponse() {

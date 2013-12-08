@@ -1,9 +1,9 @@
 package br.ufg.inf.model.support;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
 import org.junit.Test;
@@ -120,13 +120,13 @@ public class ModelConstantsTest {
     public void testTELEFONE_REGEX() {
         assertEquals(ModelConstants.TELEFONE_REGEX, "([1-9]{2})?([0-9]{8,9})");
     }
-    
+
     @Test
     public void testConstructorIsPrivate() throws Exception {
-      Constructor<ModelConstants> constructor = ModelConstants.class.getDeclaredConstructor();
-      assertTrue(Modifier.isPrivate(constructor.getModifiers()));
-      constructor.setAccessible(true);
-      constructor.newInstance();
+        final Constructor<ModelConstants> constructor = ModelConstants.class.getDeclaredConstructor();
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+        constructor.setAccessible(true);
+        constructor.newInstance();
     }
 
 }

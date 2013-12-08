@@ -127,7 +127,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
                     .status(HttpStatus.OK).build();
         } catch (final Exception e) {
             final String message = ExceptionUtils.getRootCauseMessage(e);
-            response = handlingCatchedExceptions(e, message);
+            response = this.handlingCatchedExceptions(e, message);
             this.getLogger().error("problema ao criar objeto " + entity.toString() + ": " + message, e);
         }
         return response;
@@ -153,7 +153,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
             this.getLogger().debug("objeto " + persistedEntity.toString() + " atualizado com sucesso");
         } catch (final Exception e) {
             final String message = ExceptionUtils.getRootCauseMessage(e);
-            response = handlingCatchedExceptions(e, message);
+            response = this.handlingCatchedExceptions(e, message);
             this.getLogger().error("problema ao atualizar objeto " + entity.toString() + ": " + message, e);
         }
         return response;
@@ -203,7 +203,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      * @param entity
      *            entidade do modelo de domínio
      */
-    protected <T extends AbstractEntity<T>> void beforeCreate(final T entity) { }
+    protected <T extends AbstractEntity<T>> void beforeCreate(final T entity) {}
 
     /**
      * Executa alterações na entidade de domínio depois da atualização do registro
@@ -222,7 +222,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      * @param entity
      *            entidade do modelo de domínio
      */
-    protected <T extends AbstractEntity<T>> void beforeUpdate(final T entity) { }
+    protected <T extends AbstractEntity<T>> void beforeUpdate(final T entity) {}
 
     /**
      * Executa alterações na entidade de domínio depois da remoção do registro
@@ -230,7 +230,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      * @param entity
      *            entidade do modelo de domínio
      */
-    protected <T extends AbstractEntity<T>> void afterDelete(final T entity) { }
+    protected <T extends AbstractEntity<T>> void afterDelete(final T entity) {}
 
     /**
      * Executa alterações na entidade de domínio antes da remoção do registro

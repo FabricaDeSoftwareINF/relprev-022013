@@ -17,7 +17,6 @@ import br.ufg.inf.repository.support.LogRepository;
  * Testes para GenericWebService
  * 
  * @author Raul
- * 
  */
 @RunWith(MockitoJUnitRunner.class)
 public class GenericWebServiceTest<E extends AbstractEntity<E>, R extends GenericRepository<E, Long>> {
@@ -94,4 +93,5 @@ public class GenericWebServiceTest<E extends AbstractEntity<E>, R extends Generi
         final Response<E> r = this.gws.delete(1L);
         assertNotNull(r);
     }
+
 }
