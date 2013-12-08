@@ -1,20 +1,21 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
+import br.ufg.inf.es.relprev.client.RelPrevServicesConfig;
 import br.ufg.inf.es.relprev.client.http.response.TaxonomiaResponse;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import static br.ufg.inf.es.relprev.client.RelprevConfig.CONTROLLER_TAXONOMIA;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * User: halisson
  */
 public class Taxonomia extends ObjetoDeDominio {
 
-    private static final long serialVersionUID = -8111373397877993819L;
     @JsonProperty
     private String nome;
+
     @JsonProperty
     private Boolean status;
+
     @JsonProperty
     private Boolean padraoMinimo;
 
@@ -42,11 +43,36 @@ public class Taxonomia extends ObjetoDeDominio {
         this.padraoMinimo = padraoMinimo;
     }
 
-    protected String getController() {
-        return CONTROLLER_TAXONOMIA;
+    private final RelPrevServicesConfig config = RelPrevServicesConfig.getInstance();
+
+    @Override
+    protected String getListURL() {
+        return this.config.listTaxonomiaURL();
     }
 
-    protected Class getResponseClass() {
+    @Override
+    protected String getFindByIDURL() {
+        return this.config.findTaxonomiaURL();
+    }
+
+    @Override
+    protected String getCreateURL() {
+        return this.config.createTaxonomiaURL();
+    }
+
+    @Override
+    protected String getUpdateURL() {
+        return this.config.updateTaxonomiaURL();
+    }
+
+    @Override
+    protected String getDeleteURL() {
+        return this.config.deleteTaxonomiaURL();
+    }
+
+    @Override
+    protected Class<?> getResponseClass() {
         return TaxonomiaResponse.class;
     }
+
 }

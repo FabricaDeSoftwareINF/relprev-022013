@@ -13,8 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_EMPTY)
 public class Encaminhamento {
 
-    private static final long serialVersionUID = 3651594571617958528L;
-
     @JsonIgnore
     private RelatorioPrevencao relPrev;
 

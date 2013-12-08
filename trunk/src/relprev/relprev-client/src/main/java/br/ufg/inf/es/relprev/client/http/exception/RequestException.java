@@ -6,7 +6,15 @@ package br.ufg.inf.es.relprev.client.http.exception;
  * Time: 10:16 PM
  */
 public class RequestException extends Throwable {
-    public RequestException(String mensagem) {
+
+    private static final long serialVersionUID = 6485754414874782103L;
+
+    public RequestException(final String mensagem) {
         super(mensagem);
     }
+
+    public RequestException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
+
 }

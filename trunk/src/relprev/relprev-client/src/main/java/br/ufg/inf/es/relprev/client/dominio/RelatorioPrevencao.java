@@ -1,31 +1,28 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
-import br.ufg.inf.es.relprev.client.http.exception.RequestException;
-import br.ufg.inf.es.relprev.client.http.response.RelatorioPrevencaoResponse;
-import br.ufg.inf.es.relprev.client.http.response.Response;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import static br.ufg.inf.es.relprev.client.RelprevConfig.*;
-import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
-import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
+import br.ufg.inf.es.relprev.client.RelPrevServicesConfig;
+import br.ufg.inf.es.relprev.client.http.exception.RequestException;
+import br.ufg.inf.es.relprev.client.http.response.RelatorioPrevencaoResponse;
+import br.ufg.inf.es.relprev.client.http.response.Response;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 /**
  * User: halisson
  */
 @JsonRootName(value = "relPrev")
 public class RelatorioPrevencao extends ObjetoDeDominio {
-
-    private static final long serialVersionUID = -2567465353998731784L;
-
-    private static final String RELPREV = "relPrev";
 
     @JsonProperty
     private String envolvidos;
@@ -50,7 +47,7 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty
-    private Situacao situacoes = new Situacao();
+    private final Situacao situacoes = new Situacao();
 
     @JsonProperty(value = "anexos")
     private Set<Anexo> anexos;
@@ -161,92 +158,115 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
         return this.resposta;
     }
 
+    private final RelPrevServicesConfig config = RelPrevServicesConfig.getInstance();
+
     @Override
-    protected String getController() {
-        return CONTROLLER_RELPREV;
+    protected String getListURL() {
+        return this.config.listRelPrevURL();
     }
 
     @Override
-    protected Class getResponseClass() {
+    protected String getFindByIDURL() {
+        return this.config.findRelPrevURL();
+    }
+
+    @Override
+    protected String getCreateURL() {
+        return this.config.createRelPrevURL();
+    }
+
+    @Override
+    protected String getUpdateURL() {
+        return this.config.updateRelPrevURL();
+    }
+
+    @Override
+    protected String getDeleteURL() {
+        return this.config.deleteRelPrevURL();
+    }
+
+    @Override
+    protected Class<?> getResponseClass() {
         return RelatorioPrevencaoResponse.class;
     }
 
-    public AcaoRecomendada definaAcaoRecomendada(AcaoRecomendada acaoRecomendada) throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + this.id + "/" + ACTION_SET_ACAO_RECOMENDADA;
-        RelatorioPrevencao relprevResponse = addRelationAndGetRelatorioAtualizado(url, acaoRecomendada);
+    public AcaoRecomendada definaAcaoRecomendada(final AcaoRecomendada acaoRecomendada) throws RequestException {
+        final String url = RelPrevServicesConfig.getInstance().addRelPrevAcaoRecomendadaURL();
+        final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, acaoRecomendada);
 
         this.acaoRecomendada = relprevResponse.getAcaoRecomendada();
         acaoRecomendada.setRelPrev(this);
         return acaoRecomendada;
     }
 
-    public Resposta definaResposta(Resposta resposta) throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + this.id + "/" + ACTION_SET_RESPOSTA;
-        RelatorioPrevencao relprevResponse = addRelationAndGetRelatorioAtualizado(url, resposta);
+    public Resposta definaResposta(final Resposta resposta) throws RequestException {
+        final String url = RelPrevServicesConfig.getInstance().addRelPrevRespostaURL();
+        final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, resposta);
 
         this.resposta = relprevResponse.getResposta();
         resposta.setRelPrev(this);
         return resposta;
     }
 
-    public ParecerSetor definaParecerSetor(ParecerSetor parecerSetor) throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + this.id + "/" + ACTION_SET_PARECER_SETOR;
-        RelatorioPrevencao relprevResponse = addRelationAndGetRelatorioAtualizado(url, parecerSetor);
+    public ParecerSetor definaParecerSetor(final ParecerSetor parecerSetor) throws RequestException {
+        final String url = RelPrevServicesConfig.getInstance().addRelPrevParecerDoSetorURL();
+        final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, parecerSetor);
 
         this.parecerSetor = relprevResponse.getParecerSetor();
         parecerSetor.setRelPrev(this);
         return parecerSetor;
     }
 
-    public ClassificacaoRisco definaClassificacaoDeRisco(ClassificacaoRisco classificacao) throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + this.id + "/" + ACTION_SET_CLASSIFICACAO_DE_RISCO;
-        RelatorioPrevencao relprevResponse = addRelationAndGetRelatorioAtualizado(url, classificacao);
+    public ClassificacaoRisco definaClassificacaoDeRisco(final ClassificacaoRisco classificacao) throws RequestException {
+        final String url = RelPrevServicesConfig.getInstance().addRelPrevClassificadaoDeRiscoURL();
+        final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, classificacao);
 
         this.classificacaoRisco = relprevResponse.getClassificacaoRisco();
         classificacao.setRelPrev(this);
         return classificacao;
     }
 
-    public Encaminhamento definaEncaminhamento(Encaminhamento encaminhamento) throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + this.id + "/" + ACTION_SET_ENCAMINHAMENTO;
-        RelatorioPrevencao relprevResponse = addRelationAndGetRelatorioAtualizado(url, encaminhamento);
+    public Encaminhamento definaEncaminhamento(final Encaminhamento encaminhamento) throws RequestException {
+        final String url = RelPrevServicesConfig.getInstance().addRelPrevEncaminhamentoURL();
+        final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, encaminhamento);
 
         this.encaminhamento = relprevResponse.getEncaminhamento();
         encaminhamento.setRelPrev(this);
         return encaminhamento;
     }
 
-    public Observacao definaObservacao(Observacao observacao) throws RequestException {
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + this.id + "/" + ACTION_SET_OBSERVACAO;
-        RelatorioPrevencao relprevResponse = addRelationAndGetRelatorioAtualizado(url, observacao);
+    public Observacao definaObservacao(final Observacao observacao) throws RequestException {
+        final String url = RelPrevServicesConfig.getInstance().addRelPrevObservacaoURL();
+        final RelatorioPrevencao relprevResponse = this.addRelationAndGetRelatorioAtualizado(url, observacao);
 
         this.observacao = relprevResponse.getObservacao();
         observacao.setRelPrev(this);
         return observacao;
     }
 
-    static List<RelatorioPrevencao> findRelPrevByLocal(String local) throws RequestException {
+    public static List<RelatorioPrevencao> findRelPrevByLocal(final String local) throws RequestException {
         if (local == null || local.isEmpty()) {
             throw new IllegalArgumentException("O local é obrigatório");
         }
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_FIND_RELPREV_BY_LOCAL + "/" + local;
+        final String url = RelPrevServicesConfig.getInstance().findRelPrevByLocalURL() + local;
         return findBy(url);
     }
 
-    static List<RelatorioPrevencao> findRelPrevByDescricao(String descricao) throws RequestException {
+    public static List<RelatorioPrevencao> findRelPrevByDescricao(final String descricao) throws RequestException {
         if (descricao == null || descricao.isEmpty()) {
             throw new IllegalArgumentException("A descrição é obrigatória");
         }
-        String url = URL_SERVIDOR + "/" + CONTROLLER_RELPREV + "/" + ACTION_FIND_RELPREV_BY_DESCRICAO + "/" + descricao;
+        final String url = RelPrevServicesConfig.getInstance().findRelPrevByDescricaoURL() + descricao;
         return findBy(url);
     }
 
-    private RelatorioPrevencao addRelationAndGetRelatorioAtualizado(String url, Object objeto) throws RequestException {
+    private RelatorioPrevencao addRelationAndGetRelatorioAtualizado(final String url, final Object objeto)
+            throws RequestException {
         if (this.id == null) {
             throw new IllegalStateException("Não é possível adicionar uma relação à um objeto não persistido");
         }
 
-        RelatorioPrevencaoResponse response = (RelatorioPrevencaoResponse) fromJson(doPost(url, toJson(objeto)), RelatorioPrevencaoResponse.class);
+        final RelatorioPrevencaoResponse response = fromJson(doPost(url, toJson(objeto)), RelatorioPrevencaoResponse.class);
 
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
@@ -255,11 +275,12 @@ public class RelatorioPrevencao extends ObjetoDeDominio {
         return response.getData().get(0);
     }
 
-    private static List<RelatorioPrevencao> findBy(String url) throws RequestException {
-        Response response = (Response) fromJson(doGet(url), RelatorioPrevencaoResponse.class);
+    private static List<RelatorioPrevencao> findBy(final String url) throws RequestException {
+        final Response<RelatorioPrevencao> response = fromJson(doGet(url), RelatorioPrevencaoResponse.class);
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
         return response.getData();
     }
+
 }

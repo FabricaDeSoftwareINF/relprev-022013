@@ -1,19 +1,17 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.Date;
 
 /**
  * User: halisson
  */
 @JsonInclude(Include.NON_EMPTY)
 public class Resposta {
-
-    private static final long serialVersionUID = -7029497486055552998L;
 
     @JsonIgnore
     private RelatorioPrevencao relPrev;

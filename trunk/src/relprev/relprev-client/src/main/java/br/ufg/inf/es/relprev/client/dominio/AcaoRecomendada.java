@@ -1,12 +1,12 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-
-import java.util.Date;
 
 /**
  * User: halisson
@@ -14,8 +14,6 @@ import java.util.Date;
 @JsonRootName(value = "acao")
 @JsonInclude(Include.NON_EMPTY)
 public class AcaoRecomendada {
-
-    private static final long serialVersionUID = 485557117602416591L;
 
     @JsonIgnore
     private RelatorioPrevencao relPrev;

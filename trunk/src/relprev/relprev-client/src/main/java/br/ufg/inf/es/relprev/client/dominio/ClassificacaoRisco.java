@@ -11,8 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_EMPTY)
 public class ClassificacaoRisco {
 
-    private static final long serialVersionUID = 80193580056312692L;
-
     @JsonIgnore
     private RelatorioPrevencao relPrev;
 
@@ -45,4 +43,5 @@ public class ClassificacaoRisco {
     public void setAvaliacaoFinal(final String avaliacaoFinal) {
         this.avaliacaoFinal = avaliacaoFinal;
     }
+
 }

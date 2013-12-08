@@ -1,9 +1,10 @@
 package br.ufg.inf.es.relprev.client.http.response;
 
-import br.ufg.inf.es.relprev.client.dominio.ObjetoDeDominio;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
+
+import br.ufg.inf.es.relprev.client.dominio.ObjetoDeDominio;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * User: halisson
@@ -11,66 +12,66 @@ import java.util.List;
  * Time: 10:20 PM
  */
 public abstract class Response<T extends ObjetoDeDominio> {
+
     @JsonProperty
     private String message;
+
     @JsonProperty
     private Boolean success;
+
     @JsonProperty
     private List<T> data;
+
     @JsonProperty
     private Integer count;
-    //    Integer status;
+
     @JsonProperty
     private String status;
 
     @Override
     public String toString() {
-        return "Response{" +
-                "message='" + message + '\'' +
-                ", success=" + success +
-                ", data=" + data +
-                ", count=" + count +
-                ", status='" + status + '\'' +
-                '}';
+        return "Response{" + "message='" + this.message + '\'' + ", success=" + this.success + ", data=" + this.data + ", count="
+                + this.count + ", status='" + this.status + '\'' + '}';
     }
 
     public String getMessage() {
-        return message;
+        return this.message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = message;
     }
 
     public Boolean getSuccess() {
-        return success;
+        return this.success;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setSuccess(final Boolean success) {
         this.success = success;
     }
 
     public List<T> getData() {
-        return data;
+        return this.data;
     }
 
-    public void setData(List<T> data) {
+    public void setData(final List<T> data) {
         this.data = data;
     }
 
     public Integer getCount() {
-        return count;
+        return this.count;
     }
 
-    public void setCount(Integer count) {
+    public void setCount(final Integer count) {
         this.count = count;
     }
 
     public String getStatus() {
-        return status;
+        return this.status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
+
 }
