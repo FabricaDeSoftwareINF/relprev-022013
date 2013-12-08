@@ -63,6 +63,7 @@
 					</div>
 				</div>
 				<div class="avaliacao col-md-6">
+					<input name="relatorioPrevencao.classificacaoRisco.avaliacaoInicial" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoInicial }"/>
 					<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
 					<div class="col-md-2">
 						<select name="avalicaoPrimeiroNivel" class="form-control">
@@ -80,6 +81,7 @@
 					</div>
 				</div>
 				<div class="reavaliacao col-md-6">
+					<input name="relatorioPrevencao.classificacaoRisco.avaliacaoFinal" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoFinal }"/>
 					<label class="labelMaiuscula"><fmt:message key="reavaliacao" /></label>
 					<div class="col-md-2">
 						<select name="reavalicaoPrimeiroNivel" class="form-control">
@@ -109,5 +111,6 @@
 	    </div>
 	</div>
 	<script type="text/javascript" src="<c:url value="/js/abas.js"/>" ></script>
+	<script type="text/javascript" src="<c:url value="/js/relprev.dadosgerais.js"/>" ></script>
 </jsp:body>
 </t:template>
