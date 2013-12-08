@@ -9,6 +9,7 @@
         <fmt:message key="impressao" />
     </jsp:attribute>
     <jsp:body>
+    	<fmt:setLocale value="pt_BR"/>
     	<div class="text-center tituloPagina">
         	<fmt:message key="impressao" />
        	</div>
@@ -28,7 +29,7 @@
 			    <c:forEach var="relprev" varStatus="status" items="${relatorioPrevencaoList}">
 			  		<tr>
 				    	<td>${relprev.id}</td>				    	
-				    	<td><fmt:formatDate dateStyle="short" value="${relprev.dataSituacaoPerigosa}" /></td>
+				    	<td><fmt:formatDate pattern="dd/MM/yyyy" value="${relprev.dataSituacaoPerigosa}" /></td>
 				    	<td>${relprev.descricaoSituacaoPerigosa}</td>				    	
 				    	<td>${relprev.relator.nome}</td>
 				    	<td>
