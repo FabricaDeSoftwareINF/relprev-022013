@@ -87,33 +87,34 @@ public class RelPrevServicesConfigTest {
 
     @Test
     public void testAddRelPrevAcaoRecomendadaURL() {
-        assertEquals(this.config.addRelPrevAcaoRecomendadaURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/acao");
+        assertEquals(this.config.addRelPrevAcaoRecomendadaURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/%s/acao");
     }
 
     @Test
     public void testAddRelPrevClassificadaoDeRiscoURL() {
         assertEquals(this.config.addRelPrevClassificadaoDeRiscoURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT
-                + "/relprev/classificacao");
+                + "/relprev/%s/classificacao");
     }
 
     @Test
     public void testAddRelPrevEncaminhamentoURL() {
-        assertEquals(this.config.addRelPrevEncaminhamentoURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/encaminhamento");
+        assertEquals(this.config.addRelPrevEncaminhamentoURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT
+                + "/relprev/%s/encaminhamento");
     }
 
     @Test
     public void testAddRelPrevObservacaoURL() {
-        assertEquals(this.config.addRelPrevObservacaoURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/observacao");
+        assertEquals(this.config.addRelPrevObservacaoURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/%s/observacao");
     }
 
     @Test
     public void testAddRelPrevParecerDoSetorURL() {
-        assertEquals(this.config.addRelPrevParecerDoSetorURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/parecer");
+        assertEquals(this.config.addRelPrevParecerDoSetorURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/%s/parecer");
     }
 
     @Test
     public void testAddRelPrevRespostaURL() {
-        assertEquals(this.config.addRelPrevRespostaURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/resposta");
+        assertEquals(this.config.addRelPrevRespostaURL(), this.SERVICES_URL_WITHOUT_REPLACEMENT + "/relprev/%s/resposta");
     }
 
     @Test

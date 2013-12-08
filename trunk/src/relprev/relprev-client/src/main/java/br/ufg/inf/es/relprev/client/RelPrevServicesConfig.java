@@ -93,7 +93,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Ação Recomendada ao Relatório de Prevenção
      */
     public String addRelPrevAcaoRecomendadaURL() {
-        return this.serviceBaseURL() + this.controllerRelPrev + "/acao";
+        return this.serviceBaseURL() + this.controllerRelPrev + "/%s/acao";
     }
 
     /**
@@ -102,7 +102,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Classificação de Risco ao Relatório de Prevenção
      */
     public String addRelPrevClassificadaoDeRiscoURL() {
-        return this.serviceBaseURL() + this.controllerRelPrev + "/classificacao";
+        return this.serviceBaseURL() + this.controllerRelPrev + "/%s/classificacao";
     }
 
     /**
@@ -111,7 +111,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Encaminhamento ao Relatório de Prevenção
      */
     public String addRelPrevEncaminhamentoURL() {
-        return this.serviceBaseURL() + this.controllerRelPrev + "/encaminhamento";
+        return this.serviceBaseURL() + this.controllerRelPrev + "/%s/encaminhamento";
     }
 
     /**
@@ -120,7 +120,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Observação ao Relatório de Prevenção
      */
     public String addRelPrevObservacaoURL() {
-        return this.serviceBaseURL() + this.controllerRelPrev + "/observacao";
+        return this.serviceBaseURL() + this.controllerRelPrev + "/%s/observacao";
     }
 
     /**
@@ -129,7 +129,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Parecer do Setor ao Relatório de Prevenção
      */
     public String addRelPrevParecerDoSetorURL() {
-        return this.serviceBaseURL() + this.controllerRelPrev + "/parecer";
+        return this.serviceBaseURL() + this.controllerRelPrev + "/%s/parecer";
     }
 
     /**
@@ -138,7 +138,7 @@ public final class RelPrevServicesConfig {
      * @return {@link String} URL para adição de Resposta ao Relatório de Prevenção
      */
     public String addRelPrevRespostaURL() {
-        return this.serviceBaseURL() + this.controllerRelPrev + "/resposta";
+        return this.serviceBaseURL() + this.controllerRelPrev + "/%s/resposta";
     }
 
     /**
