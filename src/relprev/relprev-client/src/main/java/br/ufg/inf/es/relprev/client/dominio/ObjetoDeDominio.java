@@ -1,16 +1,18 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
-import br.ufg.inf.es.relprev.client.http.exception.RequestException;
-import br.ufg.inf.es.relprev.client.http.response.Response;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doDelete;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doGet;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doPost;
+import static br.ufg.inf.es.relprev.client.http.HttpClient.doPut;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
+import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
 
 import java.util.List;
 
-import static br.ufg.inf.es.relprev.client.RelprevConfig.ACTION_CREATE;
-import static br.ufg.inf.es.relprev.client.RelprevConfig.URL_SERVIDOR;
-import static br.ufg.inf.es.relprev.client.http.HttpClient.*;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.fromJson;
-import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
+import br.ufg.inf.es.relprev.client.http.exception.RequestException;
+import br.ufg.inf.es.relprev.client.http.response.Response;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * User: halisson
@@ -18,17 +20,18 @@ import static br.ufg.inf.es.relprev.client.http.JsonConverter.toJson;
  * Time: 11:55 PM
  */
 public abstract class ObjetoDeDominio {
+
     @JsonProperty
     public Integer id;
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public List list() throws RequestException {
-        String url = URL_SERVIDOR + "/" + getController();
+        final String url = this.getListURL();
 
-        Response response = ((Response) (fromJson(doGet(url), getResponseClass())));
+        final Response response = (Response) fromJson(doGet(url), this.getResponseClass());
 
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
@@ -37,21 +40,21 @@ public abstract class ObjetoDeDominio {
         return response.getData();
     }
 
-    public ObjetoDeDominio get(Integer id) throws RequestException {
-        String url = URL_SERVIDOR + "/" + getController() + "/" + id;
-        Response response = ((Response) (fromJson(doGet(url), getResponseClass())));
+    public ObjetoDeDominio get(final Integer id) throws RequestException {
+        final String url = this.getFindByIDURL() + id;
+        final Response response = (Response) fromJson(doGet(url), this.getResponseClass());
         return (ObjetoDeDominio) response.getData().get(0);
     }
 
     public ObjetoDeDominio save() throws RequestException {
         Response response = null;
         if (this.getId() == null) {
-            String url = URL_SERVIDOR + "/" + getController() + "/" + ACTION_CREATE;
-            response = (Response) fromJson(doPost(url, toJson(this)), getResponseClass());
+            final String url = this.getCreateURL();
+            response = (Response) fromJson(doPost(url, toJson(this)), this.getResponseClass());
             this.id = ((ObjetoDeDominio) response.getData().get(0)).id;
         } else {
-            String url = URL_SERVIDOR + "/" + getController() + "/" + ACTION_CREATE;
-            response = (Response) fromJson(doPut(url, toJson(this)), getResponseClass());
+            final String url = this.getCreateURL();
+            response = (Response) fromJson(doPut(url, toJson(this)), this.getResponseClass());
         }
 
         if (!response.getSuccess()) {
@@ -62,8 +65,8 @@ public abstract class ObjetoDeDominio {
     }
 
     public ObjetoDeDominio delete() throws RequestException {
-        String url = URL_SERVIDOR + "/" + getController() + id;
-        Response response = (Response) fromJson(doDelete(url), getResponseClass());
+        final String url = this.getDeleteURL() + this.id;
+        final Response response = (Response) fromJson(doDelete(url), this.getResponseClass());
 
         if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
@@ -72,7 +75,41 @@ public abstract class ObjetoDeDominio {
         return this;
     }
 
-    protected abstract String getController();
+    /**
+     * Recupera a URL para busca de um objeto pelo ID
+     * 
+     * @return URL para busca de objeto
+     */
+    protected abstract String getFindByIDURL();
 
-    protected abstract Class getResponseClass();
+    /**
+     * Recupera a URL para listagem dos Objetos
+     * 
+     * @return URL para listagem dos Objetos
+     */
+    protected abstract String getListURL();
+
+    /**
+     * Recupera a URL para criação de um objeto
+     * 
+     * @return URL para criação de objeto
+     */
+    protected abstract String getCreateURL();
+
+    /**
+     * Recupera a URL para atualização de um objeto
+     * 
+     * @return URL para atualização de objeto
+     */
+    protected abstract String getUpdateURL();
+
+    /**
+     * Recupera a URL para remoção de um objeto
+     * 
+     * @return URL para remoção de objeto
+     */
+    protected abstract String getDeleteURL();
+
+    protected abstract Class<?> getResponseClass();
+
 }

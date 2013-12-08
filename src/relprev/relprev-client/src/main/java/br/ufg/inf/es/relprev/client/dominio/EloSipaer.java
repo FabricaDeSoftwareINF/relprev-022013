@@ -1,9 +1,9 @@
 package br.ufg.inf.es.relprev.client.dominio;
 
+import br.ufg.inf.es.relprev.client.RelPrevServicesConfig;
 import br.ufg.inf.es.relprev.client.http.response.EloSipaerResponse;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import static br.ufg.inf.es.relprev.client.RelprevConfig.CONTROLLER_ELO_SIPAER;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * User: halisson
@@ -11,9 +11,10 @@ import static br.ufg.inf.es.relprev.client.RelprevConfig.CONTROLLER_ELO_SIPAER;
  * Time: 12:25 AM
  */
 public class EloSipaer extends ObjetoDeDominio {
-    private static final long serialVersionUID = 3850763253702817582L;
+
     @JsonProperty
     private String organizacao;
+
     @JsonProperty(value = "sigla")
     private String sigla;
 
@@ -33,11 +34,36 @@ public class EloSipaer extends ObjetoDeDominio {
         this.sigla = siglaOrganizacao;
     }
 
-    protected String getController() {
-        return CONTROLLER_ELO_SIPAER;
+    private final RelPrevServicesConfig config = RelPrevServicesConfig.getInstance();
+
+    @Override
+    protected String getListURL() {
+        return this.config.listEloSIPAERURL();
     }
 
-    protected Class getResponseClass() {
+    @Override
+    protected String getFindByIDURL() {
+        return this.config.findEloSIPAERURL();
+    }
+
+    @Override
+    protected String getCreateURL() {
+        return this.config.createEloSIPAERURL();
+    }
+
+    @Override
+    protected String getUpdateURL() {
+        return this.config.updateEloSIPAERURL();
+    }
+
+    @Override
+    protected String getDeleteURL() {
+        return this.config.deleteEloSIPAERURL();
+    }
+
+    @Override
+    protected Class<?> getResponseClass() {
         return EloSipaerResponse.class;
     }
+
 }

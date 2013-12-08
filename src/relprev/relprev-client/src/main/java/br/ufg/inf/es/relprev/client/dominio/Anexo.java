@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Anexo {
 
-    private static final long serialVersionUID = 4571775183834766912L;
     @JsonProperty
     private String mimeType;
+
     @JsonProperty
     private String pathAnexo;
 
@@ -28,4 +28,5 @@ public class Anexo {
     public void setPathAnexo(final String pathAnexo) {
         this.pathAnexo = pathAnexo;
     }
+
 }

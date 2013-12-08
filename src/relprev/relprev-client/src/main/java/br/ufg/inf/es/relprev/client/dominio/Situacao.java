@@ -10,8 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.ALWAYS)
 public class Situacao {
 
-    private static final long serialVersionUID = 990407097291869785L;
-
     @JsonProperty
     private Boolean temEncaminhamento = false;
 
@@ -55,4 +53,5 @@ public class Situacao {
     public void setFoiConcluido(final Boolean foiConcluido) {
         this.foiConcluido = foiConcluido;
     }
+
 }

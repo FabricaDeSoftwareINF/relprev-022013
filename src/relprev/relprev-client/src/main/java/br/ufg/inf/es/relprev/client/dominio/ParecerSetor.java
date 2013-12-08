@@ -13,8 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_EMPTY)
 public class ParecerSetor {
 
-    private static final long serialVersionUID = -2223879036406313667L;
-
     @JsonIgnore
     private RelatorioPrevencao relPrev;
 
@@ -47,4 +45,5 @@ public class ParecerSetor {
     public void setData(final Date data) {
         this.data = data;
     }
+
 }

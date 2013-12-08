@@ -10,8 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_EMPTY)
 public class Categoria {
 
-    private static final long serialVersionUID = 2429958840047244813L;
-
     @JsonProperty
     private Categoria categoriaPai;
 
