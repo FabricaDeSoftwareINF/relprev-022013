@@ -15,8 +15,6 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver" p:defaultLocale="pt_BR" />
-
 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"
 		p:supportedMediaTypes="application/json" />
 

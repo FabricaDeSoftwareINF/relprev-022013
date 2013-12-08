@@ -43,4 +43,7 @@ public interface WebServicesURL {
     // taxonomia service
     String URL_TAXONOMIA = "/taxonomia";
 
+    // categoria service
+    String URL_CATEGORIA = "/categoria";
+
 }

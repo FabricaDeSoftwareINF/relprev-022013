@@ -1,6 +1,7 @@
 package br.ufg.inf.service.support;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -15,7 +16,6 @@ import br.ufg.inf.model.support.AbstractEntity;
  * Testes para RESTErrorHandler
  * 
  * @author Raul
- * 
  */
 @RunWith(MockitoJUnitRunner.class)
 public class RESTErrorHandlerTest<E extends AbstractEntity<E>> {
@@ -27,17 +27,17 @@ public class RESTErrorHandlerTest<E extends AbstractEntity<E>> {
     public void testProcessHttpClientErrorException() {
         final HttpClientErrorException clientException = new HttpClientErrorException(HttpStatus.BAD_REQUEST);
         final Response<E> r = this.restErrorHandler.processHttpClientErrorException(clientException);
-        Assert.assertNull(r);
+        assertNull(r);
     }
 
     @Test
     public void testProcessHttpServerErrorException() {
         final HttpServerErrorException serverException = new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
         final Response<E> response = this.restErrorHandler.processHttpServerErrorException(serverException);
-        Assert.assertNull(response);
+        assertNull(response);
     }
 
     @Test
-    public void testProcessMethodArgumentNotValidException() { }
+    public void testProcessMethodArgumentNotValidException() {}
 
 }

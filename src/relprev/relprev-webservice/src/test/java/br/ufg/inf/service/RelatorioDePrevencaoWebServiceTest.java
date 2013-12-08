@@ -40,11 +40,11 @@ import br.ufg.inf.service.support.Response;
  * @see RelatorioDePrevencaoRepository
  * @see RelatorioPrevencaoWebService
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
 @WebAppConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:META-INF/spring/applicationContextTest-mvc.xml",
         "classpath:META-INF/spring/applicationContextTest-persistence.xml"})
-@Transactional
 @TransactionConfiguration(defaultRollback = true)
 public class RelatorioDePrevencaoWebServiceTest {
 
@@ -53,7 +53,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Autowired
     private EloSipaerRepository eloSipaerRepository;
-    
+
     @Autowired
     private ObservacaoRepository observacaoRepository;
 
@@ -69,7 +69,7 @@ public class RelatorioDePrevencaoWebServiceTest {
         this.relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(this.relatorioDePrevencaoRepository,
                 this.logRepository);
 
-        RelatorioPrevencao relprev = new RelatorioPrevencao();
+        final RelatorioPrevencao relprev = new RelatorioPrevencao();
 
         final Usuario usuario = new Usuario();
         usuario.setAtivo(true);
@@ -103,21 +103,19 @@ public class RelatorioDePrevencaoWebServiceTest {
         relprev.setLocal("teste local");
         relprev.setSituacoes(situacao);
 
-        Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.create(relprev);
+        final Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.create(relprev);
         this.relprev = response.getData().get(0);
     }
 
     @Test
     public void testFindRelPrevByLocal() throws Exception {
         final Response<?> r = this.relatorioDePrevencaoWebService.findRelPrevByLocal("teste local");
-
         assertNotNull(r);
     }
 
     @Test
     public void testFindRelPrevByDescricao() throws Exception {
         final Response<?> r = this.relatorioDePrevencaoWebService.findRelPrevByDescricao("teste descrição");
-
         assertNotNull(r);
     }
 
@@ -125,7 +123,6 @@ public class RelatorioDePrevencaoWebServiceTest {
     public void testFindRelPrevByLocalException() throws Exception {
         this.relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(null, this.logRepository);
         final Response<RelatorioPrevencao> r = this.relatorioDePrevencaoWebService.findRelPrevByLocal("Teste");
-
         assertNotNull(r);
     }
 
@@ -133,14 +130,12 @@ public class RelatorioDePrevencaoWebServiceTest {
     public void testFindRelPrevByDescricaoException() throws Exception {
         this.relatorioDePrevencaoWebService = new RelatorioDePrevencaoWebService(null, this.logRepository);
         final Response<?> r = this.relatorioDePrevencaoWebService.findRelPrevByDescricao("Teste");
-
         assertNotNull(r);
     }
 
     @Test
     public void testUpdate() throws Exception {
         this.relprev.setEnvolvidos("env2");
-
         final Response<?> r = this.relatorioDePrevencaoWebService.update(this.relprev);
         assertNotNull(r.getMessage());
     }
@@ -148,14 +143,12 @@ public class RelatorioDePrevencaoWebServiceTest {
     @Test
     public void testDelete() throws Exception {
         final Response<?> r = this.relatorioDePrevencaoWebService.delete(this.relprev.getId());
-        System.out.println(r.getMessage());
+        assertNotNull(r);
     }
 
     @Test
     public void testAddAcaoRecomendada() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final AcaoRecomendada acaoRecomendada = new AcaoRecomendada();
         acaoRecomendada.setDescricao("ação descrição");
@@ -169,9 +162,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Test
     public void testUpdateAcaoRecomendada() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final AcaoRecomendada acaoRecomendada = new AcaoRecomendada();
         acaoRecomendada.setDescricao("ação descrição");
@@ -182,14 +173,10 @@ public class RelatorioDePrevencaoWebServiceTest {
         final Response<?> r = this.relatorioDePrevencaoWebService.updateAcaoRecomendada(this.relprev.getId(), acaoRecomendada);
         assertNotNull(r);
     }
-    
-    
 
     @Test
     public void testAddClassificacaoRisco() throws Exception {
-
-        relatorioDePrevencaoWebService.update(relprev);
-        // System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
+        this.relatorioDePrevencaoWebService.update(this.relprev);
 
         final ClassificacaoRisco classificacaoRisco = new ClassificacaoRisco();
         classificacaoRisco.setAvaliacaoInicial("AA");
@@ -203,9 +190,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Test
     public void testUpdateClassificacaoRisco() throws Exception {
-
-        relatorioDePrevencaoWebService.update(relprev);
-        // System.out.println("\n\n"+relatorioDePrevencaoWebService.list().getData());
+        this.relatorioDePrevencaoWebService.update(this.relprev);
 
         final ClassificacaoRisco classificacaoRisco = new ClassificacaoRisco();
         classificacaoRisco.setAvaliacaoInicial("AA");
@@ -216,12 +201,10 @@ public class RelatorioDePrevencaoWebServiceTest {
                 classificacaoRisco);
         assertNotNull(r);
     }
-    
+
     @Test
     public void testAddEncaminhamento() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Encaminhamento encaminhamento = new Encaminhamento();
         encaminhamento.setDescricao("encaminhamento descrição");
@@ -235,9 +218,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Test
     public void testUpdateEncaminhamento() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Encaminhamento encaminhamento = new Encaminhamento();
         encaminhamento.setDescricao("encaminhamento descrição");
@@ -248,12 +229,10 @@ public class RelatorioDePrevencaoWebServiceTest {
         final Response<?> r = this.relatorioDePrevencaoWebService.updateEncaminhamento(this.relprev.getId(), encaminhamento);
         assertNotNull(r);
     }
-    
+
     @Test
     public void testAddObservacao() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Observacao observacao = new Observacao();
         observacao.setDescricao("observacao descrição");
@@ -265,9 +244,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Test
     public void testUpdateObservacao() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Observacao observacao = new Observacao();
         observacao.setDescricao("observacao descrição 2");
@@ -276,34 +253,33 @@ public class RelatorioDePrevencaoWebServiceTest {
         final Response<?> r = this.relatorioDePrevencaoWebService.updateObservacao(this.relprev.getId(), observacao);
         assertNotNull(r);
     }
-    
+
     @Test
     public void testDeleteObservacao() throws Exception {
-    	final RelatorioPrevencao persisted = this.relprev;
+        final RelatorioPrevencao persisted = this.relprev;
 
-    	final Observacao observacao = new Observacao();
+        final Observacao observacao = new Observacao();
         observacao.setDescricao("observacao descrição 2");
         observacao.setRelPrev(persisted);
-        
+
         this.observacaoRepository.save(observacao);
-        
-        relprev.setObservacao(observacao);
-        
-        //Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.addObservacao(persisted.getId(), observacao);
-        
-        //Observacao observacaoPersistida = response.getData().get(0).getObservacao();
-        //response = this.relatorioDePrevencaoWebService.deleteAcaoRecomendada(persisted.getId(), observacaoPersistida.getId());
-        
+
+        this.relprev.setObservacao(observacao);
+
+        // Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.addObservacao(persisted.getId(),
+        // observacao);
+
+        // Observacao observacaoPersistida = response.getData().get(0).getObservacao();
+        // response = this.relatorioDePrevencaoWebService.deleteAcaoRecomendada(persisted.getId(), observacaoPersistida.getId());
+
         this.observacaoRepository.delete(observacao);
-        //assertNotNull(response);
+        // assertNotNull(response);
         assertNotNull(observacao);
     }
-    
+
     @Test
     public void testAddParecerSetor() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final ParecerSetor parecerSetor = new ParecerSetor();
         parecerSetor.setDescricao("parecerSetor descrição");
@@ -315,9 +291,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Test
     public void testUpdateParecerSetor() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final ParecerSetor parecerSetor = new ParecerSetor();
         parecerSetor.setDescricao("parecerSetor descrição 2");
@@ -326,12 +300,10 @@ public class RelatorioDePrevencaoWebServiceTest {
         final Response<?> r = this.relatorioDePrevencaoWebService.updateParecerSetor(this.relprev.getId(), parecerSetor);
         assertNotNull(r);
     }
-    
+
     @Test
     public void testAddResposta() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Resposta resposta = new Resposta();
         resposta.setDescricao("resposta descrição");
@@ -345,9 +317,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
     @Test
     public void testUpdateResposta() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Resposta resposta = new Resposta();
         resposta.setDescricao("resposta descrição");
@@ -358,12 +328,10 @@ public class RelatorioDePrevencaoWebServiceTest {
         final Response<?> r = this.relatorioDePrevencaoWebService.updateResposta(this.relprev.getId(), resposta);
         assertNotNull(r);
     }
-    
+
     @Test
     public void testAddInserirEntidadeExistente() throws Exception {
-
         this.relatorioDePrevencaoWebService.update(this.relprev);
-        //System.out.println("\n\n" + this.relatorioDePrevencaoWebService.list().getData());
 
         final Resposta resposta = new Resposta();
         resposta.setDescricao("resposta descrição");
@@ -373,14 +341,13 @@ public class RelatorioDePrevencaoWebServiceTest {
 
         Response<?> r = this.relatorioDePrevencaoWebService.addResposta(this.relprev.getId(), resposta);
         r = this.relatorioDePrevencaoWebService.addResposta(this.relprev.getId(), resposta);
-        
+
         assertNotNull(r);
     }
-    
+
     @Test(expected = ConstraintViolationException.class)
     public void testInserirEntidadeComRestricao() throws Exception {
-
-    	final Usuario usuario = new Usuario();
+        final Usuario usuario = new Usuario();
         usuario.setAtivo(true);
         usuario.setDataInsercaoAlteracao(new Date());
         usuario.setNomeCompleto("teste nome");
@@ -488,4 +455,5 @@ public class RelatorioDePrevencaoWebServiceTest {
     public void testDeleteRespostaException() throws Exception {
         this.relatorioDePrevencaoWebService.deleteResposta(1L, null);
     }
+
 }
