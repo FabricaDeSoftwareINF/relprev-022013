@@ -17,8 +17,8 @@ relprev.relatorio = (function(instancia) {
 	
 	function atualizeDataHora() {
 		var data = $('#dataSituacaoPerigosa').val();
-		var hora = $('#hora').val().split(':')[0] == undefined ? 0 : $('#hora').val().split(':')[0];
-		var minuto = $('#hora').val().split(':')[1] == undefined ? 0 : $('#hora').val().split(':')[1];
+		var hora = $('#hora').val().split(':')[0] == undefined ? "00" : $('#hora').val().split(':')[0];
+		var minuto = $('#hora').val().split(':')[1] == undefined ? "00" : $('#hora').val().split(':')[1];
 		var dataComHora = data + " " + hora + ":" + minuto + ":00";
 		$('[name="relatorioPrevencao.dataSituacaoPerigosa"]').val(dataComHora);
 	};
