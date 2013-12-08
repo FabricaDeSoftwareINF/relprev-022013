@@ -14,7 +14,7 @@
 <script type="text/javascript" src="<c:url value="/js/jquery.MultiFile.js" />"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.meio.mask.js"/>"></script>
-
+<script type="text/javascript" src="<c:url value="/js/relprev.relatorio.js"/>"></script>
 <div class="row">
     <div class="form-group col-md-12">
         <label for="local" class="labelMaiuscula">
@@ -25,16 +25,18 @@
     </div>
 </div>
 <div class="row">
+	<input name="relatorioPrevencao.dataSituacaoPerigosa" type="hidden" value="${relatorioPrevencao.dataSituacaoPerigosa}"/>
     <div class="form-group col-md-4">
         <label for="dataSituacaoPerigosa" class="labelMaiuscula">
             <fmt:message key="data"/>
         </label>
 
         <div class="input-group">
+        	<fmt:setLocale value="pt_BR"/>
             <input type="text" class="form-control calendario" id="dataSituacaoPerigosa"
-                   name="relatorioPrevencao.dataSituacaoPerigosa"
-                   value="<fmt:formatDate dateStyle="short" value="${relatorioPrevencao.dataSituacaoPerigosa}" />"/>
-        </div>
+                   name="relatorioPrevencao.dataFormatadaSituacaoPerigosa"
+                   value="<fmt:formatDate pattern="dd/MM/yyyy" value="${relatorioPrevencao.dataSituacaoPerigosa}" />"/>
+        </div>        
     </div>
     <div class="form-group col-md-4">
         <label for="hora" class="labelMaiuscula">
