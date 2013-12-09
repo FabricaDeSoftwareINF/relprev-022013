@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
 import br.ufg.inf.es.relprev.cdn.CDN;
 import br.ufg.inf.es.relprev.client.dominio.Anexo;
+import br.ufg.inf.es.relprev.client.dominio.ClassificacaoRisco;
 import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
@@ -106,5 +107,48 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 	@Override
 	protected Class<RelatorioPrevencao> obtenhaTipo() {
 		return RelatorioPrevencao.class;
+	}
+
+	@Get
+	public String realizeAvaliacao(String avaliacao, int idRelatorio) {
+		try {
+			ClassificacaoRisco classificacao;
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);
+			if (relatorio.getClassificacaoRisco() == null) {
+				classificacao = new ClassificacaoRisco();
+			} else {
+				classificacao = relatorio.getClassificacaoRisco();
+			}
+
+			classificacao.setAvaliacaoInicial(avaliacao);
+			classificacao.setAvaliacaoFinal("");
+			classificacao.setRelPrev(relatorio);
+			relatorio.definaClassificacaoDeRisco(classificacao);
+			return "Avaliação realizada com sucesso!";
+		} catch (RequestException e) {
+			e.printStackTrace();
+			return e.getLocalizedMessage();
+		}
+	}
+
+	@Get
+	public String realizeReavaliacao(String reavaliacao, int idRelatorio) {
+		try {
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);
+			ClassificacaoRisco classificacao = relatorio
+					.getClassificacaoRisco();
+			if (classificacao != null) {
+				classificacao.setAvaliacaoFinal(reavaliacao);
+				classificacao.setRelPrev(relatorio);
+				relatorio.definaClassificacaoDeRisco(classificacao);
+			}
+
+			return "Reavaliação realizada com sucesso!";
+		} catch (RequestException e) {
+			e.printStackTrace();
+			return e.getLocalizedMessage();
+		}
 	}
 }
