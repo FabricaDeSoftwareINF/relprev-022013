@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.ufg.inf.es.fs</groupId>
     <artifactId>relprev</artifactId>
-    <version>1.0</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>RelPrev</name>
+    <name>RelPrev - Parent POM</name>
     <description>
         Sistema de Coleta e Análise de Dados de Prevenção de Acidentes Aeronáuticos
     </description>
