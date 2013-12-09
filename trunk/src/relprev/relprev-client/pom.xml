@@ -4,13 +4,14 @@
     <parent>
         <groupId>br.ufg.inf.es.fs</groupId>
         <artifactId>relprev</artifactId>
-        <version>1.0</version>
+        <version>0.1-SNAPSHOT</version>
     </parent>
     <artifactId>relprev-client</artifactId>
-    <version>1.2</version>
 
     <name>RelPrev Client</name>
-    <description>Módulo responsável por abstrair a comunicação feita com o webservice.</description>
+    <description>
+        Módulo responsável por abstrair a comunicação feita com o webservice.
+    </description>
 
     <dependencies>
         <!-- json -->
