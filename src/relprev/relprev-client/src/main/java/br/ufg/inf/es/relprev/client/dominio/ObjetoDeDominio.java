@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class ObjetoDeDominio {
 
     @JsonProperty
-    public Integer id;
+    private Integer id;
 
     public Integer getId() {
         return this.id;
@@ -52,7 +52,7 @@ public abstract class ObjetoDeDominio {
         if (this.getId() == null) {
             response = (Response) fromJson(doPost(url, toJson(this)), this.getResponseClass());
             this.id = response.getData() != null ? ((ObjetoDeDominio) response.getData().get(0)).id : null;
-        } else {           
+        } else {
             response = (Response) fromJson(doPut(url, toJson(this)), this.getResponseClass());
         }
 
