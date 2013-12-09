@@ -5,6 +5,9 @@
 
 <link href="<c:url value="/css/dados-gerais.css" />" rel="stylesheet" media="all">
 <t:template>
+<jsp:attribute name="titulo">
+        <fmt:message key="dados.gerais.ocorrencia" />
+</jsp:attribute>
 <jsp:body>
 	<div class="dadosGerais">
 		<div class="relatorio">
@@ -62,8 +65,9 @@
 					  </div>
 					</div>
 				</div>
+				<input name="classificacaoRisco.relprev.id" type="hidden" value="${ relatorioPrevencao.id }" />
 				<div class="avaliacao col-md-6">
-					<input name="relatorioPrevencao.classificacaoRisco.avaliacaoInicial" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoInicial }"/>
+					<input name="classificacaoRisco.avaliacaoInicial" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoInicial }"/>
 					<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
 					<div class="col-md-2">
 						<select name="avalicaoPrimeiroNivel" class="form-control">
@@ -79,9 +83,14 @@
 						    </c:forEach>
 						</select>
 					</div>
+					<c:if test="${ relprev.classificacaoRisco == null }">
+						<button type="button" class="botaoAvaliar btn btn-primary">
+				        	<fmt:message key="avaliar" />
+				        </button>
+			        </c:if>
 				</div>
 				<div class="reavaliacao col-md-6">
-					<input name="relatorioPrevencao.classificacaoRisco.avaliacaoFinal" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoFinal }"/>
+					<input name="classificacaoRisco.avaliacaoFinal" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoFinal }"/>
 					<label class="labelMaiuscula"><fmt:message key="reavaliacao" /></label>
 					<div class="col-md-2">
 						<select name="reavalicaoPrimeiroNivel" class="form-control">
@@ -97,6 +106,9 @@
 						    </c:forEach>
 						</select>
 					</div>
+					<button type="button" class="botaoReavaliar btn btn-primary">
+			        	<fmt:message key="reavaliar" />
+			        </button>
 				</div>
 			</div>
 		</div>
