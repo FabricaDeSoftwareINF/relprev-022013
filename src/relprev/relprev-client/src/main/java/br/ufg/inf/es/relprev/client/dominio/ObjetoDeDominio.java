@@ -51,15 +51,15 @@ public abstract class ObjetoDeDominio {
         final String url = this.getCreateURL();
         if (this.getId() == null) {
             response = (Response) fromJson(doPost(url, toJson(this)), this.getResponseClass());
-            this.id = response.getData() != null ? ((ObjetoDeDominio) response.getData().get(0)).id : null;
         } else {
             response = (Response) fromJson(doPut(url, toJson(this)), this.getResponseClass());
         }
 
-        if (!response.getSuccess()) {
+        if (response == null || !response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
 
+        this.id = response.getData() != null ? ((ObjetoDeDominio) response.getData().get(0)).id : null;
         return this;
     }
 
@@ -76,35 +76,35 @@ public abstract class ObjetoDeDominio {
 
     /**
      * Recupera a URL para busca de um objeto pelo ID
-     * 
+     *
      * @return URL para busca de objeto
      */
     protected abstract String getFindByIDURL();
 
     /**
      * Recupera a URL para listagem dos Objetos
-     * 
+     *
      * @return URL para listagem dos Objetos
      */
     protected abstract String getListURL();
 
     /**
      * Recupera a URL para criação de um objeto
-     * 
+     *
      * @return URL para criação de objeto
      */
     protected abstract String getCreateURL();
 
     /**
      * Recupera a URL para atualização de um objeto
-     * 
+     *
      * @return URL para atualização de objeto
      */
     protected abstract String getUpdateURL();
 
     /**
      * Recupera a URL para remoção de um objeto
-     * 
+     *
      * @return URL para remoção de objeto
      */
     protected abstract String getDeleteURL();
