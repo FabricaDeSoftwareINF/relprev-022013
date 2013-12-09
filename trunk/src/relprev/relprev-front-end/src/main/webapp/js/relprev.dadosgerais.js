@@ -42,12 +42,10 @@ relprev.dadosgerais = (function(instancia) {
 			avaliacao: avaliacao,
 			idRelatorio: $('[name="classificacaoRisco.relprev.id"]').val()
 		  }
-		}).success(function(data) {
-			debugger;
-			alert(data);
-		}).fail(function(data) {
-			debugger;
-			alert(data);
+		}).success(function(data) {			
+			alert("Avaliação realizada com sucesso!");
+		}).fail(function(data) {			
+			alert("Erro ao realizar avaliação!");
 		});
 	});
 	
@@ -62,12 +60,10 @@ relprev.dadosgerais = (function(instancia) {
 			reavaliacao: reavaliacao,
 			idRelatorio: $('[name="classificacaoRisco.relprev.id"]').val()
 		  }
-		}).success(function(data) {
-			debugger;
-			alert(data);
-		}).fail(function(data) {
-			debugger;
-			alert(data);
+		}).success(function(data) {			
+			alert("Reavaliação realizada com sucesso!");
+		}).fail(function(data) {			
+			alert("Erro ao realizar a reavaliação!");
 		});
 	});
 	
