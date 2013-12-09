@@ -55,7 +55,7 @@ public abstract class ObjetoDeDominio {
             response = (Response) fromJson(doPut(url, toJson(this)), this.getResponseClass());
         }
 
-        if (response == null || !response.getSuccess()) {
+        if (!response.getSuccess()) {
             throw new RequestException(response.getMessage());
         }
 
