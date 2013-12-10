@@ -58,21 +58,23 @@ public class UsuarioRepositoryTest {
 
     @Test
     @DatabaseSetup(SAVED_DB)
-    @Ignore // TODO verificar dataset
+    @Ignore
+    // TODO verificar dataset
     @ExpectedDatabase(value = UPDATED_DB, assertionMode = NON_STRICT)
     public void testUpdate() {
-        final Usuario usuario = new UsuarioBuilder().id(3L).email("EMAIL3@EMAIL.COM").funcao("Função 3 Nova").nome("Nome Completo 3 Novo")
-                .posto("Posto 3 Novo").siglaSecao("SS3N").fixo("8888888888").usuario("user.three").ativo(true)
-                .senha("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka").build();
+        final Usuario usuario = new UsuarioBuilder().id(3L).email("EMAIL3@EMAIL.COM").funcao("Função 3 Nova")
+                .nome("Nome Completo 3 Novo").posto("Posto 3 Novo").siglaSecao("SS3N").fixo("8888888888").usuario("user.three")
+                .ativo(true).senha("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a").build();
         this.repository.save(usuario);
     }
 
     @Test
     @DatabaseSetup(UPDATED_DB)
-    @Ignore // TODO verificar dataset
+    @Ignore
+    // TODO verificar dataset
     @ExpectedDatabase(value = DELETED_DB, assertionMode = NON_STRICT)
     public void testDelete() {
-        final Usuario elo = repository.findOne(4L);
+        final Usuario elo = this.repository.findOne(4L);
         this.repository.delete(elo);
     }
 
@@ -85,12 +87,11 @@ public class UsuarioRepositoryTest {
                 Matchers.hasProperty("especialidade", Matchers.is("Especialidade 1")),
                 Matchers.hasProperty("funcao", Matchers.is("Função 1")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 1")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 1")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS1")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 1")), Matchers.hasProperty("siglaSecao", Matchers.is("SS1")),
                 Matchers.hasProperty("telefoneCelular", Matchers.is("1111111111")),
                 Matchers.hasProperty("telefoneFixo", Matchers.is("2222222222")),
                 Matchers.hasProperty("usuario", Matchers.is("user.one")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         Assert.assertThat(result, mat1);
     }
@@ -104,12 +105,11 @@ public class UsuarioRepositoryTest {
                 Matchers.hasProperty("especialidade", Matchers.is("Especialidade 1")),
                 Matchers.hasProperty("funcao", Matchers.is("Função 1")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 1")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 1")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS1")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 1")), Matchers.hasProperty("siglaSecao", Matchers.is("SS1")),
                 Matchers.hasProperty("telefoneCelular", Matchers.is("1111111111")),
                 Matchers.hasProperty("telefoneFixo", Matchers.is("2222222222")),
                 Matchers.hasProperty("usuario", Matchers.is("user.one")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         Assert.assertThat(result, mat1);
     }
@@ -121,11 +121,10 @@ public class UsuarioRepositoryTest {
         final Matcher<Usuario> mat1 = Matchers.allOf(Matchers.hasProperty("id", Matchers.is(3L)),
                 Matchers.hasProperty("funcao", Matchers.is("Função 3")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 3")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 3")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS3")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 3")), Matchers.hasProperty("siglaSecao", Matchers.is("SS3")),
                 Matchers.hasProperty("telefoneCelular", Matchers.is("5555555555")),
                 Matchers.hasProperty("usuario", Matchers.is("user.three")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         Assert.assertThat(result, mat1);
     }
@@ -147,48 +146,44 @@ public class UsuarioRepositoryTest {
                 Matchers.hasProperty("especialidade", Matchers.is("Especialidade 1")),
                 Matchers.hasProperty("funcao", Matchers.is("Função 1")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 1")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 1")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS1")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 1")), Matchers.hasProperty("siglaSecao", Matchers.is("SS1")),
                 Matchers.hasProperty("telefoneCelular", Matchers.is("1111111111")),
                 Matchers.hasProperty("telefoneFixo", Matchers.is("2222222222")),
                 Matchers.hasProperty("usuario", Matchers.is("user.one")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         final Matcher<Usuario> mat2 = Matchers.allOf(Matchers.hasProperty("id", Matchers.is(2L)),
                 Matchers.hasProperty("funcao", Matchers.is("Função 2")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 2")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 2")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS2")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 2")), Matchers.hasProperty("siglaSecao", Matchers.is("SS2")),
                 Matchers.hasProperty("telefoneCelular", Matchers.is("3333333333")),
                 Matchers.hasProperty("telefoneFixo", Matchers.is("4444444444")),
                 Matchers.hasProperty("usuario", Matchers.is("user.two")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         final Matcher<Usuario> mat3 = Matchers.allOf(Matchers.hasProperty("id", Matchers.is(3L)),
                 Matchers.hasProperty("funcao", Matchers.is("Função 3")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 3")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 3")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS3")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 3")), Matchers.hasProperty("siglaSecao", Matchers.is("SS3")),
                 Matchers.hasProperty("telefoneCelular", Matchers.is("5555555555")),
                 Matchers.hasProperty("usuario", Matchers.is("user.three")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         final Matcher<Usuario> mat4 = Matchers.allOf(Matchers.hasProperty("id", Matchers.is(4L)),
                 Matchers.hasProperty("email", Matchers.is("EMAIL2@EMAIL.COM")),
                 Matchers.hasProperty("funcao", Matchers.is("Função 4")),
                 Matchers.hasProperty("nomeCompleto", Matchers.is("Nome Completo 4")),
-                Matchers.hasProperty("posto", Matchers.is("Posto 4")),
-                Matchers.hasProperty("siglaSecao", Matchers.is("SS4")),
+                Matchers.hasProperty("posto", Matchers.is("Posto 4")), Matchers.hasProperty("siglaSecao", Matchers.is("SS4")),
                 Matchers.hasProperty("telefoneFixo", Matchers.is("6666666666")),
                 Matchers.hasProperty("usuario", Matchers.is("user.four")),
-                Matchers.hasProperty("senha", Matchers.is("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")),
+                Matchers.hasProperty("senha", Matchers.is("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")),
                 Matchers.hasProperty("ativo", Matchers.is(true)));
         Assert.assertThat(resultList, Matchers.contains(mat1, mat2, mat3, mat4));
     }
 
     private Usuario getUsuario() {
-        return new UsuarioBuilder().email("EMAIL5@EMAIL.COM").funcao("Função 5").nome("Nome Completo 5").posto("Posto 5").siglaSecao("SS5")
-                .fixo("7777777777").usuario("user.five").senha("af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka")
+        return new UsuarioBuilder().email("EMAIL5@EMAIL.COM").funcao("Função 5").nome("Nome Completo 5").posto("Posto 5")
+                .siglaSecao("SS5").fixo("7777777777").usuario("user.five").senha("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a")
                 .ativo(true).build();
     }
 

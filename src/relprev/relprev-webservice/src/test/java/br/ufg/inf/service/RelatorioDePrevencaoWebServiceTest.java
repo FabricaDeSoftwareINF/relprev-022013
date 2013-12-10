@@ -78,7 +78,7 @@ public class RelatorioDePrevencaoWebServiceTest {
         usuario.setNomeCompleto("teste nome");
         usuario.setFuncao("funçaõ");
         usuario.setPosto("posto");
-        usuario.setSenha("d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f89d15431dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f");
+        usuario.setSenha("86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a");
         usuario.setSiglaSecao("SIGLA");
         usuario.setUsuario("usuario");
 
