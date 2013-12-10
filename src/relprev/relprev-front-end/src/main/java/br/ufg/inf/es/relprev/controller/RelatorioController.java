@@ -2,9 +2,11 @@ package br.ufg.inf.es.relprev.controller;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
@@ -14,6 +16,7 @@ import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
 import br.ufg.inf.es.relprev.cdn.CDN;
 import br.ufg.inf.es.relprev.client.dominio.Anexo;
 import br.ufg.inf.es.relprev.client.dominio.ClassificacaoRisco;
+import br.ufg.inf.es.relprev.client.dominio.Encaminhamento;
 import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
@@ -23,8 +26,8 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 
 	private final Logger logger;
 	private final Result result;
-	private int RISCO_PRIMEIRO_NIVEL[] = { 1, 2, 3, 4, 5 };
-	private String RISCO_SEGUNDO_NIVEL[] = { "A", "B", "C", "D", "E" };
+	private final int RISCO_PRIMEIRO_NIVEL[] = { 1, 2, 3, 4, 5 };
+	private final String RISCO_SEGUNDO_NIVEL[] = { "A", "B", "C", "D", "E" };
 
 	public RelatorioController(final Result result,
 			final ResultadoServico resultado) {
@@ -78,35 +81,37 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		return lista;
 	}
 
-	// Remover este método após conclusão da classe.
-	protected void gerarLog(final RelatorioPrevencao relprev) {
-		logger.log(Level.OFF, "Local: " + relprev.getLocal());
-		logger.info("Situação: " + relprev.getSituacao());
-		logger.info("Pessoal envolvido: " + relprev.getEnvolvidos());
-
-		if (relprev.getRelator() != null) {
-			logger.info("Nome do relator: " + relprev.getRelator().getNome());
-			logger.info("Telefone do relator: "
-					+ relprev.getRelator().getTelefoneCelular());
-			logger.info("Email do relator: " + relprev.getRelator().getEmail());
-		}
-
-		if (relprev.getAnexos() != null) {
-			for (Anexo anexo : relprev.getAnexos()) {
-				logger.info("Nome do anexo: " + anexo.getPathAnexo());
-				logger.info("Mimetype do anexo: " + anexo.getMimeType());
-			}
-		}
-
-		/*
-		 * if(files!= null && files.size() > 0){ logger.info(files.size() +"");
-		 * logger.info(files.get(0)+""); }
-		 */
-	}
-
 	@Override
 	protected Class<RelatorioPrevencao> obtenhaTipo() {
 		return RelatorioPrevencao.class;
+	}
+
+	@SuppressWarnings("deprecation")
+	@Get
+	public String realizeEncaminhamento(String remetente, String destinatario,
+			String data, String descricao, int idRelatorio) {
+		try {
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);			
+			Encaminhamento encaminhamento = new Encaminhamento();
+			encaminhamento.setRemetente(remetente);
+			encaminhamento.setDestinatario(destinatario);
+			encaminhamento.setDescricao(descricao);
+			if (data != null && !data.equals("") && data.contains("/")) {
+				String[] dataFormatada = data.split("/");
+				if (dataFormatada.length == 3) {
+					int dia = Integer.parseInt(dataFormatada[1]);
+					int mes = Integer.parseInt(dataFormatada[0]) + 2;
+					int ano = Integer.parseInt(dataFormatada[2]);
+					encaminhamento.setData(new Date(ano, mes, dia));
+				}
+			}						
+			relatorio.definaEncaminhamento(encaminhamento);
+			return "Encaminhamento realizado com sucesso!";
+		} catch (RequestException e) {
+			logger.info(e.getLocalizedMessage());
+			return "Falha ao realizar o encaminhamento!";
+		}
 	}
 
 	@Get
@@ -122,13 +127,12 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 			}
 
 			classificacao.setAvaliacaoInicial(avaliacao);
-			classificacao.setAvaliacaoFinal("");
 			classificacao.setRelPrev(relatorio);
 			relatorio.definaClassificacaoDeRisco(classificacao);
 			return "Avaliação realizada com sucesso!";
 		} catch (RequestException e) {
-			e.printStackTrace();
-			return e.getLocalizedMessage();
+			logger.info(e.getLocalizedMessage());
+			return "Erro ao realizar avaliação!";
 		}
 	}
 
@@ -147,8 +151,12 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 
 			return "Reavaliação realizada com sucesso!";
 		} catch (RequestException e) {
-			e.printStackTrace();
-			return e.getLocalizedMessage();
+			logger.info(e.getLocalizedMessage());
+			return "Erro ao realizar reavaliação!";
 		}
+	}
+
+	@Override
+	protected void gerarLog(RelatorioPrevencao t) {
 	}
 }

@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div id="encaminhamento" class="aba labelPadrao">
 	<div id="tituloEncaminhamento" class="tituloAba col-xs-12 col-md-12 textoCentralizado">
-		<label><fmt:message key="encaminhamento.elosipaer" /></label>
+		<label class="col-xs-12 col-md-12"><fmt:message key="encaminhamento.elosipaer" /></label>
+		<button type="button" class="botaoEncaminhar btn btn-primary">
+        	<fmt:message key="encaminhar" />
+        </button>		
 	</div>
 	<div id="camposEncaminhamento" class="camposAba col-xs-12 col-md-12">		
 		<div class="col-xs-4 col-md-4">
@@ -22,7 +25,7 @@
 				value="<fmt:formatDate dateStyle="short" value="${relatorioPrevencao.encaminhamento.data}" />"/>
 		</div>
 		<div class="col-xs-12 col-md-12">
-			<textarea id="descricaoEncaminhamento" value="${relatorioPrevencao.encaminhamento.descricao}"></textarea>
+			<textarea id="descricaoEncaminhamento">${ relatorioPrevencao.encaminhamento.descricao }</textarea>
 		</div>
 	</div>		
 </div>

@@ -90,3 +90,12 @@ textarea {
 div.dialogoModal.modal-dialog {
 	width: 100% !important;
 }
+
+#tituloEncaminhamento label,
+#tituloEncaminhamento button {
+	display: inline;
+}
+
+#tituloEncaminhamento button {
+	float: right;
+}
