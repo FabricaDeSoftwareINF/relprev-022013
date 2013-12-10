@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,26 +40,32 @@ public class AcaoRecomendada extends AbstractEntity<AcaoRecomendada> {
     private static final long serialVersionUID = 485557117602416591L;
 
     @JsonIgnore
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "relprev_id")
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
     @Column(length = ModelConstants.COLUMN_SIZE_60, nullable = false)
-    @NotNull(message = "validation.AbstractInteracao.remetente.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.AbstractInteracao.remetente.Size.message")
+    @NotNull(message = "validation.AcaoRecomendada.remetente.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.AcaoRecomendada.remetente.Size.message")
     private String remetente;
 
     @JsonProperty
     @Column(length = ModelConstants.COLUMN_SIZE_60, nullable = false)
-    @NotNull(message = "validation.AbstractInteracao.destinatario.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.AbstractInteracao.destinatario.Size.message")
+    @NotNull(message = "validation.AcaoRecomendada.destinatario.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.AcaoRecomendada.destinatario.Size.message")
     private String destinatario;
 
     @JsonProperty
     @Column(length = ModelConstants.COLUMN_SIZE_600, nullable = false)
-    @NotNull(message = "validation.AbstractInteracao.descricao.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.AbstractInteracao.descricao.Size.message")
+    @NotNull(message = "validation.AcaoRecomendada.descricao.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_600,
+        message = "validation.AcaoRecomendada.descricao.Size.message")
     private String descricao;
 
     @JsonProperty

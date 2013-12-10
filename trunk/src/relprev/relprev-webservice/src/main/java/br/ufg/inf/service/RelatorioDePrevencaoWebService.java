@@ -539,18 +539,14 @@ public class RelatorioDePrevencaoWebService extends GenericWebService<RelatorioP
 
                 E persistedEntity;
                 String responseMessage;
+                // preenche o relprev com a entity para o retorno, para não consultar novamente
+                ReflectionUtil.setField(relprev, property, entity);
+                ReflectionUtil.setField(entity, "relPrev", relprev);
+                persistedEntity = targetRepository.save(entity);
                 if (alteracao.equals(TipoAlteracao.CREATE)) {
-                    // preenche o relprev com a entity para o retorno, para não consultar novamente
-                    ReflectionUtil.setField(relprev, property, entity);
-                    ReflectionUtil.setField(entity, "relPrev", relprev);
-                    persistedEntity = targetRepository.save(entity);
                     this.afterCreate(persistedEntity);
                     responseMessage = ResponseMessages.CREATE_MESSAGE;
                 } else {
-                    // preenche o relprev com a entity para o retorno, para não consultar novamente
-                    ReflectionUtil.setField(relprev, property, entity);
-                    ReflectionUtil.setField(entity, "relPrev", relprev);
-                    persistedEntity = targetRepository.save(entity);
                     this.afterUpdate(persistedEntity);
                     responseMessage = ResponseMessages.UPDATE_MESSAGE;
                 }

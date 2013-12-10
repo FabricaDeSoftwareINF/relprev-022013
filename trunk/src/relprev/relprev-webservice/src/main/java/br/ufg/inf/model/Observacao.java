@@ -3,7 +3,7 @@ package br.ufg.inf.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.ufg.inf.model.support.AbstractEntity;
@@ -32,7 +32,7 @@ public class Observacao extends AbstractEntity<Observacao> {
     private static final long serialVersionUID = -1663284302278096055L;
 
     @JsonIgnore
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "relprev_id")
     private RelatorioPrevencao relPrev;
 

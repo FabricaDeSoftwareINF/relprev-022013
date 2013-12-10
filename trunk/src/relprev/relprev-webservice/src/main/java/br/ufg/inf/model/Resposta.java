@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,26 +39,32 @@ public class Resposta extends AbstractEntity<Resposta> {
     private static final long serialVersionUID = -7029497486055552998L;
 
     @JsonIgnore
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "relprev_id")
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
-    @NotNull(message = "validation.Resposta.remetente.NotNull.message")
     @Column(length = ModelConstants.COLUMN_SIZE_60, nullable = false)
-    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.Resposta.remetente.Size.message")
+    @NotNull(message = "validation.Resposta.remetente.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.Resposta.remetente.Size.message")
     private String remetente;
 
     @JsonProperty
-    @NotNull(message = "validation.Resposta.destinatario.NotNull.message")
     @Column(length = ModelConstants.COLUMN_SIZE_60, nullable = false)
-    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.Resposta.destinatario.Size.message")
+    @NotNull(message = "validation.Resposta.destinatario.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
+        message = "validation.Resposta.destinatario.Size.message")
     private String destinatario;
 
     @JsonProperty
-    @NotNull(message = "validation.Resposta.descricao.NotNull.message")
     @Column(length = ModelConstants.COLUMN_SIZE_600, nullable = false)
-    @Size(min = ModelConstants.FIELD_SIZE_1, message = "validation.Resposta.descricao.Size.message")
+    @NotNull(message = "validation.Resposta.descricao.NotNull.message")
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_600,
+        message = "validation.Resposta.descricao.Size.message")
     private String descricao;
 
     @JsonProperty

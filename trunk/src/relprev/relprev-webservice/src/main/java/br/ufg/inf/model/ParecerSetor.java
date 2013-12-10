@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,14 +38,15 @@ public class ParecerSetor extends AbstractEntity<ParecerSetor> {
     private static final long serialVersionUID = -2223879036406313667L;
 
     @JsonIgnore
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "relprev_id")
     private RelatorioPrevencao relPrev;
 
     @JsonProperty
     @Column(length = ModelConstants.COLUMN_SIZE_600, nullable = false)
     @NotNull(message = "validation.ParecerSetor.descricao.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_600,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_600,
         message = "validation.ParecerSetor.descricao.Size.message")
     private String descricao;
 
@@ -53,6 +54,7 @@ public class ParecerSetor extends AbstractEntity<ParecerSetor> {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @NotNull(message = "validation.ParecerSetor.data.NotNull.message")
+    // TODO incluir validação para a data, que não pode ser menor que a data do relprev
     private Date data;
 
     public RelatorioPrevencao getRelPrev() {
