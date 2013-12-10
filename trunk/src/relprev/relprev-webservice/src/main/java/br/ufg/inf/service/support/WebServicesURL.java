@@ -46,4 +46,9 @@ public interface WebServicesURL {
     // categoria service
     String URL_CATEGORIA = "/categoria";
 
+    // usuario service
+    String URL_USUARIO = "/usuario";
+    String URL_USUARIO_FIND_EMAIL = "/email";
+    String URL_USUARIO_FIND_NOME = "/nome";
+
 }

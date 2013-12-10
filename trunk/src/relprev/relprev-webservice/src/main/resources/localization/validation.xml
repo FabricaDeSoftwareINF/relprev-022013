@@ -97,6 +97,6 @@
 	<entry key="validation.Usuario.usuario.NotNull.message">O usuário(login) deve ser informado</entry>
 	<entry key="validation.Usuario.usuario.Size.message">O login do usuário deve possuir entre 1 e 45 caracteres</entry>
 	<entry key="validation.Usuario.senha.NotNull.message">A senha do usuário deve ser informada</entry>
-	<entry key="validation.Usuario.senha.Size.message">A senha do usuário deve possuir 128 caracteres</entry>
+	<entry key="validation.Usuario.senha.Size.message">A senha do usuário deve possuir 40 caracteres (SHA1)</entry>
 	<entry key="validation.Usuario.ativo.NotNull.message">A informação de que se o usuário está ativo ou não é obrigatória</entry>
 </properties>

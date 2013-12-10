@@ -8,7 +8,7 @@ package br.ufg.inf.model.support;
  */
 public final class ModelConstants {
 
-    private ModelConstants() { }
+    private ModelConstants() {}
 
     /**
      * Constante para coluna JPA de tamanho 2
@@ -31,6 +31,11 @@ public final class ModelConstants {
     public static final int COLUMN_SIZE_30 = 30;
 
     /**
+     * Constante para coluna JPA de tamanho 40
+     */
+    public static final int COLUMN_SIZE_40 = 40;
+
+    /**
      * Constante para coluna JPA de tamanho 45
      */
     public static final int COLUMN_SIZE_45 = 45;
@@ -49,11 +54,6 @@ public final class ModelConstants {
      * Constante para coluna JPA de tamanho 120
      */
     public static final int COLUMN_SIZE_120 = 120;
-
-    /**
-     * Constante para coluna JPA de tamanho 128
-     */
-    public static final int COLUMN_SIZE_128 = 128;
 
     /**
      * Constante para coluna JPA de tamanho 600
@@ -86,6 +86,11 @@ public final class ModelConstants {
     public static final int FIELD_SIZE_30 = COLUMN_SIZE_30;
 
     /**
+     * Constante para campo de tamanho mínimo ou máximo (bean validation) igual a 40
+     */
+    public static final int FIELD_SIZE_40 = COLUMN_SIZE_40;
+
+    /**
      * Constante para campo de tamanho mínimo ou máximo (bean validation) igual a 45
      */
     public static final int FIELD_SIZE_45 = COLUMN_SIZE_45;
@@ -99,11 +104,6 @@ public final class ModelConstants {
      * Constante para campo de tamanho mínimo ou máximo (bean validation) igual a 60
      */
     public static final int FIELD_SIZE_60 = COLUMN_SIZE_60;
-
-    /**
-     * Constante para campo de tamanho mínimo ou máximo (bean validation) igual a 128
-     */
-    public static final int FIELD_SIZE_128 = COLUMN_SIZE_128;
 
     /**
      * Constante para campo de tamanho mínimo ou máximo (bean validation) igual a 600

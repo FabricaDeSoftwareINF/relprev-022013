@@ -27,9 +27,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Entity
 @Hiddenable
-@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "usuario", "id"}))
 @JsonInclude(Include.NON_EMPTY)
 @Updatable(newinsert = true, updatable = false)
+@Table(name = "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "usuario", "hidden"}),
+        @UniqueConstraint(columnNames = {"email", "hidden"})})
 public class Usuario extends AbstractEntity<Usuario> {
 
     private static final long serialVersionUID = -2583035988668453632L;
@@ -41,35 +42,40 @@ public class Usuario extends AbstractEntity<Usuario> {
 
     @JsonProperty
     @Column(length = ModelConstants.COLUMN_SIZE_30)
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_30,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_30,
         message = "validation.Usuario.especialidade.Size.message")
     private String especialidade;
 
     @JsonProperty
     @NotNull(message = "validation.Usuario.funcao.NotNull.message")
     @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_30)
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
         message = "validation.Usuario.funcao.Size.message")
     private String funcao;
 
     @JsonProperty
     @NotNull(message = "validation.Usuario.nomeCompleto.NotNull.message")
     @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_60, name = "nome_completo")
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
         message = "validation.Usuario.nomeCompleto.Size.message")
     private String nomeCompleto;
 
     @JsonProperty
     @NotNull(message = "validation.Usuario.posto.NotNull.message")
     @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_20)
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_20,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_20,
         message = "validation.Usuario.posto.Size.message")
     private String posto;
 
     @JsonProperty
     @NotNull(message = "validation.Usuario.siglaSecao.NotNull.message")
     @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_15, name = "sigla_secao")
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_15,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_15,
         message = "validation.Usuario.siglaSecao.Size.message")
     private String siglaSecao;
 
@@ -87,14 +93,16 @@ public class Usuario extends AbstractEntity<Usuario> {
     @JsonProperty
     @NotNull(message = "validation.Usuario.usuario.NotNull.message")
     @Column(length = ModelConstants.COLUMN_SIZE_45, nullable = false, updatable = false)
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_45,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_45,
         message = "validation.Usuario.usuario.Size.message")
     private String usuario;
 
     @JsonProperty
     @NotNull(message = "validation.Usuario.senha.NotNull.message")
-    @Column(length = ModelConstants.COLUMN_SIZE_128, nullable = false)
-    @Size(min = ModelConstants.FIELD_SIZE_128, max = ModelConstants.FIELD_SIZE_128,
+    @Column(length = ModelConstants.COLUMN_SIZE_40, nullable = false)
+    @Size(min = ModelConstants.FIELD_SIZE_40,
+        max = ModelConstants.FIELD_SIZE_40,
         message = "validation.Usuario.senha.Size.message")
     private String senha;
 

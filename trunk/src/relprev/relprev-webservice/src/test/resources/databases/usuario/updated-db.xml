@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<usuarios id="1" email="email1@email.com" especialidade="Especialidade 1" funcao="Função 1" nome_completo="Nome Completo 1" 
+	<usuarios id="1" email="email1@email.com" especialidade="Especialidade 1" funcao="Função 1" nome_completo="Nome Completo 1"
 		posto="Posto 1" sigla_secao="SS1" telefone_celular="1111111111" telefone_fixo="2222222222" usuario="user.one"
-		senha="af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka"
-		ativo="true" hidden="false" />
-	<usuarios id="2" funcao="Função 2" nome_completo="Nome Completo 2" posto="Posto 2" sigla_secao="SS2" telefone_celular="3333333333" 
-		senha="af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka"
-		telefone_fixo="4444444444" usuario="user.two" ativo="true" hidden="false" />
+		senha="86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a" ativo="true" hidden="false" />
+	<usuarios id="2" funcao="Função 2" nome_completo="Nome Completo 2" posto="Posto 2" sigla_secao="SS2" telefone_celular="3333333333"
+		senha="86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a" telefone_fixo="4444444444" usuario="user.two" ativo="true" hidden="false" />
 	<usuarios id="3" funcao="Função 3" nome_completo="Nome Completo 3" posto="Posto 3" sigla_secao="SS3" telefone_celular="5555555555"
-		senha="af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka"
-		usuario="user.three" ativo="true" hidden="true" />
+		senha="86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a" usuario="user.three" ativo="true" hidden="true" />
 	<usuarios id="4" email="EMAIL2@EMAIL.COM" funcao="Função 4" nome_completo="Nome Completo 4" posto="Posto 4" sigla_secao="SS4"
-		senha="af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka"
-		telefone_fixo="6666666666" usuario="user.four" ativo="true" hidden="false" />
+		senha="86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a" telefone_fixo="6666666666" usuario="user.four" ativo="true" hidden="false" />
 	<usuarios id="5" email="EMAIL5@EMAIL.COM" funcao="Função 5" nome_completo="Nome Completo 5" posto="Posto 5" sigla_secao="SS5"
-		senha="af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka"
-		telefone_fixo="7777777777" usuario="user.five" ativo="true" hidden="false" />
+		senha="86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a" telefone_fixo="7777777777" usuario="user.five" ativo="true" hidden="false" />
 	<usuarios id="6" email="EMAIL3@EMAIL.COM" funcao="Função 3 Nova" nome_completo="Nome Completo 3 Novo" posto="Posto 3 Novo" sigla_secao="SS3N"
-		senha="af9afu9ahf9sfyagha98u3rgkljnv9e85u983o4thoflshdg9o8g89osudf9as8g789gsaud980g7as90d78gfashopva09387q49oyhfoag987sa09vgya9sdg79aka"
-		telefone_fixo="8888888888" usuario="user.three" ativo="true" hidden="false" versao_anterior="3" />
+		senha="86f7b7fc676c5f7006a9c80ac531bf9ef3b4d21a" telefone_fixo="8888888888" usuario="user.three" ativo="true" hidden="false" versao_anterior="3" />
 </dataset>

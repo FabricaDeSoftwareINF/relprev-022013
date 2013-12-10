@@ -37,6 +37,11 @@ public class ModelConstantsTest {
     }
 
     @Test
+    public void testCOLUMN_SIZE_40() {
+        assertEquals(ModelConstants.COLUMN_SIZE_40, 40);
+    }
+
+    @Test
     public void testCOLUMN_SIZE_45() {
         assertEquals(ModelConstants.COLUMN_SIZE_45, 45);
     }
@@ -54,11 +59,6 @@ public class ModelConstantsTest {
     @Test
     public void testCOLUMN_SIZE_120() {
         assertEquals(ModelConstants.COLUMN_SIZE_120, 120);
-    }
-
-    @Test
-    public void testCOLUMN_SIZE_128() {
-        assertEquals(ModelConstants.COLUMN_SIZE_128, 128);
     }
 
     @Test
@@ -92,6 +92,11 @@ public class ModelConstantsTest {
     }
 
     @Test
+    public void testFIELD_SIZE_40() {
+        assertEquals(ModelConstants.FIELD_SIZE_40, 40);
+    }
+
+    @Test
     public void testFIELD_SIZE_45() {
         assertEquals(ModelConstants.FIELD_SIZE_45, 45);
     }
@@ -104,11 +109,6 @@ public class ModelConstantsTest {
     @Test
     public void testFIELD_SIZE_60() {
         assertEquals(ModelConstants.FIELD_SIZE_60, 60);
-    }
-
-    @Test
-    public void testFIELD_SIZE_128() {
-        assertEquals(ModelConstants.FIELD_SIZE_128, 128);
     }
 
     @Test
