@@ -10,10 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -24,6 +24,7 @@ import br.ufg.inf.model.support.ModelConstants;
 import br.ufg.inf.model.support.annotation.Hiddenable;
 import br.ufg.inf.model.support.annotation.Updatable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,21 +51,24 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     @JsonProperty
     @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_60)
     @NotNull(message = "validation.RelatorioPrevencao.envolvidos.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
         message = "validation.RelatorioPrevencao.envolvidos.Size.message")
     private String envolvidos;
 
     @JsonProperty
     @Column(nullable = false, length = ModelConstants.COLUMN_SIZE_60)
     @NotNull(message = "validation.RelatorioPrevencao.local.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_60,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_60,
         message = "validation.RelatorioPrevencao.local.Size.message")
     private String local;
 
     @JsonProperty(value = "descricao")
     @Column(nullable = false, name = "descricao", length = ModelConstants.COLUMN_SIZE_600)
     @NotNull(message = "validation.RelatorioPrevencao.descricaoSituacaoPerigosa.NotNull.message")
-    @Size(min = ModelConstants.FIELD_SIZE_1, max = ModelConstants.FIELD_SIZE_600,
+    @Size(min = ModelConstants.FIELD_SIZE_1,
+        max = ModelConstants.FIELD_SIZE_600,
         message = "validation.RelatorioPrevencao.descricaoSituacaoPerigosa.Size.message")
     private String descricaoSituacaoPerigosa;
 
@@ -101,28 +105,52 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Anexo> anexos;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = RELPREV, fetch = FetchType.EAGER)
+    private Set<AcaoRecomendada> acoesRecomendadas;
+
+    @Transient
     @JsonProperty
-    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private AcaoRecomendada acaoRecomendada;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = RELPREV, fetch = FetchType.EAGER)
+    private Set<ClassificacaoRisco> classificacoesRisco;
+
+    @Transient
     @JsonProperty
-    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private ClassificacaoRisco classificacaoRisco;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = RELPREV, fetch = FetchType.EAGER)
+    private Set<Encaminhamento> encaminhamentos;
+
+    @Transient
     @JsonProperty
-    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private Encaminhamento encaminhamento;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = RELPREV, fetch = FetchType.EAGER)
+    private Set<Observacao> observacoes;
+
+    @Transient
     @JsonProperty
-    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private Observacao observacao;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = RELPREV, fetch = FetchType.EAGER)
+    private Set<ParecerSetor> pareceresSetor;
+
+    @Transient
     @JsonProperty
-    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private ParecerSetor parecerSetor;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = RELPREV, fetch = FetchType.EAGER)
+    private Set<Resposta> respostas;
+
+    @Transient
     @JsonProperty
-    @OneToOne(mappedBy = RELPREV, fetch = FetchType.EAGER)
     private Resposta resposta;
 
     public String getEnvolvidos() {
@@ -197,7 +225,23 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
         this.anexos = anexos;
     }
 
+    public Set<AcaoRecomendada> getAcoesRecomendadas() {
+        return this.acoesRecomendadas;
+    }
+
+    public void setAcoesRecomendadas(final Set<AcaoRecomendada> acoesRecomendadas) {
+        this.acoesRecomendadas = acoesRecomendadas;
+    }
+
     public AcaoRecomendada getAcaoRecomendada() {
+        if (this.acaoRecomendada == null && this.getAcoesRecomendadas() != null) {
+            for (final AcaoRecomendada acao : this.getAcoesRecomendadas()) {
+                if (!acao.getHidden()) {
+                    this.setAcaoRecomendada(acao);
+                    break;
+                }
+            }
+        }
         return this.acaoRecomendada;
     }
 
@@ -205,7 +249,23 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
         this.acaoRecomendada = acaoRecomendada;
     }
 
+    public Set<ClassificacaoRisco> getClassificacoesRisco() {
+        return this.classificacoesRisco;
+    }
+
+    public void setClassificacoesRisco(final Set<ClassificacaoRisco> classificacoesRisco) {
+        this.classificacoesRisco = classificacoesRisco;
+    }
+
     public ClassificacaoRisco getClassificacaoRisco() {
+        if (this.classificacaoRisco == null && this.getClassificacoesRisco() != null) {
+            for (final ClassificacaoRisco classificacao : this.getClassificacoesRisco()) {
+                if (!classificacao.getHidden()) {
+                    this.setClassificacaoRisco(classificacao);
+                    break;
+                }
+            }
+        }
         return this.classificacaoRisco;
     }
 
@@ -213,7 +273,23 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
         this.classificacaoRisco = classificacaoRisco;
     }
 
+    public Set<Encaminhamento> getEncaminhamentos() {
+        return this.encaminhamentos;
+    }
+
+    public void setEncaminhamentos(final Set<Encaminhamento> encaminhamentos) {
+        this.encaminhamentos = encaminhamentos;
+    }
+
     public Encaminhamento getEncaminhamento() {
+        if (this.encaminhamento == null && this.getEncaminhamentos() != null) {
+            for (final Encaminhamento enc : this.getEncaminhamentos()) {
+                if (!enc.getHidden()) {
+                    this.setEncaminhamento(enc);
+                    break;
+                }
+            }
+        }
         return this.encaminhamento;
     }
 
@@ -221,7 +297,23 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
         this.encaminhamento = encaminhamento;
     }
 
+    public Set<Observacao> getObservacoes() {
+        return this.observacoes;
+    }
+
+    public void setObservacoes(final Set<Observacao> observacoes) {
+        this.observacoes = observacoes;
+    }
+
     public Observacao getObservacao() {
+        if (this.observacao == null && this.getObservacoes() != null) {
+            for (final Observacao obs : this.getObservacoes()) {
+                if (!obs.getHidden()) {
+                    this.setObservacao(obs);
+                    break;
+                }
+            }
+        }
         return this.observacao;
     }
 
@@ -229,7 +321,23 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
         this.observacao = observacao;
     }
 
+    public Set<ParecerSetor> getPareceresSetor() {
+        return this.pareceresSetor;
+    }
+
+    public void setPareceresSetor(final Set<ParecerSetor> pareceresSetor) {
+        this.pareceresSetor = pareceresSetor;
+    }
+
     public ParecerSetor getParecerSetor() {
+        if (this.parecerSetor == null && this.getPareceresSetor() != null) {
+            for (final ParecerSetor parecer : this.getPareceresSetor()) {
+                if (!parecer.getHidden()) {
+                    this.setParecerSetor(parecer);
+                    break;
+                }
+            }
+        }
         return this.parecerSetor;
     }
 
@@ -237,7 +345,23 @@ public class RelatorioPrevencao extends AbstractEntity<RelatorioPrevencao> {
         this.parecerSetor = parecerSetor;
     }
 
+    public Set<Resposta> getRespostas() {
+        return this.respostas;
+    }
+
+    public void setRespostas(final Set<Resposta> respostas) {
+        this.respostas = respostas;
+    }
+
     public Resposta getResposta() {
+        if (this.resposta == null && this.getRespostas() != null) {
+            for (final Resposta resp : this.getRespostas()) {
+                if (!resp.getHidden()) {
+                    this.setResposta(resp);
+                    break;
+                }
+            }
+        }
         return this.resposta;
     }
 

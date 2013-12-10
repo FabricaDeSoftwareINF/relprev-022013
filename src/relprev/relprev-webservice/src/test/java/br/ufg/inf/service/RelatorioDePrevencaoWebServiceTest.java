@@ -2,6 +2,7 @@ package br.ufg.inf.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Collections;
 import java.util.Date;
 
 import javax.validation.ConstraintViolationException;
@@ -264,7 +265,7 @@ public class RelatorioDePrevencaoWebServiceTest {
 
         this.observacaoRepository.save(observacao);
 
-        this.relprev.setObservacao(observacao);
+        this.relprev.setObservacoes(Collections.singleton(observacao));
 
         // Response<RelatorioPrevencao> response = this.relatorioDePrevencaoWebService.addObservacao(persisted.getId(),
         // observacao);
