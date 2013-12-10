@@ -9,7 +9,9 @@
         <fmt:message key="dados.gerais.ocorrencia" />
 </jsp:attribute>
 <jsp:body>
+	<fmt:setLocale value="pt_BR"/>
 	<div class="dadosGerais">
+		<input name="relprev.id" type="hidden" value="${ relatorioPrevencao.id }" />
 		<div class="relatorio">
 		<%@include file="relatorio.jsp" %>
 		</div>		
@@ -20,8 +22,11 @@
 			<textarea id="descricaoResumo" class="col-xs-12 col-md-12"></textarea>
 		</div>
 		<ul id="navAbas" class="nav nav-tabs">
-			<li id="encaminhamentoAba" class="active">
-				<a><fmt:message key="encaminhamento" /></a>
+			<li id="encaminhamentoAba" class="active">				
+				<a>
+					<c:if test="${relatorioPrevencao.encaminhamento != null}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
+					<fmt:message key="encaminhamento" />
+				</a>
 			</li>
   			<li id="parecerDoSetorAba">
   				<a><fmt:message key="parecerDoSetor" /></a>
@@ -64,30 +69,27 @@
 					    </div>
 					  </div>
 					</div>
-				</div>
-				<input name="classificacaoRisco.relprev.id" type="hidden" value="${ relatorioPrevencao.id }" />
+				</div>				
 				<div class="avaliacao col-md-6">
 					<input name="classificacaoRisco.avaliacaoInicial" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoInicial }"/>
 					<label class="labelMaiuscula"><fmt:message key="avaliacao" /></label>
 					<div class="col-md-2">
 						<select name="avalicaoPrimeiroNivel" class="form-control">
 						    <c:forEach var="item" items="${riscoPrimeiroNivel}">
-						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoInicial.charAt(0) ? 'selected="selected"' : ''}>${item}</option>
+						        <option value="${item}">${item}</option>
 						    </c:forEach>
 						</select>
 					</div>
 					<div class="col-md-2">
 						<select name="avalicaoSegundoNivel" class="form-control">
 						    <c:forEach var="item" items="${riscoSegundoNivel}">
-						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoInicial.charAt(1) ? 'selected="selected"' : ''}>${item}</option>
+						        <option value="${item}">${item}</option>
 						    </c:forEach>
 						</select>
-					</div>
-					<c:if test="${ relprev.classificacaoRisco == null }">
-						<button type="button" class="botaoAvaliar btn btn-primary">
-				        	<fmt:message key="avaliar" />
-				        </button>
-			        </c:if>
+					</div>					
+					<button type="button" class="botaoAvaliar btn btn-primary">
+			        	<fmt:message key="avaliar" />
+			        </button>			        
 				</div>
 				<div class="reavaliacao col-md-6">
 					<input name="classificacaoRisco.avaliacaoFinal" type="hidden" value="${ relatorioPrevencao.classificacaoRisco.avaliacaoFinal }"/>
@@ -95,14 +97,14 @@
 					<div class="col-md-2">
 						<select name="reavalicaoPrimeiroNivel" class="form-control">
 						    <c:forEach var="item" items="${riscoPrimeiroNivel}">
-						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoFinal.charAt(0) ? 'selected="selected"' : ''}>${item}</option>
+						        <option value="${item}">${item}</option>
 						    </c:forEach>
 						</select>
 					</div>
 					<div class="col-md-2">
 						<select name="reavalicaoSegundoNivel" class="form-control">
 						    <c:forEach var="item" items="${riscoSegundoNivel}">
-						        <option value="${item}" ${item == relatorioPrevencao.classificacaoRisco.avaliacaoFinal.charAt(1) ? 'selected="selected"' : ''}>${item}</option>
+						        <option value="${item}">${item}</option>
 						    </c:forEach>
 						</select>
 					</div>
