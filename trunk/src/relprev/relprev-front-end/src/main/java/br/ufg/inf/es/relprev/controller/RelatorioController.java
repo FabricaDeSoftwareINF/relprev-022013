@@ -17,6 +17,7 @@ import br.ufg.inf.es.relprev.cdn.CDN;
 import br.ufg.inf.es.relprev.client.dominio.Anexo;
 import br.ufg.inf.es.relprev.client.dominio.ClassificacaoRisco;
 import br.ufg.inf.es.relprev.client.dominio.Encaminhamento;
+import br.ufg.inf.es.relprev.client.dominio.ParecerSetor;
 import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
@@ -92,7 +93,7 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 			String data, String descricao, int idRelatorio) {
 		try {
 			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
-					.get(idRelatorio);			
+					.get(idRelatorio);
 			Encaminhamento encaminhamento = new Encaminhamento();
 			encaminhamento.setRemetente(remetente);
 			encaminhamento.setDestinatario(destinatario);
@@ -105,8 +106,33 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 					int ano = Integer.parseInt(dataFormatada[2]);
 					encaminhamento.setData(new Date(ano, mes, dia));
 				}
-			}						
+			}
 			relatorio.definaEncaminhamento(encaminhamento);
+			return "Encaminhamento realizado com sucesso!";
+		} catch (RequestException e) {
+			logger.info(e.getLocalizedMessage());
+			return "Falha ao realizar o encaminhamento!";
+		}
+	}
+
+	@Get
+	public String realizeParecerDoSetor(String setor, String data,
+			String descricao, int idRelatorio) {
+		try {
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);
+			ParecerSetor parecerSetor = new ParecerSetor();			
+			parecerSetor.setDescricao(descricao);			
+			if (data != null && !data.equals("") && data.contains("/")) {
+				String[] dataFormatada = data.split("/");
+				if (dataFormatada.length == 3) {
+					int dia = Integer.parseInt(dataFormatada[1]);
+					int mes = Integer.parseInt(dataFormatada[0]) + 2;
+					int ano = Integer.parseInt(dataFormatada[2]);
+					parecerSetor.setData(new Date(ano, mes, dia));
+				}
+			}
+			relatorio.definaParecerSetor(parecerSetor);
 			return "Encaminhamento realizado com sucesso!";
 		} catch (RequestException e) {
 			logger.info(e.getLocalizedMessage());

@@ -4,6 +4,9 @@
 <div id="parecerDoSetor" class="aba labelPadrao" style="display: none">
 	<div id="tituloResposta" class="tituloAba col-xs-12 col-md-12 textoCentralizado">
 		<label><fmt:message key="parecerDoSetor" /></label>
+		<button type="button" class="botaoEncaminhar btn btn-primary">
+        	<fmt:message key="realizar.parecer" />
+        </button>	
 	</div>
 	<div id="camposParecerDoSetor" class="camposAba col-xs-12 col-md-12">
 		<div class="col-xs-4 col-md-4">
