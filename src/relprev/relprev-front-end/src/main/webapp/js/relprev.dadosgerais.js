@@ -60,7 +60,26 @@ relprev.dadosgerais = (function(instancia) {
 			alert("Erro ao realizar a encaminhamento!");
 		});
 	});
-
+	
+	$('.botaoParecerDoSetor').on('click', function() {
+		$.ajax({
+			type : "GET",
+			dataType : "text",
+			contentType : "application/text;",
+			url : "../realizeParecerDoSetor",
+			data : {
+				setor: $('#setor').val(),
+				data : $('#dataParecer').val(),
+				descricao : $('#descricaoParecerDoSetor').val(),
+				idRelatorio : $('[name="relprev.id"]').val()
+			}
+		}).success(function(data) {			
+			alert("Parecer do setor registrado com sucesso!");
+		}).fail(function(data) {			
+			alert("Erro ao registrar o parecer do setor!");
+		});
+	});
+	
 	$('.botaoAvaliar').on('click', function() {
 		var avaliacao = $('[name="classificacaoRisco.avaliacaoInicial"]').val();
 		$.ajax({

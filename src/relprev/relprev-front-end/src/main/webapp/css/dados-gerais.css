@@ -92,10 +92,13 @@ div.dialogoModal.modal-dialog {
 }
 
 #tituloEncaminhamento label,
-#tituloEncaminhamento button {
+#tituloResposta label,
+#tituloEncaminhamento button,
+#tituloResposta button {
 	display: inline;
 }
 
+#tituloResposta button,
 #tituloEncaminhamento button {
 	float: right;
 }
