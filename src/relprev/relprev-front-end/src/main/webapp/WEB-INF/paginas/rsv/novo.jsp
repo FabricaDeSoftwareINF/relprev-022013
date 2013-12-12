@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -156,7 +155,7 @@
     </div>
 
     <div class="pull-right">
-        <button type="button" class="btn btn-default">Impress„o</button>
+        <button type="button" class="btn btn-default">Impress√£o</button>
     </div>
 
     <div class="container" style="max-width: 200px; margin-bottom: 20px; margin-top: 50px;">
