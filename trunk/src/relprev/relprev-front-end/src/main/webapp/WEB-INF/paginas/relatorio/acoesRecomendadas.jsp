@@ -26,8 +26,7 @@
 				value="<fmt:formatDate pattern="dd/MM/yyyy" value="${relatorioPrevencao.acaoRecomendada.data}" />"/>
 		</div>
 		<div class="col-xs-12 col-md-12">
-			<textarea id="descricaoAcoesRecomendadas" class="col-xs-12 col-md-12"
-				value="${relatorioPrevencao.acaoRecomendada.descricao}"></textarea>
+			<textarea id="descricaoAcoesRecomendadas" class="col-xs-12 col-md-12">${relatorioPrevencao.acaoRecomendada.descricao}</textarea>
 		</div>
 	</div>		
 </div>
