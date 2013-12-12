@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<fmt:setLocale value="pt_BR"/>
 <div id="encaminhamento" class="aba labelPadrao">
 	<div id="tituloEncaminhamento" class="tituloAba col-xs-12 col-md-12 textoCentralizado">
 		<label class="col-xs-12 col-md-12"><fmt:message key="encaminhamento.elosipaer" /></label>
@@ -22,6 +21,7 @@
 		</div>
 		<div class="col-xs-4 col-md-4">
 			<label class="col-xs-12 col-md-12"><fmt:message key="dataMaiuscula" /></label>
+			<fmt:setLocale value="pt_BR"/>
 			<input id="encaminhamentoData" type="text" class="form-control calendario"
 				value="<fmt:formatDate pattern="dd/MM/yyyy" value="${relatorioPrevencao.encaminhamento.data}" />"/>
 		</div>

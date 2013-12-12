@@ -29,16 +29,28 @@
 				</a>
 			</li>
   			<li id="parecerDoSetorAba">
-  				<a><fmt:message key="parecerDoSetor" /></a>
+  				<a>
+  					<c:if test="${relatorioPrevencao.parecerSetor != null}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
+  					<fmt:message key="parecerDoSetor" />
+ 					</a>
   			</li>
   			<li id="respostaAba" class="labelMaiuscula">
-  				<a><fmt:message key="resposta" /></a>
+  				<a>
+  					<c:if test="${relatorioPrevencao.resposta != null}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
+  					<fmt:message key="resposta" />
+				</a>
 			</li>
   			<li id="acoesRecomendadasAba" class="labelMaiuscula">
-				<a><fmt:message key="acoes.recomendadas" /></a>
+  				<a>
+  					<c:if test="${relatorioPrevencao.acaoRecomendada != null}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
+					<fmt:message key="acoes.recomendadas" />
+				</a>
 			</li>
   			<li id="observacoesAba">
-  				<a><fmt:message key="observacoes" /></a>
+  				<a>
+  					<c:if test="${!relatorioPrevencao.observacao.descricao.equals(\"\")}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
+  					<fmt:message key="observacoes" />
+				</a>
 			</li>
   			<li id="concluirAba">
   				<a><fmt:message key="concluir" /></a>
