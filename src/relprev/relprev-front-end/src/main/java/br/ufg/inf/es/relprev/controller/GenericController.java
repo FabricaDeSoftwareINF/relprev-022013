@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import br.ufg.inf.es.relprev.client.dominio.ObjetoDeDominio;
+import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
 
 public abstract class GenericController<T extends ObjetoDeDominio>  {
@@ -72,15 +73,23 @@ public abstract class GenericController<T extends ObjetoDeDominio>  {
 	}
 	
 	protected ResultadoServico executeSave(T t){
+		Logger log = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
 		try{
 			gerarLog(t);
 			t.save();
 			resultadoServico.setSucesso(true);
-		} catch (Throwable e) {
+		}
+		catch(RequestException e){
 			resultadoServico.setSucesso(false);
 			resultadoServico.setMensagem(e.getMessage());
+			log.info(e.getMessage());
+		}
+		catch(Throwable e){
+			resultadoServico.setSucesso(false);
+			resultadoServico.setMensagem(e.toString());			
 		}
 		
+		log.info(resultadoServico.getMensagem());
 		return resultadoServico;
 	}
 	
@@ -89,6 +98,6 @@ public abstract class GenericController<T extends ObjetoDeDominio>  {
 	protected abstract void gerarLog(T t);
 	
 	protected void serialize(ResultadoServico resultado){
-		result.use(Results.json()).from(resultado,"resultado").serialize();
+		result.use(Results.json()).from(resultado,"resultado").serialize();		
 	}
 }

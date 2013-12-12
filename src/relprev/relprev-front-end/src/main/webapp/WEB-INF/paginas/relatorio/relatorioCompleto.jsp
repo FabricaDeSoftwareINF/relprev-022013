@@ -36,14 +36,26 @@
 			        <button type="submit" class="btn btn-primary">
 			        	<fmt:message key="enviar" />
 			        </button>
-			        <button onclick="limpeCampos();" class="btn btn-default">
+			        <button onclick="limpeCampos();"  class="btn btn-default">
 			        	<fmt:message key="limpar" />
 			        </button>
+			        <input id="campoHidden" type="hidden" value="${resultado}"></input>
 			    </div>
         		</form>
        		</div>
        	</div>
 
        	<%@include file="../../partials/calendario.jsp" %>
+       	<script type="text/javascript">
+                 $(function(){
+                	 if($("#campoHidden").val()){
+                		 alert($("#campoHidden").val());
+                	 } else{
+                		 alert("Relatório de prevenção preenchido com sucesso. Obrigado\n" +
+                				 "por colaborar com a prevenção de acidentes aéreos. Sua\n" +
+                				 "atitude pode salvar vidas.");
+                	 }                	 
+                 })
+       	</script>
     </body>
 </html>

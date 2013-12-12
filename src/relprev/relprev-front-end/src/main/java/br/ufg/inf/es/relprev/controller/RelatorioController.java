@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.caelum.vraptor.view.Results;
 import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
@@ -33,14 +34,14 @@ import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
 public class RelatorioController extends GenericController<RelatorioPrevencao> {
 
 	private final Logger logger;
-	private final Result result;
+	private Validator validator;
 	private final int RISCO_PRIMEIRO_NIVEL[] = { 1, 2, 3, 4, 5 };
 	private final String RISCO_SEGUNDO_NIVEL[] = { "A", "B", "C", "D", "E" };
 
 	public RelatorioController(final Result result,
-			final ResultadoServico resultado) {
+			final ResultadoServico resultado, final Validator validator) {
 		super(result, resultado);
-		this.result = result;
+		this.validator = validator;
 		this.logger = Logger
 				.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
 	}
@@ -52,7 +53,17 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 			files = new ArrayList<UploadedFile>();
 		}
 		relatorioPrevencao.setAnexos(CDN.save(files));
-		super.save(relatorioPrevencao); // To change body of overridden methods
+		ResultadoServico resultado = executeSave(relatorioPrevencao);
+		result.include("resultado", resultado);
+		validator.onErrorRedirectTo(this).relatorioCompleto();
+		if(resultado.isSucesso()){
+			result.forwardTo(this).relatorioCompleto();			
+		} else{
+			result.include(relatorioPrevencao);
+			result.redirectTo(this).relatorioCompleto();			
+		}		
+		
+		 // To change body of overridden methods
 										// use File | Settings | File Templates.
 	}
 
