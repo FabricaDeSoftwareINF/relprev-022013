@@ -330,7 +330,7 @@ public class GenericWebService<E extends AbstractEntity<E>, R extends GenericRep
      *            {@link Exception}
      * @return resposta ao cliente
      */
-    private Response<E> handlingCatchedExceptions(final Exception ex, final String message) {
+    protected Response<E> handlingCatchedExceptions(final Exception ex, final String message) {
         Response<E> response;
         if (ex instanceof ConstraintViolationException) {
             response = this.buildResponseForConstraintViolationException((ConstraintViolationException) ex);
