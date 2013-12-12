@@ -78,8 +78,19 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		}
 		relatorioPrevencao.setAnexos(CDN.save(files));
 		ResultadoServico resultado = executeSave(relatorioPrevencao);
-		result.include("resultado", resultado);
-		validator.onErrorRedirectTo(this).dadosGerais(relatorioPrevencao.getId());		
+		if(resultado.isSucesso()){
+			resultado.setMensagem("Relatório de prevenção preenchido com sucesso. Obrigado\n" +
+                				 "por colaborar com a prevenção de acidentes aéreos. Sua\n" +
+                				 "atitude pode salvar vidas.");
+			result.include("resultado", resultado);
+			validator.onErrorRedirectTo(this).dadosGerais(relatorioPrevencao.getId());
+			result.forwardTo(this).ultimosRelatorios();			
+		} else{
+			result.include("resultado", resultado);
+			result.include(relatorioPrevencao);
+			validator.onErrorRedirectTo(this).dadosGerais(relatorioPrevencao.getId());
+			result.redirectTo(this).dadosGerais(relatorioPrevencao.getId());			
+		}
 	}
 	
 	@NaoAutenticado
