@@ -321,6 +321,60 @@ public final class RelPrevServicesConfig {
         return this.serviceBaseURL() + controllerRelator;
     }
 
+    /**
+     * Lista os Usuários
+     * 
+     * @return {@link String} URL para listagem de Usuario
+     */
+    public String listUsuarioURL() {
+        return this.serviceBaseURL() + controllerUsuario;
+    }
+
+    /**
+     * Busca um Relator pelo ID
+     * 
+     * @return {@link String} URL para busca de Relator
+     */
+    public String findUsuarioURL() {
+        return this.serviceBaseURL() + controllerUsuario + actionFind;
+    }
+
+    /**
+     * Recupera a URL para criação de Usuario
+     * 
+     * @return {@link String} URL para criação de Usuario
+     */
+    public String createUsuarioURL() {
+        return this.serviceBaseURL() + controllerUsuario + actionCreate;
+    }
+
+    /**
+     * Recupera a URL para atualização de Usuario
+     * 
+     * @return {@link String} URL para atualização de Usuario
+     */
+    public String updateUsuarioURL() {
+        return this.serviceBaseURL() + controllerUsuario + actionUpdate;
+    }
+
+    /**
+     * Recupera a URL para remoção de Usuario
+     * 
+     * @return {@link String} URL para remoção de Usuario
+     */
+    public String deleteUsuarioURL() {
+        return this.serviceBaseURL() + controllerUsuario;
+    }
+
+    /**
+     * Busca usuario por login e senha
+     * 
+     * @return {@link String} URL para busca de usuario por login e senha
+     */
+    public String findUsuarioByUsuarioSenhaURL() {
+        return this.serviceBaseURL() + controllerUsuario + "/%s/%s";
+    }
+
     private static final String actionFind = "/";
     private static final String actionCreate = "/create";
     private static final String actionUpdate = "/update";
@@ -330,6 +384,7 @@ public final class RelPrevServicesConfig {
     private static final String controllerTaxonomia = "/taxonomia";
     private static final String controllerRelator = "/relator";
     private static final String controllerCategoria = "/categoria";
+    private static final String controllerUsuario = "/usuario";
 
     private String serviceURL;
 
