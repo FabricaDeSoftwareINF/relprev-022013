@@ -7,8 +7,7 @@
 		<title><fmt:message key="login.titulo" /></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 		<link href="<c:url value="css/bootstrap.min.css"/>" rel="stylesheet" type="text/css">
-		<link href="<c:url value="css/bootstrap-theme.min.css"/>" rel="stylesheet" type="text/css">
-		<link href="<c:url value="css/site.css"/>" rel="stylesheet" type="text/css">
+		<link href="<c:url value="css/bootstrap-theme.min.css"/>" rel="stylesheet" type="text/css">		
 		<link href="<c:url value="css/login.css"/>" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<c:url value="js/jquery-2.0.3.js"/>"></script>
 		<script type="text/javascript" src="<c:url value="js/relprev.utilitarios.js"/>"></script>

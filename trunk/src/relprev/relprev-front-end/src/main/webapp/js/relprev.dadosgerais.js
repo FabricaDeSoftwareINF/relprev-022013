@@ -101,19 +101,24 @@ relprev.dadosgerais = (function(instancia) {
 	});
 	
 	$('.botaoObservacao').on('click', function() {
+		if ($('#textoObservacoes').val() == '') {
+			alert('A descri\u00e7\u00e3o da observa\u00e7\u00e3o deve ser informada!');
+			return;
+		}
+		
 		$.ajax({
 			type : "GET",
 			dataType : "text",
 			contentType : "application/text;",
-			url : "../registreObservacao",
+			url : "../registreObservacoes",
 			data : {
-				observacoes: $('#observacoes').val(),
+				observacoes: $('#textoObservacoes').val(),
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {
 			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {			
-			alert("Erro ao registrar observacao!");
+			alert("Erro ao registrar observa\u00e7\u00e3o!");
 		});
 	});
 	
@@ -133,7 +138,7 @@ relprev.dadosgerais = (function(instancia) {
 		}).success(function(data) {
 			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {			
-			alert("Erro ao registrar observacao!");
+			alert("Erro ao registrar a a\u00e7\u00e3o recomendada!");
 		});
 	});
 	
@@ -151,7 +156,7 @@ relprev.dadosgerais = (function(instancia) {
 		}).success(function(data) {
 			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {
-			alert("Erro ao realizar avaliação!");
+			alert("Erro ao realizar avalia\u00e7\u00e3o!");
 		});
 	});
 
@@ -169,7 +174,7 @@ relprev.dadosgerais = (function(instancia) {
 		}).success(function(data) {
 			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {
-			alert("Erro ao realizar a reavaliação!");
+			alert("Erro ao realizar a reavalia\u00e7\u00e3o!");
 		});
 	});
 
