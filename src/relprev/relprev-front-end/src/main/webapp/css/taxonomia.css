@@ -1,0 +1,43 @@
+#editarTaxonomia, #taxonomiaEditada{
+    border-style: dashed;
+
+}
+
+#iconeAdicionar{
+    font-size: 200%;
+}
+
+#subcategorias {
+    border-left: none;
+}
+
+.panel {
+    padding: 0;
+}
+
+.panel-body > .row{
+    padding-right: 40px;
+}
+
+#listaPopover {
+    min-width: 200px;
+}
+
+.panel-body{
+    padding:0;
+}
+
+.list-group-item.ui-selected, .list-group-item.ui-selected:active, .list-group-item.ui-selected:hover{
+    z-index: 2;
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+#botaoModalExclusao{
+    margin-top: -5px;
+}
+
+.list-group{
+    min-height: 300px;
+}

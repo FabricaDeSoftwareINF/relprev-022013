@@ -15,7 +15,8 @@
         <!-- Importação de Javascript. -->
         <script type="text/javascript" src="<c:url value="/js/jquery-2.0.3.js"/>" ></script>
         <script type="text/javascript" src="<c:url value="/js/relprev.utilitarios.js"/>" ></script>
-        <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>" ></script>            
+        <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>" ></script>   
+        <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>" ></script>         
     </head>
     <body>
         <jsp:include page="/WEB-INF/paginas/inicio/menuSuperior.jsp"/>
