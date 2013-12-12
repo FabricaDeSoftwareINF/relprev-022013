@@ -61,12 +61,20 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		} else{
 			result.include(relatorioPrevencao);
 			result.redirectTo(this).relatorioCompleto();			
-		}		
-		
-		 // To change body of overridden methods
-										// use File | Settings | File Templates.
+		}
 	}
 
+	public void altereRelatorio(RelatorioPrevencao relatorioPrevencao,
+			List<UploadedFile> files) throws FileNotFoundException {
+		if (files == null) {
+			files = new ArrayList<UploadedFile>();
+		}
+		relatorioPrevencao.setAnexos(CDN.save(files));
+		ResultadoServico resultado = executeSave(relatorioPrevencao);
+		result.include("resultado", resultado);
+		validator.onErrorRedirectTo(this).dadosGerais(relatorioPrevencao.getId());		
+	}
+	
 	@NaoAutenticado
 	@Get("/relatorio/inicio")
 	public void relatorioCompleto() {
@@ -116,7 +124,7 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 			encaminhamento.setDestinatario(destinatario);
 			encaminhamento.setDescricao(descricao);
 			encaminhamento.setData(trateData(data));
-			encaminhamento.setRelPrev(relatorio);
+			encaminhamento.setRelPrev(relatorio);			
 			relatorio.definaEncaminhamento(encaminhamento);
 			result.use(Results.json())
 					.from("Encaminhamento realizado com sucesso!", "resultado")

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link href="<c:url value="/css/relprev.css" />" rel="stylesheet">
@@ -15,6 +15,7 @@
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.10.3.custom.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.meio.mask.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/relprev.relatorio.js"/>"></script>
+<input name="relatorioPrevencao.id" type="hidden" value="${ relatorioPrevencao.id }" />
 <div class="row">
     <div class="form-group col-md-12">
         <label for="local" class="labelMaiuscula">
