@@ -5,7 +5,7 @@
 	<div id="tituloResposta" class="tituloAba col-xs-12 col-md-12 textoCentralizado">
 		<label class="labelMaiuscula"><fmt:message key="resposta" /></label>
 		<button type="button" class="botaoResposta btn btn-primary">
-        	<fmt:message key="resposta" />
+        	<fmt:message key="registrar.resposta" />
         </button>	
 	</div>
 	<div id="camposResposta" class="camposAba col-xs-12 col-md-12">
