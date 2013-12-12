@@ -10,6 +10,8 @@ import javax.validation.ConstraintViolationException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -39,13 +41,15 @@ import br.ufg.inf.service.security.UsuarioWebService;
 @TransactionConfiguration(defaultRollback = true)
 public class UsuarioWebServiceTest {
 
-    @Autowired
+    //@Autowired
+    @Mock
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private EloSipaerRepository eloSipaerRepository;
+    //@Autowired
+    //private EloSipaerRepository eloSipaerRepository;
 
-    @Autowired
+    //@Autowired
+    @Mock
     private LogRepository logRepository;
 
     private UsuarioWebService usuarioWebService;
@@ -55,6 +59,7 @@ public class UsuarioWebServiceTest {
         this.usuarioWebService = new UsuarioWebService(this.usuarioRepository,
                 this.logRepository);
 
+                /*
         final Usuario usuario = new Usuario();
         usuario.setAtivo(true);
         usuario.setDataInsercaoAlteracao(new Date());
@@ -72,6 +77,7 @@ public class UsuarioWebServiceTest {
         eloSipaer.setUsuario(usuario);
 
         this.eloSipaerRepository.save(eloSipaer);
+        */
     }
 
     @Test
