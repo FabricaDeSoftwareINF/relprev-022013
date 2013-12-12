@@ -191,7 +191,7 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		try {
 			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
 					.get(idRelatorio);
-			Observacao observacao = new Observacao();
+			Observacao observacao = new Observacao();			
 			observacao.setDescricao(observacoes);
 			observacao.setRelPrev(relatorio);
 			relatorio.definaObservacao(observacao);

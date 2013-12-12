@@ -94,14 +94,17 @@ div.dialogoModal.modal-dialog {
 #tituloEncaminhamento label,
 #tituloResposta label,
 #tituloAcoesRecomendadas label,
+#tituloObservacao label,
 #tituloEncaminhamento button,
 #tituloResposta button,
-#tituloAcoesRecomendadas button {
+#tituloAcoesRecomendadas button,
+#tituloObservacao button {
 	display: inline;
 }
 
 #tituloResposta button,
 #tituloEncaminhamento button,
+#tituloObservacao button,
 #tituloAcoesRecomendadas button {
 	float: right;
 }

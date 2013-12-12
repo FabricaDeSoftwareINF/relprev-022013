@@ -48,7 +48,7 @@
 			</li>
   			<li id="observacoesAba">
   				<a>
-  					<c:if test="${!relatorioPrevencao.observacao.descricao.equals(\"\")}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
+  					<c:if test="${relatorioPrevencao.observacao != null}"><label class="glyphicon glyphicon-chevron-down"></label></c:if>
   					<fmt:message key="observacoes" />
 				</a>
 			</li>
