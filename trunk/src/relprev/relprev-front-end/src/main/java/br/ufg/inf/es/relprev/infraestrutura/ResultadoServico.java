@@ -32,4 +32,9 @@ public class ResultadoServico {
 	public void setObjeto(Object objeto) {
 		this.objeto = objeto;
 	}
+	
+	@Override
+	public String toString(){
+		return mensagem == null ? "" : mensagem;
+	}
 }
