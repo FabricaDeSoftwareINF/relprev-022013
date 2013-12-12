@@ -55,7 +55,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {			
-			alert("Encaminhamento realizado com sucesso!");
+			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {			
 			alert("Erro ao realizar a encaminhamento!");
 		});
@@ -73,10 +73,67 @@ relprev.dadosgerais = (function(instancia) {
 				descricao : $('#descricaoParecerDoSetor').val(),
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
-		}).success(function(data) {			
-			alert("Parecer do setor registrado com sucesso!");
+		}).success(function(data) {
+			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {			
 			alert("Erro ao registrar o parecer do setor!");
+		});
+	});
+	
+	$('.botaoResposta').on('click', function() {
+		$.ajax({
+			type : "GET",
+			dataType : "text",
+			contentType : "application/text;",
+			url : "../registreResposta",
+			data : {
+				remetente: $('#respostaDo').val(),
+				destinatario: $('#respostaAo').val(),
+				data : $('#dataResposta').val(),
+				descricao : $('#descricaoResposta').val(),
+				idRelatorio : $('[name="relprev.id"]').val()
+			}
+		}).success(function(data) {
+			alert(JSON.parse(data).resultado);
+		}).fail(function(data) {			
+			alert("Erro ao registrar a resposta!");
+		});
+	});
+	
+	$('.botaoObservacao').on('click', function() {
+		$.ajax({
+			type : "GET",
+			dataType : "text",
+			contentType : "application/text;",
+			url : "../registreObservacao",
+			data : {
+				observacoes: $('#observacoes').val(),
+				idRelatorio : $('[name="relprev.id"]').val()
+			}
+		}).success(function(data) {
+			alert(JSON.parse(data).resultado);
+		}).fail(function(data) {			
+			alert("Erro ao registrar observacao!");
+		});
+	});
+	
+	$('.botaoAcaoRecomendada').on('click', function() {
+		$.ajax({
+			type : "GET",
+			dataType : "text",
+			contentType : "application/text;",
+			url : "../registreAcaoRecomendada",
+			data : {
+				remetente: $('#acaoDo').val(),
+				destinatario: $('#acaoAo').val(),
+				data : $('#acaoData').val(),
+				descricao : $('#descricaoAcoesRecomendadas').val(),
+				idRelatorio : $('[name="relprev.id"]').val()
+			}
+		}).success(function(data) {
+			alert(JSON.parse(data).resultado);
+		}).fail(function(data) {			
+			alert("Erro ao registrar observacao!");
 		});
 	});
 	
@@ -92,7 +149,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 				}
 		}).success(function(data) {
-			alert("Avaliação realizada com sucesso!");
+			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {
 			alert("Erro ao realizar avaliação!");
 		});
@@ -109,9 +166,8 @@ relprev.dadosgerais = (function(instancia) {
 				reavaliacao : reavaliacao,
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
-		}).success(
-			function(data) {
-				alert("Reavaliação realizada com sucesso!");
+		}).success(function(data) {
+			alert(JSON.parse(data).resultado);
 		}).fail(function(data) {
 			alert("Erro ao realizar a reavaliação!");
 		});

@@ -4,9 +4,11 @@
 <div id="observacoes" class="aba fundoAbas labelPadrao" style="display: none">
 	<div class="tituloAba col-md-12 textoCentralizado">
 		<label><fmt:message key="observacoes" /></label>
+		<button type="button" class="botaoObservacao btn btn-primary">
+        	<fmt:message key="registrar.observacao" />
+        </button>	
 	</div>
 	<div id="camposObservacoes" class="camposAba col-xs-12 col-md-12">		
-		<textarea id="observacoes" class="col-xs-12 col-md-12"
-			value="${relatorioPrevencao.observacao.descricao}"></textarea>		
+		<textarea id="observacoes" class="col-xs-12 col-md-12">${relatorioPrevencao.observacao.descricao}</textarea>		
 	</div>		
 </div>

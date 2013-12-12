@@ -1,7 +1,10 @@
 package br.ufg.inf.es.relprev.controller;
 
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,13 +15,17 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
+import br.com.caelum.vraptor.view.Results;
 import br.ufg.inf.es.relprev.annotation.NaoAutenticado;
 import br.ufg.inf.es.relprev.cdn.CDN;
+import br.ufg.inf.es.relprev.client.dominio.AcaoRecomendada;
 import br.ufg.inf.es.relprev.client.dominio.Anexo;
 import br.ufg.inf.es.relprev.client.dominio.ClassificacaoRisco;
 import br.ufg.inf.es.relprev.client.dominio.Encaminhamento;
+import br.ufg.inf.es.relprev.client.dominio.Observacao;
 import br.ufg.inf.es.relprev.client.dominio.ParecerSetor;
 import br.ufg.inf.es.relprev.client.dominio.RelatorioPrevencao;
+import br.ufg.inf.es.relprev.client.dominio.Resposta;
 import br.ufg.inf.es.relprev.client.http.exception.RequestException;
 import br.ufg.inf.es.relprev.infraestrutura.ResultadoServico;
 
@@ -87,9 +94,8 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 		return RelatorioPrevencao.class;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Get
-	public String realizeEncaminhamento(String remetente, String destinatario,
+	public void realizeEncaminhamento(String remetente, String destinatario,
 			String data, String descricao, int idRelatorio) {
 		try {
 			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
@@ -98,50 +104,110 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 			encaminhamento.setRemetente(remetente);
 			encaminhamento.setDestinatario(destinatario);
 			encaminhamento.setDescricao(descricao);
-			if (data != null && !data.equals("") && data.contains("/")) {
-				String[] dataFormatada = data.split("/");
-				if (dataFormatada.length == 3) {
-					int dia = Integer.parseInt(dataFormatada[1]);
-					int mes = Integer.parseInt(dataFormatada[0]) + 2;
-					int ano = Integer.parseInt(dataFormatada[2]);
-					encaminhamento.setData(new Date(ano, mes, dia));
-				}
-			}
+			encaminhamento.setData(trateData(data));
+			encaminhamento.setRelPrev(relatorio);
 			relatorio.definaEncaminhamento(encaminhamento);
-			return "Encaminhamento realizado com sucesso!";
+			result.use(Results.json())
+					.from("Encaminhamento realizado com sucesso!", "resultado")
+					.serialize();
 		} catch (RequestException e) {
 			logger.info(e.getLocalizedMessage());
-			return "Falha ao realizar o encaminhamento!";
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
 		}
 	}
 
 	@Get
-	public String realizeParecerDoSetor(String setor, String data,
+	public void realizeParecerDoSetor(String setor, String data,
 			String descricao, int idRelatorio) {
 		try {
 			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
 					.get(idRelatorio);
-			ParecerSetor parecerSetor = new ParecerSetor();			
-			parecerSetor.setDescricao(descricao);			
-			if (data != null && !data.equals("") && data.contains("/")) {
-				String[] dataFormatada = data.split("/");
-				if (dataFormatada.length == 3) {
-					int dia = Integer.parseInt(dataFormatada[1]);
-					int mes = Integer.parseInt(dataFormatada[0]) + 2;
-					int ano = Integer.parseInt(dataFormatada[2]);
-					parecerSetor.setData(new Date(ano, mes, dia));
-				}
-			}
+			ParecerSetor parecerSetor = new ParecerSetor();
+			parecerSetor.setDescricao(descricao);
+			parecerSetor.setData(trateData(data));
+			parecerSetor.setRelPrev(relatorio);
 			relatorio.definaParecerSetor(parecerSetor);
-			return "Encaminhamento realizado com sucesso!";
+			result.use(Results.json())
+					.from("Parecer do setor registrado com sucesso!",
+							"resultado").serialize();
 		} catch (RequestException e) {
 			logger.info(e.getLocalizedMessage());
-			return "Falha ao realizar o encaminhamento!";
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
 		}
 	}
 
 	@Get
-	public String realizeAvaliacao(String avaliacao, int idRelatorio) {
+	public void registreResposta(String remetente, String destinatario,
+			String data, String descricao, int idRelatorio) {
+		try {
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);
+			Resposta resposta = new Resposta();
+			resposta.setRemetente(remetente);
+			resposta.setDestinatario(destinatario);
+			resposta.setData(trateData(data));
+			resposta.setDescricao(descricao);
+			resposta.setRelPrev(relatorio);
+			relatorio.definaResposta(resposta);
+			result.use(Results.json())
+					.from("Resposta realizada com sucesso!", "resultado")
+					.serialize();
+			return;
+		} catch (RequestException e) {
+			logger.info(e.getLocalizedMessage());
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
+		}
+	}
+
+	@Get
+	public void registreAcaoRecomendada(String remetente, String destinatario,
+			String data, String descricao, int idRelatorio) {
+		try {
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);
+			AcaoRecomendada acaoRecomendada = new AcaoRecomendada();
+			acaoRecomendada.setRemetente(remetente);
+			acaoRecomendada.setDestinatario(destinatario);
+			acaoRecomendada.setData(trateData(data));
+			acaoRecomendada.setDescricao(descricao);
+			acaoRecomendada.setRelPrev(relatorio);
+			relatorio.definaAcaoRecomendada(acaoRecomendada);
+			result.use(Results.json())
+					.from("A\u00e7\u00e3o recomendada registrada com sucesso!",
+							"resultado").serialize();
+			return;
+		} catch (RequestException e) {
+			logger.info(e.getLocalizedMessage());
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
+		}
+	}
+
+	@Get
+	public void registreObservacoes(String observacoes, int idRelatorio) {
+		try {
+			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
+					.get(idRelatorio);
+			Observacao observacao = new Observacao();
+			observacao.setDescricao(observacoes);
+			observacao.setRelPrev(relatorio);
+			relatorio.definaObservacao(observacao);
+			result.use(Results.json())
+					.from("Observa\u00e7\u00e3o registrada com sucesso!",
+							"resultado").serialize();
+			return;
+		} catch (RequestException e) {
+			logger.info(e.getLocalizedMessage());
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
+		}
+	}
+
+	@Get
+	public void realizeAvaliacao(String avaliacao, int idRelatorio) {
 		try {
 			ClassificacaoRisco classificacao;
 			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
@@ -155,15 +221,18 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 			classificacao.setAvaliacaoInicial(avaliacao);
 			classificacao.setRelPrev(relatorio);
 			relatorio.definaClassificacaoDeRisco(classificacao);
-			return "Avaliação realizada com sucesso!";
+			result.use(Results.json())
+					.from("Avalia\u00e7\u00e3o realizada com sucesso!",
+							"resultado").serialize();
 		} catch (RequestException e) {
 			logger.info(e.getLocalizedMessage());
-			return "Erro ao realizar avaliação!";
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
 		}
 	}
 
 	@Get
-	public String realizeReavaliacao(String reavaliacao, int idRelatorio) {
+	public void realizeReavaliacao(String reavaliacao, int idRelatorio) {
 		try {
 			RelatorioPrevencao relatorio = (RelatorioPrevencao) new RelatorioPrevencao()
 					.get(idRelatorio);
@@ -175,11 +244,30 @@ public class RelatorioController extends GenericController<RelatorioPrevencao> {
 				relatorio.definaClassificacaoDeRisco(classificacao);
 			}
 
-			return "Reavaliação realizada com sucesso!";
+			result.use(Results.json())
+					.from("Reavalia\u00e7\u00e3o realizada com sucesso!",
+							"resultado").serialize();
 		} catch (RequestException e) {
 			logger.info(e.getLocalizedMessage());
-			return "Erro ao realizar reavaliação!";
+			result.use(Results.json())
+					.from(e.getLocalizedMessage(), "resultado").serialize();
 		}
+	}
+
+	private Date trateData(String data) {
+		try {
+			if (data != null && !data.equals("") && data.contains("/")) {
+				String[] dataFormatada = data.split("/");
+				if (dataFormatada.length == 3) {
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					return sdf.parse(data);
+				}
+			}
+		} catch (ParseException e) {
+			logger.info(e.getLocalizedMessage());
+		}
+
+		return null;
 	}
 
 	@Override
