@@ -54,8 +54,8 @@ relprev.dadosgerais = (function(instancia) {
 				descricao : $('#descricaoEncaminhamento').val(),
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
-		}).success(function(data) {			
-			alert(JSON.parse(data).resultado);
+		}).success(function(data) {
+			exibaMensagem(data);
 		}).fail(function(data) {			
 			alert("Erro ao realizar a encaminhamento!");
 		});
@@ -74,7 +74,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {
-			alert(JSON.parse(data).resultado);
+			exibaMensagem(data);
 		}).fail(function(data) {			
 			alert("Erro ao registrar o parecer do setor!");
 		});
@@ -94,7 +94,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {
-			alert(JSON.parse(data).resultado);
+			exibaMensagem(data);
 		}).fail(function(data) {			
 			alert("Erro ao registrar a resposta!");
 		});
@@ -116,7 +116,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {
-			alert(JSON.parse(data).resultado);
+			exibaMensagem(data);
 		}).fail(function(data) {			
 			alert("Erro ao registrar observa\u00e7\u00e3o!");
 		});
@@ -136,7 +136,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {
-			alert(JSON.parse(data).resultado);
+			exibaMensagem(data);
 		}).fail(function(data) {			
 			alert("Erro ao registrar a a\u00e7\u00e3o recomendada!");
 		});
@@ -154,7 +154,7 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 				}
 		}).success(function(data) {
-			alert(JSON.parse(data).resultado);
+			exibaMensagem(data);
 		}).fail(function(data) {
 			alert("Erro ao realizar avalia\u00e7\u00e3o!");
 		});
@@ -172,11 +172,21 @@ relprev.dadosgerais = (function(instancia) {
 				idRelatorio : $('[name="relprev.id"]').val()
 			}
 		}).success(function(data) {
-			alert(JSON.parse(data).resultado);
+			exibaMensagem(data);
 		}).fail(function(data) {
 			alert("Erro ao realizar a reavalia\u00e7\u00e3o!");
 		});
 	});
 
+	
+	function exibaMensagem(data) {
+		var mensagens = JSON.parse(data).resultado.split('|');
+		var texto = ''; 
+		for (var i = 0; i < mensagens.length; i++) {
+			texto+= mensagens[i].trim() + '\n'; 
+		}
+		alert(texto);
+	};
+	
 	return {};
 })(relprev.dadosgerais || undefined);
