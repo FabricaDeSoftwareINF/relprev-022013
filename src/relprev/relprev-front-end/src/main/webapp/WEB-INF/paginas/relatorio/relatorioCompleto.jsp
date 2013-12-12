@@ -48,13 +48,11 @@
        	<%@include file="../../partials/calendario.jsp" %>
        	<script type="text/javascript">
                  $(function(){
+                	 debugger;
                 	 if($("#campoHidden").val()){
+                		 
                 		 alert($("#campoHidden").val());
-                	 } else{
-                		 alert("Relatório de prevenção preenchido com sucesso. Obrigado\n" +
-                				 "por colaborar com a prevenção de acidentes aéreos. Sua\n" +
-                				 "atitude pode salvar vidas.");
-                	 }                	 
+                	 }         	 
                  })
        	</script>
     </body>
