@@ -34,16 +34,16 @@
 				    	<td>${relprev.relator.nome}</td>
 				    	<td>
 				    		<span class="label 
-			    			<c:if test="${!relprev.situacoes.temEncaminhamento}">label-default</c:if>
-			    			<c:if test="${relprev.situacoes.temEncaminhamento}">label-success</c:if>
+			    			<c:if test="${relprev.situacoes == null}">label-default</c:if>
+			    			<c:if test="${relprev.situacoes != null}">label-success</c:if>
 			    			" title="<fmt:message key="encaminhado" />"><fmt:message key="sigla.encaminhamento" /></span>	        							    		
 	        				<span class="label 
-	        				<c:if test="${!relprev.situacoes.temAcaoRecomendada}">label-default</c:if>
-	        				<c:if test="${relprev.situacoes.temAcaoRecomendada}">label-success</c:if>
+	        				<c:if test="${relprev.situacoes == null}">label-default</c:if>
+	        				<c:if test="${relprev.situacoes != null}">label-success</c:if>
 			  				" title="<fmt:message key="acoes.recomendadas" />"><fmt:message key="sigla.acoes.recomendadas" /></span>
 			  				<span class="label 
-			  				<c:if test="${!relprev.situacoes.temDivulgacao}">label-default</c:if>
-	        				<c:if test="${relprev.situacoes.temDivulgacao}">label-success</c:if>
+			  				<c:if test="${!relprev.situacoes == null}">label-default</c:if>
+	        				<c:if test="${relprev.situacoes != null}">label-success</c:if>
 			  				" title="<fmt:message key="relatorio.divulgacao" />"><fmt:message key="sigla.divulgacao" /></span>
 	        				<span class="label 
 	        				<c:if test="${relprev.resposta == null}">label-default</c:if>
